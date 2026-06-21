@@ -1,0 +1,131 @@
+{
+  "version": "1.0.0",
+  "rooms": [
+    {
+      "roomType": "Bedroom",
+      "element": "Yin (Rest)",
+      "generalTips": [
+        "Position your bed diagonally from the door, not directly in line with it.",
+        "Use soft, rounded furniture to promote gentle energy flow.",
+        "Keep the space under your bed clear for chi to circulate.",
+        "Balance yin and yang with both soft and firm textures."
+      ],
+      "baguaAreas": {
+        "Love": "Place pairs of objects (two candles, two crystals) in the southwest corner.",
+        "Health": "Keep electronics away from the bed area. Use earth tones.",
+        "Career": "Face your bed toward the door (but not in line with it) for opportunity."
+      },
+      "whatToAvoid": [
+        "Avoid mirrors facing the bed — they reflect energy and disrupt sleep.",
+        "Avoid clutter under the bed.",
+        "Avoid electronics near the headboard.",
+        "Avoid sharp corners pointing at the bed."
+      ],
+      "colors": ["Soft pink", "Cream", "Warm peach", "Lavender"]
+    },
+    {
+      "roomType": "Living Room",
+      "element": "Yang (Activity)",
+      "generalTips": [
+        "Arrange seating in a circle or facing each other to encourage conversation.",
+        "The main seating should face the entrance to see opportunities arriving.",
+        "Use layered lighting — overhead, task, and accent — for balanced energy.",
+        "Incorporate all five Feng Shui elements: Wood, Fire, Earth, Metal, Water."
+      ],
+      "baguaAreas": {
+        "Wealth": "Place a living plant or water feature in the southeast corner.",
+        "Fame": "Use red accents or a fireplace in the south area.",
+        "Family": "Place family photos or living plants in the east area."
+      },
+      "whatToAvoid": [
+        "Avoid blocking pathways with furniture.",
+        "Avoid sharp-edged furniture pointing at seating areas.",
+        "Avoid dark, heavy curtains that block natural light."
+      ],
+      "colors": ["Warm gold", "Cream white", "Bright red accents", "Rich brown"]
+    },
+    {
+      "roomType": "Home Office",
+      "element": "Metal (Focus)",
+      "generalTips": [
+        "Position your desk in the 'command position' — facing the door diagonally.",
+        "Keep your desk surface clear and organized.",
+        "Use a solid wall behind you for support energy.",
+        "Incorporate metal elements for clarity and precision."
+      ],
+      "baguaAreas": {
+        "Career": "Place your desk in the north area of the room.",
+        "Knowledge": "Keep reference books and learning materials in the northeast.",
+        "Wealth": "Place a plant or wealth symbol in the southeast corner of your desk."
+      },
+      "whatToAvoid": [
+        "Avoid sitting with your back to the door.",
+        "Avoid cluttered desk surfaces.",
+        "Avoid overhead beams directly above your seating."
+      ],
+      "colors": ["White", "Gold", "Gray", "Soft red accents"]
+    },
+    {
+      "roomType": "Kitchen",
+      "element": "Fire (Nourishment)",
+      "generalTips": [
+        "Keep the stove clean and in good working order — it represents wealth.",
+        "Use all five colors on your counters (fruit, herbs) for balanced chi.",
+        "Hang wooden spoons or plants to balance the fire element.",
+        "Ensure good lighting over food preparation areas."
+      ],
+      "baguaAreas": {
+        "Wealth": "The stove is a wealth symbol — keep all burners working.",
+        "Health": "Keep fresh herbs and healthy ingredients visible.",
+        "Family": "A family dining area near the kitchen strengthens bonds."
+      },
+      "whatToAvoid": [
+        "Avoid the stove being directly opposite the sink or fridge (fire vs. water).",
+        "Avoid broken appliances — they represent stagnant energy.",
+        "Avoid sharp knives visible from the dining area."
+      ],
+      "colors": ["Red accents", "Warm wood", "Cream", "Green herbs"]
+    },
+    {
+      "roomType": "Bathroom",
+      "element": "Water (Release)",
+      "generalTips": [
+        "Keep the toilet lid closed to prevent energy from draining away.",
+        "Fix any leaky faucets immediately — they waste wealth.",
+        "Use warm lighting to balance the water element.",
+        "Hang a mirror on the door to reflect energy back in."
+      ],
+      "baguaAreas": {
+        "Wealth": "Place a plant near the toilet to absorb and transform draining energy.",
+        "Health": "Use earth tones to balance the over-abundance of water.",
+        "Career": "A small mirror above the sink reflects career energy upward."
+      },
+      "whatToAvoid": [
+        "Avoid bathroom being the first room visible from the front door.",
+        "Avoid dark, damp corners — promote ventilation.",
+        "Avoid placing the bathroom in the wealth or fame bagua areas of your home."
+      ],
+      "colors": ["Cream", "Warm beige", "Soft peach", "Gold accents"]
+    },
+    {
+      "roomType": "Entryway",
+      "element": "Wood (Growth)",
+      "generalTips": [
+        "Keep the entryway bright, clean, and welcoming — it's where chi enters.",
+        "A mirror near the door doubles abundance that enters.",
+        "Place a small table or console with fresh flowers or a bowl of keys.",
+        "Use warm, inviting lighting to welcome good energy."
+      ],
+      "baguaAreas": {
+        "Career": "The front door feeds your career energy — keep it well-maintained.",
+        "Wealth": "A bowl of coins or crystals near the entrance attracts abundance."
+      },
+      "whatToAvoid": [
+        "Avoid clutter, shoes, or coats piled near the door.",
+        "Avoid a mirror directly facing the front door (it reflects chi back out).",
+        "Avoid dark, narrow entryways — use mirrors to expand the space."
+      ],
+      "colors": ["Warm red", "Gold", "Rich wood", "Cream white"]
+    }
+  ]
+}

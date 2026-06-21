@@ -1,0 +1,107 @@
+/// Energy area model for the Bagua map
+class EnergyArea {
+  final String name;
+  final String emoji;
+  final String description;
+  final String element;
+  final String colorHex;
+  final int level; // 0-100 energy score
+
+  const EnergyArea({
+    required this.name,
+    required this.emoji,
+    required this.description,
+    required this.element,
+    required this.colorHex,
+    this.level = 50,
+  });
+
+  EnergyArea copyWith({int? level}) {
+    return EnergyArea(
+      name: name,
+      emoji: emoji,
+      description: description,
+      element: element,
+      colorHex: colorHex,
+      level: level ?? this.level,
+    );
+  }
+}
+
+/// Room model for storing scanned rooms
+class RoomModel {
+  final String id;
+  final String name;
+  final String roomType;
+  final String? imagePath;
+  final DateTime scanDate;
+  final List<EnergyArea> energyAreas;
+
+  RoomModel({
+    required this.id,
+    required this.name,
+    this.roomType = 'Living Room',
+    this.imagePath,
+    DateTime? scanDate,
+    List<EnergyArea>? energyAreas,
+  })  : scanDate = scanDate ?? DateTime.now(),
+        energyAreas = energyAreas ?? _defaultEnergyAreas();
+
+  static List<EnergyArea> _defaultEnergyAreas() {
+    return [
+      const EnergyArea(name: 'Love', emoji: '💖', description: 'Relationships & partnership', element: 'Fire', colorHex: '#FF8A65', level: 50),
+      const EnergyArea(name: 'Wealth', emoji: '💰', description: 'Abundance & prosperity', element: 'Wood', colorHex: '#4CAF50', level: 50),
+      const EnergyArea(name: 'Health', emoji: '🌿', description: 'Wellness & vitality', element: 'Earth', colorHex: '#FFD700', level: 50),
+      const EnergyArea(name: 'Career', emoji: '🧭', description: 'Life path & purpose', element: 'Water', colorHex: '#5B9BD5', level: 50),
+    ];
+  }
+}
+
+/// Chinese zodiac animal model
+class ZodiacAnimal {
+  final String name;
+  final String year;
+  final String element;
+  final String description;
+  final String luckyColor;
+  final String luckyDirection;
+  final List<String> compatibleWith;
+  final List<String> incompatibleWith;
+
+  const ZodiacAnimal({
+    required this.name,
+    required this.year,
+    required this.element,
+    required this.description,
+    required this.luckyColor,
+    required this.luckyDirection,
+    required this.compatibleWith,
+    required this.incompatibleWith,
+  });
+}
+
+/// Feng Shui recommendation
+class FengShuiTip {
+  final String title;
+  final String description;
+  final String area;
+  final String icon;
+
+  const FengShuiTip({
+    required this.title,
+    required this.description,
+    required this.area,
+    required this.icon,
+  });
+}
+
+/// Daily affirmation
+class DailyAffirmation {
+  final String text;
+  final String theme;
+
+  const DailyAffirmation({
+    required this.text,
+    required this.theme,
+  });
+}

@@ -1,0 +1,85 @@
+{
+  "version": "1.0.0",
+  "seasons": [
+    {
+      "season": "Spring",
+      "energyTheme": "Renewal and fresh starts",
+      "element": "Wood",
+      "baguaFocus": ["Family (East)", "Wealth (Southeast)"],
+      "tips": [
+        "Open all windows to let fresh chi circulate through your home.",
+        "Add fresh flowers and green plants to every room.",
+        "Declutter your entryway — this is where spring chi enters.",
+        "Swap heavy winter curtains for light, airy fabrics.",
+        "Paint an accent wall in fresh green or soft pink.",
+        "Place a bowl of fresh fruit on your kitchen counter for abundance.",
+        "Clean your windows inside and out to welcome clarity.",
+        "Add wind chimes to your front door area.",
+        "Rearrange furniture slightly to invite new energy pathways.",
+        "Plant seeds (literal or metaphorical) in the southeast wealth corner."
+      ],
+      "rituals": "Spring Cleaning Ceremony: Clean every corner while ringing a bell to break stagnant energy. Open all doors and windows for 10 minutes. Light a green or pink candle.",
+      "recommendedColors": ["Fresh green", "Soft pink", "Cream", "Sky blue"]
+    },
+    {
+      "season": "Summer",
+      "energyTheme": "Peak energy and abundance",
+      "element": "Fire",
+      "baguaFocus": ["Fame (South)", "Love (Southwest)"],
+      "tips": [
+        "Use bright red and gold accents throughout your home.",
+        "Host gatherings to activate the social energy of your space.",
+        "Place fresh sunflowers or bright blooms in the fame (south) area.",
+        "Use candles or warm lighting to amplify fire energy.",
+        "Display achievements and awards in the south area.",
+        "Keep your space cool and well-ventilated for comfort.",
+        "Add citrus scents — orange and lemon uplift chi.",
+        "Use mirrors to double the summer light and energy.",
+        "Wear bright colors to match the vibrant season.",
+        "Celebrate abundance by sharing meals with loved ones."
+      ],
+      "rituals": "Abundance Activation: Light a red candle in the south area of your home. Write your biggest goal on gold paper and place it under the candle. Let it burn fully.",
+      "recommendedColors": ["Bright red", "Warm gold", "Vibrant orange", "Cream white"]
+    },
+    {
+      "season": "Autumn",
+      "energyTheme": "Harvest and gratitude",
+      "element": "Metal",
+      "baguaFocus": ["Children (West)", "Mentors (Northwest)"],
+      "tips": [
+        "Harvest what you've grown — acknowledge your accomplishments.",
+        "Clear out what no longer serves you — donate unused items.",
+        "Add white, silver and gray accents for metal energy.",
+        "Display dried flowers, wheat stalks or autumnal arrangements.",
+        "Strengthen the northwest (mentors) area with metal objects.",
+        "Organize your home office and financial documents.",
+        "Add cozy throws and warm textures for comfort.",
+        "Use soft yellow lighting to create a warm harvest feel.",
+        "Place a bowl of autumn fruits (pumpkins, apples) as abundance symbols.",
+        "Practice gratitude by writing what you're thankful for."
+      ],
+      "rituals": "Release Ceremony: Write what you wish to release on paper. Burn it safely (in a fireplace or fireproof bowl) while stating your intention aloud. Replace with a symbol of what you wish to invite.",
+      "recommendedColors": ["White", "Gold", "Silver", "Warm brown"]
+    },
+    {
+      "season": "Winter",
+      "energyTheme": "Rest and reflection",
+      "element": "Water",
+      "baguaFocus": ["Career (North)", "Knowledge (Northeast)"],
+      "tips": [
+        "Create cozy, warm spaces for introspection and rest.",
+        "Deep clean and organize your home for a fresh start.",
+        "Focus on the north (career) area — plan your professional goals.",
+        "Add blue, black and deep purple accents for water energy.",
+        "Use warm, layered lighting to counter the dark season.",
+        "Keep pathways clear to prevent energy stagnation.",
+        "Display crystals or water features in the north area.",
+        "Read and study in your knowledge (northeast) corner.",
+        "Practice meditation in a calm, dedicated space.",
+        "Prepare your home for the spring renewal to come."
+      ],
+      "rituals": "Winter Intention Setting: On the winter solstice, light a dark blue or black candle. Meditate on your intentions for the coming year. Place written intentions in a box in the north (career) area until spring.",
+      "recommendedColors": ["Deep blue", "Silver", "Black", "Cream white"]
+    }
+  ]
+}
