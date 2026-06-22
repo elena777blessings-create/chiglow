@@ -286,6 +286,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Row(
                 children: [
                   _QuickAction(emoji: '🎨', label: 'Color\nCoach', onTap: () => Navigator.pushNamed(context, '/color-coaching')),
+                  _QuickAction(emoji: '🐟', label: 'Koi\nAffirm', onTap: () => Navigator.pushNamed(context, '/koi-affirmations')),
                   _QuickAction(emoji: '📅', label: 'Year\nAhead', onTap: () => Navigator.pushNamed(context, '/year-ahead')),
                   _QuickAction(emoji: '⚙️', label: 'Settings', onTap: () => Navigator.pushNamed(context, '/settings')),
                 ],
