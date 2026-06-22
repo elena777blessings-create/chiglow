@@ -197,6 +197,54 @@
         "Avoid broken or wobbly furniture — it signals instability."
       ],
       "colors": ["Red", "Warm gold", "Terracotta", "Cream", "Warm wood"]
+    },
+    {
+      "roomType": "Front Yard",
+      "element": "Wood (Welcome)",
+      "generalTips": [
+        "The front yard is the 'mouth of chi' — it's where energy enters your home.",
+        "Keep the path to your front door clear and inviting — no obstacles or overgrown plants.",
+        "Plant rounded, soft-shaped shrubs rather than sharp or spiky plants.",
+        "A well-lit entrance welcomes good energy and deters negative chi.",
+        "Add a water feature (fountain) near the entrance to attract abundance.",
+        "Use warm, inviting colors for your front door — red is the luckiest!"
+      ],
+      "baguaAreas": {
+        "Career": "The front entrance feeds career energy — keep it bright and open.",
+        "Wealth": "Place a water fountain or lush plants in the southeast area of your yard.",
+        "Fame": "A red front door or red flowers in the south area boosts recognition."
+      },
+      "whatToAvoid": [
+        "Avoid dead or dying plants — they attract stagnant energy.",
+        "Avoid a straight path from gate to door — it lets chi rush in too fast.",
+        "Avoid sharp objects, thorny plants, or cactus near the entrance.",
+        "Avoid dark, shadowy corners where chi can get stuck."
+      ],
+      "colors": ["Red door", "Green plants", "Warm gold", "White", "Terracotta pots"]
+    },
+    {
+      "roomType": "Backyard",
+      "element": "Earth (Nourishment)",
+      "generalTips": [
+        "The backyard represents your family and health — keep it harmonious.",
+        "Create a seating area for relaxation and family gatherings.",
+        "Balance the five elements: wood (plants), fire (lighting), earth (stone), metal (furniture), water (fountain).",
+        "A vegetable garden brings nourishing energy and abundance.",
+        "Use curved pathways — they slow chi down for a peaceful flow.",
+        "Add soft, ambient lighting for evening energy."
+      ],
+      "baguaAreas": {
+        "Family": "Place a family dining or sitting area in the east part of the yard.",
+        "Health": "A vegetable or herb garden in the center nourishes wellbeing.",
+        "Wealth": "A water fountain or birdbath in the southeast attracts prosperity."
+      },
+      "whatToAvoid": [
+        "Avoid a cluttered or overgrown backyard — it blocks growth energy.",
+        "Avoid sharp fences or walls that create 'poison arrows' pointing at the house.",
+        "Avoid stagnant water features — keep fountains running and clean.",
+        "Avoid grills or fire pits directly outside the kitchen (fire overpowers fire)."
+      ],
+      "colors": ["Green", "Brown", "Stone gray", "Warm wood", "Soft blue water"]
     }
   ]
 }
