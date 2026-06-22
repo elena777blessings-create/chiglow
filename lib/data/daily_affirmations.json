@@ -1,90 +1,119 @@
 {
-  "version": "1.0.0",
+  "version": "2.0.0",
+  "description": "ChiGlow affirmation library — personal, empowering, immersive",
   "categories": [
     {
       "category": "Morning",
       "affirmations": [
-        "Let harmony find you today.",
-        "A gentle shift can invite great fortune.",
-        "Your space holds untapped potential.",
-        "Today, your energy flows like the koi — graceful and strong.",
-        "Awaken your space with intention and gratitude.",
-        "The sunrise brings new chi to your home and heart.",
-        "Set your intentions clearly, and the universe will rearrange itself around them.",
-        "Breathe in abundance. Exhale what no longer serves you.",
-        "Your home is your sanctuary. Treat it with love today.",
-        "Every morning is a fresh canvas — paint it with golden light."
+        "I welcome harmony into my life today.",
+        "I awaken my space with intention and gratitude.",
+        "I recognize the untapped potential within my space and myself.",
+        "Today, my energy flows like the koi — graceful and strong.",
+        "I set my intentions clearly, knowing the universe will meet me there.",
+        "I breathe in abundance and release what no longer serves me.",
+        "My home is my sanctuary, and I treat it with love today.",
+        "I greet the sunrise as a reminder of my own renewal.",
+        "Every morning is a fresh canvas, and I paint it with golden light.",
+        "I am grateful for the new energy this day brings.",
+        "I step into today with clarity and purpose.",
+        "I trust that my space supports my highest good."
       ]
     },
     {
       "category": "Midday",
       "affirmations": [
-        "Pause. Breathe. Realign your energy.",
-        "The middle of your day is the heart of your power.",
-        "Small adjustments create flowing energy.",
-        "Let your space support your brightest intentions.",
-        "You are exactly where you need to be.",
-        "Your energy lights up every room you enter.",
-        "Take a moment to honor your progress today.",
-        "Balance is not something you find — it's something you create.",
-        "The sun at its peak reminds you of your own radiance.",
-        "Your space reflects your inner clarity."
+        "I pause, breathe, and realign my energy.",
+        "I honor the power that lives in the heart of my day.",
+        "I trust that small adjustments create flowing energy.",
+        "I am exactly where I need to be.",
+        "I bring positive energy into every space I enter.",
+        "I take a moment to honor my progress.",
+        "I create balance within my home and within myself.",
+        "The sun at its peak reminds me of my own radiance.",
+        "My space reflects the clarity I carry within.",
+        "I am grateful for the energy that carries me through this day.",
+        "I allow my intentions to guide me with ease.",
+        "I am centered, focused, and aligned with my purpose."
       ]
     },
     {
       "category": "Evening",
       "affirmations": [
-        "As the day settles, your energy resets.",
-        "Release what no longer serves your space.",
-        "Gratitude fills your home with golden light.",
-        "Rest tonight so your chi flows freely tomorrow.",
-        "Your home thanks you for the care you've given today.",
-        "The evening is a gentle reminder to honor your journey.",
-        "Close your eyes and feel the peace you've cultivated.",
-        "Every night prepares the way for a brighter morning.",
-        "You've done enough. Let the calm wash over you.",
-        "Your space is at peace. So are you."
+        "As the day settles, I allow my energy to reset.",
+        "I release what no longer serves my space or my spirit.",
+        "I fill my home with gratitude and golden light.",
+        "I rest tonight so my chi flows freely tomorrow.",
+        "I honor the care I have given my space today.",
+        "I close my eyes and feel the peace I have cultivated.",
+        "I prepare the way for a brighter morning with each breath.",
+        "I have done enough. I let the calm wash over me.",
+        "My space is at peace, and so am I.",
+        "I am grateful for the rest that renews me.",
+        "I trust the quiet wisdom of the night.",
+        "I release the day with grace and gratitude."
       ]
     },
     {
       "category": "Wealth",
       "affirmations": [
-        "Abundance flows naturally into well-prepared spaces.",
-        "Your home is a magnet for prosperity and opportunity.",
-        "Clear the clutter, clear the path to wealth.",
-        "Fortune favors the spaces we tend with intention.",
-        "The energy of abundance is already circulating around you."
+        "I attract abundance through intention and gratitude.",
+        "My home is a magnet for prosperity and opportunity.",
+        "I clear the clutter and clear the path to wealth.",
+        "I tend my space with intention, and fortune follows.",
+        "I feel the energy of abundance circulating around me.",
+        "I am worthy of prosperity in all its forms.",
+        "I welcome wealth with an open heart and an open home.",
+        "I am grateful for the abundance already present in my life."
       ]
     },
     {
       "category": "Love",
       "affirmations": [
-        "Love flourishes where energy flows freely.",
-        "Your space welcomes love with open arms and open doors.",
-        "Harmony in your home creates harmony in your heart.",
-        "The relationships you nurture mirror the care you give your space.",
-        "Open a window — let love breeze in."
+        "I allow love to flourish where my energy flows freely.",
+        "I welcome love with open arms and an open heart.",
+        "I nurture harmony in my home and in my relationships.",
+        "I open a window and let love breeze in.",
+        "I am deserving of deep, meaningful connection.",
+        "The care I give my space mirrors the love I give myself.",
+        "I attract relationships that honor and uplift me.",
+        "I am grateful for the love that already surrounds me."
       ]
     },
     {
       "category": "Health",
       "affirmations": [
-        "Wellness begins in the spaces where you rest and recharge.",
-        "Your environment is the foundation of your vitality.",
-        "Fresh air, fresh energy, fresh health.",
-        "The plants in your home breathe life into your wellbeing.",
-        "Your body and your home both thrive with balanced energy."
+        "I honor my wellbeing in the spaces where I rest and recharge.",
+        "My environment is the foundation of my vitality.",
+        "With fresh air comes fresh energy and fresh health.",
+        "I surround myself with plants that breathe life into my wellbeing.",
+        "My body and my home thrive together in balanced energy.",
+        "I nourish myself with intention and care.",
+        "I choose vitality through the energy I cultivate.",
+        "I am grateful for the health that flows through me."
       ]
     },
     {
       "category": "Career",
       "affirmations": [
-        "Your workspace holds the blueprint for your success.",
-        "Career clarity follows space clarity.",
-        "The energy of achievement flows through organized spaces.",
-        "Your desk is your command center — keep its chi strong.",
-        "Professional growth mirrors the order you create around you."
+        "My workspace holds the blueprint for my success.",
+        "Career clarity follows the clarity I create in my space.",
+        "The energy of achievement flows through my organized space.",
+        "My desk is my command center, and I keep its chi strong.",
+        "My professional growth mirrors the order I create around me.",
+        "I take purposeful steps toward my goals.",
+        "I attract opportunities that align with my purpose.",
+        "I am grateful for the work that fulfills me."
       ]
     }
+  ],
+  "wisdomMessages": [
+    "Let harmony find you today.",
+    "A gentle shift can invite great fortune.",
+    "Your space holds untapped potential.",
+    "Small adjustments create flowing energy.",
+    "Balance is not something you find — it's something you create.",
+    "The energy of achievement flows through organized spaces.",
+    "Fortune favors the spaces we tend with intention.",
+    "Clear the clutter, clear the path to clarity."
   ]
 }

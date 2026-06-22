@@ -3,17 +3,38 @@
 
 class ContentService {
   static const List<Map<String, String>> affirmations = [
-    {'text': 'Let harmony find you today. Your space holds untapped potential.', 'theme': 'Harmony'},
-    {'text': 'As water flows, so does abundance into your life.', 'theme': 'Abundance'},
-    {'text': 'Your home is your sanctuary. Nurture it, and it nurtures you.', 'theme': 'Sanctuary'},
-    {'text': 'Clear the clutter, clear the mind. Space breathes possibility.', 'theme': 'Clarity'},
-    {'text': 'Like the lotus, rise from the mud and bloom beautifully.', 'theme': 'Growth'},
-    {'text': 'Every corner of your home holds a blessing waiting to unfold.', 'theme': 'Blessings'},
-    {'text': 'Balance is not something you find; it is something you create.', 'theme': 'Balance'},
-    {'text': 'The energy you put into your space returns to you tenfold.', 'theme': 'Energy'},
-    {'text': 'Let warm light fill your rooms, and warmth will fill your heart.', 'theme': 'Warmth'},
-    {'text': 'Your direction today is guided by ancient wisdom.', 'theme': 'Guidance'},
+    {'text': 'I welcome harmony into my life today.', 'theme': 'Harmony'},
+    {'text': 'I recognize the untapped potential within my space and myself.', 'theme': 'Potential'},
+    {'text': 'Today, my energy flows like the koi — graceful and strong.', 'theme': 'Grace'},
+    {'text': 'I breathe in abundance and release what no longer serves me.', 'theme': 'Release'},
+    {'text': 'My home is my sanctuary, and I treat it with love today.', 'theme': 'Sanctuary'},
+    {'text': 'Every morning is a fresh canvas, and I paint it with golden light.', 'theme': 'Renewal'},
+    {'text': 'I am exactly where I need to be.', 'theme': 'Trust'},
+    {'text': 'I create balance within my home and within myself.', 'theme': 'Balance'},
+    {'text': 'I bring positive energy into every space I enter.', 'theme': 'Radiance'},
+    {'text': 'I allow love to flourish where my energy flows freely.', 'theme': 'Love'},
+    {'text': 'I attract abundance through intention and gratitude.', 'theme': 'Abundance'},
+    {'text': 'My space reflects the clarity I carry within.', 'theme': 'Clarity'},
+    {'text': 'I release what no longer serves my space or my spirit.', 'theme': 'Release'},
+    {'text': 'I trust the natural flow of energy in my life.', 'theme': 'Flow'},
+    {'text': 'I am worthy of prosperity in all its forms.', 'theme': 'Worthiness'},
   ];
+
+  /// ChiGlow Wisdom Messages — signature phrases from the app itself
+  static const List<String> wisdomMessages = [
+    'Let harmony find you today.',
+    'A gentle shift can invite great fortune.',
+    'Your space holds untapped potential.',
+    'Small adjustments create flowing energy.',
+    'Balance is not something you find — it\'s something you create.',
+    'Fortune favors the spaces we tend with intention.',
+    'Clear the clutter, clear the path to clarity.',
+  ];
+
+  static String wisdomForToday() {
+    final index = DateTime.now().day % wisdomMessages.length;
+    return wisdomMessages[index];
+  }
 
   static const Map<String, List<Map<String, String>>> roomTips = {
     'Living Room': [

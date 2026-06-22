@@ -19,6 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final provider = context.watch<AppStateProvider>();
     final affirmation = ContentService.affirmationForToday();
     final affirmationTheme = ContentService.affirmationThemeForToday();
+    final wisdom = ContentService.wisdomForToday();
 
     return Scaffold(
       body: SafeArea(
@@ -137,6 +138,26 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: ChiGlowTheme.deepRed,
                         height: 1.5,
                       ),
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.auto_awesome, size: 12, color: ChiGlowTheme.warmGold.withValues(alpha: 0.6)),
+                        const SizedBox(width: 6),
+                        Flexible(
+                          child: Text(
+                            wisdom,
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.quicksand(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              color: ChiGlowTheme.warmGold.withValues(alpha: 0.7),
+                              fontStyle: FontStyle.italic,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
