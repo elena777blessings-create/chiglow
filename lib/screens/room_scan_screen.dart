@@ -17,6 +17,7 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
 
   final List<String> _roomTypes = [
     'Living Room', 'Bedroom', 'Kitchen', 'Home Office', 'Bathroom', 'Dining Room', 'Entryway', 'Garden',
+    'Corporate Office', 'Retail Store', 'Restaurant / Cafe',
   ];
 
   @override

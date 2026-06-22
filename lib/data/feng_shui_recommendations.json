@@ -126,6 +126,77 @@
         "Avoid dark, narrow entryways — use mirrors to expand the space."
       ],
       "colors": ["Warm red", "Gold", "Rich wood", "Cream white"]
+    },
+    {
+      "roomType": "Corporate Office",
+      "element": "Metal (Productivity)",
+      "generalTips": [
+        "Position the CEO or manager desk in the 'command position' facing the door.",
+        "Arrange meeting tables in a circle or oval for equal energy flow.",
+        "Use natural light and live plants to energize the workspace.",
+        "Create a water feature in the wealth corner (southeast) of the office.",
+        "Keep communal areas clear and clutter-free for smooth chi circulation."
+      ],
+      "baguaAreas": {
+        "Career": "Place the main entrance or reception in the north area for career growth.",
+        "Wealth": "Position the finance department or accounting in the southeast.",
+        "Fame": "Place the CEO office or boardroom in the south for leadership energy."
+      },
+      "whatToAvoid": [
+        "Avoid cubicle layouts that block natural light and chi flow.",
+        "Avoid sharp corners or beams pointing at desks — use plants to soften.",
+        "Avoid the bathroom being in the center of the office (health & wealth drain).",
+        "Avoid dark, cramped hallways — use mirrors and lighting."
+      ],
+      "colors": ["White", "Gold", "Gray", "Red accents", "Green plants"]
+    },
+    {
+      "roomType": "Retail Store",
+      "element": "Wood (Growth)",
+      "generalTips": [
+        "Keep the entrance clear, bright, and welcoming — chi brings customers.",
+        "Arrange products to guide customers in a clockwise flow.",
+        "Place your best-selling items at eye level in the wealth area (southeast).",
+        "Use warm, inviting lighting in the entry and cool lighting in browsing areas.",
+        "Play soft, uplifting music to create positive energy vibrations.",
+        "Keep the cash register area clean and organized — it's your wealth center."
+      ],
+      "baguaAreas": {
+        "Wealth": "Position the cash register or checkout in the southeast corner.",
+        "Fame": "Feature your best products or promotions in the south area.",
+        "Career": "Keep the entrance open and welcoming in the north area."
+      },
+      "whatToAvoid": [
+        "Avoid cluttered entryways — customers won't enter if chi can't flow.",
+        "Avoid dark corners where energy stagnates — use mirrors and lights.",
+        "Avoid having the toilet facing the sales floor.",
+        "Avoid sharp corners or shelves pointing at aisles."
+      ],
+      "colors": ["Red", "Gold", "Green", "Warm wood", "White"]
+    },
+    {
+      "roomType": "Restaurant / Cafe",
+      "element": "Fire (Nourishment)",
+      "generalTips": [
+        "Position the entrance to welcome chi — a clear, bright doorway invites diners.",
+        "Arrange tables so no diner faces a wall directly — give them a view of the room.",
+        "Place the kitchen in the south area for fire energy (fame & good food).",
+        "Use warm, rich colors on walls to stimulate appetite and conversation.",
+        "Fresh flowers on each table bring vibrant, living energy.",
+        "Keep the restroom area clean and well-scented — bad energy affects reviews."
+      ],
+      "baguaAreas": {
+        "Fame": "Feature your signature dishes or bar in the south area.",
+        "Wealth": "Position the cash register in the southeast corner.",
+        "Health": "Keep the kitchen organized and clean in the center area."
+      },
+      "whatToAvoid": [
+        "Avoid the restroom being near the entrance (drives away customers).",
+        "Avoid cramped seating — diners need personal space for good energy.",
+        "Avoid mirrors reflecting messy or unorganized areas.",
+        "Avoid broken or wobbly furniture — it signals instability."
+      ],
+      "colors": ["Red", "Warm gold", "Terracotta", "Cream", "Warm wood"]
     }
   ]
 }
