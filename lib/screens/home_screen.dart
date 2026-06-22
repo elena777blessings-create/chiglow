@@ -53,25 +53,57 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   ),
-                  // Koi icon — red & white
-                  Container(
-                    width: 52,
-                    height: 52,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      gradient: LinearGradient(
-                        colors: [ChiGlowTheme.luckyRed, ChiGlowTheme.brightRed],
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: ChiGlowTheme.luckyRed.withValues(alpha: 0.3),
-                          blurRadius: 12,
+                  // Koi icon — red & white with premium badge
+                  Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Container(
+                        width: 52,
+                        height: 52,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: LinearGradient(
+                            colors: [ChiGlowTheme.luckyRed, ChiGlowTheme.brightRed],
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: ChiGlowTheme.luckyRed.withValues(alpha: 0.3),
+                              blurRadius: 12,
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                    child: const Center(
-                      child: Text('🐟', style: TextStyle(fontSize: 26)),
-                    ),
+                        child: const Center(
+                          child: Text('🐟', style: TextStyle(fontSize: 26)),
+                        ),
+                      ),
+                      // Premium badge
+                      Positioned(
+                        top: -4,
+                        right: -4,
+                        child: GestureDetector(
+                          onTap: () => Navigator.pushNamed(context, '/upgrade'),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                            decoration: BoxDecoration(
+                              gradient: const LinearGradient(
+                                colors: [ChiGlowTheme.warmGold, ChiGlowTheme.brightRed],
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: ChiGlowTheme.warmGold.withValues(alpha: 0.4),
+                                  blurRadius: 6,
+                                ),
+                              ],
+                            ),
+                            child: Text(
+                              '💎',
+                              style: const TextStyle(fontSize: 12),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -236,6 +268,81 @@ class _HomeScreenState extends State<HomeScreen> {
                   _QuickAction(emoji: '📅', label: 'Year\nAhead', onTap: () => Navigator.pushNamed(context, '/year-ahead')),
                   _QuickAction(emoji: '⚙️', label: 'Settings', onTap: () => Navigator.pushNamed(context, '/settings')),
                 ],
+              ),
+              const SizedBox(height: 16),
+              // Upgrade CTA card
+              GestureDetector(
+                onTap: () => Navigator.pushNamed(context, '/upgrade'),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        ChiGlowTheme.warmGold.withValues(alpha: 0.12),
+                        ChiGlowTheme.luckyRed.withValues(alpha: 0.06),
+                      ],
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                    ),
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(
+                      color: ChiGlowTheme.warmGold.withValues(alpha: 0.25),
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(6),
+                        decoration: BoxDecoration(
+                          color: ChiGlowTheme.luckyRed.withValues(alpha: 0.1),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Text('👑', style: TextStyle(fontSize: 18)),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Unlock Premium ✨',
+                              style: GoogleFonts.poppins(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w600,
+                                color: ChiGlowTheme.luckyRed,
+                              ),
+                            ),
+                            Text(
+                              'Unlimited scans, full zodiac & more',
+                              style: GoogleFonts.quicksand(
+                                fontSize: 11,
+                                color: ChiGlowTheme.warmGold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [ChiGlowTheme.luckyRed, ChiGlowTheme.brightRed],
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Text(
+                          'LIFETIME \$49',
+                          style: GoogleFonts.poppins(
+                            fontSize: 9,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                            letterSpacing: 0.3,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
               const SizedBox(height: 24),
             ],
