@@ -82,6 +82,19 @@ class SettingsScreen extends StatelessWidget {
               onTap: () => _showYearPicker(context, provider),
             ),
             _SettingTile(
+              icon: provider.isMale ? '♂️' : '♀️',
+              title: 'Gender',
+              subtitle: provider.isMale ? 'Male' : 'Female',
+              onTap: () => _showGenderPicker(context, provider),
+            ),
+            _SettingTile(
+              icon: '🧭',
+              title: 'Your Kua Number',
+              subtitle: '${provider.kuaNumber} · ${provider.kuaElement} · ${provider.kuaGroup}',
+              onTap: () => Navigator.pushNamed(context, '/personal-fengshui'),
+              trailing: const Icon(Icons.arrow_forward_ios, size: 14),
+            ),
+            _SettingTile(
               icon: '🔔',
               title: 'Daily Reminders',
               subtitle: 'Morning affirmations',
@@ -307,6 +320,84 @@ class SettingsScreen extends StatelessWidget {
                 }),
               ),
             ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _showGenderPicker(BuildContext context, AppStateProvider provider) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: ChiGlowTheme.creamWhite,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (ctx) => Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text('Select Gender', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed)),
+            const SizedBox(height: 8),
+            Text('Gender is used for Kua number calculation', style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.warmGold)),
+            const SizedBox(height: 16),
+            Row(
+              children: [
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      provider.setGender(true);
+                      Navigator.pop(ctx);
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(vertical: 24),
+                      decoration: BoxDecoration(
+                        color: provider.isMale ? ChiGlowTheme.luckyRed : ChiGlowTheme.luckyRed.withValues(alpha: 0.08),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Column(
+                        children: [
+                          Text('♂️', style: TextStyle(fontSize: 36)),
+                          const SizedBox(height: 8),
+                          Text('Male', style: GoogleFonts.quicksand(
+                            fontSize: 16, fontWeight: FontWeight.w600,
+                            color: provider.isMale ? Colors.white : ChiGlowTheme.luckyRed,
+                          )),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      provider.setGender(false);
+                      Navigator.pop(ctx);
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(vertical: 24),
+                      decoration: BoxDecoration(
+                        color: !provider.isMale ? ChiGlowTheme.luckyRed : ChiGlowTheme.luckyRed.withValues(alpha: 0.08),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Column(
+                        children: [
+                          Text('♀️', style: TextStyle(fontSize: 36)),
+                          const SizedBox(height: 8),
+                          Text('Female', style: GoogleFonts.quicksand(
+                            fontSize: 16, fontWeight: FontWeight.w600,
+                            color: !provider.isMale ? Colors.white : ChiGlowTheme.luckyRed,
+                          )),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 12),
           ],
         ),
       ),
