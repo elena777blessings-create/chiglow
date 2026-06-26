@@ -142,6 +142,26 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
               ),
             ),
             const SizedBox(height: 24),
+            // Privacy notice
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.lock_outline, size: 14, color: ChiGlowTheme.warmGold.withValues(alpha: 0.7)),
+                const SizedBox(width: 6),
+                Flexible(
+                  child: Text(
+                    'Your privacy is sacred — your photo stays on your phone. Nothing is uploaded or shared.',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.quicksand(
+                      fontSize: 11,
+                      color: ChiGlowTheme.warmGold.withValues(alpha: 0.7),
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
             // Analyze button
             SizedBox(
               width: double.infinity,
