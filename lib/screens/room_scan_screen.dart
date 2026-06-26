@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
 
@@ -81,7 +83,11 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
                         child: Stack(
                           fit: StackFit.expand,
                           children: [
-                            Image.network(_imagePath!, fit: BoxFit.cover),
+                            Image.file(
+                              File(_imagePath!),
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) => const Center(child: Icon(Icons.image, size: 48, color: Color(0xFFD32F2F))),
+                            ),
                             Positioned(
                               top: 12,
                               right: 12,
@@ -199,11 +205,68 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
     );
   }
 
-  void _pickImage() {
-    // Placeholder - in real app would use image_picker
-    setState(() {
-      _imagePath = 'placeholder';
-    });
+  void _pickImage() async {
+    final picker = ImagePicker();
+    final source = await showModalBottomSheet<ImageSource>(
+      context: context,
+      backgroundColor: ChiGlowTheme.creamWhite,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (ctx) => Padding(
+        padding: const EdgeInsets.all(20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            GestureDetector(
+              onTap: () => Navigator.pop(ctx, ImageSource.camera),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    width: 64, height: 64,
+                    decoration: BoxDecoration(
+                      color: ChiGlowTheme.luckyRed.withValues(alpha: 0.1),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Center(child: Icon(Icons.camera_alt, size: 28, color: ChiGlowTheme.luckyRed)),
+                  ),
+                  const SizedBox(height: 8),
+                  Text('Camera', style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.luckyRed)),
+                ],
+              ),
+            ),
+            GestureDetector(
+              onTap: () => Navigator.pop(ctx, ImageSource.gallery),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    width: 64, height: 64,
+                    decoration: BoxDecoration(
+                      color: ChiGlowTheme.warmGold.withValues(alpha: 0.2),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Center(child: Icon(Icons.photo_library, size: 28, color: ChiGlowTheme.darkGold)),
+                  ),
+                  const SizedBox(height: 8),
+                  Text('Gallery', style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.darkGold)),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+
+    if (source != null) {
+      final pickedFile = await picker.pickImage(source: source, imageQuality: 85);
+      if (pickedFile != null) {
+        setState(() {
+          _imagePath = pickedFile.path;
+        });
+      }
+    }
   }
 
   void _analyzeRoom() {

@@ -152,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             style: GoogleFonts.quicksand(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
-                              color: ChiGlowTheme.warmGold.withValues(alpha: 0.7),
+                              color: ChiGlowTheme.warmGold.withValues(alpha: 0.9),
                               fontStyle: FontStyle.italic,
                             ),
                           ),

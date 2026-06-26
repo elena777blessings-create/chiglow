@@ -8,7 +8,7 @@ class ChiGlowTheme {
   static const Color luckyRed = Color(0xFFD32F2F);
   static const Color brightRed = Color(0xFFE53935);
   static const Color warmGold = Color(0xFFFFD700);
-  static const Color darkGold = Color(0xFFD4A017);
+  static const Color darkGold = Color(0xFFB8860B);
   static const Color creamWhite = Color(0xFFFFF8E7);
   static const Color ivoryBg = Color(0xFFFDF5E6);
   static const Color deepRed = Color(0xFFB71C1C);

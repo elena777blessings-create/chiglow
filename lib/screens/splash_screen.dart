@@ -116,7 +116,7 @@ class _SplashScreenState extends State<SplashScreen>
                   color: Colors.white,
                   shadows: [
                     Shadow(
-                      color: ChiGlowTheme.warmGold.withValues(alpha: 0.6),
+                      color: ChiGlowTheme.warmGold.withValues(alpha: 0.9),
                       blurRadius: 25,
                     ),
                     Shadow(
