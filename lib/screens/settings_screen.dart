@@ -463,9 +463,10 @@ class _AboutRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(label, style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.luckyRed)),
-        Text(value, style: GoogleFonts.quicksand(fontSize: 13, color: const Color(0xFF546E7A))),
+        Expanded(child: Text(value, style: GoogleFonts.quicksand(fontSize: 13, color: const Color(0xFF546E7A)))),
       ],
     );
   }

@@ -120,12 +120,14 @@ class _KoiAffirmationsScreenState extends State<KoiAffirmationsScreen> {
                                         style: const TextStyle(fontSize: 14),
                                       ),
                                       const SizedBox(width: 6),
-                                      Text(
-                                        koi['area'] as String,
-                                        style: GoogleFonts.quicksand(
-                                          fontSize: 13,
-                                          color: ChiGlowTheme.deepRed.withValues(alpha: 0.6),
-                                          fontWeight: FontWeight.w500,
+                                      Expanded(
+                                        child: Text(
+                                          koi['area'] as String,
+                                          style: GoogleFonts.quicksand(
+                                            fontSize: 13,
+                                            color: ChiGlowTheme.deepRed.withValues(alpha: 0.6),
+                                            fontWeight: FontWeight.w500,
+                                          ),
                                         ),
                                       ),
                                     ],
