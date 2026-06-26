@@ -301,6 +301,10 @@ class SettingsScreen extends StatelessWidget {
               padding: const EdgeInsets.all(20),
               child: Text('Select Birth Year', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed)),
             ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Text('Born before Feb 4th? Try the previous year.', style: GoogleFonts.quicksand(fontSize: 11, fontStyle: FontStyle.italic, color: ChiGlowTheme.deepRed.withValues(alpha: 0.6))),
+            ),
             Expanded(
               child: ListWheelScrollView(
                 itemExtent: 40,
@@ -340,7 +344,9 @@ class SettingsScreen extends StatelessWidget {
           children: [
             Text('Select Gender', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed)),
             const SizedBox(height: 8),
-            Text('Gender is used for Kua number calculation', style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.warmGold)),
+            Text('Used for your personal Kua Feng Shui calculation', style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.warmGold)),
+            const SizedBox(height: 4),
+            Text('Born before Feb 4th? Try the previous year for accuracy.', style: GoogleFonts.quicksand(fontSize: 11, fontStyle: FontStyle.italic, color: ChiGlowTheme.deepRed.withValues(alpha: 0.6))),
             const SizedBox(height: 16),
             Row(
               children: [
