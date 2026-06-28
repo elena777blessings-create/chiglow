@@ -6,6 +6,7 @@ import '../services/content_service.dart';
 import 'package:provider/provider.dart';
 import '../providers/app_state_provider.dart';
 import '../utils/asset_images.dart';
+import 'dart:math' as math;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -150,68 +151,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               const SizedBox(height: 24),
-              // Main CTA — bold red gradient "Scan My Space"
-              GestureDetector(
+              // Main CTA — Sunrise Coral Gradient "Scan My Space"
+              _SunriseCtaButton(
                 onTap: () => Navigator.pushNamed(context, '/room-scan'),
-                child: Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.symmetric(vertical: 36, horizontal: 24),
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      colors: [
-                        Color(0xFFD32F2F),
-                        Color(0xFFE53935),
-                        Color(0xFFFF5252),
-                      ],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                    borderRadius: BorderRadius.circular(24),
-                    boxShadow: [
-                      BoxShadow(
-                        color: ChiGlowTheme.richRed.withValues(alpha: 0.4),
-                        blurRadius: 24,
-                        offset: const Offset(0, 8),
-                      ),
-                      BoxShadow(
-                        color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.15),
-                        blurRadius: 32,
-                        spreadRadius: 2,
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    children: [
-                      const Text('🔍', style: TextStyle(fontSize: 44)),
-                      const SizedBox(height: 12),
-                      Text(
-                        'Scan My Space\nfor Chi Flow',
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.poppins(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white,
-                          height: 1.3,
-                          shadows: [
-                            Shadow(
-                              color: ChiGlowTheme.deepRed.withValues(alpha: 0.4),
-                              blurRadius: 4,
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        'Discover the energy of your room',
-                        style: GoogleFonts.quicksand(
-                          fontSize: 14,
-                          color: Colors.white.withValues(alpha: 0.85),
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
               ),
               const SizedBox(height: 20),
               // Secondary buttons row
@@ -365,6 +307,221 @@ class _HomeScreenState extends State<HomeScreen> {
     if (hour < 12) return 'morning';
     if (hour < 17) return 'afternoon';
     return 'evening';
+  }
+}
+
+/// Sunrise Coral CTA button with tap animation
+class _SunriseCtaButton extends StatefulWidget {
+  final VoidCallback onTap;
+
+  const _SunriseCtaButton({required this.onTap});
+
+  @override
+  State<_SunriseCtaButton> createState() => _SunriseCtaButtonState();
+}
+
+class _SunriseCtaButtonState extends State<_SunriseCtaButton>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _scaleAnim;
+  late Animation<double> _glowAnim;
+  bool _isPressed = false;
+
+  // Particle simulation
+  final List<_Particle> _particles = List.generate(12, (i) => _Particle(i));
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 150),
+    );
+    _scaleAnim = Tween<double>(begin: 1.0, end: 0.98).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeOut),
+    );
+    _glowAnim = Tween<double>(begin: 1.0, end: 1.2).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeOut),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _onTapDown(TapDownDetails details) {
+    setState(() => _isPressed = true);
+    _controller.forward();
+  }
+
+  void _onTapUp(TapUpDetails details) {
+    _controller.reverse();
+    setState(() => _isPressed = false);
+    widget.onTap();
+  }
+
+  void _onTapCancel() {
+    _controller.reverse();
+    setState(() => _isPressed = false);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTapDown: _onTapDown,
+      onTapUp: _onTapUp,
+      onTapCancel: _onTapCancel,
+      child: AnimatedBuilder(
+        animation: _controller,
+        builder: (context, child) {
+          return Transform.scale(
+            scale: _scaleAnim.value,
+            child: child,
+          );
+        },
+        child: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(vertical: 36, horizontal: 24),
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              colors: [
+                Color(0xFFFFAB91), // Soft coral top
+                Color(0xFFFFCC80), // Warm peach coral bottom
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              stops: [0.0, 1.0],
+            ),
+            borderRadius: BorderRadius.circular(24),
+            boxShadow: [
+              BoxShadow(
+                color: const Color(0xFFFFAB91).withValues(alpha: 0.35),
+                blurRadius: 24,
+                offset: const Offset(0, 8),
+              ),
+              BoxShadow(
+                color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.1),
+                blurRadius: 32,
+                spreadRadius: 2,
+              ),
+            ],
+          ),
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Column(
+                children: [
+                  const Text('🔍', style: TextStyle(fontSize: 44)),
+                  const SizedBox(height: 12),
+                  Text(
+                    'Scan My Space\nfor Chi Flow',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                      height: 1.3,
+                      shadows: [
+                        Shadow(
+                          color: Colors.black.withValues(alpha: 0.15),
+                          blurRadius: 4,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Discover the energy of your room',
+                    style: GoogleFonts.quicksand(
+                      fontSize: 14,
+                      color: Colors.white.withValues(alpha: 0.85),
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
+              // Rising particles
+              if (_isPressed)
+                ..._particles.map((p) => Positioned(
+                  left: 20 + (p.offset * 12) % 200,
+                  bottom: 10,
+                  child: _ParticleWidget(particle: p),
+                )),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _Particle {
+  final double offset;
+  final double speed;
+  final double size;
+
+  _Particle(int i)
+      : offset = (i * 17.0) % 100,
+        speed = 0.3 + (i % 5) * 0.1,
+        size = 2.0 + (i % 3) * 1.0;
+}
+
+class _ParticleWidget extends StatefulWidget {
+  final _Particle particle;
+
+  const _ParticleWidget({required this.particle});
+
+  @override
+  State<_ParticleWidget> createState() => _ParticleWidgetState();
+}
+
+class _ParticleWidgetState extends State<_ParticleWidget>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _anim;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: (600 + widget.particle.speed * 400).toInt()),
+    );
+    _anim = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeOut),
+    );
+    _controller.forward().then((_) => _controller.dispose());
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _controller,
+      builder: (context, child) {
+        return Opacity(
+          opacity: 1.0 - _anim.value,
+          child: Transform.translate(
+            offset: Offset(0, -_anim.value * 40),
+            child: Container(
+              width: widget.particle.size,
+              height: widget.particle.size,
+              decoration: BoxDecoration(
+                color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.6),
+                shape: BoxShape.circle,
+              ),
+            ),
+          ),
+        );
+      },
+    );
   }
 }
 
