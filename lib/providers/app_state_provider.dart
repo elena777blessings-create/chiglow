@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import '../models/energy_models.dart';
-import '../services/kua_calculator.dart';
 
 class AppStateProvider extends ChangeNotifier {
   // User info
   String _userName = '';
   String _zodiacSign = 'Dragon';
   int _birthYear = 2000;
-  bool _isMale = true;
-  int? _kuaNumber;
 
   // Scanned rooms
   List<RoomModel> _rooms = [];
@@ -27,8 +24,6 @@ class AppStateProvider extends ChangeNotifier {
   String get userName => _userName;
   String get zodiacSign => _zodiacSign;
   int get birthYear => _birthYear;
-  bool get isMale => _isMale;
-  int? get kuaNumber => _kuaNumber;
   List<RoomModel> get rooms => _rooms;
   int get loveScore => _loveScore;
   int get wealthScore => _wealthScore;
@@ -37,15 +32,6 @@ class AppStateProvider extends ChangeNotifier {
   String get dailyAffirmation => _dailyAffirmation;
   String get affirmationTheme => _affirmationTheme;
 
-  /// Get the user's Kua reading (calculates if needed)
-  Map<String, dynamic> get kuaReading {
-    final kua = _kuaNumber ?? KuaCalculator.calculateKua(_birthYear, _isMale);
-    return KuaCalculator.getPersonalReading(_birthYear, _isMale);
-  }
-
-  String get kuaGroup => KuaCalculator.getGroup(_kuaNumber ?? KuaCalculator.calculateKua(_birthYear, _isMale));
-  String get kuaElement => KuaCalculator.getElement(_kuaNumber ?? KuaCalculator.calculateKua(_birthYear, _isMale));
-
   void setUserName(String name) {
     _userName = name;
     notifyListeners();
@@ -53,18 +39,6 @@ class AppStateProvider extends ChangeNotifier {
 
   void setZodiacSign(String sign) {
     _zodiacSign = sign;
-    notifyListeners();
-  }
-
-  void setBirthYear(int year) {
-    _birthYear = year;
-    _kuaNumber = KuaCalculator.calculateKua(year, _isMale);
-    notifyListeners();
-  }
-
-  void setGender(bool isMale) {
-    _isMale = isMale;
-    _kuaNumber = KuaCalculator.calculateKua(_birthYear, isMale);
     notifyListeners();
   }
 

@@ -12,8 +12,6 @@ import 'screens/color_coaching_screen.dart';
 import 'screens/energy_dashboard_screen.dart';
 import 'screens/settings_screen.dart';
 import 'screens/upgrade_screen.dart';
-import 'screens/koi_affirmations_screen.dart';
-import 'screens/personal_fengshui_screen.dart';
 import 'providers/app_state_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -78,12 +76,6 @@ class ChiGlowApp extends StatelessWidget {
             break;
           case '/upgrade':
             page = const UpgradeScreen();
-            break;
-          case '/koi-affirmations':
-            page = const KoiAffirmationsScreen();
-            break;
-          case '/personal-fengshui':
-            page = const PersonalFengShuiScreen();
             break;
           default:
             page = const HomeScreen();

@@ -14,7 +14,7 @@ class ColorCoachingScreen extends StatelessWidget {
         title: Text('Color Coaching', style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600)),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        foregroundColor: ChiGlowTheme.luckyRed,
+        foregroundColor: ChiGlowTheme.richRed,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
@@ -23,7 +23,7 @@ class ColorCoachingScreen extends StatelessWidget {
           children: [
             // Intro
             GlowCard(
-              glowColor: ChiGlowTheme.warmGold,
+              glowColor: ChiGlowTheme.bronzeGold,
               child: Row(
                 children: [
                   const Text('🎨', style: TextStyle(fontSize: 36)),
@@ -34,12 +34,12 @@ class ColorCoachingScreen extends StatelessWidget {
                       children: [
                         Text(
                           'Color is Energy',
-                          style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed),
+                          style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
                         ),
                         const SizedBox(height: 4),
                         Text(
                           'Each color carries a unique vibration that can transform the energy of your space.',
-                          style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.warmGold, height: 1.5),
+                          style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.bronzeGold, height: 1.5),
                         ),
                       ],
                     ),
@@ -50,7 +50,7 @@ class ColorCoachingScreen extends StatelessWidget {
             const SizedBox(height: 24),
             Text(
               'Colors by Intention',
-              style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed),
+              style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
             ),
             const SizedBox(height: 12),
             ...ContentService.colorGuidance.map((item) => Padding(
@@ -67,7 +67,7 @@ class ColorCoachingScreen extends StatelessWidget {
             // Color wheel guidance
             Text(
               '🎯 Quick Reference',
-              style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed),
+              style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
             ),
             const SizedBox(height: 12),
             GlowCard(
@@ -131,9 +131,9 @@ class _ColorCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(goal, style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed)),
+                Text(goal, style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
                 const SizedBox(height: 2),
-                Text('$color · Element: $element', style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.warmGold)),
+                Text('$color · Element: $element', style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.bronzeGold)),
                 const SizedBox(height: 4),
                 Text(tip, style: GoogleFonts.quicksand(fontSize: 12, color: const Color(0xFF546E7A), height: 1.4)),
               ],
@@ -163,11 +163,11 @@ class _QuickRef extends StatelessWidget {
           const SizedBox(width: 8),
           SizedBox(
             width: 60,
-            child: Text(name, style: GoogleFonts.quicksand(fontSize: 12, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed)),
+            child: Text(name, style: GoogleFonts.quicksand(fontSize: 12, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
           ),
           SizedBox(
             width: 140,
-            child: Text(use, style: GoogleFonts.quicksand(fontSize: 11, color: ChiGlowTheme.warmGold)),
+            child: Text(use, style: GoogleFonts.quicksand(fontSize: 11, color: ChiGlowTheme.bronzeGold)),
           ),
         ],
       ),

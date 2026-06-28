@@ -3,126 +3,16 @@
 
 class ContentService {
   static const List<Map<String, String>> affirmations = [
-    {'text': 'I welcome harmony into my life today.', 'theme': 'Harmony'},
-    {'text': 'I recognize the untapped potential within my space and myself.', 'theme': 'Potential'},
-    {'text': 'Today, my energy flows like the koi — graceful and strong.', 'theme': 'Grace'},
-    {'text': 'I breathe in abundance and release what no longer serves me.', 'theme': 'Release'},
-    {'text': 'My home is my sanctuary, and I treat it with love today.', 'theme': 'Sanctuary'},
-    {'text': 'Every morning is a fresh canvas, and I paint it with golden light.', 'theme': 'Renewal'},
-    {'text': 'I am exactly where I need to be.', 'theme': 'Trust'},
-    {'text': 'I create balance within my home and within myself.', 'theme': 'Balance'},
-    {'text': 'I bring positive energy into every space I enter.', 'theme': 'Radiance'},
-    {'text': 'I allow love to flourish where my energy flows freely.', 'theme': 'Love'},
-    {'text': 'I attract abundance through intention and gratitude.', 'theme': 'Abundance'},
-    {'text': 'My space reflects the clarity I carry within.', 'theme': 'Clarity'},
-    {'text': 'I release what no longer serves my space or my spirit.', 'theme': 'Release'},
-    {'text': 'I trust the natural flow of energy in my life.', 'theme': 'Flow'},
-    {'text': 'I am worthy of prosperity in all its forms.', 'theme': 'Worthiness'},
-  ];
-
-  /// ChiGlow Wisdom Messages — signature phrases from the app itself
-  static const List<String> wisdomMessages = [
-    'Let harmony find you today.',
-    'A gentle shift can invite great fortune.',
-    'Your space holds untapped potential.',
-    'Small adjustments create flowing energy.',
-    'Balance is not something you find — it\'s something you create.',
-    'Fortune favors the spaces we tend with intention.',
-    'Clear the clutter, clear the path to clarity.',
-  ];
-
-  static String wisdomForToday() {
-    final index = DateTime.now().day % wisdomMessages.length;
-    return wisdomMessages[index];
-  }
-
-  /// The 5 Koi Fish — each with their own affirmation collection
-  static const List<Map<String, dynamic>> koiFish = [
-    {
-      'id': 'golden',
-      'name': 'Golden Koi',
-      'emoji': '🐟',
-      'color': 0xFFFFD700,
-      'area': 'Prosperity & Abundance',
-      'icon': '💰',
-      'affirmations': [
-        'I am a magnet for abundance in all its forms.',
-        'Wealth flows to me as easily as water flows downstream.',
-        'I attract opportunities that enrich my life and others.',
-        'My home is a vessel for limitless prosperity.',
-        'I give and receive abundance freely and joyfully.',
-        'Every day, my wealth grows in expected and unexpected ways.',
-        'I am worthy of financial freedom and lasting prosperity.',
-      ],
-    },
-    {
-      'id': 'pink',
-      'name': 'Pink Koi',
-      'emoji': '🐟',
-      'color': 0xFFFF69B4,
-      'area': 'Love & Relationships',
-      'icon': '💖',
-      'affirmations': [
-        'My heart is open to giving and receiving deep love.',
-        'I attract relationships that honor, uplift, and inspire me.',
-        'Love flows through me and fills every space I inhabit.',
-        'I am deserving of a partnership built on trust and joy.',
-        'The love I nurture within myself radiates to those around me.',
-        'I welcome romance, connection, and meaningful bonds.',
-        'Every relationship in my life is a reflection of my own loving heart.',
-      ],
-    },
-    {
-      'id': 'green',
-      'name': 'Green Koi',
-      'emoji': '🐟',
-      'color': 0xFF4CAF50,
-      'area': 'Health & Vitality',
-      'icon': '🌿',
-      'affirmations': [
-        'My body is vibrant, energized, and full of life.',
-        'I nourish myself with intention, rest, and joyful movement.',
-        'Health flows through every cell of my being.',
-        'I am grateful for the strength and resilience of my body.',
-        'Each breath I take fills me with renewed vitality.',
-        'My environment supports my physical and emotional wellbeing.',
-        'I choose habits that honor my health and longevity.',
-      ],
-    },
-    {
-      'id': 'blue',
-      'name': 'Blue Koi',
-      'emoji': '🐟',
-      'color': 0xFF5B9BD5,
-      'area': 'Career & Purpose',
-      'icon': '🧭',
-      'affirmations': [
-        'I am aligned with my highest purpose and calling.',
-        'My career path is guided by clarity, confidence, and courage.',
-        'I attract opportunities that match my talents and passions.',
-        'Success flows to me as I stay true to my vision.',
-        'I make a meaningful impact through my work.',
-        'My professional journey is unfolding perfectly.',
-        'I am recognized and rewarded for my unique contributions.',
-      ],
-    },
-    {
-      'id': 'white',
-      'name': 'White Koi',
-      'emoji': '🐟',
-      'color': 0xFFF5F5F5,
-      'area': 'Spiritual Growth & Inner Peace',
-      'icon': '✨',
-      'affirmations': [
-        'I am connected to a wisdom greater than myself.',
-        'Peace resides in the center of my being, always.',
-        'I trust the journey of my spiritual growth.',
-        'Each moment is an invitation to return to presence.',
-        'I release what I cannot control and find freedom in surrender.',
-        'My inner light guides me through all seasons of life.',
-        'I am whole, I am enough, I am at peace.',
-      ],
-    },
+    {'text': 'Let harmony find you today. Your space holds untapped potential.', 'theme': 'Harmony'},
+    {'text': 'As water flows, so does abundance into your life.', 'theme': 'Abundance'},
+    {'text': 'Your home is your sanctuary. Nurture it, and it nurtures you.', 'theme': 'Sanctuary'},
+    {'text': 'Clear the clutter, clear the mind. Space breathes possibility.', 'theme': 'Clarity'},
+    {'text': 'Like the lotus, rise from the mud and bloom beautifully.', 'theme': 'Growth'},
+    {'text': 'Every corner of your home holds a blessing waiting to unfold.', 'theme': 'Blessings'},
+    {'text': 'Balance is not something you find; it is something you create.', 'theme': 'Balance'},
+    {'text': 'The energy you put into your space returns to you tenfold.', 'theme': 'Energy'},
+    {'text': 'Let warm light fill your rooms, and warmth will fill your heart.', 'theme': 'Warmth'},
+    {'text': 'Your direction today is guided by ancient wisdom.', 'theme': 'Guidance'},
   ];
 
   static const Map<String, List<Map<String, String>>> roomTips = {

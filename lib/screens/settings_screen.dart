@@ -17,7 +17,7 @@ class SettingsScreen extends StatelessWidget {
         title: Text('Settings', style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600)),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        foregroundColor: ChiGlowTheme.luckyRed,
+        foregroundColor: ChiGlowTheme.richRed,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
@@ -26,8 +26,8 @@ class SettingsScreen extends StatelessWidget {
           children: [
             // Profile section
             Text(
-              '👤 Profile',
-              style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed),
+              '🪷 Profile',
+              style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
             ),
             const SizedBox(height: 12),
             GlowCard(
@@ -39,7 +39,7 @@ class SettingsScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       gradient: LinearGradient(
-                        colors: [ChiGlowTheme.luckyRed, ChiGlowTheme.warmGold],
+                        colors: [ChiGlowTheme.richRed, ChiGlowTheme.bronzeGold],
                       ),
                     ),
                     child: Center(
@@ -52,12 +52,12 @@ class SettingsScreen extends StatelessWidget {
                   const SizedBox(height: 12),
                   Text(
                     provider.userName.isNotEmpty ? provider.userName : 'Set Your Name',
-                    style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed),
+                    style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     'Zodiac: ${provider.zodiacSign}',
-                    style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.warmGold),
+                    style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.bronzeGold),
                   ),
                 ],
               ),
@@ -65,8 +65,8 @@ class SettingsScreen extends StatelessWidget {
             const SizedBox(height: 24),
             // Settings options
             Text(
-              '⚙️ Preferences',
-              style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed),
+              '🪷 Preferences',
+              style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
             ),
             const SizedBox(height: 12),
             _SettingTile(
@@ -82,26 +82,13 @@ class SettingsScreen extends StatelessWidget {
               onTap: () => _showYearPicker(context, provider),
             ),
             _SettingTile(
-              icon: provider.isMale ? '♂️' : '♀️',
-              title: 'Gender',
-              subtitle: provider.isMale ? 'Male' : 'Female',
-              onTap: () => _showGenderPicker(context, provider),
-            ),
-            _SettingTile(
-              icon: '🧭',
-              title: 'Your Kua Number',
-              subtitle: '${provider.kuaNumber} · ${provider.kuaElement} · ${provider.kuaGroup}',
-              onTap: () => Navigator.pushNamed(context, '/personal-fengshui'),
-              trailing: const Icon(Icons.arrow_forward_ios, size: 14),
-            ),
-            _SettingTile(
               icon: '🔔',
               title: 'Daily Reminders',
               subtitle: 'Morning affirmations',
               trailing: Switch(
                 value: true,
                 onChanged: (v) {},
-                activeColor: ChiGlowTheme.luckyRed,
+                activeColor: ChiGlowTheme.richRed,
               ),
             ),
             _SettingTile(
@@ -111,14 +98,14 @@ class SettingsScreen extends StatelessWidget {
               trailing: Switch(
                 value: false,
                 onChanged: (v) {},
-                activeColor: ChiGlowTheme.luckyRed,
+                activeColor: ChiGlowTheme.richRed,
               ),
             ),
             const SizedBox(height: 24),
             // Premium section
             Text(
               '💎 Premium',
-              style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed),
+              style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
             ),
             const SizedBox(height: 12),
             GestureDetector(
@@ -129,15 +116,15 @@ class SettingsScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      ChiGlowTheme.luckyRed.withValues(alpha: 0.08),
-                      ChiGlowTheme.warmGold.withValues(alpha: 0.08),
+                      ChiGlowTheme.richRed.withValues(alpha: 0.08),
+                      ChiGlowTheme.bronzeGold.withValues(alpha: 0.08),
                     ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(
-                    color: ChiGlowTheme.warmGold.withValues(alpha: 0.3),
+                    color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.3),
                     width: 1.5,
                   ),
                 ),
@@ -149,7 +136,7 @@ class SettingsScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         gradient: const LinearGradient(
-                          colors: [ChiGlowTheme.luckyRed, ChiGlowTheme.warmGold],
+                          colors: [ChiGlowTheme.richRed, ChiGlowTheme.bronzeGold],
                         ),
                       ),
                       child: const Center(
@@ -166,7 +153,7 @@ class SettingsScreen extends StatelessWidget {
                             style: GoogleFonts.poppins(
                               fontSize: 15,
                               fontWeight: FontWeight.w600,
-                              color: ChiGlowTheme.luckyRed,
+                              color: ChiGlowTheme.richRed,
                             ),
                           ),
                           const SizedBox(height: 2),
@@ -174,7 +161,7 @@ class SettingsScreen extends StatelessWidget {
                             'Unlock unlimited scans & full features',
                             style: GoogleFonts.quicksand(
                               fontSize: 12,
-                              color: ChiGlowTheme.warmGold,
+                              color: ChiGlowTheme.bronzeGold,
                             ),
                           ),
                         ],
@@ -184,7 +171,7 @@ class SettingsScreen extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
-                          colors: [ChiGlowTheme.luckyRed, ChiGlowTheme.brightRed],
+                          colors: [ChiGlowTheme.richRed, ChiGlowTheme.softRed],
                         ),
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -206,7 +193,7 @@ class SettingsScreen extends StatelessWidget {
             // About section
             Text(
               'ℹ️ About',
-              style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed),
+              style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
             ),
             const SizedBox(height: 12),
             GlowCard(
@@ -256,7 +243,7 @@ class SettingsScreen extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text('Choose Your Zodiac Sign', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed)),
+            Text('Choose Your Zodiac Sign', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
             const SizedBox(height: 16),
             Wrap(
               spacing: 8,
@@ -269,12 +256,12 @@ class SettingsScreen extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                   decoration: BoxDecoration(
-                    color: provider.zodiacSign == sign ? ChiGlowTheme.luckyRed : ChiGlowTheme.luckyRed.withValues(alpha: 0.08),
+                    color: provider.zodiacSign == sign ? ChiGlowTheme.richRed : ChiGlowTheme.richRed.withValues(alpha: 0.08),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Text(sign, style: GoogleFonts.quicksand(
                     fontSize: 14, fontWeight: FontWeight.w600,
-                    color: provider.zodiacSign == sign ? Colors.white : ChiGlowTheme.luckyRed,
+                    color: provider.zodiacSign == sign ? Colors.white : ChiGlowTheme.richRed,
                   )),
                 ),
               )).toList(),
@@ -299,11 +286,7 @@ class SettingsScreen extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(20),
-              child: Text('Select Birth Year', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed)),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text('Born before Feb 4th? Try the previous year.', style: GoogleFonts.quicksand(fontSize: 11, fontStyle: FontStyle.italic, color: ChiGlowTheme.deepRed.withValues(alpha: 0.6))),
+              child: Text('Select Birth Year', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
             ),
             Expanded(
               child: ListWheelScrollView(
@@ -317,93 +300,13 @@ class SettingsScreen extends StatelessWidget {
                       style: GoogleFonts.quicksand(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
-                        color: year == provider.birthYear ? ChiGlowTheme.luckyRed : ChiGlowTheme.warmGold,
+                        color: year == provider.birthYear ? ChiGlowTheme.richRed : ChiGlowTheme.bronzeGold,
                       ),
                     ),
                   );
                 }),
               ),
             ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  void _showGenderPicker(BuildContext context, AppStateProvider provider) {
-    showModalBottomSheet(
-      context: context,
-      backgroundColor: ChiGlowTheme.creamWhite,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-      ),
-      builder: (ctx) => Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text('Select Gender', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed)),
-            const SizedBox(height: 8),
-            Text('Used for your personal Kua Feng Shui calculation', style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.warmGold)),
-            const SizedBox(height: 4),
-            Text('Born before Feb 4th? Try the previous year for accuracy.', style: GoogleFonts.quicksand(fontSize: 11, fontStyle: FontStyle.italic, color: ChiGlowTheme.deepRed.withValues(alpha: 0.6))),
-            const SizedBox(height: 16),
-            Row(
-              children: [
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      provider.setGender(true);
-                      Navigator.pop(ctx);
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(vertical: 24),
-                      decoration: BoxDecoration(
-                        color: provider.isMale ? ChiGlowTheme.luckyRed : ChiGlowTheme.luckyRed.withValues(alpha: 0.08),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Column(
-                        children: [
-                          Text('♂️', style: TextStyle(fontSize: 36)),
-                          const SizedBox(height: 8),
-                          Text('Male', style: GoogleFonts.quicksand(
-                            fontSize: 16, fontWeight: FontWeight.w600,
-                            color: provider.isMale ? Colors.white : ChiGlowTheme.luckyRed,
-                          )),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      provider.setGender(false);
-                      Navigator.pop(ctx);
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(vertical: 24),
-                      decoration: BoxDecoration(
-                        color: !provider.isMale ? ChiGlowTheme.luckyRed : ChiGlowTheme.luckyRed.withValues(alpha: 0.08),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Column(
-                        children: [
-                          Text('♀️', style: TextStyle(fontSize: 36)),
-                          const SizedBox(height: 8),
-                          Text('Female', style: GoogleFonts.quicksand(
-                            fontSize: 16, fontWeight: FontWeight.w600,
-                            color: !provider.isMale ? Colors.white : ChiGlowTheme.luckyRed,
-                          )),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 12),
           ],
         ),
       ),
@@ -440,12 +343,12 @@ class _SettingTile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title, style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed)),
-                  Text(subtitle, style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.warmGold)),
+                  Text(title, style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
+                  Text(subtitle, style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.bronzeGold)),
                 ],
               ),
             ),
-            trailing ?? Icon(Icons.chevron_right, color: ChiGlowTheme.luckyRed.withValues(alpha: 0.4)),
+            trailing ?? Icon(Icons.chevron_right, color: ChiGlowTheme.richRed.withValues(alpha: 0.4)),
           ],
         ),
       ),
@@ -464,7 +367,7 @@ class _AboutRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(label, style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.luckyRed)),
+        Text(label, style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.richRed)),
         Text(value, style: GoogleFonts.quicksand(fontSize: 13, color: const Color(0xFF546E7A))),
       ],
     );

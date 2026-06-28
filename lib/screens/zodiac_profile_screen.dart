@@ -19,7 +19,7 @@ class ZodiacProfileScreen extends StatelessWidget {
         title: Text('Zodiac Energy', style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600)),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        foregroundColor: ChiGlowTheme.luckyRed,
+        foregroundColor: ChiGlowTheme.richRed,
         actions: [
           IconButton(
             icon: const Icon(Icons.calendar_today, size: 20),
@@ -43,10 +43,10 @@ class ZodiacProfileScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       gradient: LinearGradient(
-                        colors: [ChiGlowTheme.luckyRed, ChiGlowTheme.warmGold],
+                        colors: [ChiGlowTheme.richRed, ChiGlowTheme.bronzeGold],
                       ),
                       boxShadow: [
-                        BoxShadow(color: ChiGlowTheme.luckyRed.withValues(alpha: 0.3), blurRadius: 20),
+                        BoxShadow(color: ChiGlowTheme.richRed.withValues(alpha: 0.3), blurRadius: 20),
                       ],
                     ),
                     child: Center(
@@ -59,12 +59,12 @@ class ZodiacProfileScreen extends StatelessWidget {
                   const SizedBox(height: 12),
                   Text(
                     'Year of the $zodiac',
-                    style: GoogleFonts.playfairDisplay(fontSize: 28, fontWeight: FontWeight.w700, color: ChiGlowTheme.luckyRed),
+                    style: GoogleFonts.playfairDisplay(fontSize: 28, fontWeight: FontWeight.w700, color: ChiGlowTheme.richRed),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     'Element: ${data['element']}',
-                    style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.warmGold, fontWeight: FontWeight.w600),
+                    style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.bronzeGold, fontWeight: FontWeight.w600),
                   ),
                 ],
               ),
@@ -89,8 +89,8 @@ class ZodiacProfileScreen extends StatelessWidget {
             const SizedBox(height: 20),
             // Compatible signs
             Text(
-              '🤝 Compatible Signs',
-              style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed),
+              '🪷 Compatible Signs',
+              style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
             ),
             const SizedBox(height: 8),
             Wrap(
@@ -102,7 +102,7 @@ class ZodiacProfileScreen extends StatelessWidget {
             // Incompatible signs
             Text(
               '⚠️ Challenging Signs',
-              style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed),
+              style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
             ),
             const SizedBox(height: 8),
             Wrap(
@@ -113,17 +113,17 @@ class ZodiacProfileScreen extends StatelessWidget {
             const SizedBox(height: 24),
             // Daily guidance
             GlowCard(
-              glowColor: ChiGlowTheme.warmGold,
+              glowColor: ChiGlowTheme.bronzeGold,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.auto_awesome, size: 16, color: ChiGlowTheme.warmGold),
+                      Icon(Icons.auto_awesome, size: 16, color: ChiGlowTheme.bronzeGold),
                       const SizedBox(width: 6),
                       Text(
                         "Today's Guidance",
-                        style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.warmGold),
+                        style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.bronzeGold),
                       ),
                     ],
                   ),
@@ -180,9 +180,9 @@ class _InfoChip extends StatelessWidget {
         children: [
           Text(emoji, style: const TextStyle(fontSize: 24)),
           const SizedBox(height: 4),
-          Text(value, style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed)),
+          Text(value, style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
           const SizedBox(height: 2),
-          Text(label, style: GoogleFonts.quicksand(fontSize: 11, color: ChiGlowTheme.warmGold)),
+          Text(label, style: GoogleFonts.quicksand(fontSize: 11, color: ChiGlowTheme.bronzeGold)),
         ],
       ),
     );
@@ -201,11 +201,11 @@ class _SignChip extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
       decoration: BoxDecoration(
         color: compatible
-            ? ChiGlowTheme.luckyRed.withValues(alpha: 0.15)
+            ? ChiGlowTheme.richRed.withValues(alpha: 0.15)
             : Colors.orange.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: compatible ? ChiGlowTheme.luckyRed : Colors.orange,
+          color: compatible ? ChiGlowTheme.richRed : Colors.orange,
           width: 1,
         ),
       ),
@@ -214,7 +214,7 @@ class _SignChip extends StatelessWidget {
         style: GoogleFonts.quicksand(
           fontSize: 13,
           fontWeight: FontWeight.w600,
-          color: compatible ? ChiGlowTheme.luckyRed : Colors.orange[800],
+          color: compatible ? ChiGlowTheme.richRed : Colors.orange[800],
         ),
       ),
     );

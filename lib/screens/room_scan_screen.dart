@@ -1,9 +1,8 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:image_picker/image_picker.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
+import '../utils/asset_images.dart';
 
 class RoomScanScreen extends StatefulWidget {
   const RoomScanScreen({super.key});
@@ -19,8 +18,6 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
 
   final List<String> _roomTypes = [
     'Living Room', 'Bedroom', 'Kitchen', 'Home Office', 'Bathroom', 'Dining Room', 'Entryway', 'Garden',
-    'Front Yard', 'Backyard',
-    'Corporate Office', 'Retail Store', 'Restaurant / Cafe',
   ];
 
   @override
@@ -30,7 +27,7 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
         title: Text('Scan Your Space', style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600)),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        foregroundColor: ChiGlowTheme.luckyRed,
+        foregroundColor: ChiGlowTheme.richRed,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
@@ -43,10 +40,10 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
                 width: double.infinity,
                 height: 280,
                 decoration: BoxDecoration(
-                  color: ChiGlowTheme.luckyRed.withValues(alpha: 0.05),
+                  color: ChiGlowTheme.richRed.withValues(alpha: 0.05),
                   borderRadius: BorderRadius.circular(24),
                   border: Border.all(
-                    color: ChiGlowTheme.luckyRed.withValues(alpha: 0.2),
+                    color: ChiGlowTheme.richRed.withValues(alpha: 0.2),
                     width: 2,
                     strokeAlign: BorderSide.strokeAlignInside,
                   ),
@@ -60,7 +57,7 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
                             height: 72,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: ChiGlowTheme.luckyRed.withValues(alpha: 0.1),
+                              color: ChiGlowTheme.richRed.withValues(alpha: 0.1),
                             ),
                             child: const Center(
                               child: Text('📷', style: TextStyle(fontSize: 32)),
@@ -72,7 +69,7 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
                             textAlign: TextAlign.center,
                             style: GoogleFonts.quicksand(
                               fontSize: 14,
-                              color: ChiGlowTheme.luckyRed.withValues(alpha: 0.7),
+                              color: ChiGlowTheme.richRed.withValues(alpha: 0.7),
                               height: 1.5,
                             ),
                           ),
@@ -83,11 +80,7 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
                         child: Stack(
                           fit: StackFit.expand,
                           children: [
-                            Image.file(
-                              File(_imagePath!),
-                              fit: BoxFit.cover,
-                              errorBuilder: (context, error, stackTrace) => const Center(child: Icon(Icons.image, size: 48, color: Color(0xFFD32F2F))),
-                            ),
+                            Image.network(_imagePath!, fit: BoxFit.cover),
                             Positioned(
                               top: 12,
                               right: 12,
@@ -108,7 +101,22 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
                       ),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 16),
+            // Room illustration preview
+            if (_imagePath == null)
+              SizedBox(
+                height: 100,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: Image.asset(
+                    AssetImages.roomImageFor(_selectedRoomType),
+                    height: 100,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            const SizedBox(height: 16),
             // Room type selector
             GlowCard(
               child: Column(
@@ -116,7 +124,7 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
                 children: [
                   Text(
                     'Room Type',
-                    style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed),
+                    style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
                   ),
                   const SizedBox(height: 12),
                   Wrap(
@@ -129,7 +137,7 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
                         child: Container(
                           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                           decoration: BoxDecoration(
-                            color: selected ? ChiGlowTheme.luckyRed : ChiGlowTheme.luckyRed.withValues(alpha: 0.08),
+                            color: selected ? ChiGlowTheme.richRed : ChiGlowTheme.richRed.withValues(alpha: 0.08),
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Text(
@@ -137,7 +145,7 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
                             style: GoogleFonts.quicksand(
                               fontSize: 13,
                               fontWeight: FontWeight.w600,
-                              color: selected ? Colors.white : ChiGlowTheme.luckyRed,
+                              color: selected ? Colors.white : ChiGlowTheme.richRed,
                             ),
                           ),
                         ),
@@ -148,26 +156,6 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
               ),
             ),
             const SizedBox(height: 24),
-            // Privacy notice
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.lock_outline, size: 14, color: ChiGlowTheme.warmGold.withValues(alpha: 0.7)),
-                const SizedBox(width: 6),
-                Flexible(
-                  child: Text(
-                    'Your privacy is sacred — your photo stays on your phone. Nothing is uploaded or shared.',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.quicksand(
-                      fontSize: 11,
-                      color: ChiGlowTheme.warmGold.withValues(alpha: 0.7),
-                      fontStyle: FontStyle.italic,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
             // Analyze button
             SizedBox(
               width: double.infinity,
@@ -175,11 +163,11 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
               child: ElevatedButton(
                 onPressed: _isAnalyzing ? null : _analyzeRoom,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: ChiGlowTheme.luckyRed,
+                  backgroundColor: ChiGlowTheme.richRed,
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
                   elevation: 4,
-                  disabledBackgroundColor: ChiGlowTheme.luckyRed.withValues(alpha: 0.4),
+                  disabledBackgroundColor: ChiGlowTheme.richRed.withValues(alpha: 0.4),
                 ),
                 child: _isAnalyzing
                     ? const SizedBox(
@@ -197,7 +185,7 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
             Text(
               'Your photo is processed locally and never leaves your device.',
               textAlign: TextAlign.center,
-              style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.warmGold.withValues(alpha: 0.7)),
+              style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.7)),
             ),
           ],
         ),
@@ -205,68 +193,11 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
     );
   }
 
-  void _pickImage() async {
-    final picker = ImagePicker();
-    final source = await showModalBottomSheet<ImageSource>(
-      context: context,
-      backgroundColor: ChiGlowTheme.creamWhite,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-      ),
-      builder: (ctx) => Padding(
-        padding: const EdgeInsets.all(20),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            GestureDetector(
-              onTap: () => Navigator.pop(ctx, ImageSource.camera),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Container(
-                    width: 64, height: 64,
-                    decoration: BoxDecoration(
-                      color: ChiGlowTheme.luckyRed.withValues(alpha: 0.1),
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Center(child: Icon(Icons.camera_alt, size: 28, color: ChiGlowTheme.luckyRed)),
-                  ),
-                  const SizedBox(height: 8),
-                  Text('Camera', style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.luckyRed)),
-                ],
-              ),
-            ),
-            GestureDetector(
-              onTap: () => Navigator.pop(ctx, ImageSource.gallery),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Container(
-                    width: 64, height: 64,
-                    decoration: BoxDecoration(
-                      color: ChiGlowTheme.warmGold.withValues(alpha: 0.2),
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Center(child: Icon(Icons.photo_library, size: 28, color: ChiGlowTheme.darkGold)),
-                  ),
-                  const SizedBox(height: 8),
-                  Text('Gallery', style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.darkGold)),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-
-    if (source != null) {
-      final pickedFile = await picker.pickImage(source: source, imageQuality: 85);
-      if (pickedFile != null) {
-        setState(() {
-          _imagePath = pickedFile.path;
-        });
-      }
-    }
+  void _pickImage() {
+    // Placeholder - in real app would use image_picker
+    setState(() {
+      _imagePath = 'placeholder';
+    });
   }
 
   void _analyzeRoom() {

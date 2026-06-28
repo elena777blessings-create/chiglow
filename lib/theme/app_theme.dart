@@ -1,96 +1,118 @@
 /// ChiGlow - Feng Shui Wellness App Theme
-/// Bold red & gold koi pond energy — exciting, premium, attention-grabbing.
+/// Design & Experience Guidelines v1.0
+/// Rich ChiGlow Red headings, Warm Bronze Gold labels, Charcoal body, Medium Gray supporting.
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ChiGlowTheme {
-  // Core palette — bold red & gold koi energy
-  static const Color luckyRed = Color(0xFFD32F2F);
-  static const Color brightRed = Color(0xFFE53935);
-  static const Color warmGold = Color(0xFFFFD700);
-  static const Color darkGold = Color(0xFFB8860B);
-  static const Color creamWhite = Color(0xFFFFF8E7);
-  static const Color ivoryBg = Color(0xFFFDF5E6);
-  static const Color deepRed = Color(0xFFB71C1C);
-  static const Color softCoral = Color(0xFFFF8A80);
+  // Core palette — v1.0 Design Guidelines
+  static const Color richRed = Color(0xFFB33A35);      // Primary heading color
+  static const Color bronzeGold = Color(0xFFA67C2E);    // Labels
+  static const Color charcoal = Color(0xFF4A4A4A);      // Body text
+  static const Color mediumGray = Color(0xFF707070);     // Supporting text
+  static const Color accentGold = Color(0xFFFFD700);     // Icons/badges/decorative only
+  static const Color creamWhite = Color(0xFFFFF8E7);    // Backgrounds
+  static const Color ivoryBg = Color(0xFFFDF5E6);       // Alternate background
+  static const Color deepRed = Color(0xFF8B1A1A);       // Deep variant
+  static const Color softRed = Color(0xFFD35A55);       // Lighter variant
 
   static ThemeData get lightTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
-      scaffoldBackgroundColor: ivoryBg,
+      scaffoldBackgroundColor: creamWhite,
       colorScheme: ColorScheme.light(
-        primary: luckyRed,
-        secondary: warmGold,
+        primary: richRed,
+        secondary: bronzeGold,
         tertiary: deepRed,
-        surface: ivoryBg,
+        surface: creamWhite,
         onPrimary: Colors.white,
-        onSecondary: deepRed,
-        onSurface: const Color(0xFF3E2723),
+        onSecondary: Colors.white,
+        onSurface: charcoal,
       ),
       textTheme: TextTheme(
         displayLarge: GoogleFonts.playfairDisplay(
           fontSize: 36,
           fontWeight: FontWeight.w700,
-          color: luckyRed,
+          color: richRed,
         ),
         displayMedium: GoogleFonts.playfairDisplay(
           fontSize: 28,
           fontWeight: FontWeight.w600,
-          color: luckyRed,
+          color: richRed,
         ),
         headlineLarge: GoogleFonts.poppins(
           fontSize: 24,
           fontWeight: FontWeight.w600,
-          color: deepRed,
+          color: richRed,
         ),
         headlineMedium: GoogleFonts.poppins(
           fontSize: 20,
           fontWeight: FontWeight.w500,
-          color: deepRed,
+          color: richRed,
         ),
         titleLarge: GoogleFonts.poppins(
           fontSize: 18,
           fontWeight: FontWeight.w600,
-          color: luckyRed,
+          color: richRed,
         ),
         titleMedium: GoogleFonts.quicksand(
           fontSize: 16,
           fontWeight: FontWeight.w600,
-          color: luckyRed,
+          color: bronzeGold,
+        ),
+        titleSmall: GoogleFonts.quicksand(
+          fontSize: 14,
+          fontWeight: FontWeight.w600,
+          color: bronzeGold,
         ),
         bodyLarge: GoogleFonts.quicksand(
           fontSize: 16,
           fontWeight: FontWeight.w400,
-          color: const Color(0xFF4E342E),
+          color: charcoal,
         ),
         bodyMedium: GoogleFonts.quicksand(
           fontSize: 14,
           fontWeight: FontWeight.w400,
-          color: const Color(0xFF6D4C41),
+          color: charcoal,
+        ),
+        bodySmall: GoogleFonts.quicksand(
+          fontSize: 13,
+          fontWeight: FontWeight.w400,
+          color: mediumGray,
         ),
         labelLarge: GoogleFonts.poppins(
           fontSize: 14,
           fontWeight: FontWeight.w600,
           color: Colors.white,
         ),
+        labelMedium: GoogleFonts.poppins(
+          fontSize: 12,
+          fontWeight: FontWeight.w500,
+          color: bronzeGold,
+        ),
+        labelSmall: GoogleFonts.quicksand(
+          fontSize: 11,
+          fontWeight: FontWeight.w400,
+          color: mediumGray,
+        ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: luckyRed,
+          backgroundColor: richRed,
           foregroundColor: Colors.white,
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
           ),
-          elevation: 4,
-          shadowColor: luckyRed.withValues(alpha: 0.4),
+          elevation: 2,
+          shadowColor: richRed.withValues(alpha: 0.3),
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
-          foregroundColor: luckyRed,
-          side: const BorderSide(color: luckyRed, width: 1.5),
+          foregroundColor: richRed,
+          side: const BorderSide(color: richRed, width: 1.5),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
@@ -99,15 +121,15 @@ class ChiGlowTheme {
       ),
       cardTheme: CardThemeData(
         color: Colors.white.withValues(alpha: 0.95),
-        elevation: 2,
-        shadowColor: luckyRed.withValues(alpha: 0.15),
+        elevation: 1,
+        shadowColor: richRed.withValues(alpha: 0.08),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: Colors.white,
-        selectedItemColor: luckyRed,
+        selectedItemColor: richRed,
         unselectedItemColor: Color(0xFFBDBDBD),
         type: BottomNavigationBarType.fixed,
         elevation: 8,
@@ -116,25 +138,25 @@ class ChiGlowTheme {
   }
 }
 
-/// Glow effect decoration — now with lucky red & gold glow
+/// Glow effect decoration — subtle red glow with bronze tint
 BoxDecoration glowDecoration({
-  Color color = ChiGlowTheme.luckyRed,
-  double blurRadius = 12,
+  Color color = ChiGlowTheme.richRed,
+  double blurRadius = 10,
 }) {
   return BoxDecoration(
     color: ChiGlowTheme.creamWhite,
     borderRadius: BorderRadius.circular(20),
     boxShadow: [
       BoxShadow(
-        color: color.withValues(alpha: 0.15),
+        color: color.withValues(alpha: 0.1),
         blurRadius: blurRadius,
-        spreadRadius: 1,
+        spreadRadius: 0,
         offset: const Offset(0, 4),
       ),
       BoxShadow(
-        color: ChiGlowTheme.warmGold.withValues(alpha: 0.08),
-        blurRadius: 24,
-        spreadRadius: 2,
+        color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.06),
+        blurRadius: 20,
+        spreadRadius: 1,
         offset: const Offset(0, 0),
       ),
     ],

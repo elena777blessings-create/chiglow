@@ -16,7 +16,7 @@ class YearAheadScreen extends StatelessWidget {
         title: Text('$year Forecast', style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600)),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        foregroundColor: ChiGlowTheme.luckyRed,
+        foregroundColor: ChiGlowTheme.richRed,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
@@ -32,8 +32,8 @@ class YearAheadScreen extends StatelessWidget {
                     height: 100,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: ChiGlowTheme.warmGold.withValues(alpha: 0.2),
-                      border: Border.all(color: ChiGlowTheme.warmGold, width: 2),
+                      color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.2),
+                      border: Border.all(color: ChiGlowTheme.bronzeGold, width: 2),
                     ),
                     child: Center(
                       child: Text(_zodiacEmoji(zodiacYear), style: const TextStyle(fontSize: 48)),
@@ -42,12 +42,12 @@ class YearAheadScreen extends StatelessWidget {
                   const SizedBox(height: 12),
                   Text(
                     'Year of the $zodiacYear',
-                    style: GoogleFonts.playfairDisplay(fontSize: 26, fontWeight: FontWeight.w700, color: ChiGlowTheme.luckyRed),
+                    style: GoogleFonts.playfairDisplay(fontSize: 26, fontWeight: FontWeight.w700, color: ChiGlowTheme.richRed),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     '$year — A Year of ${_yearTheme(zodiacYear)}',
-                    style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.warmGold, fontWeight: FontWeight.w600),
+                    style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.bronzeGold, fontWeight: FontWeight.w600),
                   ),
                 ],
               ),
@@ -56,7 +56,7 @@ class YearAheadScreen extends StatelessWidget {
             // Monthly overview
             Text(
               '📅 Monthly Highlights',
-              style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed),
+              style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
             ),
             const SizedBox(height: 12),
             ...List.generate(4, (i) => _MonthCard(
@@ -68,7 +68,7 @@ class YearAheadScreen extends StatelessWidget {
             // Year elements
             Text(
               '🌿 Element Balance',
-              style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed),
+              style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
             ),
             const SizedBox(height: 12),
             GlowCard(
@@ -85,13 +85,13 @@ class YearAheadScreen extends StatelessWidget {
             const SizedBox(height: 24),
             // Lucky items
             GlowCard(
-              glowColor: ChiGlowTheme.warmGold,
+              glowColor: ChiGlowTheme.bronzeGold,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     '🍀 Your Lucky Items for $year',
-                    style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.warmGold),
+                    style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.bronzeGold),
                   ),
                   const SizedBox(height: 12),
                   _LuckyItem(emoji: '💎', item: 'Clear Quartz Crystal', desc: 'Amplifies positive energy'),
@@ -162,8 +162,8 @@ class _MonthCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(month, style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed)),
-                Text(element, style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.warmGold)),
+                Text(month, style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
+                Text(element, style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.bronzeGold)),
               ],
             ),
             const SizedBox(height: 8),
@@ -187,22 +187,22 @@ class _ElementBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
         children: [
-          SizedBox(width: 100, child: Text(element, style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.luckyRed))),
+          SizedBox(width: 100, child: Text(element, style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.richRed))),
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(4),
               child: LinearProgressIndicator(
                 value: value / 100,
                 minHeight: 6,
-                backgroundColor: ChiGlowTheme.luckyRed.withValues(alpha: 0.1),
+                backgroundColor: ChiGlowTheme.richRed.withValues(alpha: 0.1),
                 valueColor: AlwaysStoppedAnimation<Color>(
-                  value > 70 ? ChiGlowTheme.luckyRed : value > 40 ? ChiGlowTheme.warmGold : Colors.orange,
+                  value > 70 ? ChiGlowTheme.richRed : value > 40 ? ChiGlowTheme.bronzeGold : Colors.orange,
                 ),
               ),
             ),
           ),
           SizedBox(width: 30, child: Text('$value%', textAlign: TextAlign.right,
-            style: GoogleFonts.quicksand(fontSize: 11, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed))),
+            style: GoogleFonts.quicksand(fontSize: 11, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed))),
         ],
       ),
     );
@@ -227,8 +227,8 @@ class _LuckyItem extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(item, style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed)),
-              Text(desc, style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.warmGold)),
+              Text(item, style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
+              Text(desc, style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.bronzeGold)),
             ],
           ),
         ],

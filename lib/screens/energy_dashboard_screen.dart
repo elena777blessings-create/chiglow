@@ -17,7 +17,7 @@ class EnergyDashboardScreen extends StatelessWidget {
         title: Text('Energy Dashboard', style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600)),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        foregroundColor: ChiGlowTheme.luckyRed,
+        foregroundColor: ChiGlowTheme.richRed,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
@@ -33,15 +33,15 @@ class EnergyDashboardScreen extends StatelessWidget {
                   shape: BoxShape.circle,
                   gradient: const SweepGradient(
                     colors: [
-                      ChiGlowTheme.luckyRed,
-                      ChiGlowTheme.warmGold,
-                      ChiGlowTheme.brightRed,
-                      ChiGlowTheme.warmGold,
-                      ChiGlowTheme.luckyRed,
+                      ChiGlowTheme.richRed,
+                      ChiGlowTheme.bronzeGold,
+                      ChiGlowTheme.softRed,
+                      ChiGlowTheme.bronzeGold,
+                      ChiGlowTheme.richRed,
                     ],
                   ),
                   boxShadow: [
-                    BoxShadow(color: ChiGlowTheme.luckyRed.withValues(alpha: 0.3), blurRadius: 30, spreadRadius: 5),
+                    BoxShadow(color: ChiGlowTheme.richRed.withValues(alpha: 0.3), blurRadius: 30, spreadRadius: 5),
                   ],
                 ),
                 child: Center(
@@ -57,11 +57,11 @@ class EnergyDashboardScreen extends StatelessWidget {
                       children: [
                         Text(
                           '${_overallScore(provider)}%',
-                          style: GoogleFonts.poppins(fontSize: 36, fontWeight: FontWeight.w700, color: ChiGlowTheme.luckyRed),
+                          style: GoogleFonts.poppins(fontSize: 36, fontWeight: FontWeight.w700, color: ChiGlowTheme.richRed),
                         ),
                         Text(
                           'Harmony',
-                          style: GoogleFonts.quicksand(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.warmGold),
+                          style: GoogleFonts.quicksand(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.bronzeGold),
                         ),
                       ],
                     ),
@@ -72,8 +72,8 @@ class EnergyDashboardScreen extends StatelessWidget {
             const SizedBox(height: 32),
             // Energy areas
             Text(
-              'Energy Areas',
-              style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed),
+              '🪷 Energy Areas',
+              style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
             ),
             const SizedBox(height: 12),
             _EnergyAreaCard(
@@ -90,7 +90,7 @@ class EnergyDashboardScreen extends StatelessWidget {
               name: 'Wealth',
               value: provider.wealthScore,
               description: 'Abundance, prosperity, career growth',
-              color: ChiGlowTheme.warmGold,
+              color: ChiGlowTheme.bronzeGold,
               tips: ['Activate southeast corner', 'Add purple or green accents', 'Keep your kitchen clean'],
             ),
             const SizedBox(height: 12),
@@ -99,7 +99,7 @@ class EnergyDashboardScreen extends StatelessWidget {
               name: 'Health',
               value: provider.healthScore,
               description: 'Wellness, vitality, family harmony',
-              color: ChiGlowTheme.luckyRed,
+              color: ChiGlowTheme.richRed,
               tips: ['Keep center of home open', 'Add plants in east area', 'Use natural materials'],
             ),
             const SizedBox(height: 12),
@@ -108,7 +108,7 @@ class EnergyDashboardScreen extends StatelessWidget {
               name: 'Career',
               value: provider.careerScore,
               description: 'Life path, purpose, professional growth',
-              color: ChiGlowTheme.warmGold,
+              color: ChiGlowTheme.bronzeGold,
               tips: ['Enhance north area with water', 'Display career inspirations', 'Keep entryway welcoming'],
             ),
             const SizedBox(height: 24),
@@ -155,8 +155,8 @@ class _EnergyAreaCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(name, style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed)),
-                    Text(description, style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.warmGold)),
+                    Text(name, style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
+                    Text(description, style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.bronzeGold)),
                   ],
                 ),
               ),
@@ -179,7 +179,7 @@ class _EnergyAreaCard extends StatelessWidget {
           const SizedBox(height: 12),
           Text(
             'Tips to improve:',
-            style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed),
+            style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
           ),
           const SizedBox(height: 4),
           ...tips.map((tip) => Padding(

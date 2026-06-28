@@ -18,10 +18,10 @@ class _CompassScreenState extends State<CompassScreen> {
   Timer? _timer;
 
   final Map<String, _BaguaSector> _sectors = {
-    'N': _BaguaSector('Career', '🧭', 'Water', ChiGlowTheme.warmGold),
-    'NE': _BaguaSector('Knowledge', '📚', 'Earth', ChiGlowTheme.luckyRed),
-    'E': _BaguaSector('Family', '👨‍👩‍👧‍👦', 'Wood', ChiGlowTheme.warmGold),
-    'SE': _BaguaSector('Wealth', '💰', 'Wood', ChiGlowTheme.brightRed),
+    'N': _BaguaSector('Career', '🧭', 'Water', ChiGlowTheme.bronzeGold),
+    'NE': _BaguaSector('Knowledge', '📚', 'Earth', ChiGlowTheme.richRed),
+    'E': _BaguaSector('Family', '👨‍👩‍👧‍👦', 'Wood', ChiGlowTheme.bronzeGold),
+    'SE': _BaguaSector('Wealth', '💰', 'Wood', ChiGlowTheme.softRed),
     'S': _BaguaSector('Fame', '🏆', 'Fire', Colors.red),
     'SW': _BaguaSector('Love', '💖', 'Earth', Colors.pink),
     'W': _BaguaSector('Creativity', '🎨', 'Metal', const Color(0xFF9E9E9E)),
@@ -63,7 +63,7 @@ class _CompassScreenState extends State<CompassScreen> {
         title: Text('Feng Shui Compass', style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600)),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        foregroundColor: ChiGlowTheme.luckyRed,
+        foregroundColor: ChiGlowTheme.richRed,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
@@ -79,7 +79,7 @@ class _CompassScreenState extends State<CompassScreen> {
                     Text(
                       'Calibrating compass...\nPoint your phone north',
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.luckyRed, height: 1.5),
+                      style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.richRed, height: 1.5),
                     ),
                     const SizedBox(height: 12),
                   ],
@@ -97,7 +97,7 @@ class _CompassScreenState extends State<CompassScreen> {
                       shape: BoxShape.circle,
                       color: Colors.white.withValues(alpha: 0.95),
                       boxShadow: [
-                        BoxShadow(color: ChiGlowTheme.luckyRed.withValues(alpha: 0.15), blurRadius: 24, spreadRadius: 4),
+                        BoxShadow(color: ChiGlowTheme.richRed.withValues(alpha: 0.15), blurRadius: 24, spreadRadius: 4),
                       ],
                     ),
                     child: Transform.rotate(
@@ -107,7 +107,7 @@ class _CompassScreenState extends State<CompassScreen> {
                         child: Center(
                           child: Text(
                             _getDirection(_heading),
-                            style: GoogleFonts.poppins(fontSize: 24, fontWeight: FontWeight.w700, color: ChiGlowTheme.luckyRed),
+                            style: GoogleFonts.poppins(fontSize: 24, fontWeight: FontWeight.w700, color: ChiGlowTheme.richRed),
                           ),
                         ),
                       ),
@@ -116,13 +116,13 @@ class _CompassScreenState extends State<CompassScreen> {
                   const SizedBox(height: 12),
                   Text(
                     '${_heading.toStringAsFixed(1)}° ${_getDirection(_heading)}',
-                    style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed),
+                    style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
                   ),
                   const SizedBox(height: 24),
                   // Active sector info
                   Text(
                     '📍 Current Sector',
-                    style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed),
+                    style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
                   ),
                   const SizedBox(height: 12),
                   GlowCard(
@@ -137,11 +137,11 @@ class _CompassScreenState extends State<CompassScreen> {
                             children: [
                               Text(
                                 _currentSector().name,
-                                style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed),
+                                style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
                               ),
                               Text(
                                 'Element: ${_currentSector().element}',
-                                style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.warmGold),
+                                style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.bronzeGold),
                               ),
                             ],
                           ),
@@ -153,7 +153,7 @@ class _CompassScreenState extends State<CompassScreen> {
                   // Bagua sectors list
                   Text(
                     'Bagua Map Sectors',
-                    style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed),
+                    style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
                   ),
                   const SizedBox(height: 12),
                   ..._sectors.entries.map((entry) => Padding(
@@ -176,9 +176,9 @@ class _CompassScreenState extends State<CompassScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text('${entry.key} — ${entry.value.name}',
-                                    style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed)),
+                                    style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
                                 Text('Element: ${entry.value.element}',
-                                    style: GoogleFonts.quicksand(fontSize: 11, color: ChiGlowTheme.warmGold)),
+                                    style: GoogleFonts.quicksand(fontSize: 11, color: ChiGlowTheme.bronzeGold)),
                               ],
                             ),
                           ),
@@ -224,7 +224,7 @@ class _CompassPainter extends CustomPainter {
 
     // Draw cardinal directions
     final paint = Paint()
-      ..color = ChiGlowTheme.luckyRed.withValues(alpha: 0.3)
+      ..color = ChiGlowTheme.richRed.withValues(alpha: 0.3)
       ..strokeWidth = 1;
 
     for (int i = 0; i < 8; i++) {
@@ -237,7 +237,7 @@ class _CompassPainter extends CustomPainter {
       final tp = TextPainter(
         text: TextSpan(
           text: ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'][i],
-          style: TextStyle(color: ChiGlowTheme.luckyRed, fontSize: 11, fontWeight: FontWeight.w600),
+          style: TextStyle(color: ChiGlowTheme.richRed, fontSize: 11, fontWeight: FontWeight.w600),
         ),
         textDirection: TextDirection.ltr,
       );
@@ -247,7 +247,7 @@ class _CompassPainter extends CustomPainter {
 
     // Outer ring
     final ringPaint = Paint()
-      ..color = ChiGlowTheme.luckyRed.withValues(alpha: 0.2)
+      ..color = ChiGlowTheme.richRed.withValues(alpha: 0.2)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 2;
     canvas.drawCircle(center, radius, ringPaint);

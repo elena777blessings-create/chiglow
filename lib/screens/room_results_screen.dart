@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
 import '../services/content_service.dart';
+import '../utils/asset_images.dart';
 
 class RoomResultsScreen extends StatelessWidget {
   final String roomType;
@@ -23,32 +24,52 @@ class RoomResultsScreen extends StatelessWidget {
         title: Text('$roomType Analysis', style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600)),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        foregroundColor: ChiGlowTheme.luckyRed,
+        foregroundColor: ChiGlowTheme.richRed,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Room image placeholder
-            Container(
+            // Room illustration
+            SizedBox(
               width: double.infinity,
               height: 180,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [ChiGlowTheme.luckyRed.withValues(alpha: 0.08), ChiGlowTheme.warmGold.withValues(alpha: 0.08)],
-                ),
+              child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
-              ),
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                child: Stack(
                   children: [
-                    const Text('🏠', style: TextStyle(fontSize: 48)),
-                    const SizedBox(height: 8),
-                    Text(
-                      roomType,
-                      style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed),
+                    Image.asset(
+                      AssetImages.roomImageFor(roomType),
+                      width: double.infinity,
+                      height: 180,
+                      fit: BoxFit.cover,
+                    ),
+                    // Overlay gradient for text legibility
+                    Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.bottomCenter,
+                          end: Alignment.topCenter,
+                          colors: [
+                            ChiGlowTheme.richRed.withValues(alpha: 0.6),
+                            Colors.transparent,
+                          ],
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 12,
+                      left: 16,
+                      child: Text(
+                        roomType,
+                        style: GoogleFonts.poppins(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                          shadows: [Shadow(color: Colors.black26, blurRadius: 8)],
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -57,7 +78,7 @@ class RoomResultsScreen extends StatelessWidget {
             const SizedBox(height: 20),
             // Overall energy score
             GlowCard(
-              glowColor: ChiGlowTheme.warmGold,
+              glowColor: ChiGlowTheme.bronzeGold,
               child: Row(
                 children: [
                   const Text('🌊', style: TextStyle(fontSize: 36)),
@@ -68,12 +89,12 @@ class RoomResultsScreen extends StatelessWidget {
                       children: [
                         Text(
                           'Energy Flow: Harmonious',
-                          style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed),
+                          style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
                         ),
                         const SizedBox(height: 4),
                         Text(
                           'Your $roomType has balanced energy with room for enhancement.',
-                          style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.warmGold),
+                          style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.bronzeGold),
                         ),
                       ],
                     ),
@@ -84,8 +105,8 @@ class RoomResultsScreen extends StatelessWidget {
             const SizedBox(height: 24),
             // Feng Shui Tips
             Text(
-              '✨ Feng Shui Recommendations',
-              style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed),
+              '🪷 Feng Shui Recommendations',
+              style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
             ),
             const SizedBox(height: 12),
             ...tips.map((tip) => Padding(
@@ -102,12 +123,12 @@ class RoomResultsScreen extends StatelessWidget {
                         children: [
                           Text(
                             tip['title'] ?? '',
-                            style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed),
+                            style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
                           ),
                           const SizedBox(height: 4),
                           Text(
                             tip['description'] ?? '',
-                            style: GoogleFonts.quicksand(fontSize: 13, color: const Color(0xFF6D4C41), height: 1.5),
+                            style: GoogleFonts.quicksand(fontSize: 13, color: const ChiGlowTheme.mediumGray, height: 1.5),
                           ),
                         ],
                       ),

@@ -5,6 +5,7 @@ import '../widgets/glow_card.dart';
 import '../services/content_service.dart';
 import 'package:provider/provider.dart';
 import '../providers/app_state_provider.dart';
+import '../utils/asset_images.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,7 +20,6 @@ class _HomeScreenState extends State<HomeScreen> {
     final provider = context.watch<AppStateProvider>();
     final affirmation = ContentService.affirmationForToday();
     final affirmationTheme = ContentService.affirmationThemeForToday();
-    final wisdom = ContentService.wisdomForToday();
 
     return Scaffold(
       body: SafeArea(
@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         'Good ${_timeOfDay()},',
                         style: GoogleFonts.quicksand(
                           fontSize: 14,
-                          color: ChiGlowTheme.warmGold,
+                          color: ChiGlowTheme.bronzeGold,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: GoogleFonts.playfairDisplay(
                           fontSize: 34,
                           fontWeight: FontWeight.w700,
-                          color: ChiGlowTheme.luckyRed,
+                          color: ChiGlowTheme.richRed,
                         ),
                       ),
                     ],
@@ -64,17 +64,20 @@ class _HomeScreenState extends State<HomeScreen> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           gradient: LinearGradient(
-                            colors: [ChiGlowTheme.luckyRed, ChiGlowTheme.brightRed],
+                            colors: [ChiGlowTheme.richRed, ChiGlowTheme.softRed],
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: ChiGlowTheme.luckyRed.withValues(alpha: 0.3),
+                              color: ChiGlowTheme.richRed.withValues(alpha: 0.3),
                               blurRadius: 12,
                             ),
                           ],
                         ),
-                        child: const Center(
-                          child: Text('🐟', style: TextStyle(fontSize: 26)),
+                        child: Image.asset(
+                          AssetImages.koiImage('white'),
+                          width: 52,
+                          height: 52,
+                          fit: BoxFit.cover,
                         ),
                       ),
                       // Premium badge
@@ -87,12 +90,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                             decoration: BoxDecoration(
                               gradient: const LinearGradient(
-                                colors: [ChiGlowTheme.warmGold, ChiGlowTheme.brightRed],
+                                colors: [ChiGlowTheme.bronzeGold, ChiGlowTheme.softRed],
                               ),
                               borderRadius: BorderRadius.circular(8),
                               boxShadow: [
                                 BoxShadow(
-                                  color: ChiGlowTheme.warmGold.withValues(alpha: 0.4),
+                                  color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.4),
                                   blurRadius: 6,
                                 ),
                               ],
@@ -109,21 +112,25 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               const SizedBox(height: 8),
-              // Daily affirmation — gold themed
+              // Daily affirmation — bronze gold themed
               GlowCard(
-                glowColor: ChiGlowTheme.warmGold,
+                glowColor: ChiGlowTheme.bronzeGold,
                 child: Column(
                   children: [
                     Row(
                       children: [
-                        Icon(Icons.auto_awesome, size: 16, color: ChiGlowTheme.warmGold),
+                        SizedBox(
+                          width: 18,
+                          height: 18,
+                          child: Image.asset(AssetImages.lotusGold, fit: BoxFit.contain),
+                        ),
                         const SizedBox(width: 6),
                         Text(
                           affirmationTheme,
                           style: GoogleFonts.poppins(
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
-                            color: ChiGlowTheme.darkGold,
+                            color: ChiGlowTheme.bronzeGold,
                           ),
                         ),
                       ],
@@ -138,26 +145,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: ChiGlowTheme.deepRed,
                         height: 1.5,
                       ),
-                    ),
-                    const SizedBox(height: 12),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.auto_awesome, size: 12, color: ChiGlowTheme.warmGold.withValues(alpha: 0.6)),
-                        const SizedBox(width: 6),
-                        Flexible(
-                          child: Text(
-                            wisdom,
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.quicksand(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                              color: ChiGlowTheme.warmGold.withValues(alpha: 0.9),
-                              fontStyle: FontStyle.italic,
-                            ),
-                          ),
-                        ),
-                      ],
                     ),
                   ],
                 ),
@@ -182,12 +169,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.circular(24),
                     boxShadow: [
                       BoxShadow(
-                        color: ChiGlowTheme.luckyRed.withValues(alpha: 0.4),
+                        color: ChiGlowTheme.richRed.withValues(alpha: 0.4),
                         blurRadius: 24,
                         offset: const Offset(0, 8),
                       ),
                       BoxShadow(
-                        color: ChiGlowTheme.warmGold.withValues(alpha: 0.15),
+                        color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.15),
                         blurRadius: 32,
                         spreadRadius: 2,
                       ),
@@ -235,7 +222,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       emoji: '🐉',
                       title: 'Zodiac Energy\nProfile',
                       onTap: () => Navigator.pushNamed(context, '/zodiac-profile'),
-                      color: ChiGlowTheme.luckyRed,
+                      color: ChiGlowTheme.richRed,
                     ),
                   ),
                   const SizedBox(width: 12),
@@ -244,7 +231,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       emoji: '🧭',
                       title: 'Use Feng Shui\nCompass',
                       onTap: () => Navigator.pushNamed(context, '/compass'),
-                      color: ChiGlowTheme.warmGold,
+                      color: ChiGlowTheme.bronzeGold,
                     ),
                   ),
                 ],
@@ -252,32 +239,32 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 20),
               // Energy Dashboard preview
               GlowCard(
-                glowColor: ChiGlowTheme.luckyRed,
+                glowColor: ChiGlowTheme.richRed,
                 onTap: () => Navigator.pushNamed(context, '/energy-dashboard'),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       children: [
-                        Icon(Icons.energy_savings_leaf, size: 18, color: ChiGlowTheme.luckyRed),
+                        Icon(Icons.energy_savings_leaf, size: 18, color: ChiGlowTheme.richRed),
                         const SizedBox(width: 8),
                         Text(
-                          'Energy Dashboard',
+                          '🪷 Energy Dashboard',
                           style: GoogleFonts.poppins(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
-                            color: ChiGlowTheme.luckyRed,
+                            color: ChiGlowTheme.richRed,
                           ),
                         ),
                         const Spacer(),
-                        Icon(Icons.arrow_forward_ios, size: 14, color: ChiGlowTheme.luckyRed),
+                        Icon(Icons.arrow_forward_ios, size: 14, color: ChiGlowTheme.richRed),
                       ],
                     ),
                     const SizedBox(height: 12),
-                    _EnergyBar(label: 'Love 💖', value: provider.loveScore, barColor: ChiGlowTheme.brightRed),
-                    _EnergyBar(label: 'Wealth 💰', value: provider.wealthScore, barColor: ChiGlowTheme.warmGold),
-                    _EnergyBar(label: 'Health 🌿', value: provider.healthScore, barColor: ChiGlowTheme.luckyRed),
-                    _EnergyBar(label: 'Career 🧭', value: provider.careerScore, barColor: ChiGlowTheme.warmGold),
+                    _EnergyBar(label: 'Love 💖', value: provider.loveScore, barColor: ChiGlowTheme.softRed),
+                    _EnergyBar(label: 'Wealth 💰', value: provider.wealthScore, barColor: ChiGlowTheme.bronzeGold),
+                    _EnergyBar(label: 'Health 🌿', value: provider.healthScore, barColor: ChiGlowTheme.richRed),
+                    _EnergyBar(label: 'Career 🧭', value: provider.careerScore, barColor: ChiGlowTheme.bronzeGold),
                   ],
                 ),
               ),
@@ -286,7 +273,6 @@ class _HomeScreenState extends State<HomeScreen> {
               Row(
                 children: [
                   _QuickAction(emoji: '🎨', label: 'Color\nCoach', onTap: () => Navigator.pushNamed(context, '/color-coaching')),
-                  _QuickAction(emoji: '🐟', label: 'Koi\nAffirm', onTap: () => Navigator.pushNamed(context, '/koi-affirmations')),
                   _QuickAction(emoji: '📅', label: 'Year\nAhead', onTap: () => Navigator.pushNamed(context, '/year-ahead')),
                   _QuickAction(emoji: '⚙️', label: 'Settings', onTap: () => Navigator.pushNamed(context, '/settings')),
                 ],
@@ -300,15 +286,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        ChiGlowTheme.warmGold.withValues(alpha: 0.12),
-                        ChiGlowTheme.luckyRed.withValues(alpha: 0.06),
+                        ChiGlowTheme.bronzeGold.withValues(alpha: 0.12),
+                        ChiGlowTheme.richRed.withValues(alpha: 0.06),
                       ],
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
                     ),
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(
-                      color: ChiGlowTheme.warmGold.withValues(alpha: 0.25),
+                      color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.25),
                     ),
                   ),
                   child: Row(
@@ -316,7 +302,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Container(
                         padding: const EdgeInsets.all(6),
                         decoration: BoxDecoration(
-                          color: ChiGlowTheme.luckyRed.withValues(alpha: 0.1),
+                          color: ChiGlowTheme.richRed.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: const Text('👑', style: TextStyle(fontSize: 18)),
@@ -331,14 +317,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               style: GoogleFonts.poppins(
                                 fontSize: 13,
                                 fontWeight: FontWeight.w600,
-                                color: ChiGlowTheme.luckyRed,
+                                color: ChiGlowTheme.richRed,
                               ),
                             ),
                             Text(
                               'Unlimited scans, full zodiac & more',
                               style: GoogleFonts.quicksand(
                                 fontSize: 11,
-                                color: ChiGlowTheme.warmGold,
+                                color: ChiGlowTheme.bronzeGold,
                               ),
                             ),
                           ],
@@ -348,7 +334,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                         decoration: BoxDecoration(
                           gradient: const LinearGradient(
-                            colors: [ChiGlowTheme.luckyRed, ChiGlowTheme.brightRed],
+                            colors: [ChiGlowTheme.richRed, ChiGlowTheme.softRed],
                           ),
                           borderRadius: BorderRadius.circular(12),
                         ),
@@ -492,10 +478,10 @@ class _QuickAction extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.white.withValues(alpha: 0.95),
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: ChiGlowTheme.luckyRed.withValues(alpha: 0.12)),
+            border: Border.all(color: ChiGlowTheme.richRed.withValues(alpha: 0.12)),
             boxShadow: [
               BoxShadow(
-                color: ChiGlowTheme.luckyRed.withValues(alpha: 0.04),
+                color: ChiGlowTheme.richRed.withValues(alpha: 0.04),
                 blurRadius: 8,
                 offset: const Offset(0, 2),
               ),
