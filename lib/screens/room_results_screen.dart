@@ -128,7 +128,7 @@ class RoomResultsScreen extends StatelessWidget {
                           const SizedBox(height: 4),
                           Text(
                             tip['description'] ?? '',
-                            style: GoogleFonts.quicksand(fontSize: 13, color: const ChiGlowTheme.mediumGray, height: 1.5),
+                            style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.mediumGray, height: 1.5),
                           ),
                         ],
                       ),

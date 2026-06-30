@@ -6,6 +6,7 @@ import '../services/content_service.dart';
 import 'package:provider/provider.dart';
 import '../providers/app_state_provider.dart';
 import '../utils/asset_images.dart';
+import '../widgets/chi_particles.dart';
 import 'dart:math' as math;
 
 class HomeScreen extends StatefulWidget {
@@ -23,9 +24,10 @@ class _HomeScreenState extends State<HomeScreen> {
     final affirmationTheme = ContentService.affirmationThemeForToday();
 
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(20),
+      body: ChiParticles(
+        child: SafeArea(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -297,6 +299,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 24),
             ],
           ),
+        ),
         ),
       ),
     );
