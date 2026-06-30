@@ -105,6 +105,7 @@ class _ColorCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorValue = Color(int.parse(hex.replaceFirst('#', '0xFF')));
+    final isLightColor = hex == '#FFFFFF' || hex == '#E0E0E0' || hex == '#FFF8E7';
 
     return GlowCard(
       glowColor: colorValue,
@@ -117,6 +118,9 @@ class _ColorCard extends StatelessWidget {
             decoration: BoxDecoration(
               color: colorValue,
               borderRadius: BorderRadius.circular(12),
+              border: isLightColor
+                  ? Border.all(color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.3), width: 1.5)
+                  : null,
               boxShadow: [
                 BoxShadow(color: colorValue.withValues(alpha: 0.4), blurRadius: 8),
               ],
