@@ -131,6 +131,12 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                     style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
                   ),
                   const SizedBox(height: 8),
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
+                    children: (data['compatible'] as List<String>).map((sign) => _SignChip(sign: sign, compatible: true)).toList(),
+                  ),
+                  const SizedBox(height: 10),
                   Text(
                     'Your compatible signs support and uplift your energy. Focus on these connections today.',
                     style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.mediumGray, height: 1.5),
@@ -333,6 +339,38 @@ class _DirectionOfDayCard extends StatelessWidget {
             style: GoogleFonts.quicksand(fontSize: 10, color: ChiGlowTheme.mediumGray, height: 1.4),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _SignChip extends StatelessWidget {
+  final String sign;
+  final bool compatible;
+
+  const _SignChip({required this.sign, required this.compatible});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+      decoration: BoxDecoration(
+        color: compatible
+            ? ChiGlowTheme.richRed.withValues(alpha: 0.1)
+            : ChiGlowTheme.bronzeGold.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: compatible ? ChiGlowTheme.richRed : ChiGlowTheme.bronzeGold,
+          width: 1,
+        ),
+      ),
+      child: Text(
+        sign,
+        style: GoogleFonts.quicksand(
+          fontSize: 13,
+          fontWeight: FontWeight.w600,
+          color: compatible ? ChiGlowTheme.richRed : ChiGlowTheme.bronzeGold,
+        ),
       ),
     );
   }
