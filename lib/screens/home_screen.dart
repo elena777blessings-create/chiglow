@@ -86,25 +86,26 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   ),
-                  // Koi icon — red & white with premium badge
-                  Stack(
-                    clipBehavior: Clip.none,
-                    children: [
-                      Container(
-                        width: 52,
-                        height: 52,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          gradient: LinearGradient(
-                            colors: [ChiGlowTheme.richRed, ChiGlowTheme.softRed],
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: ChiGlowTheme.richRed.withValues(alpha: 0.3),
-                              blurRadius: 12,
-                            ),
-                          ],
+                  // Koi icon — clean and minimal
+                  GestureDetector(
+                    onTap: () => Navigator.pushNamed(context, '/upgrade'),
+                    child: Container(
+                      width: 52,
+                      height: 52,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        gradient: LinearGradient(
+                          colors: [ChiGlowTheme.richRed, ChiGlowTheme.softRed],
                         ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: ChiGlowTheme.richRed.withValues(alpha: 0.3),
+                            blurRadius: 12,
+                          ),
+                        ],
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(26),
                         child: Image.asset(
                           AssetImages.koiImage('white'),
                           width: 52,
@@ -112,34 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      // Premium badge
-                      Positioned(
-                        top: -4,
-                        right: -4,
-                        child: GestureDetector(
-                          onTap: () => Navigator.pushNamed(context, '/upgrade'),
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                            decoration: BoxDecoration(
-                              gradient: const LinearGradient(
-                                colors: [ChiGlowTheme.bronzeGold, ChiGlowTheme.softRed],
-                              ),
-                              borderRadius: BorderRadius.circular(8),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.4),
-                                  blurRadius: 6,
-                                ),
-                              ],
-                            ),
-                            child: Text(
-                              '💎',
-                              style: const TextStyle(fontSize: 12),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),
