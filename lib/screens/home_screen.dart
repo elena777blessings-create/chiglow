@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import '../providers/app_state_provider.dart';
 import '../utils/asset_images.dart';
 import '../widgets/chi_particles.dart';
+import '../widgets/page_header.dart';
 import 'dart:math' as math;
 
 class HomeScreen extends StatefulWidget {
@@ -32,9 +33,10 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 8),
-              // Header with koi icon
+              // Header with koi icon — premium wordmark
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,15 +47,42 @@ class _HomeScreenState extends State<HomeScreen> {
                           fontSize: 14,
                           color: ChiGlowTheme.bronzeGold,
                           fontWeight: FontWeight.w600,
+                          letterSpacing: 0.5,
                         ),
                       ),
+                      const SizedBox(height: 4),
                       Text(
                         'ChiGlow',
                         style: GoogleFonts.playfairDisplay(
-                          fontSize: 34,
+                          fontSize: 40,
                           fontWeight: FontWeight.w700,
                           color: ChiGlowTheme.richRed,
+                          height: 1.0,
                         ),
+                      ),
+                      // Decorative flourish — lotus motif
+                      const SizedBox(height: 8),
+                      Row(
+                        children: [
+                          Container(
+                            width: 40,
+                            height: 1,
+                            color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.3),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 6),
+                            child: SizedBox(
+                              width: 14,
+                              height: 14,
+                              child: Image.asset(AssetImages.lotusGold, fit: BoxFit.contain),
+                            ),
+                          ),
+                          Container(
+                            width: 40,
+                            height: 1,
+                            color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.3),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -158,24 +187,22 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () => Navigator.pushNamed(context, '/room-scan'),
               ),
               const SizedBox(height: 20),
-              // Secondary buttons row
+              // Secondary buttons row — cream + gold border
               Row(
                 children: [
                   Expanded(
-                    child: _SecondaryButton(
+                    child: SecondaryButton(
                       emoji: '🐉',
                       title: 'Zodiac Energy\nProfile',
                       onTap: () => Navigator.pushNamed(context, '/zodiac-profile'),
-                      color: ChiGlowTheme.richRed,
                     ),
                   ),
                   const SizedBox(width: 12),
                   Expanded(
-                    child: _SecondaryButton(
+                    child: SecondaryButton(
                       emoji: '🧭',
                       title: 'Use Feng Shui\nCompass',
                       onTap: () => Navigator.pushNamed(context, '/compass'),
-                      color: ChiGlowTheme.bronzeGold,
                     ),
                   ),
                 ],
@@ -524,56 +551,6 @@ class _ParticleWidgetState extends State<_ParticleWidget>
           ),
         );
       },
-    );
-  }
-}
-
-class _SecondaryButton extends StatelessWidget {
-  final String emoji;
-  final String title;
-  final VoidCallback onTap;
-  final Color color;
-
-  const _SecondaryButton({
-    required this.emoji,
-    required this.title,
-    required this.onTap,
-    required this.color,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              color.withValues(alpha: 0.08),
-              color.withValues(alpha: 0.02),
-            ],
-          ),
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: color.withValues(alpha: 0.3), width: 1.5),
-        ),
-        child: Column(
-          children: [
-            Text(emoji, style: const TextStyle(fontSize: 28)),
-            const SizedBox(height: 8),
-            Text(
-              title,
-              textAlign: TextAlign.center,
-              style: GoogleFonts.quicksand(
-                fontSize: 13,
-                fontWeight: FontWeight.w600,
-                color: color,
-                height: 1.3,
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
 import '../providers/app_state_provider.dart';
+import '../widgets/page_header.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -13,17 +14,12 @@ class SettingsScreen extends StatelessWidget {
     final provider = context.watch<AppStateProvider>();
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Settings', style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600)),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        foregroundColor: ChiGlowTheme.richRed,
-      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            PageHeader(title: 'Settings', showFlourish: false, titleSize: 24),
             // Profile section
             Text(
               '🪷 Profile',

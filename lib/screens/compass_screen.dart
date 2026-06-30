@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
+import '../widgets/page_header.dart';
 
 class CompassScreen extends StatefulWidget {
   const CompassScreen({super.key});
@@ -59,16 +60,11 @@ class _CompassScreenState extends State<CompassScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Feng Shui Compass', style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600)),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        foregroundColor: ChiGlowTheme.richRed,
-      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
+            PageHeader(title: 'Feng Shui Compass', subtitle: 'Find your Bagua sectors', titleSize: 26),
             if (_isCalibrating)
               GlowCard(
                 child: Column(

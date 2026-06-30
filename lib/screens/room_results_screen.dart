@@ -4,6 +4,7 @@ import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
 import '../services/content_service.dart';
 import '../utils/asset_images.dart';
+import '../widgets/page_header.dart';
 
 class RoomResultsScreen extends StatelessWidget {
   final String roomType;
@@ -20,18 +21,18 @@ class RoomResultsScreen extends StatelessWidget {
     final tips = ContentService.tipsForRoom(roomType);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('$roomType Analysis', style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600)),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        foregroundColor: ChiGlowTheme.richRed,
-      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Room illustration
+            // Page header
+            PageHeader(
+              title: '$roomType Analysis',
+              subtitle: 'ChiGlow Feng Shui guidance for your space',
+              showFlourish: true,
+              titleSize: 24,
+            ),
             SizedBox(
               width: double.infinity,
               height: 180,
@@ -63,7 +64,7 @@ class RoomResultsScreen extends StatelessWidget {
                       left: 16,
                       child: Text(
                         roomType,
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.playfairDisplay(
                           fontSize: 20,
                           fontWeight: FontWeight.w700,
                           color: Colors.white,

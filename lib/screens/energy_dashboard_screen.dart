@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
+import '../widgets/page_header.dart';
 import '../providers/app_state_provider.dart';
 
 class EnergyDashboardScreen extends StatelessWidget {
@@ -13,17 +14,12 @@ class EnergyDashboardScreen extends StatelessWidget {
     final provider = context.watch<AppStateProvider>();
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Energy Dashboard', style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600)),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        foregroundColor: ChiGlowTheme.richRed,
-      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            PageHeader(title: 'Energy Dashboard', subtitle: 'Your Chi balance at a glance', titleSize: 26),
             // Overall energy
             Center(
               child: Container(

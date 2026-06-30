@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
 import '../utils/asset_images.dart';
+import '../widgets/page_header.dart';
 
 class RoomScanScreen extends StatefulWidget {
   const RoomScanScreen({super.key});
@@ -23,17 +24,16 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Scan Your Space', style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600)),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        foregroundColor: ChiGlowTheme.richRed,
-      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            // Camera preview area
+            // Page header
+            PageHeader(
+              title: 'Scan Your Space',
+              subtitle: 'Discover the energy of your room',
+              titleSize: 26,
+            ),
             GestureDetector(
               onTap: _pickImage,
               child: Container(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
+import '../widgets/page_header.dart';
 import '../services/content_service.dart';
 
 class ColorCoachingScreen extends StatelessWidget {
@@ -10,17 +11,12 @@ class ColorCoachingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Color Coaching', style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600)),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        foregroundColor: ChiGlowTheme.richRed,
-      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            PageHeader(title: 'Color Coaching', subtitle: 'Discover colors that support your goals', titleSize: 26),
             // Intro
             GlowCard(
               glowColor: ChiGlowTheme.bronzeGold,
