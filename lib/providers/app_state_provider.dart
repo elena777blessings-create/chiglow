@@ -70,7 +70,7 @@ class AppStateProvider extends ChangeNotifier {
   static const Map<String, Map<String, dynamic>> zodiacData = {
     'Rat': {
       'element': 'Water',
-      'luckyColor': '#5B9BD5',
+      'luckyColor': 'Blue',
       'luckyDirection': 'Southeast',
       'compatible': ['Dragon', 'Monkey', 'Ox'],
       'incompatible': ['Horse', 'Rooster'],
@@ -78,7 +78,7 @@ class AppStateProvider extends ChangeNotifier {
     },
     'Ox': {
       'element': 'Earth',
-      'luckyColor': '#FFD700',
+      'luckyColor': 'Gold',
       'luckyDirection': 'Northeast',
       'compatible': ['Rat', 'Snake', 'Rooster'],
       'incompatible': ['Tiger', 'Goat'],
@@ -86,7 +86,7 @@ class AppStateProvider extends ChangeNotifier {
     },
     'Tiger': {
       'element': 'Wood',
-      'luckyColor': '#4CAF50',
+      'luckyColor': 'Green',
       'luckyDirection': 'East',
       'compatible': ['Horse', 'Dog', 'Pig'],
       'incompatible': ['Monkey', 'Snake'],
@@ -94,7 +94,7 @@ class AppStateProvider extends ChangeNotifier {
     },
     'Rabbit': {
       'element': 'Wood',
-      'luckyColor': '#FF8A65',
+      'luckyColor': 'Orange',
       'luckyDirection': 'West',
       'compatible': ['Goat', 'Pig', 'Dog'],
       'incompatible': ['Rooster', 'Rat'],
@@ -102,7 +102,7 @@ class AppStateProvider extends ChangeNotifier {
     },
     'Dragon': {
       'element': 'Earth',
-      'luckyColor': '#FFD700',
+      'luckyColor': 'Gold',
       'luckyDirection': 'South',
       'compatible': ['Rat', 'Monkey', 'Rooster'],
       'incompatible': ['Dog', 'Rabbit'],
@@ -110,7 +110,7 @@ class AppStateProvider extends ChangeNotifier {
     },
     'Snake': {
       'element': 'Fire',
-      'luckyColor': '#FF8A65',
+      'luckyColor': 'Orange',
       'luckyDirection': 'Southwest',
       'compatible': ['Ox', 'Rooster', 'Monkey'],
       'incompatible': ['Tiger', 'Pig'],
@@ -118,7 +118,7 @@ class AppStateProvider extends ChangeNotifier {
     },
     'Horse': {
       'element': 'Fire',
-      'luckyColor': '#CE93D8',
+      'luckyColor': 'Purple',
       'luckyDirection': 'Northwest',
       'compatible': ['Tiger', 'Goat', 'Dog'],
       'incompatible': ['Rat', 'Ox'],
@@ -126,7 +126,7 @@ class AppStateProvider extends ChangeNotifier {
     },
     'Goat': {
       'element': 'Earth',
-      'luckyColor': '#FFF8E7',
+      'luckyColor': 'White',
       'luckyDirection': 'South',
       'compatible': ['Rabbit', 'Horse', 'Pig'],
       'incompatible': ['Ox', 'Dog'],
@@ -134,7 +134,7 @@ class AppStateProvider extends ChangeNotifier {
     },
     'Monkey': {
       'element': 'Metal',
-      'luckyColor': '#9E9E9E',
+      'luckyColor': 'Gray',
       'luckyDirection': 'Northeast',
       'compatible': ['Rat', 'Dragon', 'Snake'],
       'incompatible': ['Tiger', 'Pig'],
@@ -142,7 +142,7 @@ class AppStateProvider extends ChangeNotifier {
     },
     'Rooster': {
       'element': 'Metal',
-      'luckyColor': '#FFD700',
+      'luckyColor': 'Gold',
       'luckyDirection': 'Southeast',
       'compatible': ['Ox', 'Dragon', 'Snake'],
       'incompatible': ['Rabbit', 'Rat'],
@@ -150,7 +150,7 @@ class AppStateProvider extends ChangeNotifier {
     },
     'Dog': {
       'element': 'Earth',
-      'luckyColor': '#5B9BD5',
+      'luckyColor': 'Blue',
       'luckyDirection': 'East',
       'compatible': ['Tiger', 'Rabbit', 'Horse'],
       'incompatible': ['Dragon', 'Goat'],
@@ -158,7 +158,7 @@ class AppStateProvider extends ChangeNotifier {
     },
     'Pig': {
       'element': 'Water',
-      'luckyColor': '#4CAF50',
+      'luckyColor': 'Green',
       'luckyDirection': 'West',
       'compatible': ['Tiger', 'Rabbit', 'Goat'],
       'incompatible': ['Snake', 'Monkey'],
