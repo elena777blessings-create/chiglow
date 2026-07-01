@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/global_header.dart';
-import '../widgets/global_header.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
-import '../services/content_service.dart';
 import '../widgets/glow_card.dart';
 
 class KoiAffirmationsScreen extends StatefulWidget {
@@ -16,6 +14,70 @@ class KoiAffirmationsScreen extends StatefulWidget {
 class _KoiAffirmationsScreenState extends State<KoiAffirmationsScreen> {
   int? _selectedKoiIndex;
 
+  // Inline koi fish data with affirmations
+  static const List<Map<String, dynamic>> _koiFish = [
+    {
+      'name': 'Sakura',
+      'emoji': '🌸',
+      'icon': '🎴',
+      'area': 'Love & Relationships',
+      'color': 0xFFFF6B8A,
+      'affirmations': [
+        'I attract loving and harmonious relationships into my life.',
+        'My heart is open to giving and receiving love.',
+        'I am surrounded by warmth, kindness, and compassion.',
+      ],
+    },
+    {
+      'name': 'Kin',
+      'emoji': '🐟',
+      'icon': '💰',
+      'area': 'Wealth & Abundance',
+      'color': 0xFFD4A34A,
+      'affirmations': [
+        'Abundance flows freely into my life from all directions.',
+        'I am a magnet for prosperity and success.',
+        'Every day brings new opportunities for wealth.',
+      ],
+    },
+    {
+      'name': 'Midori',
+      'emoji': '🍃',
+      'icon': '🌿',
+      'area': 'Health & Vitality',
+      'color': 0xFF6B9B6B,
+      'affirmations': [
+        'My body is healthy, vibrant, and full of energy.',
+        'I nurture my well-being with every choice I make.',
+        'Healing energy flows through every cell of my being.',
+      ],
+    },
+    {
+      'name': 'Sora',
+      'emoji': '🌊',
+      'icon': '🧭',
+      'area': 'Career & Life Path',
+      'color': 0xFF5B9BD5,
+      'affirmations': [
+        'I am guided toward my true purpose every day.',
+        'My career path is filled with success and fulfillment.',
+        'I confidently pursue my dreams and goals.',
+      ],
+    },
+    {
+      'name': 'Hikari',
+      'emoji': '✨',
+      'icon': '🌟',
+      'area': 'Personal Growth',
+      'color': 0xFF9B7BB5,
+      'affirmations': [
+        'I grow stronger and wiser with every experience.',
+        'My inner light shines brightly for all to see.',
+        'I embrace change and transformation with grace.',
+      ],
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +85,7 @@ class _KoiAffirmationsScreenState extends State<KoiAffirmationsScreen> {
         title: Text('Koi Affirmations', style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600)),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        foregroundColor: ChiGlowTheme.luckyRed,
+        foregroundColor: ChiGlowTheme.richRed,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
@@ -32,18 +94,11 @@ class _KoiAffirmationsScreenState extends State<KoiAffirmationsScreen> {
           children: [
             // Header
             const GlobalHeader(title: 'Koi Affirmations', subtitle: 'Wisdom from the pond'),
-            const SizedBox(height: 8),
-                    style: GoogleFonts.quicksand(
-                      fontSize: 14,
-                      color: ChiGlowTheme.deepRed.withValues(alpha: 0.7),
-                      height: 1.4,
-                    ),
-                  ),
             const SizedBox(height: 24),
 
             // Koi fish cards
-            ...List.generate(ContentService.koiFish.length, (index) {
-              final koi = ContentService.koiFish[index];
+            ...List.generate(_koiFish.length, (index) {
+              final koi = _koiFish[index];
               final isSelected = _selectedKoiIndex == index;
 
               return Padding(
@@ -93,7 +148,7 @@ class _KoiAffirmationsScreenState extends State<KoiAffirmationsScreen> {
                                     style: GoogleFonts.poppins(
                                       fontSize: 18,
                                       fontWeight: FontWeight.w600,
-                                      color: ChiGlowTheme.luckyRed,
+                                      color: ChiGlowTheme.richRed,
                                     ),
                                   ),
                                   const SizedBox(height: 2),
@@ -121,7 +176,7 @@ class _KoiAffirmationsScreenState extends State<KoiAffirmationsScreen> {
                             ),
                             Icon(
                               isSelected ? Icons.expand_less : Icons.expand_more,
-                              color: ChiGlowTheme.luckyRed.withValues(alpha: 0.5),
+                              color: ChiGlowTheme.richRed.withValues(alpha: 0.5),
                             ),
                           ],
                         ),
@@ -129,7 +184,7 @@ class _KoiAffirmationsScreenState extends State<KoiAffirmationsScreen> {
                         // Expanded affirmations
                         if (isSelected) ...[
                           const SizedBox(height: 16),
-                          Divider(color: ChiGlowTheme.luckyRed.withValues(alpha: 0.1)),
+                          Divider(color: ChiGlowTheme.richRed.withValues(alpha: 0.1)),
                           const SizedBox(height: 12),
                           ...List.generate(
                             (koi['affirmations'] as List<String>).length,

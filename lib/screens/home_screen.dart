@@ -9,7 +9,6 @@ import '../utils/asset_images.dart';
 import '../widgets/chi_particles.dart';
 import '../widgets/global_header.dart';
 import '../widgets/page_header.dart';
-import 'dart:math' as math;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -33,93 +32,9 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 8),
-              // Header with koi icon — premium wordmark
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Good ${_timeOfDay()},',
-                        style: GoogleFonts.quicksand(
-                          fontSize: 14,
-                          color: ChiGlowTheme.bronzeGold,
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: 0.5,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        'ChiGlow',
-                        style: GoogleFonts.playfairDisplay(
-                          fontSize: 40,
-                          fontWeight: FontWeight.w700,
-                          color: ChiGlowTheme.richRed,
-                          height: 1.0,
-                        ),
-                      ),
-                      // Decorative flourish — lotus motif
-                      const SizedBox(height: 8),
-                      Row(
-                        children: [
-                          Container(
-                            width: 40,
-                            height: 1,
-                            color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.3),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 6),
-                            child: SizedBox(
-                              width: 14,
-                              height: 14,
-                              child: Image.asset(AssetImages.lotusGold, fit: BoxFit.contain),
-                            ),
-                          ),
-                          Container(
-                            width: 40,
-                            height: 1,
-                            color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.3),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  // Koi icon — clean and minimal
-                  GestureDetector(
-                    onTap: () => Navigator.pushNamed(context, '/upgrade'),
-                    child: Container(
-                      width: 52,
-                      height: 52,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        gradient: LinearGradient(
-                          colors: [ChiGlowTheme.richRed, ChiGlowTheme.softRed],
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: ChiGlowTheme.richRed.withValues(alpha: 0.3),
-                            blurRadius: 12,
-                          ),
-                        ],
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(26),
-                        child: Image.asset(
-                          AssetImages.koiImage('white'),
-                          width: 52,
-                          height: 52,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 8),
-              // Daily affirmation — bronze gold themed
+              const GlobalHeader(title: 'ChiGlow', subtitle: 'Your daily energy guide'),
+            const SizedBox(height: 16),
+            // Daily affirmation — bronze gold themed
               GlowCard(
                 glowColor: ChiGlowTheme.bronzeGold,
                 child: Column(
@@ -306,14 +221,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
-  String _timeOfDay() {
-    final hour = DateTime.now().hour;
-    if (hour < 12) return 'morning';
-    if (hour < 17) return 'afternoon';
-    return 'evening';
   }
-}
 
 /// Sunrise Coral CTA button with tap animation
 class _SunriseCtaButton extends StatefulWidget {
