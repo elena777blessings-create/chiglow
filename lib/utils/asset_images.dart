@@ -31,6 +31,12 @@ class AssetImages {
   /// Gold lotus decorative image
   static const String lotusGold = 'assets/images/lotus_gold.png';
 
+  /// Designer header assets — Global Page Design Standard v2.0
+  static const String headerLotus = 'assets/images/header_lotus.png';
+  static const String headerKoi = 'assets/images/header_koi.png';
+  static const String lotusFlourish = 'assets/images/lotus_flourish.png';
+  static const String goldDivider = 'assets/images/gold_divider.png';
+
   /// Splash screen artwork
   static const String splashArt = 'assets/images/splash_artwork.png';
 

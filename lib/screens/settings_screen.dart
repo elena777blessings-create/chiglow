@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
 import '../providers/app_state_provider.dart';
-import '../widgets/page_header.dart';
+import '../widgets/global_header.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -19,7 +19,7 @@ class SettingsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            PageHeader(title: 'Settings', showFlourish: false, titleSize: 24),
+            GlobalHeader(title: 'Settings'),
             // Profile section
             Text(
               '🪷 Profile',

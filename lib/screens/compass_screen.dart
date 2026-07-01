@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
-import '../widgets/page_header.dart';
+import '../widgets/global_header.dart';
 
 class CompassScreen extends StatefulWidget {
   const CompassScreen({super.key});
@@ -64,7 +64,7 @@ class _CompassScreenState extends State<CompassScreen> {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            PageHeader(title: 'Feng Shui Compass', subtitle: 'Find your Bagua sectors', titleSize: 26),
+            GlobalHeader(title: 'Feng Shui Compass', subtitle: 'Find your Bagua sectors'),
             if (_isCalibrating)
               GlowCard(
                 child: Column(

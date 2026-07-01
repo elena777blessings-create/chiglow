@@ -1,20 +1,25 @@
 /// ChiGlow - Feng Shui Wellness App Theme
-/// Design & Experience Guidelines v1.0
-/// Rich ChiGlow Red headings, Warm Bronze Gold labels, Charcoal body, Medium Gray supporting.
+/// Global Page Design Standard v2.0
+/// Warm burgundy headings, warm bronze gold, cream/ivory backgrounds, crystal blue chi effects.
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ChiGlowTheme {
-  // Core palette — v1.0 Design Guidelines
-  static const Color richRed = Color(0xFFB33A35);      // Primary heading color
-  static const Color bronzeGold = Color(0xFFA67C2E);    // Labels
-  static const Color charcoal = Color(0xFF4A4A4A);      // Body text
-  static const Color mediumGray = Color(0xFF707070);     // Supporting text
-  static const Color accentGold = Color(0xFFFFD700);     // Icons/badges/decorative only
-  static const Color creamWhite = Color(0xFFFFF8E7);    // Backgrounds
-  static const Color ivoryBg = Color(0xFFFDF5E6);       // Alternate background
-  static const Color deepRed = Color(0xFF8B1A1A);       // Deep variant
-  static const Color softRed = Color(0xFFD35A55);       // Lighter variant
+  // Core palette — v2.0 Global Design Standard
+  static const Color richRed = Color(0xFF5B1F18);      // Primary heading color — warm burgundy
+  static const Color bronzeGold = Color(0xFFA67C2E);    // Labels, accents
+  static const Color charcoal = Color(0xFF3C3C3C);      // Body text — warm charcoal
+  static const Color mediumGray = Color(0xFF5C5C5C);    // Supporting text
+  static const Color accentGold = Color(0xFFFFD700);    // Icons/badges/decorative only
+  static const Color creamWhite = Color(0xFFFFF8E7);    // Primary background — warm ivory
+  static const Color ivoryBg = Color(0xFFFDF5E6);       // Alternate background — soft cream
+  static const Color deepRed = Color(0xFF5B1F18);       // Deep variant (same as burgundy)
+  static const Color softRed = Color(0xFF7A3A33);       // Lighter variant
+  static const Color crystalBlue = Color(0xFF5B9BD5);   // Chi energy effects only
+  static const Color warmGold = Color(0xFFD4A34A);      // Warm gold accent
+  static const Color softChampagne = Color(0xFFF5E6CC); // Soft champagne
+  static const Color mutedBronze = Color(0xFF8B7355);   // Muted bronze
+  static const Color pearlWhite = Color(0xFFF0EDE5);    // Pearl white
 
   static ThemeData get lightTheme {
     return ThemeData(
@@ -120,9 +125,9 @@ class ChiGlowTheme {
         ),
       ),
       cardTheme: CardThemeData(
-        color: Colors.white.withValues(alpha: 0.95),
+        color: creamWhite.withValues(alpha: 0.95),
         elevation: 1,
-        shadowColor: richRed.withValues(alpha: 0.08),
+        shadowColor: bronzeGold.withValues(alpha: 0.08),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
@@ -138,7 +143,7 @@ class ChiGlowTheme {
   }
 }
 
-/// Glow effect decoration — subtle red glow with bronze tint
+/// Glow effect decoration — v2.0: warm gold glow with cream background
 BoxDecoration glowDecoration({
   Color color = ChiGlowTheme.richRed,
   double blurRadius = 10,
@@ -146,9 +151,13 @@ BoxDecoration glowDecoration({
   return BoxDecoration(
     color: ChiGlowTheme.creamWhite,
     borderRadius: BorderRadius.circular(20),
+    border: Border.all(
+      color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.12),
+      width: 1,
+    ),
     boxShadow: [
       BoxShadow(
-        color: color.withValues(alpha: 0.1),
+        color: color.withValues(alpha: 0.08),
         blurRadius: blurRadius,
         spreadRadius: 0,
         offset: const Offset(0, 4),

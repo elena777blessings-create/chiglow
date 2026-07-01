@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
-import '../widgets/page_header.dart';
+import '../widgets/global_header.dart';
 import '../services/content_service.dart';
 
 class ColorCoachingScreen extends StatelessWidget {
@@ -16,7 +16,7 @@ class ColorCoachingScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            PageHeader(title: 'Color Coaching', subtitle: 'Discover colors that support your goals', titleSize: 26),
+            GlobalHeader(title: 'Color Coaching', subtitle: 'Discover colors that support your goals'),
             // Intro
             GlowCard(
               glowColor: ChiGlowTheme.bronzeGold,

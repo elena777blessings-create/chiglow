@@ -4,7 +4,7 @@ import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
 import '../services/content_service.dart';
 import '../utils/asset_images.dart';
-import '../widgets/page_header.dart';
+import '../widgets/global_header.dart';
 
 class RoomResultsScreen extends StatelessWidget {
   final String roomType;
@@ -27,11 +27,9 @@ class RoomResultsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Page header
-            PageHeader(
+            GlobalHeader(
               title: '$roomType Analysis',
               subtitle: 'ChiGlow Feng Shui guidance for your space',
-              showFlourish: true,
-              titleSize: 24,
             ),
             SizedBox(
               width: double.infinity,

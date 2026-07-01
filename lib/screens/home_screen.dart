@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import '../providers/app_state_provider.dart';
 import '../utils/asset_images.dart';
 import '../widgets/chi_particles.dart';
+import '../widgets/global_header.dart';
 import '../widgets/page_header.dart';
 import 'dart:math' as math;
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 
-/// GlowCard with v1.0 design:
-/// - Soft fade-up motion on appear (10-15px, 250ms)
-/// - Subtle red glow with cream background
+/// GlowCard v2.0 — Global Design Standard:
+/// - Cream background, very light gold border, warm glow, soft shadows
+/// - Soft fade-up motion on appear
 class GlowCard extends StatefulWidget {
   final Widget child;
   final EdgeInsetsGeometry? padding;
@@ -59,25 +59,20 @@ class _GlowCardState extends State<GlowCard> with SingleTickerProviderStateMixin
       child: SlideTransition(
         position: _slide,
         child: GestureDetector(
-          onTap: () {
-            // Button press animation: 98% → 100%, 150ms
-            if (widget.onTap != null) {
-              _buttonPress();
-            }
-          },
+          onTap: widget.onTap,
           child: Container(
             padding: widget.padding ?? const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: Colors.white.withValues(alpha: 0.95),
+              color: ChiGlowTheme.creamWhite.withValues(alpha: 0.92),
               borderRadius: BorderRadius.circular(widget.borderRadius),
               border: Border.all(
-                color: (widget.glowColor ?? ChiGlowTheme.bronzeGold).withValues(alpha: 0.12),
+                color: (widget.glowColor ?? ChiGlowTheme.bronzeGold).withValues(alpha: 0.15),
                 width: 1,
               ),
               boxShadow: [
                 BoxShadow(
-                  color: (widget.glowColor ?? ChiGlowTheme.richRed).withValues(alpha: 0.08),
-                  blurRadius: 12,
+                  color: (widget.glowColor ?? ChiGlowTheme.richRed).withValues(alpha: 0.06),
+                  blurRadius: 16,
                   spreadRadius: 0,
                   offset: const Offset(0, 4),
                 ),
@@ -94,30 +89,6 @@ class _GlowCardState extends State<GlowCard> with SingleTickerProviderStateMixin
         ),
       ),
     );
-  }
-
-  void _buttonPress() {
-    // 98% → 100%, 150ms soft easing
-    final scaleController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 150),
-    );
-    final scaleAnim = Tween<double>(begin: 0.98, end: 1.0).animate(
-      CurvedAnimation(parent: scaleController, curve: Curves.easeOut),
-    );
-
-    scaleController.addListener(() {
-      setState(() {}); // Triggers rebuild for scale
-    });
-    scaleController.forward().then((_) {
-      scaleController.dispose();
-      widget.onTap?.call();
-    });
-
-    // Apply scale transform
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      setState(() {}); // Force rebuild to show scale
-    });
   }
 }
 
