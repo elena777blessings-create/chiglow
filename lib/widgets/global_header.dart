@@ -1,19 +1,23 @@
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../utils/asset_images.dart';
 
-/// Global Page Header v4.0 — every major page uses this template
+/// Global Page Header v4.1 — Official Design System
 ///
-/// Layout:
-///   CHIGLOW APP  (elegant serif, uppercase, wide spacing, warm dark gray)
-///   Large lotus artwork (left, floating)  +  [TITLE]  +  Large koi artwork (right, floating)
-///           ❀ flourish ❀             (centered lotus flourish)
-///       Flow. Grow. Bloom.            (tagline with gold dividers)
-///
-/// Uses a Stack to float the artwork naturally behind the center content.
-/// Lotus and koi display at 160-200px with soft opacity for a premium, artistic feel.
-class GlobalHeader extends StatelessWidget {
+/// Layer order (back to front):
+///   1. Soft cream background
+///   2. Gentle center glow (RadialGradient)
+///   3. Golden sparkle particles (6-8 tiny floating dots)
+///   4. Lotus artwork (left, large, floating)
+///   5. Koi artwork (right, large, floating)
+///   6. "CHIGLOW APP" brand
+///   7. Page Title
+///   8. Lotus Flourish
+///   9. "Flow. Grow. Bloom." tagline
+///   10. Optional Subtitle
+class GlobalHeader extends StatefulWidget {
   final String title;
   final String? subtitle;
   final bool showTagline;
@@ -28,14 +32,95 @@ class GlobalHeader extends StatelessWidget {
   });
 
   @override
+  State<GlobalHeader> createState() => _GlobalHeaderState();
+}
+
+class _GlobalHeaderState extends State<GlobalHeader>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _particleController;
+  final List<_Sparkle> _sparkles = [];
+  final math.Random _rng = math.Random(42);
+
+  @override
+  void initState() {
+    super.initState();
+    _particleController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 20),
+    )..repeat();
+
+    // Create 6-8 golden sparkle particles with random positions
+    for (int i = 0; i < 7; i++) {
+      _sparkles.add(_Sparkle(
+        x: _rng.nextDouble(),
+        y: _rng.nextDouble(),
+        size: 1.5 + _rng.nextDouble() * 2.5,
+        phaseX: _rng.nextDouble() * math.pi * 2,
+        phaseY: _rng.nextDouble() * math.pi * 2,
+        speed: 0.3 + _rng.nextDouble() * 0.5,
+        opacity: 0.15 + _rng.nextDouble() * 0.25,
+      ));
+    }
+  }
+
+  @override
+  void dispose() {
+    _particleController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: double.infinity,
+      decoration: BoxDecoration(
+        gradient: RadialGradient(
+          center: Alignment.center,
+          radius: 0.8,
+          colors: [
+            ChiGlowTheme.bronzeGold.withValues(alpha: 0.06),
+            Colors.transparent,
+          ],
+        ),
+      ),
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          // Large floating lotus — left side
-          if (showDecorations)
+          // Layer 3: Golden sparkle particles
+          AnimatedBuilder(
+            animation: _particleController,
+            builder: (context, child) {
+              final t = _particleController.value;
+              return ClipRect(
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 220,
+                  child: Stack(
+                    children: _sparkles.map((sparkle) {
+                      // Sine-wave drift
+                      final dx = math.sin(t * math.pi * 2 * sparkle.speed + sparkle.phaseX) * 15;
+                      final dy = math.cos(t * math.pi * 2 * sparkle.speed * 0.7 + sparkle.phaseY) * 10;
+                      return Positioned(
+                        left: sparkle.x * 80 + 10 + dx,
+                        top: sparkle.y * 180 + 10 + dy,
+                        child: Container(
+                          width: sparkle.size,
+                          height: sparkle.size,
+                          decoration: BoxDecoration(
+                            color: ChiGlowTheme.bronzeGold.withValues(alpha: sparkle.opacity),
+                            shape: BoxShape.circle,
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ),
+              );
+            },
+          ),
+
+          // Layer 4: Large floating lotus — left side
+          if (widget.showDecorations)
             Positioned(
               left: -40,
               top: -20,
@@ -50,8 +135,8 @@ class GlobalHeader extends StatelessWidget {
               ),
             ),
 
-          // Large floating koi — right side
-          if (showDecorations)
+          // Layer 5: Large floating koi — right side
+          if (widget.showDecorations)
             Positioned(
               right: -40,
               top: -10,
@@ -66,7 +151,7 @@ class GlobalHeader extends StatelessWidget {
               ),
             ),
 
-          // Center content column
+          // Layers 6-10: Center content column
           Center(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 60),
@@ -74,7 +159,7 @@ class GlobalHeader extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const SizedBox(height: 12),
-                  // Brand name — "CHIGLOW APP"
+                  // Layer 6: Brand name — "CHIGLOW APP"
                   Text(
                     'CHIGLOW APP',
                     style: GoogleFonts.playfairDisplay(
@@ -85,9 +170,9 @@ class GlobalHeader extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  // Title
+                  // Layer 7: Page Title
                   Text(
-                    title,
+                    widget.title,
                     textAlign: TextAlign.center,
                     style: GoogleFonts.playfairDisplay(
                       fontSize: 24,
@@ -97,7 +182,7 @@ class GlobalHeader extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 14),
-                  // Lotus flourish divider
+                  // Layer 8: Lotus flourish divider
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -124,8 +209,8 @@ class GlobalHeader extends StatelessWidget {
                       ),
                     ],
                   ),
-                  // Tagline
-                  if (showTagline) ...[
+                  // Layer 9: Tagline
+                  if (widget.showTagline) ...[
                     const SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -154,11 +239,11 @@ class GlobalHeader extends StatelessWidget {
                       ],
                     ),
                   ],
-                  // Subtitle
-                  if (subtitle != null) ...[
+                  // Layer 10: Subtitle
+                  if (widget.subtitle != null) ...[
                     const SizedBox(height: 12),
                     Text(
-                      subtitle!,
+                      widget.subtitle!,
                       textAlign: TextAlign.center,
                       style: GoogleFonts.quicksand(
                         fontSize: 13,
@@ -176,4 +261,25 @@ class GlobalHeader extends StatelessWidget {
       ),
     );
   }
+}
+
+/// A single golden sparkle particle with drift parameters
+class _Sparkle {
+  final double x;
+  final double y;
+  final double size;
+  final double phaseX;
+  final double phaseY;
+  final double speed;
+  final double opacity;
+
+  const _Sparkle({
+    required this.x,
+    required this.y,
+    required this.size,
+    required this.phaseX,
+    required this.phaseY,
+    required this.speed,
+    required this.opacity,
+  });
 }
