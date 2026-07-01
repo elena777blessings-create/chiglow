@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../widgets/global_header.dart';
+import '../widgets/global_header.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../theme/app_theme.dart';
@@ -25,7 +27,8 @@ class PersonalFengShuiScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Kua Header
+            const GlobalHeader(title: 'Personal Feng Shui', subtitle: 'Your Kua ${reading['kua']} · ${reading['element']} · ${reading['group']}'),
+            const SizedBox(height: 8),
             Center(
               child: Column(
                 children: [
@@ -34,12 +37,12 @@ class PersonalFengShuiScreen extends StatelessWidget {
                     height: 80,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      gradient: const LinearGradient(
-                        colors: [ChiGlowTheme.luckyRed, ChiGlowTheme.warmGold],
+                      gradient: LinearGradient(
+                        colors: [ChiGlowTheme.richRed, ChiGlowTheme.bronzeGold],
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: ChiGlowTheme.luckyRed.withValues(alpha: 0.3),
+                          color: ChiGlowTheme.richRed.withValues(alpha: 0.3),
                           blurRadius: 20,
                         ),
                       ],
@@ -57,26 +60,13 @@ class PersonalFengShuiScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    'Kua ${reading['kua']} · ${reading['element']} · ${reading['group']}',
-                    style: GoogleFonts.poppins(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: ChiGlowTheme.luckyRed,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
                     'Your personal Feng Shui directions calculated from your birth year and gender.',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.quicksand(
                       fontSize: 13,
-                      color: ChiGlowTheme.deepRed.withValues(alpha: 0.7),
+                      color: ChiGlowTheme.mediumGray.withValues(alpha: 0.8),
                     ),
                   ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 24),
 
             // Lucky Directions
             Text(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../widgets/global_header.dart';
+import '../widgets/global_header.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
@@ -90,39 +92,18 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Header
-              Center(
-                child: Column(
-                  children: [
-                    const SizedBox(height: 8),
-                    SizedBox(
-                      width: 56,
-                      height: 56,
-                      child: Image.asset(AssetImages.lotusGold, fit: BoxFit.contain),
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      'Choose Your Journey',
-                      style: GoogleFonts.playfairDisplay(
-                        fontSize: 26,
-                        fontWeight: FontWeight.w700,
-                        color: ChiGlowTheme.richRed,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'Every membership helps us bring harmony to more homes.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.quicksand(
-                        fontSize: 14,
-                        color: ChiGlowTheme.mediumGray,
-                        height: 1.4,
-                      ),
-                    ),
-                  ],
-                ),
+              GlobalHeader(title: 'Choose Your Journey', showTagline: false),
+            const SizedBox(height: 12),
+            Text(
+              'Every membership helps us bring harmony to more homes.',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.quicksand(
+                fontSize: 14,
+                color: ChiGlowTheme.mediumGray,
+                height: 1.4,
               ),
-              const SizedBox(height: 24),
+            ),
+            const SizedBox(height: 24),
 
               // Pricing tiers
               ...List.generate(_tiers.length, (i) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/global_header.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../theme/app_theme.dart';
@@ -59,42 +60,8 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildFadeUp(0, 
-              // Zodiac header
-              Center(
-                child: Column(
-                  children: [
-                    Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        gradient: LinearGradient(
-                          colors: [ChiGlowTheme.richRed, ChiGlowTheme.bronzeGold],
-                        ),
-                        boxShadow: [
-                          BoxShadow(color: ChiGlowTheme.richRed.withValues(alpha: 0.3), blurRadius: 20),
-                        ],
-                      ),
-                      child: Center(
-                        child: Text(_zodiacEmoji(zodiac), style: const TextStyle(fontSize: 48)),
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    Text(
-                      'Year of the $zodiac',
-                      style: GoogleFonts.playfairDisplay(fontSize: 28, fontWeight: FontWeight.w700, color: ChiGlowTheme.richRed),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      'Element: ${data['element']}',
-                      style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.bronzeGold, fontWeight: FontWeight.w600),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
+            GlobalHeader(title: 'Zodiac Energy', subtitle: 'Year of the $zodiac · ${data['element']}'),
+            const SizedBox(height: 8),
             _buildFadeUp(1,
               // Description
               GlowCard(

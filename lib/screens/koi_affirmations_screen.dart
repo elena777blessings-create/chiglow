@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../widgets/global_header.dart';
+import '../widgets/global_header.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../services/content_service.dart';
@@ -29,32 +31,14 @@ class _KoiAffirmationsScreenState extends State<KoiAffirmationsScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Header
-            Center(
-              child: Column(
-                children: [
-                  Text('🐟', style: TextStyle(fontSize: 48)),
-                  const SizedBox(height: 8),
-                  Text(
-                    'Choose Your Koi',
-                    style: GoogleFonts.playfairDisplay(
-                      fontSize: 28,
-                      fontWeight: FontWeight.w700,
-                      color: ChiGlowTheme.luckyRed,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    'Each koi carries a unique energy. Pick the one that calls to you today.',
-                    textAlign: TextAlign.center,
+            const GlobalHeader(title: 'Koi Affirmations', subtitle: 'Wisdom from the pond'),
+            const SizedBox(height: 8),
                     style: GoogleFonts.quicksand(
                       fontSize: 14,
                       color: ChiGlowTheme.deepRed.withValues(alpha: 0.7),
                       height: 1.4,
                     ),
                   ),
-                ],
-              ),
-            ),
             const SizedBox(height: 24),
 
             // Koi fish cards
