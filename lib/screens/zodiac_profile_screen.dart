@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
+import '../widgets/global_header.dart';
 import '../providers/app_state_provider.dart';
 
 class ZodiacProfileScreen extends StatefulWidget {
@@ -41,24 +42,12 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
     final luckyDirection = (data['luckyDirection'] as String?) ?? 'South';
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Zodiac Energy', style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600)),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        foregroundColor: ChiGlowTheme.richRed,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.calendar_today, size: 20),
-            onPressed: () => Navigator.pushNamed(context, '/year-ahead'),
-            tooltip: 'Year Ahead Forecast',
-          ),
-        ],
-      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const GlobalHeader(title: 'Your Zodiac Energy', subtitle: 'Discover your cosmic energy profile'),
             _buildFadeUp(0, 
               // Zodiac header
               Center(
@@ -84,11 +73,6 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                     Text(
                       'Year of the $zodiac',
                       style: GoogleFonts.playfairDisplay(fontSize: 28, fontWeight: FontWeight.w700, color: ChiGlowTheme.richRed),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      'Element: ${data['element']}',
-                      style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.bronzeGold, fontWeight: FontWeight.w600),
                     ),
                   ],
                 ),

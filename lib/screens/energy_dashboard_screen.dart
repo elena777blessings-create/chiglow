@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
-import '../widgets/page_header.dart';
+import '../widgets/global_header.dart';
 import '../providers/app_state_provider.dart';
 
 class EnergyDashboardScreen extends StatelessWidget {
@@ -19,7 +19,7 @@ class EnergyDashboardScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            PageHeader(title: 'Energy Dashboard', subtitle: 'Your Chi balance at a glance', titleSize: 26),
+            const GlobalHeader(title: 'Energy Dashboard', subtitle: 'Your Chi balance at a glance'),
             // Overall energy
             Center(
               child: Container(

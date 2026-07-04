@@ -20,6 +20,7 @@ void main() {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
+
   runApp(
     ChangeNotifierProvider(
       create: (_) => AppStateProvider(),

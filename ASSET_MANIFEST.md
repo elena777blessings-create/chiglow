@@ -29,6 +29,7 @@ All assets are in `/home/team/shared/chiglow/`
 | **Lotus Glow** | `images/deco_lotus_glow.png` | Glowing lotus in red/gold gradient |
 | **Water Flow** | `images/deco_water_flow.png` | Flowing waves in red/gold/cream (1536x1024) |
 | **Gold Lotus** | `images/lotus_gold.png` | Decorative golden lotus flower illustration |
+| **Fortune Cookie** | `images/fortune_cookie.png` | Premium fortune cookie for "Fortune of the Day" feature |
 | **Zodiac Group 1** | `images/zodiac_rat_dragon_monkey.png` | Rat, Dragon, Monkey in gold line art |
 | **Zodiac Group 2** | `images/zodiac_ox_tiger_rabbit.png` | Ox, Tiger, Rabbit in gold line art |
 | **Zodiac Group 3** | `images/zodiac_snake_horse_sheep.png` | Snake, Horse, Sheep in gold line art |

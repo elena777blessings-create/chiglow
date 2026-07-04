@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import '../theme/app_theme.dart';
 import '../providers/app_state_provider.dart';
 import '../widgets/glow_card.dart';
+import '../widgets/global_header.dart';
+import '../services/kua_calculator.dart';
 
 class PersonalFengShuiScreen extends StatelessWidget {
   const PersonalFengShuiScreen({super.key});
@@ -11,20 +13,15 @@ class PersonalFengShuiScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = context.watch<AppStateProvider>();
-    final reading = provider.kuaReading;
+    final reading = KuaCalculator.getPersonalReading(provider.birthYear, true);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Your Personal Feng Shui', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600)),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        foregroundColor: ChiGlowTheme.luckyRed,
-      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const GlobalHeader(title: 'Your Personal Feng Shui', subtitle: 'Discover your Kua number'),
             // Kua Header
             Center(
               child: Column(
@@ -34,12 +31,12 @@ class PersonalFengShuiScreen extends StatelessWidget {
                     height: 80,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      gradient: const LinearGradient(
-                        colors: [ChiGlowTheme.luckyRed, ChiGlowTheme.warmGold],
+                      gradient: LinearGradient(
+                        colors: [ChiGlowTheme.richRed, ChiGlowTheme.bronzeGold],
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: ChiGlowTheme.luckyRed.withValues(alpha: 0.3),
+                          color: ChiGlowTheme.richRed.withValues(alpha: 0.3),
                           blurRadius: 20,
                         ),
                       ],
@@ -61,7 +58,7 @@ class PersonalFengShuiScreen extends StatelessWidget {
                     style: GoogleFonts.poppins(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
-                      color: ChiGlowTheme.luckyRed,
+                      color: ChiGlowTheme.richRed,
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -81,7 +78,7 @@ class PersonalFengShuiScreen extends StatelessWidget {
             // Lucky Directions
             Text(
               '🟢 Your Lucky Directions',
-              style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed),
+              style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
             ),
             const SizedBox(height: 12),
             ...List.generate((reading['lucky'] as List).length, (i) {
@@ -89,7 +86,7 @@ class PersonalFengShuiScreen extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.only(bottom: 8),
                 child: GlowCard(
-                  glowColor: ChiGlowTheme.warmGold,
+                  glowColor: ChiGlowTheme.bronzeGold,
                   child: Row(
                     children: [
                       Container(
@@ -97,7 +94,7 @@ class PersonalFengShuiScreen extends StatelessWidget {
                         height: 48,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: ChiGlowTheme.warmGold.withValues(alpha: 0.15),
+                          color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.15),
                         ),
                         child: Center(child: Text(dir['emoji'], style: const TextStyle(fontSize: 22))),
                       ),
@@ -106,16 +103,16 @@ class PersonalFengShuiScreen extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(dir['name'], style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed)),
+                            Text(dir['name'], style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
                             const SizedBox(height: 2),
-                            Text('Face ${dir['direction']} for best results', style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.warmGold)),
+                            Text('Face ${dir['direction']} for best results', style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.bronzeGold)),
                           ],
                         ),
                       ),
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                         decoration: BoxDecoration(
-                          color: ChiGlowTheme.warmGold.withValues(alpha: 0.15),
+                          color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.15),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Text(dir['direction'], style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w600, color: ChiGlowTheme.deepRed)),
@@ -131,7 +128,7 @@ class PersonalFengShuiScreen extends StatelessWidget {
             // Unlucky Directions
             Text(
               '🔴 Directions to Avoid',
-              style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed),
+              style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
             ),
             const SizedBox(height: 12),
             ...List.generate((reading['unlucky'] as List).length, (i) {
@@ -179,15 +176,15 @@ class PersonalFengShuiScreen extends StatelessWidget {
 
             // Tips
             GlowCard(
-              glowColor: ChiGlowTheme.warmGold,
+              glowColor: ChiGlowTheme.bronzeGold,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.lightbulb_outline, size: 18, color: ChiGlowTheme.warmGold),
+                      Icon(Icons.lightbulb_outline, size: 18, color: ChiGlowTheme.bronzeGold),
                       const SizedBox(width: 8),
-                      Text('How to Use This', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.luckyRed)),
+                      Text('How to Use This', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
                     ],
                   ),
                   const SizedBox(height: 12),
@@ -215,9 +212,9 @@ class PersonalFengShuiScreen extends StatelessWidget {
             margin: const EdgeInsets.only(top: 6),
             width: 6,
             height: 6,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: ChiGlowTheme.warmGold,
+              color: ChiGlowTheme.bronzeGold,
             ),
           ),
           const SizedBox(width: 10),

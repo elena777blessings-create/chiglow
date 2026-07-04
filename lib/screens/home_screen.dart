@@ -7,8 +7,8 @@ import 'package:provider/provider.dart';
 import '../providers/app_state_provider.dart';
 import '../utils/asset_images.dart';
 import '../widgets/chi_particles.dart';
-import '../widgets/page_header.dart';
-import 'dart:math' as math;
+import '../widgets/global_header.dart';
+import '../widgets/page_header.dart'; // SecondaryButton
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -32,116 +32,20 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const GlobalHeader(title: 'Home'),
               const SizedBox(height: 8),
-              // Header with koi icon — premium wordmark
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Good ${_timeOfDay()},',
-                        style: GoogleFonts.quicksand(
-                          fontSize: 14,
-                          color: ChiGlowTheme.bronzeGold,
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: 0.5,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        'ChiGlow',
-                        style: GoogleFonts.playfairDisplay(
-                          fontSize: 40,
-                          fontWeight: FontWeight.w700,
-                          color: ChiGlowTheme.richRed,
-                          height: 1.0,
-                        ),
-                      ),
-                      // Decorative flourish — lotus motif
-                      const SizedBox(height: 8),
-                      Row(
-                        children: [
-                          Container(
-                            width: 40,
-                            height: 1,
-                            color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.3),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 6),
-                            child: SizedBox(
-                              width: 14,
-                              height: 14,
-                              child: Image.asset(AssetImages.lotusGold, fit: BoxFit.contain),
-                            ),
-                          ),
-                          Container(
-                            width: 40,
-                            height: 1,
-                            color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.3),
-                          ),
-                        ],
-                      ),
-                    ],
+              // Greeting — brand is already in GlobalHeader
+              Padding(
+                padding: const EdgeInsets.only(left: 4),
+                child: Text(
+                  'Good ${_timeOfDay()},',
+                  style: GoogleFonts.quicksand(
+                    fontSize: 14,
+                    color: ChiGlowTheme.bronzeGold,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0.5,
                   ),
-                  // Koi icon — red & white with premium badge
-                  Stack(
-                    clipBehavior: Clip.none,
-                    children: [
-                      Container(
-                        width: 52,
-                        height: 52,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          gradient: LinearGradient(
-                            colors: [ChiGlowTheme.richRed, ChiGlowTheme.softRed],
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: ChiGlowTheme.richRed.withValues(alpha: 0.3),
-                              blurRadius: 12,
-                            ),
-                          ],
-                        ),
-                        child: Image.asset(
-                          AssetImages.koiImage('white'),
-                          width: 52,
-                          height: 52,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      // Premium badge
-                      Positioned(
-                        top: -4,
-                        right: -4,
-                        child: GestureDetector(
-                          onTap: () => Navigator.pushNamed(context, '/upgrade'),
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                            decoration: BoxDecoration(
-                              gradient: const LinearGradient(
-                                colors: [ChiGlowTheme.bronzeGold, ChiGlowTheme.softRed],
-                              ),
-                              borderRadius: BorderRadius.circular(8),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.4),
-                                  blurRadius: 6,
-                                ),
-                              ],
-                            ),
-                            child: Text(
-                              '💎',
-                              style: const TextStyle(fontSize: 12),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                ),
               ),
               const SizedBox(height: 8),
               // Daily affirmation — bronze gold themed
@@ -182,9 +86,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               const SizedBox(height: 24),
-              // Main CTA — Sunrise Coral Gradient "Scan My Space"
-              _SunriseCtaButton(
+              // Main CTA — Approved ChiGlow artwork
+              GestureDetector(
                 onTap: () => Navigator.pushNamed(context, '/room-scan'),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.asset(
+                    'assets/images/scan_room_card.png',
+                    width: double.infinity,
+                    fit: BoxFit.contain,
+                  ),
+                ),
               ),
               const SizedBox(height: 20),
               // Secondary buttons row — cream + gold border

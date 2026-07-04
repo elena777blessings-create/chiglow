@@ -4,6 +4,7 @@ import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
 import '../widgets/chi_particles.dart';
 import '../utils/asset_images.dart';
+import '../widgets/global_header.dart';
 
 class UpgradeScreen extends StatefulWidget {
   const UpgradeScreen({super.key});
@@ -77,51 +78,13 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
     final selected = _tiers[_selectedTier];
 
     return Scaffold(
-      appBar: AppBar(
-        title:
-            Text('Membership', style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600)),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        foregroundColor: ChiGlowTheme.richRed,
-      ),
       body: ChiParticles(
         child: SingleChildScrollView(
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Header
-              Center(
-                child: Column(
-                  children: [
-                    const SizedBox(height: 8),
-                    SizedBox(
-                      width: 56,
-                      height: 56,
-                      child: Image.asset(AssetImages.lotusGold, fit: BoxFit.contain),
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      'Choose Your Journey',
-                      style: GoogleFonts.playfairDisplay(
-                        fontSize: 26,
-                        fontWeight: FontWeight.w700,
-                        color: ChiGlowTheme.richRed,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'Every membership helps us bring harmony to more homes.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.quicksand(
-                        fontSize: 14,
-                        color: ChiGlowTheme.mediumGray,
-                        height: 1.4,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              const GlobalHeader(title: 'Choose Your Journey'),
               const SizedBox(height: 24),
 
               // Pricing tiers

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
+import '../widgets/global_header.dart';
 
 class YearAheadScreen extends StatelessWidget {
   const YearAheadScreen({super.key});
@@ -12,17 +13,12 @@ class YearAheadScreen extends StatelessWidget {
     final zodiacYear = _getZodiacForYear(year);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('$year Forecast', style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600)),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        foregroundColor: ChiGlowTheme.richRed,
-      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const GlobalHeader(title: 'Year Ahead Forecast', subtitle: 'Your cosmic roadmap'),
             // Year animal
             Center(
               child: Column(
