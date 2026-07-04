@@ -88,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 24),
               // Main CTA — Approved ChiGlow artwork
               GestureDetector(
-                onTap: () => Navigator.pushNamed(context, '/room-scan'),
+                onTap: () => Navigator.pushNamed(context, '/scan-guide'),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Image.asset(

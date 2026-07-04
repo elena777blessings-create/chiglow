@@ -12,6 +12,7 @@ import 'screens/color_coaching_screen.dart';
 import 'screens/energy_dashboard_screen.dart';
 import 'screens/settings_screen.dart';
 import 'screens/upgrade_screen.dart';
+import 'screens/scan_guide_screen.dart';
 import 'providers/app_state_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -50,6 +51,9 @@ class ChiGlowApp extends StatelessWidget {
             break;
           case '/room-scan':
             page = const RoomScanScreen();
+            break;
+          case '/scan-guide':
+            page = const ScanGuideScreen();
             break;
           case '/room-results':
             page = RoomResultsScreen(
