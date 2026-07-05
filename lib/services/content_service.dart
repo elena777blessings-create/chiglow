@@ -36,6 +36,56 @@ class ContentService {
       {'title': 'Activate Career Corner', 'description': 'Strengthen your career area (north) with water elements: a small fountain, blue decor, or an image of flowing water.', 'icon': '🧭'},
       {'title': 'Crystal for Focus', 'description': 'Place a clear quartz or amethyst on your desk to enhance clarity, focus, and positive energy.', 'icon': '💎'},
     ],
+    'Dining Room': [
+      {'title': 'Round Table', 'description': 'A round or oval table promotes equality and harmony among diners, allowing chi to flow evenly around the table.', 'icon': '🟤'},
+      {'title': 'Brighten the Space', 'description': 'Good lighting over the dining table symbolizes abundance. Use a warm dimmer chandelier or pendant light.', 'icon': '💡'},
+      {'title': 'Mirror for Abundance', 'description': 'Hanging a mirror reflecting the dining table visually doubles your food, symbolizing doubled prosperity.', 'icon': '🪞'},
+    ],
+    'Entryway': [
+      {'title': 'Welcome Chi', 'description': 'Keep the entryway bright, clean, and clutter-free so that positive energy can enter your home freely.', 'icon': '🚪'},
+      {'title': 'Commanding View', 'description': 'Place a small mirror or artwork at eye level to create an expansive first impression and invite opportunity.', 'icon': '🖼️'},
+      {'title': 'Grounding Element', 'description': 'A bowl of fresh flowers or a plant in the entryway brings the wood element and lively chi into your home.', 'icon': '🌸'},
+    ],
+    'Office': [
+      {'title': 'Desk Command Position', 'description': 'Position your desk facing the entrance from a diagonal angle so you can see the door while working.', 'icon': '🪑'},
+      {'title': 'Activate Wealth Corner', 'description': 'Place a small water feature or purple item in the southeast corner of your office to attract career growth.', 'icon': '🧭'},
+      {'title': 'Declutter for Flow', 'description': 'Keep your desk surface clear of non-essentials. Stagnant clutter blocks chi and slows productivity.', 'icon': '📋'},
+    ],
+    'Garden': [
+      {'title': 'Flowing Pathways', 'description': 'Design gently curving paths rather than straight lines to slow chi and invite peaceful wandering.', 'icon': '🌳'},
+      {'title': 'Five Element Balance', 'description': 'Include plants (wood), solar lights (fire), stone sculptures (earth), wind chimes (metal), and a birdbath (water).', 'icon': '⚖️'},
+      {'title': 'Nurture the Southeast', 'description': 'Plant flowering shrubs or fruit trees in the southeast garden corner to activate wealth and abundance energy.', 'icon': '🌺'},
+    ],
+    'Front Yard': [
+      {'title': 'Clear Approach', 'description': 'Keep the front walkway unobstructed and well-lit. A clear path invites auspicious chi to your door.', 'icon': '🌿'},
+      {'title': 'Welcoming Entrance', 'description': 'A warm, inviting front door — painted red or rich brown — signals abundance and protection to all who arrive.', 'icon': '🚪'},
+      {'title': 'Guardian Plants', 'description': 'Place tall, healthy plants or shrubs on either side of the entrance to act as guardians and balance energy.', 'icon': '🌲'},
+    ],
+    'Backyard': [
+      {'title': 'Private Sanctuary', 'description': 'Create a secluded seating area with soft lighting for relaxation. This is your personal retreat for recharging chi.', 'icon': '🪑'},
+      {'title': 'Water Feature', 'description': 'A small pond, fountain, or birdbath in the backyard activates nourishing water energy and attracts wildlife.', 'icon': '⛲'},
+      {'title': 'Fire Pit for Connection', 'description': 'A fire pit or barbecue area in the south area of your yard strengthens the fire element, fueling passion and social joy.', 'icon': '🔥'},
+    ],
+    'Corporate Office': [
+      {'title': 'Water for Career Flow', 'description': 'Place a fountain or blue-toned art in the north area of the office to support smooth career advancement and new opportunities.', 'icon': '🧭'},
+      {'title': 'Command Seating', 'description': 'Executive desks should face the door diagonally. Avoid sitting with your back to the entrance.', 'icon': '🪑'},
+      {'title': 'Collaboration Zones', 'description': 'Keep the center of the space open for team gatherings. A round table in the center promotes unity and shared chi.', 'icon': '🤝'},
+    ],
+    'Retail Store': [
+      {'title': 'Entrance Energy', 'description': 'Keep the store entrance bright, clean, and free of obstacles. An open door invites customers and prosperity chi inside.', 'icon': '🏪'},
+      {'title': 'Product Placement', 'description': 'Position best-selling items at eye level near the entrance. Use warm lighting to highlight key merchandise.', 'icon': '✨'},
+      {'title': 'Cash Wrap Position', 'description': 'Place the register in the wealth corner (southeast) or in a commanding position facing the entrance for maximum prosperity.', 'icon': '💳'},
+    ],
+    'Restaurant/Café': [
+      {'title': 'Warm Welcome', 'description': 'A warm, inviting host stand near the entrance sets the tone. Soft lighting and soothing music create positive chi for guests.', 'icon': '🍽️'},
+      {'title': 'Kitchen Energy', 'description': 'Keep the kitchen organized and the stove clean. A well-cared-for kitchen generates nourishing energy for both food and staff.', 'icon': '👨‍🍳'},
+      {'title': 'Seating Flow', 'description': 'Arrange tables so servers can move freely without crossing paths. Smooth service flow equals smooth energy flow.', 'icon': '🪑'},
+    ],
+    'Bathroom': [
+      {'title': 'Keep It Closed', 'description': 'Always close the toilet lid and bathroom door to prevent chi and prosperity from being flushed away.', 'icon': '🚽'},
+      {'title': 'Earth Element Balance', 'description': 'Use warm earth tones (terracotta, beige, sandy brown) to counterbalance the draining water energy of the bathroom.', 'icon': '🏺'},
+      {'title': 'Plants for Purification', 'description': 'Place a moisture-loving plant like bamboo or a fern in the bathroom to absorb excess energy and purify the space.', 'icon': '🪴'},
+    ],
   };
 
   static const List<Map<String, String>> colorGuidance = [

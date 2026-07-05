@@ -32,13 +32,15 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const GlobalHeader(title: 'Home'),
-              const SizedBox(height: 8),
-              // Greeting — brand is already in GlobalHeader
+              const GlobalHeader(title: ''),
+              const SizedBox(height: 2),
+              // Greeting with user name
               Padding(
                 padding: const EdgeInsets.only(left: 4),
                 child: Text(
-                  'Good ${_timeOfDay()},',
+                  provider.userName.isNotEmpty
+                      ? 'Good ${_timeOfDay()}, ${provider.userName}.'
+                      : 'Good ${_timeOfDay()},',
                   style: GoogleFonts.quicksand(
                     fontSize: 14,
                     color: ChiGlowTheme.bronzeGold,

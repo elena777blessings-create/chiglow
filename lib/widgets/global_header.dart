@@ -42,16 +42,17 @@ class GlobalHeader extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 40),
                   child: Column(
                     children: [
-                      Text(
-                        title,
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.playfairDisplay(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w700,
-                          color: ChiGlowTheme.richRed,
-                          height: 1.2,
+                      if (title.isNotEmpty)
+                        Text(
+                          title,
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.playfairDisplay(
+                            fontSize: MediaQuery.of(context).size.width < 600 ? 17 : 24,
+                            fontWeight: FontWeight.w700,
+                            color: ChiGlowTheme.richRed,
+                            height: 1.2,
+                          ),
                         ),
-                      ),
                       if (subtitle != null) ...[
                         const SizedBox(height: 6),
                         Text(
@@ -79,17 +80,6 @@ class GlobalHeader extends StatelessWidget {
           height: 24,
           fit: BoxFit.contain,
         ),
-        const SizedBox(height: 8),
-        // Flow. Grow. Bloom.
-        Text(
-          'Flow. Grow. Bloom.',
-          style: GoogleFonts.playfairDisplay(
-            fontSize: 13,
-            fontWeight: FontWeight.w500,
-            color: ChiGlowTheme.bronzeGold,
-            letterSpacing: 2.5,
-          ),
-        ),
         const SizedBox(height: 4),
         // Gold divider line
         Image.asset(
@@ -98,7 +88,7 @@ class GlobalHeader extends StatelessWidget {
           height: 4,
           fit: BoxFit.contain,
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 10),
       ],
     );
   }
