@@ -154,13 +154,51 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               const SizedBox(height: 16),
-              // Quick actions row
-              Row(
-                children: [
-                  _QuickAction(emoji: '🎨', label: 'Color\nCoach', onTap: () => Navigator.pushNamed(context, '/color-coaching')),
-                  _QuickAction(emoji: '📅', label: 'Year\nAhead', onTap: () => Navigator.pushNamed(context, '/year-ahead')),
-                  _QuickAction(emoji: '⚙️', label: 'Settings', onTap: () => Navigator.pushNamed(context, '/settings')),
-                ],
+              // Harmony Journal card
+              GlowCard(
+                glowColor: ChiGlowTheme.bronzeGold,
+                onTap: () => Navigator.pushNamed(context, '/harmony-journal'),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 44,
+                      height: 44,
+                      decoration: BoxDecoration(
+                        color: ChiGlowTheme.richRed.withValues(alpha: 0.08),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Center(child: Text('📖', style: TextStyle(fontSize: 22))),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Harmony Journal',
+                            style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
+                          ),
+                          Text(
+                            'View your scan history & insights',
+                            style: GoogleFonts.quicksand(fontSize: 11, color: ChiGlowTheme.bronzeGold),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Icon(Icons.arrow_forward_ios, size: 14, color: ChiGlowTheme.richRed),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 16),
+              IntrinsicHeight(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    _QuickAction(emoji: '🎨', label: 'Color\nCoach', onTap: () => Navigator.pushNamed(context, '/color-coaching')),
+                    _QuickAction(emoji: '📅', label: 'Year\nAhead', onTap: () => Navigator.pushNamed(context, '/year-ahead')),
+                    _QuickAction(emoji: '⚙️', label: 'Settings', onTap: () => Navigator.pushNamed(context, '/settings')),
+                  ],
+                ),
               ),
               const SizedBox(height: 16),
               // Upgrade CTA card
@@ -526,6 +564,7 @@ class _QuickAction extends StatelessWidget {
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 4),
           padding: const EdgeInsets.symmetric(vertical: 16),
+          constraints: const BoxConstraints(minHeight: 90),
           decoration: BoxDecoration(
             color: Colors.white.withValues(alpha: 0.95),
             borderRadius: BorderRadius.circular(16),
@@ -539,6 +578,7 @@ class _QuickAction extends StatelessWidget {
             ],
           ),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(emoji, style: const TextStyle(fontSize: 24)),
               const SizedBox(height: 4),

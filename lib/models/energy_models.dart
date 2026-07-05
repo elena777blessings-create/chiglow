@@ -105,3 +105,56 @@ class DailyAffirmation {
     required this.theme,
   });
 }
+
+/// Journal entry for a room scan with AI observations
+class JournalEntry {
+  final String id;
+  final String roomType;
+  final DateTime scanDate;
+  final String? imagePath;
+  final List<Map<String, String>> tips;
+  final List<String> suggestedColors;
+  final List<String> recommendedDirections;
+  final String energyScore;
+  final String overallDescription;
+  final List<String> aiObservations;
+
+  const JournalEntry({
+    required this.id,
+    required this.roomType,
+    required this.scanDate,
+    this.imagePath,
+    required this.tips,
+    required this.suggestedColors,
+    required this.recommendedDirections,
+    required this.energyScore,
+    required this.overallDescription,
+    required this.aiObservations,
+  });
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'roomType': roomType,
+    'scanDate': scanDate.toIso8601String(),
+    'imagePath': imagePath,
+    'tips': tips,
+    'suggestedColors': suggestedColors,
+    'recommendedDirections': recommendedDirections,
+    'energyScore': energyScore,
+    'overallDescription': overallDescription,
+    'aiObservations': aiObservations,
+  };
+
+  factory JournalEntry.fromJson(Map<String, dynamic> json) => JournalEntry(
+    id: json['id'] as String,
+    roomType: json['roomType'] as String,
+    scanDate: DateTime.parse(json['scanDate'] as String),
+    imagePath: json['imagePath'] as String?,
+    tips: (json['tips'] as List).cast<Map<String, String>>(),
+    suggestedColors: (json['suggestedColors'] as List).cast<String>(),
+    recommendedDirections: (json['recommendedDirections'] as List).cast<String>(),
+    energyScore: json['energyScore'] as String,
+    overallDescription: json['overallDescription'] as String,
+    aiObservations: (json['aiObservations'] as List).cast<String>(),
+  );
+}

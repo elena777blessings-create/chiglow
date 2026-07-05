@@ -3,10 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
 import '../services/content_service.dart';
+import '../services/journal_storage.dart';
+import '../models/energy_models.dart';
 import '../utils/asset_images.dart';
 import '../widgets/global_header.dart';
 
-class RoomResultsScreen extends StatelessWidget {
+class RoomResultsScreen extends StatefulWidget {
   final String roomType;
   final String? scanImagePath;
 
@@ -17,8 +19,52 @@ class RoomResultsScreen extends StatelessWidget {
   });
 
   @override
+  State<RoomResultsScreen> createState() => _RoomResultsScreenState();
+}
+
+class _RoomResultsScreenState extends State<RoomResultsScreen> {
+  bool _saved = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _autoSave();
+  }
+
+  Future<void> _autoSave() async {
+    final tips = ContentService.tipsForRoom(widget.roomType);
+    final colors = ContentService.colorGuidance.take(3).map((c) => c['color'] ?? '').toList();
+    final directions = ['North', 'South', 'East', 'West'];
+
+    final description = 'Your ${widget.roomType} has balanced energy with room for enhancement.';
+    final observations = [
+      'Energy flow detected as harmonious in the ${widget.roomType}',
+      'Room shows balanced Bagua energy with potential for improvement',
+      'Recommended: add ${tips.isNotEmpty ? tips.first['title'] ?? 'balancing elements' : 'balancing elements'}',
+    ];
+
+    final entry = JournalEntry(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      roomType: widget.roomType,
+      scanDate: DateTime.now(),
+      imagePath: widget.scanImagePath,
+      tips: tips,
+      suggestedColors: colors,
+      recommendedDirections: directions,
+      energyScore: 'Harmonious',
+      overallDescription: description,
+      aiObservations: observations,
+    );
+
+    await JournalStorage.addEntry(entry);
+    if (mounted) {
+      setState(() => _saved = true);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final tips = ContentService.tipsForRoom(roomType);
+    final tips = ContentService.tipsForRoom(widget.roomType);
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -28,7 +74,7 @@ class RoomResultsScreen extends StatelessWidget {
           children: [
             // Page header
             GlobalHeader(
-              title: '$roomType Analysis',
+              title: '${widget.roomType} Analysis',
               subtitle: 'ChiGlow Feng Shui guidance for your space',
             ),
             SizedBox(
@@ -39,7 +85,7 @@ class RoomResultsScreen extends StatelessWidget {
                 child: Stack(
                   children: [
                     Image.asset(
-                      AssetImages.roomImageFor(roomType),
+                      AssetImages.roomImageFor(widget.roomType),
                       width: double.infinity,
                       height: 180,
                       fit: BoxFit.cover,
@@ -61,7 +107,7 @@ class RoomResultsScreen extends StatelessWidget {
                       bottom: 12,
                       left: 16,
                       child: Text(
-                        roomType,
+                        widget.roomType,
                         style: GoogleFonts.playfairDisplay(
                           fontSize: 20,
                           fontWeight: FontWeight.w700,
@@ -92,7 +138,7 @@ class RoomResultsScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          'Your $roomType has balanced energy with room for enhancement.',
+                          'Your ${widget.roomType} has balanced energy with room for enhancement.',
                           style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.bronzeGold),
                         ),
                       ],
@@ -156,6 +202,33 @@ class RoomResultsScreen extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+            const SizedBox(height: 24),
+            // Saved to journal indicator
+            if (_saved)
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Text(
+                    '✅ Saved to Harmony Journal',
+                    style: GoogleFonts.quicksand(fontSize: 12, color: Colors.green, fontWeight: FontWeight.w600),
+                  ),
+                ),
+              ),
+            // View Journal button
+            SizedBox(
+              width: double.infinity,
+              child: OutlinedButton.icon(
+                onPressed: () => Navigator.pushNamed(context, '/harmony-journal'),
+                icon: const Icon(Icons.book_outlined, size: 18),
+                label: Text('View Harmony Journal', style: GoogleFonts.poppins(fontSize: 13)),
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: ChiGlowTheme.richRed,
+                  side: BorderSide(color: ChiGlowTheme.richRed.withValues(alpha: 0.3)),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                ),
+              ),
             ),
             const SizedBox(height: 24),
           ],
