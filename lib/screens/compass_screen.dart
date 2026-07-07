@@ -60,11 +60,15 @@ class _CompassScreenState extends State<CompassScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
+      body: SafeArea(
         child: Column(
           children: [
             const GlobalHeader(title: 'Feng Shui Compass', subtitle: 'Find your Bagua sectors'),
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(20, 2, 20, 24),
+                child: Column(
+                  children: [
             if (_isCalibrating)
               GlowCard(
                 child: Column(
@@ -185,10 +189,14 @@ class _CompassScreenState extends State<CompassScreen> {
                   )),
                 ],
               ),
-          ],
-        ),
-      ),
-    );
+          ],  // close inner Column children
+        ),  // close inner Column
+      ),  // close SingleChildScrollView
+    ),  // close Expanded
+    ],  // close outer Column children
+  ),  // close outer Column
+),  // close SafeArea
+);  // close Scaffold + return
   }
 
   _BaguaSector _currentSector() {

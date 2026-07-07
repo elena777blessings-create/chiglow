@@ -16,12 +16,16 @@ class PersonalFengShuiScreen extends StatelessWidget {
     final reading = KuaCalculator.getPersonalReading(provider.birthYear, true);
 
     return Scaffold(
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
+      body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const GlobalHeader(title: 'Your Personal Feng Shui', subtitle: 'Discover your Kua number'),
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(20, 2, 20, 24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
             // Kua Header
             Center(
               child: Column(
@@ -196,6 +200,10 @@ class PersonalFengShuiScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24),
+          ],
+        ),
+      ),
+            ),
           ],
         ),
       ),

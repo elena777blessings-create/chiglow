@@ -11,12 +11,16 @@ class ColorCoachingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
+      body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const GlobalHeader(title: 'Color Coaching', subtitle: 'Discover colors that support your goals'),
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(20, 2, 20, 24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
             // Intro
             GlowCard(
               glowColor: ChiGlowTheme.bronzeGold,
@@ -80,10 +84,14 @@ class ColorCoachingScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24),
-          ],
-        ),
-      ),
-    );
+          ], // close inner Column children
+        ), // close inner Column
+      ), // close SingleChildScrollView
+    ), // close Expanded
+    ], // close outer Column children
+  ), // close outer Column
+), // close SafeArea
+); // close Scaffold + return
   }
 }
 
@@ -136,8 +144,8 @@ class _ColorCard extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
+        ), // close Row
+      ); // close GlowCard + end return
   }
 }
 

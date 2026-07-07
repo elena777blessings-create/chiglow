@@ -14,12 +14,16 @@ class EnergyDashboardScreen extends StatelessWidget {
     final provider = context.watch<AppStateProvider>();
 
     return Scaffold(
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
+      body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const GlobalHeader(title: 'Energy Dashboard', subtitle: 'Your Chi balance at a glance'),
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(20, 2, 20, 24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
             // Overall energy
             Center(
               child: Container(
@@ -108,6 +112,10 @@ class EnergyDashboardScreen extends StatelessWidget {
               tips: ['Enhance north area with water', 'Display career inspirations', 'Keep entryway welcoming'],
             ),
             const SizedBox(height: 24),
+          ],
+        ),
+      ),
+            ),
           ],
         ),
       ),

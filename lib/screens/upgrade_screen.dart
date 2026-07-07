@@ -78,13 +78,17 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
     final selected = _tiers[_selectedTier];
 
     return Scaffold(
-      body: ChiParticles(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const GlobalHeader(title: 'Choose Your Journey'),
+      body: SafeArea(
+        child: Column(
+          children: [
+            const GlobalHeader(title: 'Choose Your Journey'),
+            Expanded(
+              child: ChiParticles(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.fromLTRB(20, 2, 20, 24),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
               const SizedBox(height: 24),
 
               // Pricing tiers
@@ -243,6 +247,10 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
           ),
         ),
       ),
+          ),
+        ],
+      ),
+    ),
     );
   }
 

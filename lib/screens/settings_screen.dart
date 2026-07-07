@@ -14,12 +14,16 @@ class SettingsScreen extends StatelessWidget {
     final provider = context.watch<AppStateProvider>();
 
     return Scaffold(
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
+      body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const GlobalHeader(title: 'Settings'),
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(20, 2, 20, 24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
             // Profile section
             Text(
               '🪷 Profile',
@@ -220,6 +224,10 @@ class SettingsScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24),
+          ],
+        ),
+      ),
+            ),
           ],
         ),
       ),

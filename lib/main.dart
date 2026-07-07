@@ -14,6 +14,7 @@ import 'screens/settings_screen.dart';
 import 'screens/upgrade_screen.dart';
 import 'screens/scan_guide_screen.dart';
 import 'screens/harmony_journal_screen.dart';
+import 'screens/journal_detail_screen.dart';
 import 'providers/app_state_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -55,6 +56,13 @@ class ChiGlowApp extends StatelessWidget {
             break;
           case '/scan-guide':
             page = const ScanGuideScreen();
+            break;
+          case '/harmony-journal':
+            page = const HarmonyJournalScreen();
+            break;
+          case '/journal-detail':
+            final entry = (settings.arguments as Map?)?['entry'];
+            page = JournalDetailScreen(entry: entry);
             break;
           case '/room-results':
             page = RoomResultsScreen(

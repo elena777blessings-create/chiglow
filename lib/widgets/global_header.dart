@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 
-/// ChiGlow header with artwork, decorative flourish, tagline, and divider.
+/// ChiGlow full-width hero header — edge-to-edge artwork, responsive scaling.
+/// Designed for the home screen. Page title overlay is optional.
 class GlobalHeader extends StatelessWidget {
   final String title;
   final String? subtitle;
@@ -17,78 +18,58 @@ class GlobalHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const SizedBox(height: 8),
-        // Artwork with page title overlaid
+        // Full-width hero artwork — no margins, no rounded corners
         SizedBox(
           width: double.infinity,
           child: Stack(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(16),
-                child: Image.asset(
-                  'assets/images/chi_header.png',
-                  width: double.infinity,
-                  fit: BoxFit.contain,
-                ),
+              Image.asset(
+                'assets/images/chi_header.png',
+                width: double.infinity,
+                fit: BoxFit.cover,
               ),
-              // Page title overlaid on the artwork
-              Positioned(
-                bottom: 32,
-                left: 0,
-                right: 0,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: Column(
-                    children: [
-                      if (title.isNotEmpty)
-                        Text(
-                          title,
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.playfairDisplay(
-                            fontSize: MediaQuery.of(context).size.width < 600 ? 17 : 24,
-                            fontWeight: FontWeight.w700,
-                            color: ChiGlowTheme.richRed,
-                            height: 1.2,
-                          ),
-                        ),
-                      if (subtitle != null) ...[
-                        const SizedBox(height: 6),
-                        Text(
-                          subtitle!,
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.quicksand(
-                            fontSize: 13,
-                            color: ChiGlowTheme.mediumGray,
-                            height: 1.4,
-                          ),
-                        ),
-                      ],
-                    ],
+              // Optional page title overlaid on the artwork
+              if (title.isNotEmpty)
+                Positioned(
+                  bottom: 32,
+                  left: 0,
+                  right: 0,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 40),
+                    child: Text(
+                      title,
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.playfairDisplay(
+                        fontSize: MediaQuery.of(context).size.width < 600 ? 17 : 24,
+                        fontWeight: FontWeight.w700,
+                        color: ChiGlowTheme.richRed,
+                        height: 1.2,
+                      ),
+                    ),
                   ),
                 ),
-              ),
+              if (subtitle != null && title.isNotEmpty)
+                Positioned(
+                  bottom: 8,
+                  left: 0,
+                  right: 0,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 40),
+                    child: Text(
+                      subtitle!,
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.quicksand(
+                        fontSize: 13,
+                        color: ChiGlowTheme.mediumGray,
+                        height: 1.4,
+                      ),
+                    ),
+                  ),
+                ),
             ],
           ),
         ),
-        const SizedBox(height: 16),
-        // Lotus flourish
-        Image.asset(
-          'assets/images/lotus_flourish.png',
-          width: 80,
-          height: 24,
-          fit: BoxFit.contain,
-        ),
-        const SizedBox(height: 4),
-        // Gold divider line
-        Image.asset(
-          'assets/images/gold_divider.png',
-          width: 120,
-          height: 4,
-          fit: BoxFit.contain,
-        ),
-        const SizedBox(height: 10),
       ],
     );
   }

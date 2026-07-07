@@ -13,12 +13,16 @@ class YearAheadScreen extends StatelessWidget {
     final zodiacYear = _getZodiacForYear(year);
 
     return Scaffold(
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
+      body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const GlobalHeader(title: 'Year Ahead Forecast', subtitle: 'Your cosmic roadmap'),
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(20, 2, 20, 24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
             // Year animal
             Center(
               child: Column(
@@ -97,10 +101,14 @@ class YearAheadScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24),
-          ],
-        ),
-      ),
-    );
+          ], // close inner Column children
+        ), // close inner Column
+      ), // close SingleChildScrollView
+    ), // close Expanded
+    ], // close outer Column children
+  ), // close outer Column
+), // close SafeArea
+); // close Scaffold + return
   }
 
   String _zodiacEmoji(String sign) {

@@ -67,16 +67,19 @@ class _RoomResultsScreenState extends State<RoomResultsScreen> {
     final tips = ContentService.tipsForRoom(widget.roomType);
 
     return Scaffold(
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
+      body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Page header
             GlobalHeader(
               title: '${widget.roomType} Analysis',
               subtitle: 'ChiGlow Feng Shui guidance for your space',
             ),
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(20, 2, 20, 24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
             SizedBox(
               width: double.infinity,
               height: 180,
@@ -231,6 +234,10 @@ class _RoomResultsScreenState extends State<RoomResultsScreen> {
               ),
             ),
             const SizedBox(height: 24),
+          ],
+        ),
+      ),
+            ),
           ],
         ),
       ),

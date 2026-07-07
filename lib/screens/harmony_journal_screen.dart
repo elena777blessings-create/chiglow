@@ -49,13 +49,16 @@ class _HarmonyJournalScreenState extends State<HarmonyJournalScreen> {
     return Scaffold(
       backgroundColor: ChiGlowTheme.creamWhite,
       body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const GlobalHeader(title: 'Harmony Journal', subtitle: 'Your scan history & insights'),
-              const SizedBox(height: 16),
+        child: Column(
+          children: [
+            const GlobalHeader(title: 'Harmony Journal', subtitle: 'Your scan history & insights'),
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(20, 2, 20, 24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 14),
               if (_loading)
                 const Center(child: CircularProgressIndicator(color: ChiGlowTheme.richRed))
               else if (_entries.isEmpty)
@@ -65,6 +68,9 @@ class _HarmonyJournalScreenState extends State<HarmonyJournalScreen> {
               const SizedBox(height: 24),
             ],
           ),
+        ),
+            ),
+          ],
         ),
       ),
     );

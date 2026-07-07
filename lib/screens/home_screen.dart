@@ -27,13 +27,17 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: ChiParticles(
         child: SafeArea(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(20),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Full-width header — edge-to-edge, outside scroll padding
               const GlobalHeader(title: ''),
-              const SizedBox(height: 2),
+              // Scrollable content with side padding
+              Expanded(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.fromLTRB(20, 2, 20, 24),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
               // Greeting with user name
               Padding(
                 padding: const EdgeInsets.only(left: 4),
@@ -42,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ? 'Good ${_timeOfDay()}, ${provider.userName}.'
                       : 'Good ${_timeOfDay()},',
                   style: GoogleFonts.quicksand(
-                    fontSize: 14,
+                    fontSize: 23,
                     color: ChiGlowTheme.bronzeGold,
                     fontWeight: FontWeight.w600,
                     letterSpacing: 0.5,
@@ -101,6 +105,42 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               const SizedBox(height: 20),
+              // Harmony Journal card
+              GlowCard(
+                glowColor: ChiGlowTheme.bronzeGold,
+                onTap: () => Navigator.pushNamed(context, '/harmony-journal'),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 44,
+                      height: 44,
+                      decoration: BoxDecoration(
+                        color: ChiGlowTheme.richRed.withValues(alpha: 0.08),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Center(child: Text('📓', style: TextStyle(fontSize: 22))),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Harmony Journal',
+                            style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
+                          ),
+                          Text(
+                            'View your scan history',
+                            style: GoogleFonts.quicksand(fontSize: 15, color: Colors.black87),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Icon(Icons.arrow_forward_ios, size: 14, color: ChiGlowTheme.richRed),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
               // Secondary buttons row — cream + gold border
               Row(
                 children: [
@@ -150,42 +190,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     _EnergyBar(label: 'Wealth 💰', value: provider.wealthScore, barColor: ChiGlowTheme.bronzeGold),
                     _EnergyBar(label: 'Health 🌿', value: provider.healthScore, barColor: ChiGlowTheme.richRed),
                     _EnergyBar(label: 'Career 🧭', value: provider.careerScore, barColor: ChiGlowTheme.bronzeGold),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 16),
-              // Harmony Journal card
-              GlowCard(
-                glowColor: ChiGlowTheme.bronzeGold,
-                onTap: () => Navigator.pushNamed(context, '/harmony-journal'),
-                child: Row(
-                  children: [
-                    Container(
-                      width: 44,
-                      height: 44,
-                      decoration: BoxDecoration(
-                        color: ChiGlowTheme.richRed.withValues(alpha: 0.08),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: const Center(child: Text('📖', style: TextStyle(fontSize: 22))),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Harmony Journal',
-                            style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
-                          ),
-                          Text(
-                            'View your scan history & insights',
-                            style: GoogleFonts.quicksand(fontSize: 11, color: ChiGlowTheme.bronzeGold),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Icon(Icons.arrow_forward_ios, size: 14, color: ChiGlowTheme.richRed),
                   ],
                 ),
               ),
@@ -276,12 +280,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               const SizedBox(height: 24),
-            ],
-          ),
-        ),
-        ),
-      ),
-    );
+                    ], // close inner Column children
+                  ), // close inner Column widget
+                ), // close SingleChildScrollView
+              ), // close Expanded
+            ], // close outer Column children
+          ), // close outer Column widget
+        ), // close SafeArea
+      ), // close ChiParticles
+    ); // close Scaffold + return
   }
 
   String _timeOfDay() {

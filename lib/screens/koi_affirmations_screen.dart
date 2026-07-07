@@ -80,13 +80,17 @@ class _KoiAffirmationsScreenState extends State<KoiAffirmationsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
+      body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const GlobalHeader(title: 'Koi Affirmations', subtitle: 'Wisdom from the pond'),
-            const SizedBox(height: 24),
+            const GlobalHeader(title: 'Koi Affirmations', subtitle: 'Wisdom from the sacred koi'),
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(20, 2, 20, 24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+            const SizedBox(height: 14),
 
             // Koi fish cards
             ...List.generate(_koiFish.length, (index) {
@@ -215,6 +219,10 @@ class _KoiAffirmationsScreenState extends State<KoiAffirmationsScreen> {
                 ),
               );
             }),
+          ],
+        ),
+      ),
+            ),
           ],
         ),
       ),

@@ -42,12 +42,16 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
     final luckyDirection = (data['luckyDirection'] as String?) ?? 'South';
 
     return Scaffold(
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
+      body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const GlobalHeader(title: 'Your Zodiac Energy', subtitle: 'Discover your cosmic energy profile'),
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(20, 2, 20, 24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
             _buildFadeUp(0, 
               // Zodiac header
               Center(
@@ -191,6 +195,10 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
               ),
             ),
             const SizedBox(height: 24),
+          ],
+        ),
+      ),
+            ),
           ],
         ),
       ),

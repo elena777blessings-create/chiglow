@@ -26,15 +26,18 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
+      body: SafeArea(
         child: Column(
           children: [
-            // Page header
             const GlobalHeader(
               title: 'Scan Your Space',
               subtitle: 'Discover the energy of your room',
             ),
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(20, 2, 20, 24),
+                child: Column(
+                  children: [
             GestureDetector(
               onTap: _pickImage,
               child: Container(
@@ -69,8 +72,8 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
                             'Tap to take a photo\nor upload a room image',
                             textAlign: TextAlign.center,
                             style: GoogleFonts.quicksand(
-                              fontSize: 14,
-                              color: ChiGlowTheme.richRed.withValues(alpha: 0.7),
+                              fontSize: 16,
+                              color: ChiGlowTheme.richRed,
                               height: 1.5,
                             ),
                           ),
@@ -157,17 +160,19 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
               ),
             ),
             const SizedBox(height: 24),
-            // Analyze button
-            SizedBox(
-              width: double.infinity,
-              height: 56,
-              child: ElevatedButton(
+            // Analyze button — 1/4 narrower, centered
+            Center(
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.70,
+                height: 48,
+                child: ElevatedButton(
                 onPressed: _isAnalyzing ? null : _analyzeRoom,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: ChiGlowTheme.richRed,
                   foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
-                  elevation: 4,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+                  elevation: 0,
+                  padding: EdgeInsets.zero,
                   disabledBackgroundColor: ChiGlowTheme.richRed.withValues(alpha: 0.4),
                 ),
                 child: _isAnalyzing
@@ -176,11 +181,15 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
                         height: 24,
                         child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
                       )
-                    : Text(
-                        '✨ Analyze Chi Energy',
-                        style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600),
+                    : Center(
+                        child: Text(
+                          '✨ Analyze Chi Energy',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600),
+                        ),
                       ),
               ),
+            ),
             ),
             const SizedBox(height: 12),
             Text(
@@ -188,10 +197,14 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
               textAlign: TextAlign.center,
               style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.7)),
             ),
-          ],
-        ),
-      ),
-    );
+          ], // close inner Column children
+        ), // close inner Column
+      ), // close SingleChildScrollView
+    ), // close Expanded
+    ], // close outer Column children
+  ), // close outer Column
+), // close SafeArea
+); // close Scaffold + return
   }
 
   void _pickImage() {
