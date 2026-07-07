@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ? 'Good ${_timeOfDay()}, ${provider.userName}.'
                       : 'Good ${_timeOfDay()},',
                   style: GoogleFonts.quicksand(
-                    fontSize: 23,
+                    fontSize: 21,
                     color: ChiGlowTheme.bronzeGold,
                     fontWeight: FontWeight.w600,
                     letterSpacing: 0.5,
