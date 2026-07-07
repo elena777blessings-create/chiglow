@@ -62,15 +62,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     Row(
                       children: [
                         SizedBox(
-                          width: 18,
-                          height: 18,
+                          width: 22,
+                          height: 22,
                           child: Image.asset(AssetImages.lotusGold, fit: BoxFit.contain),
                         ),
-                        const SizedBox(width: 6),
+                        const SizedBox(width: 8),
                         Text(
                           affirmationTheme,
                           style: GoogleFonts.poppins(
-                            fontSize: 12,
+                            fontSize: 14,
                             fontWeight: FontWeight.w600,
                             color: ChiGlowTheme.bronzeGold,
                           ),
