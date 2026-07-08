@@ -57,6 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
               // Daily affirmation — bronze gold themed
               GlowCard(
                 glowColor: ChiGlowTheme.bronzeGold,
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                 child: Column(
                   children: [
                     Row(
@@ -82,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       '"$affirmation"',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.playfairDisplay(
-                        fontSize: 16,
+                        fontSize: 18,
                         fontStyle: FontStyle.italic,
                         color: ChiGlowTheme.deepRed,
                         height: 1.5,

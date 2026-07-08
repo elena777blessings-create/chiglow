@@ -108,9 +108,9 @@ class SecondaryButton extends StatelessWidget {
               title,
               textAlign: TextAlign.center,
               style: GoogleFonts.playfairDisplay(
-                fontSize: 13,
+                fontSize: 15,
                 fontWeight: FontWeight.w600,
-                color: ChiGlowTheme.bronzeGold,
+                color: ChiGlowTheme.deepRed,
                 height: 1.3,
               ),
             ),
