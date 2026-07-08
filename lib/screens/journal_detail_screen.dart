@@ -79,7 +79,7 @@ class JournalDetailScreen extends StatelessWidget {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(tip['icon'] ?? '💡', style: const TextStyle(fontSize: 28)),
+                      Text(tip['icon'] ?? '💡', style: const TextStyle(fontSize: 36)),
                       const SizedBox(width: 12),
                       Expanded(
                         child: Column(

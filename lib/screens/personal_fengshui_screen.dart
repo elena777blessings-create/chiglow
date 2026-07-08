@@ -100,7 +100,7 @@ class PersonalFengShuiScreen extends StatelessWidget {
                           shape: BoxShape.circle,
                           color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.15),
                         ),
-                        child: Center(child: Text(dir['emoji'], style: const TextStyle(fontSize: 22))),
+                        child: Center(child: Text(dir['emoji'], style: const TextStyle(fontSize: 28))),
                       ),
                       const SizedBox(width: 12),
                       Expanded(
@@ -149,7 +149,7 @@ class PersonalFengShuiScreen extends StatelessWidget {
                           shape: BoxShape.circle,
                           color: Colors.red.withValues(alpha: 0.1),
                         ),
-                        child: Center(child: Text(dir['emoji'], style: const TextStyle(fontSize: 22))),
+                        child: Center(child: Text(dir['emoji'], style: const TextStyle(fontSize: 28))),
                       ),
                       const SizedBox(width: 12),
                       Expanded(

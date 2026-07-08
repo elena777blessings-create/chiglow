@@ -102,7 +102,7 @@ class SecondaryButton extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Text(emoji, style: const TextStyle(fontSize: 28)),
+            Text(emoji, style: const TextStyle(fontSize: 36)),
             const SizedBox(height: 8),
             Text(
               title,

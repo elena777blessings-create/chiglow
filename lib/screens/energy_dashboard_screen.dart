@@ -153,7 +153,7 @@ class _EnergyAreaCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text(emoji, style: const TextStyle(fontSize: 28)),
+              Text(emoji, style: const TextStyle(fontSize: 36)),
               const SizedBox(width: 12),
               Expanded(
                 child: Column(

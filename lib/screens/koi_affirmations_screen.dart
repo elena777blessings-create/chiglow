@@ -130,7 +130,7 @@ class _KoiAffirmationsScreenState extends State<KoiAffirmationsScreen> {
                                 ],
                               ),
                               child: Center(
-                                child: Text(koi['emoji'] as String, style: const TextStyle(fontSize: 28)),
+                                child: Text(koi['emoji'] as String, style: const TextStyle(fontSize: 36)),
                               ),
                             ),
                             const SizedBox(width: 16),
