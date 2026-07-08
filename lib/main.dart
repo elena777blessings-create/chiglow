@@ -91,9 +91,6 @@ class ChiGlowApp extends StatelessWidget {
           case '/upgrade':
             page = const UpgradeScreen();
             break;
-          case '/harmony-journal':
-            page = const HarmonyJournalScreen();
-            break;
           default:
             page = const HomeScreen();
         }

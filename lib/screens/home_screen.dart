@@ -119,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: ChiGlowTheme.richRed.withValues(alpha: 0.08),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: const Center(child: Text('📓', style: TextStyle(fontSize: 22))),
+                      child: const Center(child: Text('📓', style: TextStyle(fontSize: 36))),
                     ),
                     const SizedBox(width: 12),
                     Expanded(
@@ -233,7 +233,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: ChiGlowTheme.richRed.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: const Text('👑', style: TextStyle(fontSize: 18)),
+                        child: const Text('👑', style: TextStyle(fontSize: 36)),
                       ),
                       const SizedBox(width: 12),
                       Expanded(
@@ -588,7 +588,7 @@ class _QuickAction extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(emoji, style: const TextStyle(fontSize: 24)),
+              Text(emoji, style: const TextStyle(fontSize: 36)),
               const SizedBox(height: 4),
               Text(
                 label,
