@@ -48,7 +48,7 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
             const GlobalHeader(title: 'Your Zodiac Energy', subtitle: 'Discover your cosmic energy profile'),
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.fromLTRB(20, 2, 20, 24),
+                padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -57,26 +57,37 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
               Center(
                 child: Column(
                   children: [
-                    Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        gradient: LinearGradient(
-                          colors: [ChiGlowTheme.richRed, ChiGlowTheme.bronzeGold],
-                        ),
-                        boxShadow: [
-                          BoxShadow(color: ChiGlowTheme.richRed.withValues(alpha: 0.3), blurRadius: 20),
-                        ],
-                      ),
-                      child: Center(
-                        child: Text(_zodiacEmoji(zodiac), style: const TextStyle(fontSize: 48)),
-                      ),
+                    Text(
+                      'Your Chinese Zodiac Animal',
+                      style: GoogleFonts.poppins(fontSize: 17, fontWeight: FontWeight.w500, color: ChiGlowTheme.bronzeGold, letterSpacing: 0.5),
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 4),
                     Text(
                       'Year of the $zodiac',
                       style: GoogleFonts.playfairDisplay(fontSize: 28, fontWeight: FontWeight.w700, color: ChiGlowTheme.richRed),
+                    ),
+                    const SizedBox(height: 16),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: Image.asset(
+                        _zodiacImagePath(zodiac),
+                        width: 200,
+                        height: 280,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) => Container(
+                          width: 200,
+                          height: 280,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            gradient: LinearGradient(
+                              colors: [ChiGlowTheme.richRed, ChiGlowTheme.bronzeGold],
+                            ),
+                          ),
+                          child: Center(
+                            child: Text(_zodiacEmoji(zodiac), style: const TextStyle(fontSize: 64)),
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -234,6 +245,10 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
       'Monkey': '🐒', 'Rooster': '🐓', 'Dog': '🐕', 'Pig': '🐖',
     };
     return emojis[sign] ?? '🐉';
+  }
+
+  String _zodiacImagePath(String sign) {
+    return 'assets/images/zodiac_${sign.toLowerCase()}.png';
   }
 }
 

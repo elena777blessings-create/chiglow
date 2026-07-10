@@ -66,7 +66,7 @@ class _CompassScreenState extends State<CompassScreen> {
             const GlobalHeader(title: 'Feng Shui Compass', subtitle: 'Find your Bagua sectors'),
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.fromLTRB(20, 2, 20, 24),
+                padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
                 child: Column(
                   children: [
             if (_isCalibrating)

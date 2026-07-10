@@ -20,7 +20,7 @@ class EnergyDashboardScreen extends StatelessWidget {
             const GlobalHeader(title: 'Energy Dashboard', subtitle: 'Your Chi balance at a glance'),
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.fromLTRB(20, 2, 20, 24),
+                padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

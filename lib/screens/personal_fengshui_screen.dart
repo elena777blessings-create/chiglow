@@ -22,7 +22,7 @@ class PersonalFengShuiScreen extends StatelessWidget {
             const GlobalHeader(title: 'Your Personal Feng Shui', subtitle: 'Discover your Kua number'),
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.fromLTRB(20, 2, 20, 24),
+                padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
               // Scrollable content with side padding
               Expanded(
                 child: SingleChildScrollView(
-                  padding: const EdgeInsets.fromLTRB(20, 2, 20, 24),
+                  padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ? 'Good ${_timeOfDay()}, ${provider.userName}.'
                       : 'Good ${_timeOfDay()},',
                   style: GoogleFonts.quicksand(
-                    fontSize: 21,
+                    fontSize: 20,
                     color: ChiGlowTheme.bronzeGold,
                     fontWeight: FontWeight.w600,
                     letterSpacing: 0.5,
@@ -124,15 +124,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(width: 12),
                     Expanded(
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
                             'Harmony Journal',
-                            style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
+                            style: GoogleFonts.poppins(fontSize: 17, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
                           ),
                           Text(
                             'View your scan history',
-                            style: GoogleFonts.quicksand(fontSize: 15, color: Colors.black87),
+                            style: GoogleFonts.quicksand(fontSize: 16, color: ChiGlowTheme.deepRed, fontWeight: FontWeight.w500),
                           ),
                         ],
                       ),
@@ -205,12 +205,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 12),
               // Upgrade CTA card
               GestureDetector(
                 onTap: () => Navigator.pushNamed(context, '/upgrade'),
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
@@ -233,43 +233,45 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: ChiGlowTheme.richRed.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: const Text('👑', style: TextStyle(fontSize: 36)),
+                        child: const Text('💎', style: TextStyle(fontSize: 36)),
                       ),
-                      const SizedBox(width: 12),
+                      const SizedBox(width: 8),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Unlock Premium ✨',
+                              'Unlock Premium',
                               style: GoogleFonts.poppins(
-                                fontSize: 13,
+                                fontSize: 15,
                                 fontWeight: FontWeight.w600,
                                 color: ChiGlowTheme.richRed,
                               ),
                             ),
+                            const SizedBox(height: 4),
                             Text(
                               'Unlimited scans, full zodiac & more',
                               style: GoogleFonts.quicksand(
-                                fontSize: 11,
-                                color: ChiGlowTheme.bronzeGold,
+                                fontSize: 14,
+                                color: ChiGlowTheme.deepRed,
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
                           ],
                         ),
                       ),
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                         decoration: BoxDecoration(
                           gradient: const LinearGradient(
                             colors: [ChiGlowTheme.richRed, ChiGlowTheme.softRed],
                           ),
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(14),
                         ),
                         child: Text(
                           'LIFETIME \$49',
                           style: GoogleFonts.poppins(
-                            fontSize: 9,
+                            fontSize: 12,
                             fontWeight: FontWeight.w700,
                             color: Colors.white,
                             letterSpacing: 0.3,
@@ -280,8 +282,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              const SizedBox(height: 24),
-                    ], // close inner Column children
+              const SizedBox(height: 16),
+            ], // close inner Column children
                   ), // close inner Column widget
                 ), // close SingleChildScrollView
               ), // close Expanded
@@ -529,26 +531,26 @@ class _EnergyBar extends StatelessWidget {
       child: Row(
         children: [
           SizedBox(
-            width: 100,
-            child: Text(label, style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.deepRed, fontWeight: FontWeight.w500)),
+            width: 120,
+            child: Text(label, style: GoogleFonts.quicksand(fontSize: 17, color: ChiGlowTheme.deepRed, fontWeight: FontWeight.w600)),
           ),
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(4),
               child: LinearProgressIndicator(
                 value: value / 100,
-                minHeight: 6,
+                minHeight: 10,
                 backgroundColor: barColor.withValues(alpha: 0.12),
                 valueColor: AlwaysStoppedAnimation<Color>(barColor),
               ),
             ),
           ),
           SizedBox(
-            width: 30,
+            width: 44,
             child: Text(
               '$value%',
               textAlign: TextAlign.right,
-              style: GoogleFonts.quicksand(fontSize: 11, fontWeight: FontWeight.w600, color: ChiGlowTheme.deepRed),
+              style: GoogleFonts.quicksand(fontSize: 16, fontWeight: FontWeight.w700, color: ChiGlowTheme.deepRed),
             ),
           ),
         ],
@@ -571,8 +573,8 @@ class _QuickAction extends StatelessWidget {
         onTap: onTap,
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 4),
-          padding: const EdgeInsets.symmetric(vertical: 16),
-          constraints: const BoxConstraints(minHeight: 90),
+          padding: const EdgeInsets.symmetric(vertical: 22),
+          constraints: const BoxConstraints(minHeight: 120),
           decoration: BoxDecoration(
             color: Colors.white.withValues(alpha: 0.95),
             borderRadius: BorderRadius.circular(16),
@@ -588,12 +590,23 @@ class _QuickAction extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(emoji, style: const TextStyle(fontSize: 36)),
-              const SizedBox(height: 4),
-              Text(
-                label,
-                textAlign: TextAlign.center,
-                style: GoogleFonts.quicksand(fontSize: 11, fontWeight: FontWeight.w600, color: ChiGlowTheme.deepRed),
+              SizedBox(
+                height: 36,
+                child: Center(
+                  child: Text(emoji, style: const TextStyle(fontSize: 36, height: 0.8)),
+                ),
+              ),
+              const SizedBox(height: 6),
+              SizedBox(
+                height: 42,
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  child: Text(
+                    label,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.quicksand(fontSize: 15, fontWeight: FontWeight.w600, color: ChiGlowTheme.deepRed),
+                  ),
+                ),
               ),
             ],
           ),

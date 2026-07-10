@@ -19,7 +19,7 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
 
   final List<String> _roomTypes = [
     'Living Room', 'Bedroom', 'Kitchen', 'Home Office', 'Bathroom', 'Dining Room',
-    'Entryway', 'Garden', 'Office', 'Front Yard', 'Backyard', 'Corporate Office',
+    'Entryway', 'Garden', 'Front Yard', 'Backyard', 'Corporate Office',
     'Retail Store', 'Restaurant/Café',
   ];
 
@@ -35,9 +35,63 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
             ),
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.fromLTRB(20, 2, 20, 24),
+                padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
                 child: Column(
                   children: [
+            // Room illustration preview
+            if (_imagePath == null)
+              SizedBox(
+                height: 100,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: Image.asset(
+                    AssetImages.roomImageFor(_selectedRoomType),
+                    height: 100,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            const SizedBox(height: 16),
+            // Room type selector
+            GlowCard(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Select Your Room Type',
+                    style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
+                  ),
+                  const SizedBox(height: 12),
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
+                    children: _roomTypes.map((type) {
+                      final selected = _selectedRoomType == type;
+                      return GestureDetector(
+                        onTap: () => setState(() => _selectedRoomType = type),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          decoration: BoxDecoration(
+                            color: selected ? ChiGlowTheme.richRed : ChiGlowTheme.richRed.withValues(alpha: 0.08),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Text(
+                            type,
+                            style: GoogleFonts.quicksand(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                              color: selected ? Colors.white : ChiGlowTheme.richRed,
+                            ),
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
             GestureDetector(
               onTap: _pickImage,
               child: Container(
@@ -69,11 +123,12 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
                           ),
                           const SizedBox(height: 16),
                           Text(
-                            'Tap to take a photo\nor upload a room image',
+                            'Tap to take a photo',
                             textAlign: TextAlign.center,
                             style: GoogleFonts.quicksand(
-                              fontSize: 16,
-                              color: ChiGlowTheme.richRed,
+                              fontSize: 17,
+                              color: ChiGlowTheme.deepRed,
+                              fontWeight: FontWeight.w600,
                               height: 1.5,
                             ),
                           ),
@@ -103,60 +158,6 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
                           ],
                         ),
                       ),
-              ),
-            ),
-            const SizedBox(height: 16),
-            // Room illustration preview
-            if (_imagePath == null)
-              SizedBox(
-                height: 100,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(16),
-                  child: Image.asset(
-                    AssetImages.roomImageFor(_selectedRoomType),
-                    height: 100,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            const SizedBox(height: 16),
-            // Room type selector
-            GlowCard(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Room Type',
-                    style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
-                  ),
-                  const SizedBox(height: 12),
-                  Wrap(
-                    spacing: 8,
-                    runSpacing: 8,
-                    children: _roomTypes.map((type) {
-                      final selected = _selectedRoomType == type;
-                      return GestureDetector(
-                        onTap: () => setState(() => _selectedRoomType = type),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                          decoration: BoxDecoration(
-                            color: selected ? ChiGlowTheme.richRed : ChiGlowTheme.richRed.withValues(alpha: 0.08),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Text(
-                            type,
-                            style: GoogleFonts.quicksand(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w600,
-                              color: selected ? Colors.white : ChiGlowTheme.richRed,
-                            ),
-                          ),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                ],
               ),
             ),
             const SizedBox(height: 24),
@@ -195,7 +196,7 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
             Text(
               'Your photo is processed locally and never leaves your device.',
               textAlign: TextAlign.center,
-              style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.7)),
+              style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.deepRed, fontWeight: FontWeight.w500),
             ),
           ], // close inner Column children
         ), // close inner Column

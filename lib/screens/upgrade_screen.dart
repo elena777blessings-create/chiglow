@@ -85,7 +85,7 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
             Expanded(
               child: ChiParticles(
                 child: SingleChildScrollView(
-                  padding: const EdgeInsets.fromLTRB(20, 2, 20, 24),
+                  padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

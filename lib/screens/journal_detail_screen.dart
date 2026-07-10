@@ -20,7 +20,7 @@ class JournalDetailScreen extends StatelessWidget {
             const GlobalHeader(title: 'Scan Report', subtitle: 'Full Feng Shui analysis'),
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.fromLTRB(20, 2, 20, 24),
+                padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
                 child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

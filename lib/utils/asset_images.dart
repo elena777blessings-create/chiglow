@@ -16,7 +16,7 @@ class AssetImages {
     'Corporate Office': 'assets/images/room_corporate.png',
     'Retail Store': 'assets/images/room_retail.png',
     'Restaurant/Café': 'assets/images/room_restaurant.png',
-    'Bathroom': 'assets/images/room_bedroom.png', // fallback
+    'Bathroom': 'assets/images/room_bathroom.png',
   };
 
   /// Koi fish images — color → asset path

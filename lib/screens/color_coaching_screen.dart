@@ -17,7 +17,7 @@ class ColorCoachingScreen extends StatelessWidget {
             const GlobalHeader(title: 'Color Coaching', subtitle: 'Discover colors that support your goals'),
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.fromLTRB(20, 2, 20, 24),
+                padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

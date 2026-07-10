@@ -86,7 +86,7 @@ class _KoiAffirmationsScreenState extends State<KoiAffirmationsScreen> {
             const GlobalHeader(title: 'Koi Affirmations', subtitle: 'Wisdom from the sacred koi'),
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.fromLTRB(20, 2, 20, 24),
+                padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
