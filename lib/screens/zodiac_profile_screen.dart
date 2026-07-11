@@ -66,27 +66,33 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                       'Year of the $zodiac',
                       style: GoogleFonts.playfairDisplay(fontSize: 28, fontWeight: FontWeight.w700, color: ChiGlowTheme.richRed),
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 8),
                     ClipRRect(
                       borderRadius: BorderRadius.circular(16),
-                      child: Image.asset(
-                        _zodiacImagePath(zodiac),
-                        width: 200,
-                        height: 280,
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) => Container(
-                          width: 200,
-                          height: 280,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            gradient: LinearGradient(
-                              colors: [ChiGlowTheme.richRed, ChiGlowTheme.bronzeGold],
+                      child: LayoutBuilder(
+                        builder: (context, constraints) {
+                          final cardWidth = (constraints.maxWidth) * 0.88;
+                          final cardHeight = cardWidth * 1.4;
+                          return Image.asset(
+                            _zodiacImagePath(zodiac),
+                            width: cardWidth,
+                            height: cardHeight,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) => Container(
+                              width: cardWidth,
+                              height: cardHeight,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16),
+                                gradient: LinearGradient(
+                                  colors: [ChiGlowTheme.richRed, ChiGlowTheme.bronzeGold],
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(_zodiacEmoji(zodiac), style: const TextStyle(fontSize: 64)),
+                              ),
                             ),
-                          ),
-                          child: Center(
-                            child: Text(_zodiacEmoji(zodiac), style: const TextStyle(fontSize: 64)),
-                          ),
-                        ),
+                          );
+                        },
                       ),
                     ),
                   ],
