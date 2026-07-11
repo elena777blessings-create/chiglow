@@ -70,18 +70,16 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                     Builder(
                       builder: (context) {
                         final screenWidth = MediaQuery.of(context).size.width;
-                        final cardWidth = (screenWidth - 40) * 0.94;
-                        final cardHeight = cardWidth * 1.4;
+                        final cardWidth = screenWidth - 28; // ~14px margins on each side
                         return ClipRRect(
                           borderRadius: BorderRadius.circular(16),
                           child: Image.asset(
                             _zodiacImagePath(zodiac),
                             width: cardWidth,
-                            height: cardHeight,
-                            fit: BoxFit.contain,
+                            fit: BoxFit.fitWidth,
                             errorBuilder: (context, error, stackTrace) => Container(
                               width: cardWidth,
-                              height: cardHeight,
+                              height: cardWidth * 1.5, // fallback uses 2:3 ratio
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(16),
                                 gradient: LinearGradient(
