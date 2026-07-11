@@ -70,7 +70,7 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                     Builder(
                       builder: (context) {
                         final screenWidth = MediaQuery.of(context).size.width;
-                        final cardWidth = (screenWidth - 40) * 0.88;
+                        final cardWidth = (screenWidth - 40) * 0.94;
                         final cardHeight = cardWidth * 1.4;
                         return ClipRRect(
                           borderRadius: BorderRadius.circular(16),
