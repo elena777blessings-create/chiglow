@@ -67,17 +67,18 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                       style: GoogleFonts.playfairDisplay(fontSize: 28, fontWeight: FontWeight.w700, color: ChiGlowTheme.richRed),
                     ),
                     const SizedBox(height: 8),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(16),
-                      child: LayoutBuilder(
-                        builder: (context, constraints) {
-                          final cardWidth = (constraints.maxWidth) * 0.88;
-                          final cardHeight = cardWidth * 1.4;
-                          return Image.asset(
+                    Builder(
+                      builder: (context) {
+                        final screenWidth = MediaQuery.of(context).size.width;
+                        final cardWidth = (screenWidth - 40) * 0.88;
+                        final cardHeight = cardWidth * 1.4;
+                        return ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.asset(
                             _zodiacImagePath(zodiac),
                             width: cardWidth,
                             height: cardHeight,
-                            fit: BoxFit.cover,
+                            fit: BoxFit.contain,
                             errorBuilder: (context, error, stackTrace) => Container(
                               width: cardWidth,
                               height: cardHeight,
@@ -91,9 +92,9 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                                 child: Text(_zodiacEmoji(zodiac), style: const TextStyle(fontSize: 64)),
                               ),
                             ),
-                          );
-                        },
-                      ),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
