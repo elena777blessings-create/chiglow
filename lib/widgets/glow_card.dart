@@ -68,7 +68,7 @@ class _GlowCardState extends State<GlowCard> with SingleTickerProviderStateMixin
           child: Container(
             padding: widget.padding ?? const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: Colors.white.withValues(alpha: 0.95),
+              color: const Color(0xFFFEFCF6), // warm off-white
               borderRadius: BorderRadius.circular(widget.borderRadius),
               border: Border.all(
                 color: (widget.glowColor ?? ChiGlowTheme.bronzeGold).withValues(alpha: 0.12),

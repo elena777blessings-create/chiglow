@@ -52,8 +52,8 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+            // --- Zodiac Card Section ---
             _buildFadeUp(0, 
-              // Zodiac header
               Center(
                 child: Column(
                   children: [
@@ -70,7 +70,7 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                     Builder(
                       builder: (context) {
                         final screenWidth = MediaQuery.of(context).size.width;
-                        final cardWidth = screenWidth - 28; // ~14px margins on each side
+                        final cardWidth = screenWidth - 28;
                         return ClipRRect(
                           borderRadius: BorderRadius.circular(16),
                           child: Image.asset(
@@ -79,7 +79,7 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                             fit: BoxFit.fitWidth,
                             errorBuilder: (context, error, stackTrace) => Container(
                               width: cardWidth,
-                              height: cardWidth * 1.5, // fallback uses 2:3 ratio
+                              height: cardWidth * 1.5,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(16),
                                 gradient: LinearGradient(
@@ -98,9 +98,16 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                 ),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 16),
+
+            // 🌿 Today's [Zodiac] Energy section heading
             _buildFadeUp(1,
-              // Description
+              _SectionHeading(emoji: '🌿', text: "Today's $zodiac Energy"),
+            ),
+            const SizedBox(height: 16),
+
+            // Description card
+            _buildFadeUp(2,
               GlowCard(
                 child: Text(
                   data['description'] as String,
@@ -108,9 +115,16 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                 ),
               ),
             ),
-            const SizedBox(height: 20),
-            // Color of the Day + Direction of the Day
-            _buildFadeUp(2,
+            const SizedBox(height: 28),
+
+            // ☀️ Today's Energy section heading
+            _buildFadeUp(3,
+              _SectionHeading(emoji: '☀️', text: "Today's Energy"),
+            ),
+            const SizedBox(height: 16),
+
+            // Color of the Day + Direction of the Day (grouped)
+            _buildFadeUp(4,
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -124,12 +138,20 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                 ],
               ),
             ),
-            const SizedBox(height: 20),
-            _buildFadeUp(3,
-              // Compatible signs
+            const SizedBox(height: 28),
+
+            // 🤝 Relationships section heading
+            _buildFadeUp(5,
+              _SectionHeading(emoji: '🤝', text: 'Relationships'),
+            ),
+            const SizedBox(height: 16),
+
+            // Compatible Signs + Practice Today (grouped)
+            _buildFadeUp(6,
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Compatible signs
                   Text(
                     '🪷 Compatible Signs',
                     style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
@@ -140,15 +162,8 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                     runSpacing: 8,
                     children: (data['compatible'] as List<String>).map((sign) => _SignChip(sign: sign, compatible: true)).toList(),
                   ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 20),
-            _buildFadeUp(4,
-              // Challenging signs
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                  const SizedBox(height: 24),
+                  // Practice Today
                   Text(
                     '🪷 Practice Today',
                     style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
@@ -167,25 +182,30 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                 ],
               ),
             ),
-            const SizedBox(height: 20),
-            _buildFadeUp(5,
-              // ChiGlow Guidance
+            const SizedBox(height: 28),
+
+            // 🪷 ChiGlow Guidance section heading
+            _buildFadeUp(7,
+              Row(
+                children: [
+                  const Text('🌸', style: TextStyle(fontSize: 16)),
+                  const SizedBox(width: 6),
+                  Text(
+                    'ChiGlow Guidance',
+                    style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
+
+            // Guidance card
+            _buildFadeUp(8,
               GlowCard(
                 glowColor: ChiGlowTheme.bronzeGold,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Text('🌸', style: const TextStyle(fontSize: 16)),
-                        const SizedBox(width: 6),
-                        Text(
-                          'ChiGlow Guidance',
-                          style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.bronzeGold),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
                     Text(
                       'Today is a wonderful day to trust your confidence. Small, thoughtful actions will create meaningful progress. Let the energy of the $zodiac guide you toward what matters most.',
                       style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.charcoal, height: 1.6),
@@ -194,9 +214,16 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                 ),
               ),
             ),
-            const SizedBox(height: 24),
-            _buildFadeUp(6,
-              // View full forecast button
+            const SizedBox(height: 28),
+
+            // ✨ Year Ahead section heading
+            _buildFadeUp(9,
+              _SectionHeading(emoji: '✨', text: 'Year Ahead'),
+            ),
+            const SizedBox(height: 16),
+
+            // View full forecast button
+            _buildFadeUp(10,
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton.icon(
@@ -385,6 +412,33 @@ class _SignChip extends StatelessWidget {
           color: compatible ? ChiGlowTheme.richRed : ChiGlowTheme.bronzeGold,
         ),
       ),
+    );
+  }
+}
+
+/// Reusable section heading used throughout the Zodiac Profile screen.
+/// Displays an emoji followed by a Poppins heading in ChiGlowTheme.richRed.
+class _SectionHeading extends StatelessWidget {
+  final String emoji;
+  final String text;
+
+  const _SectionHeading({required this.emoji, required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Text(emoji, style: const TextStyle(fontSize: 20)),
+        const SizedBox(width: 8),
+        Text(
+          text,
+          style: GoogleFonts.poppins(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: ChiGlowTheme.richRed,
+          ),
+        ),
+      ],
     );
   }
 }
