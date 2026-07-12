@@ -152,9 +152,15 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Compatible signs
-                  Text(
-                    '🪷 Compatible Signs',
-                    style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
+                  Row(
+                    children: [
+                      Icon(Icons.favorite_border, size: 20, color: ChiGlowTheme.bronzeGold),
+                      const SizedBox(width: 6),
+                      Text(
+                        'Compatible Signs',
+                        style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 8),
                   Wrap(
@@ -162,11 +168,17 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                     runSpacing: 8,
                     children: (data['compatible'] as List<String>).map((sign) => _SignChip(sign: sign, compatible: true)).toList(),
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 32),
                   // Practice Today
-                  Text(
-                    '🪷 Practice Today',
-                    style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
+                  Row(
+                    children: [
+                      Icon(Icons.auto_awesome, size: 20, color: ChiGlowTheme.bronzeGold),
+                      const SizedBox(width: 6),
+                      Text(
+                        'Practice Today',
+                        style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 8),
                   Wrap(
@@ -193,7 +205,7 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                   children: [
                     Row(
                       children: [
-                        const Text('🪷', style: TextStyle(fontSize: 18)),
+                        Icon(Icons.spa, size: 22, color: ChiGlowTheme.bronzeGold),
                         const SizedBox(width: 8),
                         Text(
                           "Today's Wisdom",
@@ -298,7 +310,7 @@ class _ColorOfDayCard extends StatelessWidget {
       glowColor: ChiGlowTheme.bronzeGold,
       child: Column(
         children: [
-          const Text('🌸', style: TextStyle(fontSize: 24)),
+          const Icon(Icons.palette, size: 24, color: ChiGlowTheme.bronzeGold),
           const SizedBox(height: 8),
           // Color swatch
           Container(
@@ -363,7 +375,7 @@ class _DirectionOfDayCard extends StatelessWidget {
     return GlowCard(
       child: Column(
         children: [
-          const Text('🧭', style: TextStyle(fontSize: 24)),
+          const Icon(Icons.explore, size: 24, color: ChiGlowTheme.bronzeGold),
           const SizedBox(height: 8),
           Text(
             direction,
