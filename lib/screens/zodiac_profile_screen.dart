@@ -111,7 +111,7 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
               GlowCard(
                 child: Text(
                   data['description'] as String,
-                  style: GoogleFonts.quicksand(fontSize: 15, color: const Color(0xFF1A1A1A), height: 1.6),
+                  style: GoogleFonts.quicksand(fontSize: 15, color: const Color(0xFF222222), height: 1.6),
                 ),
               ),
             ),
