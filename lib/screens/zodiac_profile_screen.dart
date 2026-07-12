@@ -184,28 +184,30 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
             ),
             const SizedBox(height: 28),
 
-            // 🪷 ChiGlow Guidance section heading
+            // 🪷 ChiGlow Guidance — enhanced section
             _buildFadeUp(7,
-              Row(
-                children: [
-                  const Text('🌸', style: TextStyle(fontSize: 16)),
-                  const SizedBox(width: 6),
-                  Text(
-                    'ChiGlow Guidance',
-                    style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 16),
-
-            // Guidance card
-            _buildFadeUp(8,
               GlowCard(
                 glowColor: ChiGlowTheme.bronzeGold,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Row(
+                      children: [
+                        const Text('🪷', style: TextStyle(fontSize: 18)),
+                        const SizedBox(width: 8),
+                        Text(
+                          "Today's Wisdom",
+                          style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    // Gold divider line
+                    Container(
+                      height: 1,
+                      color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.3),
+                    ),
+                    const SizedBox(height: 12),
                     Text(
                       'Today is a wonderful day to trust your confidence. Small, thoughtful actions will create meaningful progress. Let the energy of the $zodiac guide you toward what matters most.',
                       style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.charcoal, height: 1.6),
@@ -214,7 +216,7 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                 ),
               ),
             ),
-            const SizedBox(height: 28),
+            const SizedBox(height: 32),
 
             // ✨ Year Ahead section heading
             _buildFadeUp(9,
@@ -317,12 +319,12 @@ class _ColorOfDayCard extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             colorName,
-            style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
+            style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w500, color: ChiGlowTheme.richRed),
           ),
           const SizedBox(height: 2),
           Text(
             'Color of the Day',
-            style: GoogleFonts.quicksand(fontSize: 10, color: ChiGlowTheme.mediumGray),
+            style: GoogleFonts.poppins(fontSize: 10, fontWeight: FontWeight.w500, color: ChiGlowTheme.mediumGray),
           ),
           const SizedBox(height: 6),
           Text(
@@ -365,12 +367,12 @@ class _DirectionOfDayCard extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             direction,
-            style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w700, color: ChiGlowTheme.richRed),
+            style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
           ),
           const SizedBox(height: 2),
           Text(
             'Direction of the Day',
-            style: GoogleFonts.quicksand(fontSize: 10, color: ChiGlowTheme.mediumGray),
+            style: GoogleFonts.poppins(fontSize: 10, fontWeight: FontWeight.w500, color: ChiGlowTheme.mediumGray),
           ),
           const SizedBox(height: 6),
           Text(

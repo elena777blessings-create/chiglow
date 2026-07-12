@@ -76,14 +76,14 @@ class _GlowCardState extends State<GlowCard> with SingleTickerProviderStateMixin
               ),
               boxShadow: [
                 BoxShadow(
-                  color: (widget.glowColor ?? ChiGlowTheme.richRed).withValues(alpha: 0.08),
-                  blurRadius: 12,
+                  color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.05),
+                  blurRadius: 6,
                   spreadRadius: 0,
-                  offset: const Offset(0, 4),
+                  offset: const Offset(0, 3),
                 ),
                 BoxShadow(
-                  color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.04),
-                  blurRadius: 24,
+                  color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.03),
+                  blurRadius: 14,
                   spreadRadius: 1,
                   offset: const Offset(0, 0),
                 ),
