@@ -379,13 +379,13 @@ class _DirectionOfDayCard extends StatelessWidget {
           const SizedBox(height: 2),
           Text(
             'Direction of the Day',
-            style: GoogleFonts.poppins(fontSize: 10, fontWeight: FontWeight.w500, color: ChiGlowTheme.mediumGray),
+            style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w500, color: ChiGlowTheme.mediumGray),
           ),
           const SizedBox(height: 6),
           Text(
             'Face this direction while working, meditating, journaling, or planning important goals today.',
             textAlign: TextAlign.center,
-            style: GoogleFonts.quicksand(fontSize: 10, color: ChiGlowTheme.mediumGray, height: 1.4),
+            style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.charcoal, height: 1.4),
           ),
         ],
       ),
