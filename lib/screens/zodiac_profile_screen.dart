@@ -117,9 +117,9 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
             ),
             const SizedBox(height: 28),
 
-            // ☀️ Today's Energy section heading
+            // ☀️ Daily Balance section heading
             _buildFadeUp(3,
-              _SectionHeading(emoji: '☀️', text: "Today's Energy"),
+              _SectionHeading(emoji: '☀️', text: 'Daily Balance'),
             ),
             const SizedBox(height: 16),
 
