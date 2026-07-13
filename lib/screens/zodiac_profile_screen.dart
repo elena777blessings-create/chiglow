@@ -331,7 +331,7 @@ class _ColorOfDayCard extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             'Color of the Day',
-            style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
+            style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w500, color: ChiGlowTheme.mediumGray),
           ),
           const SizedBox(height: 6),
           Text(
