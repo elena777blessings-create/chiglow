@@ -330,19 +330,14 @@ class _ColorOfDayCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            colorName,
-            style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w500, color: ChiGlowTheme.richRed),
-          ),
-          const SizedBox(height: 2),
-          Text(
             'Color of the Day',
-            style: GoogleFonts.poppins(fontSize: 10, fontWeight: FontWeight.w500, color: ChiGlowTheme.mediumGray),
+            style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
           ),
           const SizedBox(height: 6),
           Text(
             'Wear, decorate with, or add small accents of this color today to invite confidence, optimism, and joyful energy into your space.',
             textAlign: TextAlign.center,
-            style: GoogleFonts.quicksand(fontSize: 10, color: ChiGlowTheme.mediumGray, height: 1.4),
+            style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.charcoal, height: 1.4),
           ),
         ],
       ),
