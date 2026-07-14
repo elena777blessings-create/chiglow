@@ -331,7 +331,7 @@ class _ColorOfDayCard extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             'Color of the Day',
-            style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w500, color: ChiGlowTheme.mediumGray),
+            style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w500, color: ChiGlowTheme.richRed),
           ),
           const SizedBox(height: 6),
           Text(
@@ -378,8 +378,8 @@ class _DirectionOfDayCard extends StatelessWidget {
           ),
           const SizedBox(height: 32),
           Text(
-            'Direction of the Day',
-            style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w500, color: ChiGlowTheme.mediumGray),
+            'Lucky Direction',
+            style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w500, color: ChiGlowTheme.richRed),
           ),
           const SizedBox(height: 6),
           Text(
