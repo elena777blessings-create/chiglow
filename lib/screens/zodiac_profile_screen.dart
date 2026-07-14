@@ -382,7 +382,7 @@ class _DirectionOfDayCard extends StatelessWidget {
             child: Center(
               child: Text(
                 direction,
-                style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
+                style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
               ),
             ),
           ),
