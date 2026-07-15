@@ -373,7 +373,7 @@ class _DirectionOfDayCard extends StatelessWidget {
           const Icon(Icons.explore, size: 24, color: ChiGlowTheme.bronzeGold),
           const SizedBox(height: 8),
           SizedBox(
-            height: 48,
+            height: 56,
             child: Center(
               child: Text(
                 direction,
