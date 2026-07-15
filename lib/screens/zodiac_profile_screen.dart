@@ -222,7 +222,7 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                     const SizedBox(height: 12),
                     Text(
                       'Today is a wonderful day to trust your confidence. Small, thoughtful actions will create meaningful progress. Let the energy of the $zodiac guide you toward what matters most.',
-                      style: GoogleFonts.quicksand(fontSize: 13, color: const Color(0xFF2C2C2C), height: 1.6),
+                      style: GoogleFonts.quicksand(fontSize: 13, color: const Color(0xFF1A1A1A), height: 1.6),
                     ),
                   ],
                 ),
@@ -232,21 +232,31 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
 
             // ✨ Year Ahead section heading
             _buildFadeUp(9,
-              _SectionHeading(emoji: '✨', text: 'Year Ahead'),
+              _SectionHeading(emoji: '✨', text: 'Year Ahead Forecast'),
             ),
             const SizedBox(height: 16),
 
             // View full forecast button
             _buildFadeUp(10,
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton.icon(
-                  onPressed: () => Navigator.pushNamed(context, '/year-ahead'),
-                  icon: const Icon(Icons.auto_awesome, size: 18),
-                  label: Text('View Year Ahead Forecast', style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600)),
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
+              Center(
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.70,
+                  height: 48,
+                  child: ElevatedButton(
+                    onPressed: () => Navigator.pushNamed(context, '/year-ahead'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: ChiGlowTheme.richRed,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+                      elevation: 0,
+                      padding: EdgeInsets.zero,
+                    ),
+                    child: Center(
+                      child: Text(
+                        'View Your Forecast',
+                        style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600),
+                      ),
+                    ),
                   ),
                 ),
               ),
