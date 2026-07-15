@@ -209,7 +209,7 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                         const SizedBox(width: 8),
                         Text(
                           "Today's Wisdom",
-                          style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: Color(0xFF2C2C2C)),
+                          style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
                         ),
                       ],
                     ),
