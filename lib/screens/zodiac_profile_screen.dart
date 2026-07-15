@@ -372,9 +372,14 @@ class _DirectionOfDayCard extends StatelessWidget {
         children: [
           const Icon(Icons.explore, size: 24, color: ChiGlowTheme.bronzeGold),
           const SizedBox(height: 8),
-          Text(
-            direction,
-            style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
+          SizedBox(
+            height: 48,
+            child: Center(
+              child: Text(
+                direction,
+                style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
+              ),
+            ),
           ),
           const SizedBox(height: 8),
           Text(
