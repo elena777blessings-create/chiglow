@@ -175,7 +175,7 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                       Icon(Icons.auto_awesome, size: 20, color: ChiGlowTheme.bronzeGold),
                       const SizedBox(width: 6),
                       Text(
-                        'Practice Today',
+                        'Practice Patience Today',
                         style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
                       ),
                     ],
