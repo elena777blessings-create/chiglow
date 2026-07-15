@@ -189,7 +189,7 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                   const SizedBox(height: 8),
                   Text(
                     'Practice patience, kindness, and open communication today.',
-                    style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.mediumGray, height: 1.5),
+                    style: GoogleFonts.quicksand(fontSize: 15, color: ChiGlowTheme.charcoal, height: 1.5),
                   ),
                 ],
               ),
@@ -209,7 +209,7 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                         const SizedBox(width: 8),
                         Text(
                           "Today's Wisdom",
-                          style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
+                          style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: Color(0xFF2C2C2C)),
                         ),
                       ],
                     ),
@@ -222,7 +222,7 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                     const SizedBox(height: 12),
                     Text(
                       'Today is a wonderful day to trust your confidence. Small, thoughtful actions will create meaningful progress. Let the energy of the $zodiac guide you toward what matters most.',
-                      style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.charcoal, height: 1.6),
+                      style: GoogleFonts.quicksand(fontSize: 13, color: const Color(0xFF2C2C2C), height: 1.6),
                     ),
                   ],
                 ),
