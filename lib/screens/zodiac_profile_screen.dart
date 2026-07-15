@@ -382,11 +382,11 @@ class _DirectionOfDayCard extends StatelessWidget {
             child: Center(
               child: Text(
                 direction,
-                style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
+                style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
               ),
             ),
           ),
-          const SizedBox(height: 32),
+          const SizedBox(height: 8),
           Text(
             'Lucky Direction',
             style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w500, color: ChiGlowTheme.richRed),
