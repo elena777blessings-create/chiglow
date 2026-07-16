@@ -420,6 +420,7 @@ class _FooterLink extends StatelessWidget {
         text,
         style: GoogleFonts.quicksand(
           fontSize: 14,
+          fontWeight: FontWeight.w700,
           color: ChiGlowTheme.richRed,
           decoration: TextDecoration.underline,
           decorationColor: ChiGlowTheme.richRed.withValues(alpha: 0.3),
