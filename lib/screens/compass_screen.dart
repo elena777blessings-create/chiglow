@@ -129,7 +129,7 @@ class _CompassScreenState extends State<CompassScreen> {
                     glowColor: _currentSector().color,
                     child: Row(
                       children: [
-                        Text.rich(TextSpan(text: _currentSector().emoji, style: TextStyle(fontSize: 36, color: ChiGlowTheme.richRed))),
+                        Text(_currentSector().emoji, style: const TextStyle(fontSize: 36)),
                         const SizedBox(width: 16),
                         Expanded(
                           child: Column(
@@ -165,10 +165,10 @@ class _CompassScreenState extends State<CompassScreen> {
                             width: 36,
                             height: 36,
                             decoration: BoxDecoration(
-                              color: entry.value.color.withValues(alpha: 0.2),
+                              color: ChiGlowTheme.richRed.withValues(alpha: 0.15),
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: Center(child: Text.rich(TextSpan(text: entry.value.emoji, style: TextStyle(fontSize: 21, color: ChiGlowTheme.richRed)))),
+                            child: Center(child: Text(entry.value.emoji, style: const TextStyle(fontSize: 21))),
                           ),
                           const SizedBox(width: 12),
                           Expanded(
