@@ -73,7 +73,7 @@ class YearAheadScreen extends StatelessWidget {
             const SizedBox(height: 12),
             ...List.generate(4, (i) => _MonthCard(
               month: _monthNames[i],
-              forecast: _forecasts[zodiacYear]?[i] ?? 'A balanced month for reflection and growth.',
+              forecast: _seasonDescriptions[i],
               element: _elements[i],
             )),
             const SizedBox(height: 20),
@@ -143,21 +143,12 @@ class YearAheadScreen extends StatelessWidget {
 
   static const _monthNames = ['Spring (Mar-May)', 'Summer (Jun-Aug)', 'Autumn (Sep-Nov)', 'Winter (Dec-Feb)'];
   static const _elements = ['🌿 Wood • Growth & New Beginnings', '🔥 Fire • Passion & Energy', '⚔️ Metal • Clarity & Focus', '💧 Water • Wisdom & Reflection'];
-
-  static const _forecasts = <String, List<String>>{
-    'Dragon': [
-      'A powerful spring for launching new ventures. Your confidence is magnetic — use it wisely.',
-      'Summer brings recognition. Step into the spotlight and share your vision with the world.',
-      'Focus on relationships in autumn. Collaborate rather than lead for the best results.',
-      'Winter is for reflection. Plan your next grand move while the world rests.',
-    ],
-    'Rabbit': [
-      'Spring brings gentle new energy. Nurture your creative projects and watch them bloom.',
-      'A peaceful summer for deepening relationships. Your kindness opens doors.',
-      'Autumn asks you to set boundaries. Protect your peace while staying compassionate.',
-      'Winter offers quiet growth. Rest and recharge for the opportunities ahead.',
-    ],
-  };
+  static const _seasonDescriptions = [
+    'A wonderful season to start new projects, embrace fresh ideas, and nurture personal growth.',
+    'A vibrant season to express yourself, strengthen relationships, and pursue what inspires you.',
+    'A meaningful season to simplify, stay organized, and focus on what truly matters.',
+    'A peaceful season for rest, reflection, and preparing for the opportunities ahead.',
+  ];
 }
 
 class _MonthCard extends StatelessWidget {
