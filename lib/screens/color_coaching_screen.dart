@@ -173,7 +173,7 @@ class _QuickRef extends StatelessWidget {
               color: swatchColor,
               borderRadius: BorderRadius.circular(6),
               border: Border.all(
-                color: isWhite ? const Color(0xFFBDBDBD) : Colors.transparent,
+                color: isWhite ? const Color(0xFFBDBDBD) : swatchColor.withValues(alpha: 0.3),
                 width: 1.5,
               ),
               boxShadow: [
