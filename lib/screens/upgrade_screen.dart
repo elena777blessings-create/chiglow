@@ -234,24 +234,14 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
                   ],
                 ),
               ),
-
-              const SizedBox(height: 8),
-              Text(
-                'Payment processing coming soon.',
-                textAlign: TextAlign.center,
-                style: GoogleFonts.quicksand(
-                  fontSize: 14,
-                  color: ChiGlowTheme.richRed,
-                ),
-              ),
             ],
           ),
         ),
       ),
-          ),
-        ],
       ),
-    ),
+          ],
+        ),
+      ),
     );
   }
 
