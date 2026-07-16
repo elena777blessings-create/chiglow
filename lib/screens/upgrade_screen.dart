@@ -207,11 +207,11 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
                 child: Text(
                   '🌸 May your home always be filled\nwith peace, harmony, and light.',
                   textAlign: TextAlign.center,
-                  style: GoogleFonts.playfairDisplay(
-                    fontSize: 17,
-                    fontWeight: FontWeight.w700,
+                  style: GoogleFonts.greatVibes(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w500,
                     color: Color(0xFF2E7D32),
-                    height: 1.6,
+                    height: 1.3,
                   ),
                 ),
               ),
