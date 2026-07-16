@@ -23,7 +23,8 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
       supportText: 'Only \$5.00 per month',
       badge: 'MEMBER FAVORITE',
       description:
-          'Save compared to paying monthly. Unlimited access to the complete ChiGlow experience. Cancel anytime.',
+          'Save compared to paying monthly.\n\n'
+          'Unlimited access to the complete ChiGlow experience. Cancel anytime.',
       features: [
         'Unlimited room scans',
         'Full zodiac profiles',
@@ -57,7 +58,9 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
       supportText: null,
       badge: 'FOUNDER',
       description:
-          'Become one of ChiGlow\'s earliest supporters. Pay once and enjoy lifetime access to the current premium experience. Future premium enhancements released during the Founder\'s Edition program are included. Thank you for believing in our vision from the very beginning.',
+          'Become one of ChiGlow\'s earliest supporters. Pay once and enjoy lifetime access to the current premium experience.\n\n'
+          'Future premium enhancements released during the Founder\'s Edition program are included.\n\n'
+          'Thank you for believing in our vision from the very beginning.',
       features: [
         'Everything forever',
         'No recurring payments',
@@ -274,7 +277,7 @@ class _TierCard extends StatelessWidget {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         width: double.infinity,
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 20),
         decoration: BoxDecoration(
           color: Colors.white.withValues(alpha: 0.95),
           borderRadius: BorderRadius.circular(20),
@@ -349,22 +352,25 @@ class _TierCard extends StatelessWidget {
             ],
 
             // Description
-            Text(
-              tier.description,
-              textAlign: TextAlign.start,
-              style: GoogleFonts.quicksand(
-                fontSize: 14,
-                fontWeight: FontWeight.w700,
-                color: ChiGlowTheme.bronzeGold,
-                height: 1.5,
-                wordSpacing: -1,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 6),
+              child: Text(
+                tier.description,
+                textAlign: TextAlign.start,
+                style: GoogleFonts.quicksand(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                  color: ChiGlowTheme.bronzeGold,
+                  height: 1.5,
+                  wordSpacing: -1,
+                ),
               ),
             ),
-            const SizedBox(height: 14),
+            const SizedBox(height: 20),
 
             // Divider
             Container(height: 1, color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.12)),
-            const SizedBox(height: 12),
+            const SizedBox(height: 16),
 
             // Features
             ...tier.features.map((f) => Padding(
