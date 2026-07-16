@@ -50,25 +50,10 @@ class YearAheadScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 16),
-                  Text(
-                    'Year of the $zodiacYear',
-                    style: GoogleFonts.playfairDisplay(fontSize: 26, fontWeight: FontWeight.w700, color: ChiGlowTheme.richRed),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    '$year',
-                    style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.bronzeGold, fontWeight: FontWeight.w600),
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    'A Year of ${_yearTheme(zodiacYear)}',
-                    style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.bronzeGold, fontWeight: FontWeight.w600),
-                  ),
                 ],
               ),
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 20),
             // Monthly overview
             Text(
               '📅 Monthly Highlights',
@@ -139,15 +124,6 @@ class YearAheadScreen extends StatelessWidget {
       'Monkey': '🐒', 'Rooster': '🐓', 'Dog': '🐕', 'Pig': '🐖',
     };
     return emojis[sign] ?? '🐉';
-  }
-
-  String _yearTheme(String sign) {
-    const themes = {
-      'Rat': 'New Beginnings', 'Ox': 'Steady Progress', 'Tiger': 'Bold Action', 'Rabbit': 'Peaceful Growth',
-      'Dragon': 'Grand Transformation', 'Snake': 'Deep Wisdom', 'Horse': 'Free Adventure', 'Goat': 'Artistic Creation',
-      'Monkey': 'Playful Innovation', 'Rooster': 'Precise Achievement', 'Dog': 'Loyal Service', 'Pig': 'Generous Abundance',
-    };
-    return themes[sign] ?? 'Harmony';
   }
 
   static const _monthNames = ['Spring (Mar-May)', 'Summer (Jun-Aug)', 'Autumn (Sep-Nov)', 'Winter (Dec-Feb)'];
