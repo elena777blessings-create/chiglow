@@ -473,8 +473,8 @@ class _AboutRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(label, style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.richRed)),
-        Text(value, style: GoogleFonts.quicksand(fontSize: 13, color: const Color(0xFF546E7A))),
+        Text(label, style: GoogleFonts.quicksand(fontSize: 15, fontWeight: FontWeight.w700, color: ChiGlowTheme.richRed)),
+        Text(value, style: GoogleFonts.quicksand(fontSize: 15, fontWeight: FontWeight.w700, color: const Color(0xFF2E7D32))),
       ],
     );
   }
