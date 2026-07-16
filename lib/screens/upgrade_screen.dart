@@ -367,7 +367,7 @@ class _TierCard extends StatelessWidget {
               style: GoogleFonts.quicksand(
                 fontSize: 14,
                 fontWeight: FontWeight.w700,
-                color: const Color(0xFF2E7D32),
+                color: ChiGlowTheme.bronzeGold,
                 height: 1.5,
               ),
             ),
