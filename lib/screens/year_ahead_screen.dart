@@ -142,7 +142,7 @@ class YearAheadScreen extends StatelessWidget {
   }
 
   static const _monthNames = ['Spring (Mar-May)', 'Summer (Jun-Aug)', 'Autumn (Sep-Nov)', 'Winter (Dec-Feb)'];
-  static const _elements = ['Wood 🌱', 'Fire 🔥', 'Metal ⚔️', 'Water 💧'];
+  static const _elements = ['🌿 Wood • Growth & New Beginnings', '🔥 Fire • Passion & Energy', '⚔️ Metal • Clarity & Focus', '💧 Water • Wisdom & Reflection'];
 
   static const _forecasts = <String, List<String>>{
     'Dragon': [
@@ -178,12 +178,12 @@ class _MonthCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(month, style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
-                Text(element, style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.bronzeGold)),
+                Text(month, style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
+                Text(element, style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.bronzeGold)),
               ],
             ),
             const SizedBox(height: 8),
-            Text(forecast, style: GoogleFonts.quicksand(fontSize: 13, color: const Color(0xFF37474F), height: 1.5)),
+            Text(forecast, style: GoogleFonts.quicksand(fontSize: 15, color: const Color(0xFF1A1A1A), height: 1.6)),
           ],
         ),
       ),
