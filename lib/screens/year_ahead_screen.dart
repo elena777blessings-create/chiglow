@@ -75,7 +75,7 @@ class YearAheadScreen extends StatelessWidget {
             const SizedBox(height: 4),
             Text(
               'Your natural elemental profile shaped by the energy of $year',
-              style: GoogleFonts.quicksand(fontSize: 15, color: ChiGlowTheme.bronzeGold, fontWeight: FontWeight.w700),
+              style: GoogleFonts.quicksand(fontSize: 15, color: ChiGlowTheme.bronzeGold, fontWeight: FontWeight.w700, wordSpacing: -1),
             ),
             const SizedBox(height: 12),
             GlowCard(
@@ -233,7 +233,7 @@ class _MonthCard extends StatelessWidget {
             const SizedBox(height: 4),
             Text(element, style: GoogleFonts.quicksand(fontSize: 14, color: const Color(0xFF8B6914), fontWeight: FontWeight.w700, height: 1.3)),
             const SizedBox(height: 8),
-            Text(forecast, style: GoogleFonts.quicksand(fontSize: 17, color: const Color(0xFF1A1A1A), height: 1.65)),
+            Text(forecast, style: GoogleFonts.quicksand(fontSize: 17, color: const Color(0xFF1A1A1A), height: 1.65, wordSpacing: -1)),
           ],
         ),
       ),
@@ -294,7 +294,7 @@ class _LuckyItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(item, style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
-              Text(desc, style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.bronzeGold, fontWeight: FontWeight.w700)),
+              Text(desc, style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.bronzeGold, fontWeight: FontWeight.w700, wordSpacing: -1)),
             ],
           ),
         ],

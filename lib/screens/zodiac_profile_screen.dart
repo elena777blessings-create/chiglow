@@ -112,7 +112,7 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
               GlowCard(
                 child: Text(
                   data['description'] as String,
-                  style: GoogleFonts.quicksand(fontSize: 15, color: const Color(0xFF222222), height: 1.6),
+                  style: GoogleFonts.quicksand(fontSize: 15, color: const Color(0xFF222222), height: 1.6, wordSpacing: -1),
                 ),
               ),
             ),
@@ -190,7 +190,7 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                   const SizedBox(height: 8),
                   Text(
                     'Practice patience, kindness, and open communication today.',
-                    style: GoogleFonts.quicksand(fontSize: 15, color: ChiGlowTheme.charcoal, height: 1.5),
+                    style: GoogleFonts.quicksand(fontSize: 15, color: ChiGlowTheme.charcoal, height: 1.5, wordSpacing: -1),
                   ),
                 ],
               ),
@@ -223,7 +223,7 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                     const SizedBox(height: 12),
                     Text(
                       'Today is a wonderful day to trust your confidence. Small, thoughtful actions will create meaningful progress. Let the energy of the $zodiac guide you toward what matters most.',
-                      style: GoogleFonts.quicksand(fontSize: 13, color: const Color(0xFF1A1A1A), height: 1.6),
+                      style: GoogleFonts.quicksand(fontSize: 13, color: const Color(0xFF1A1A1A), height: 1.6, wordSpacing: -1),
                     ),
                   ],
                 ),
