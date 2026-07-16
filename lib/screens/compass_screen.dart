@@ -241,7 +241,7 @@ class _CompassPainter extends CustomPainter {
       final tp = TextPainter(
         text: TextSpan(
           text: ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'][i],
-          style: TextStyle(color: ChiGlowTheme.richRed, fontSize: 14, fontWeight: FontWeight.w700),
+          style: TextStyle(color: ChiGlowTheme.richRed, fontSize: 16, fontWeight: FontWeight.w700),
         ),
         textDirection: TextDirection.ltr,
       );
