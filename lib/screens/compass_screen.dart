@@ -26,7 +26,7 @@ class _CompassScreenState extends State<CompassScreen> {
     'S': _BaguaSector('Fame', '🏆', 'Fire', Colors.red),
     'SW': _BaguaSector('Love', '💖', 'Earth', Colors.pink),
     'W': _BaguaSector('Creativity', '🎨', 'Metal', const Color(0xFF9E9E9E)),
-    'NW': _BaguaSector('Mentors', '🙏', 'Metal', const Color(0xFFE0E0E0)),
+    'NW': _BaguaSector('Mentors', '🤝', 'Metal', const Color(0xFFE0E0E0)),
   };
 
   @override
