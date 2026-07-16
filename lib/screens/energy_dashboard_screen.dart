@@ -196,9 +196,9 @@ class _EnergyAreaCard extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('• ', style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.charcoal)),
+                Text('• ', style: GoogleFonts.quicksand(fontSize: 14, color: const Color(0xFF7A5C1E))),
                 Expanded(
-                  child: Text(tip, style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.charcoal)),
+                  child: Text(tip, style: GoogleFonts.quicksand(fontSize: 14, color: const Color(0xFF7A5C1E))),
                 ),
               ],
             ),
