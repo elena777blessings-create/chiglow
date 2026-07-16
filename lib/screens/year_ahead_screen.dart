@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
 import '../widgets/global_header.dart';
+import '../providers/app_state_provider.dart';
 
 class YearAheadScreen extends StatelessWidget {
   const YearAheadScreen({super.key});
@@ -11,6 +13,9 @@ class YearAheadScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final year = DateTime.now().year;
     final zodiacYear = _getZodiacForYear(year);
+    final provider = context.watch<AppStateProvider>();
+    final userZodiac = provider.zodiacSign;
+    final elementScores = _calculateElementBalance(userZodiac, year);
 
     return Scaffold(
       body: SafeArea(
@@ -82,15 +87,20 @@ class YearAheadScreen extends StatelessWidget {
               '🌿 Your Overall Balance',
               style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
             ),
+            const SizedBox(height: 4),
+            Text(
+              'Your natural elemental profile shaped by the energy of $year',
+              style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.bronzeGold, fontWeight: FontWeight.w500),
+            ),
             const SizedBox(height: 12),
             GlowCard(
               child: Column(
                 children: [
-                  _ElementBar(element: 'Wood 🔥', value: 75),
-                  _ElementBar(element: 'Fire 🔥', value: 60),
-                  _ElementBar(element: 'Earth 🌍', value: 85),
-                  _ElementBar(element: 'Metal ⚔️', value: 45),
-                  _ElementBar(element: 'Water 💧', value: 55),
+                  _ElementBar(element: '🌿 Wood', value: elementScores['Wood']!),
+                  _ElementBar(element: '🔥 Fire', value: elementScores['Fire']!),
+                  _ElementBar(element: '🌍 Earth', value: elementScores['Earth']!),
+                  _ElementBar(element: '⚔️ Metal', value: elementScores['Metal']!),
+                  _ElementBar(element: '💧 Water', value: elementScores['Water']!),
                 ],
               ),
             ),
@@ -318,4 +328,72 @@ class _LuckyItem extends StatelessWidget {
 String _getZodiacForYear(int year) {
   const animals = ['Monkey', 'Rooster', 'Dog', 'Pig', 'Rat', 'Ox', 'Tiger', 'Rabbit', 'Dragon', 'Snake', 'Horse', 'Goat'];
   return animals[year % 12];
+}
+
+/// Calculates the 5-element balance based on the user's zodiac and the current year's energy.
+///
+/// Formula:
+/// - Each zodiac animal has a primary element.
+/// - The generating cycle (Wood→Fire→Earth→Metal→Water→Wood) and
+///   controlling cycle (Wood→Earth→Water→Fire→Metal→Wood) determine
+///   how each element relates to the primary.
+/// - The current year's Heavenly Stem provides an additional energy boost.
+///
+/// Returns a map of element name → score (0–100).
+///
+/// Future expansion: Room Scan results can blend into these scores
+/// without changing the UI — just pass a roomScanModifier map here.
+Map<String, int> _calculateElementBalance(String zodiacSign, int year) {
+  // Zodiac → primary element index
+  // 0: Wood, 1: Fire, 2: Earth, 3: Metal, 4: Water
+  const zodiacElement = <String, int>{
+    'Rat': 4, 'Ox': 2, 'Tiger': 0, 'Rabbit': 0,
+    'Dragon': 2, 'Snake': 1, 'Horse': 1, 'Goat': 2,
+    'Monkey': 3, 'Rooster': 3, 'Dog': 2, 'Pig': 4,
+  };
+
+  const elementLabels = ['Wood', 'Fire', 'Earth', 'Metal', 'Water'];
+
+  // Current year's Heavenly Stem → element index
+  // year % 10: 0-1→Metal, 2-3→Water, 4-5→Wood, 6-7→Fire, 8-9→Earth
+  const stemElement = [3, 3, 4, 4, 0, 0, 1, 1, 2, 2];
+  final yearElement = stemElement[year % 10];
+
+  final primary = zodiacElement[zodiacSign] ?? 2; // default Earth
+
+  // Helper: element i generates element (i+1)%5
+  bool generates(int parent, int child) => (parent + 1) % 5 == child;
+
+  // Helper: element i controls element (i+2)%5
+  bool controls(int controller, int controlled) => (controller + 2) % 5 == controlled;
+
+  Map<String, int> scores = {};
+  for (int i = 0; i < 5; i++) {
+    int score = 50; // neutral base
+
+    if (i == primary) {
+      score += 25; // primary element is strongest
+    } else if (generates(primary, i)) {
+      score += 5; // child of primary (primary generates this)
+    } else if (generates(i, primary)) {
+      score += 10; // parent of primary (this generates primary)
+    } else if (controls(primary, i)) {
+      score -= 5; // controlled by primary
+    } else if (controls(i, primary)) {
+      score -= 10; // controls primary
+    }
+
+    // Year energy modulation
+    if (i == yearElement) {
+      score += 12; // year's element resonates
+    } else if (generates(yearElement, i)) {
+      score += 6; // year's energy nurtures this element
+    } else if (generates(i, yearElement)) {
+      score += 4; // this element feeds the year's energy
+    }
+
+    scores[elementLabels[i]] = score.clamp(10, 95);
+  }
+
+  return scores;
 }
