@@ -74,7 +74,7 @@ class YearAheadScreen extends StatelessWidget {
             const SizedBox(height: 4),
             Text(
               'Your natural elemental profile shaped by the energy of $year',
-              style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.bronzeGold, fontWeight: FontWeight.w500),
+              style: GoogleFonts.quicksand(fontSize: 15, color: ChiGlowTheme.bronzeGold, fontWeight: FontWeight.w700),
             ),
             const SizedBox(height: 12),
             GlowCard(
@@ -291,7 +291,7 @@ class _LuckyItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(item, style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
-              Text(desc, style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.bronzeGold)),
+              Text(desc, style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.bronzeGold, fontWeight: FontWeight.w700)),
             ],
           ),
         ],
