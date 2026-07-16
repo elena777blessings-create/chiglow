@@ -61,7 +61,7 @@ class EnergyDashboardScreen extends StatelessWidget {
                         ),
                         Text(
                           'Harmony',
-                          style: GoogleFonts.quicksand(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.bronzeGold),
+                          style: GoogleFonts.quicksand(fontSize: 16, fontWeight: FontWeight.w700, color: ChiGlowTheme.bronzeGold),
                         ),
                       ],
                     ),
