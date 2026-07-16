@@ -79,7 +79,7 @@ class YearAheadScreen extends StatelessWidget {
             const SizedBox(height: 20),
             // Year elements
             Text(
-              '🌿 Element Balance',
+              '🌿 Your Overall Balance',
               style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
             ),
             const SizedBox(height: 12),
