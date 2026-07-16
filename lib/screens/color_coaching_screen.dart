@@ -189,11 +189,11 @@ class _QuickRef extends StatelessWidget {
           const SizedBox(width: 8),
           SizedBox(
             width: 60,
-            child: Text(name, style: GoogleFonts.quicksand(fontSize: 12, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
+            child: Text(name, style: GoogleFonts.quicksand(fontSize: 15, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
           ),
           SizedBox(
             width: 140,
-            child: Text(use, style: GoogleFonts.quicksand(fontSize: 11, color: ChiGlowTheme.bronzeGold)),
+            child: Text(use, style: GoogleFonts.quicksand(fontSize: 14, fontWeight: FontWeight.w700, color: ChiGlowTheme.bronzeGold)),
           ),
         ],
       ),
