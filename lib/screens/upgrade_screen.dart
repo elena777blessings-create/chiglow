@@ -208,7 +208,7 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
                   '🌸 May your home always be filled\nwith peace, harmony, and light.',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.greatVibes(
-                    fontSize: 22,
+                    fontSize: 23,
                     fontWeight: FontWeight.w500,
                     color: Color(0xFF2E7D32),
                     height: 1.3,
@@ -359,7 +359,7 @@ class _TierCard extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 6),
               child: Text(
                 tier.description,
-                textAlign: TextAlign.start,
+                textAlign: TextAlign.center,
                 style: GoogleFonts.quicksand(
                   fontSize: 14,
                   fontWeight: FontWeight.w700,
