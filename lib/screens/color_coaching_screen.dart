@@ -39,7 +39,7 @@ class ColorCoachingScreen extends StatelessWidget {
                         const SizedBox(height: 4),
                         Text(
                           'Each color carries a unique vibration that can transform the energy of your space.',
-                          style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.bronzeGold, height: 1.5),
+                          style: GoogleFonts.quicksand(fontSize: 14, fontWeight: FontWeight.w700, color: const Color(0xFF2E7D32), height: 1.5),
                         ),
                       ],
                     ),
