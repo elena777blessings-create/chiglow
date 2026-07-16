@@ -19,7 +19,7 @@ class YearAheadScreen extends StatelessWidget {
             const GlobalHeader(title: 'Year Ahead Forecast', subtitle: 'Your cosmic roadmap'),
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
+                padding: const EdgeInsets.fromLTRB(20, 4, 20, 24),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -31,11 +31,11 @@ class YearAheadScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16),
                     child: Image.asset(
                       'assets/images/year_cover_${zodiacYear.toLowerCase()}.webp',
-                      width: MediaQuery.of(context).size.width * 0.48,
+                      width: MediaQuery.of(context).size.width * 0.80,
                       fit: BoxFit.contain,
                       errorBuilder: (context, error, stackTrace) => Container(
-                        width: MediaQuery.of(context).size.width * 0.48,
-                        height: MediaQuery.of(context).size.width * 0.48 * 1.4,
+                        width: MediaQuery.of(context).size.width * 0.80,
+                        height: MediaQuery.of(context).size.width * 0.80 * 1.4,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
                           color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.1),
