@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
 import '../widgets/global_header.dart';
+import '../widgets/home_button.dart';
 
 class CompassScreen extends StatefulWidget {
   const CompassScreen({super.key});
@@ -189,6 +190,8 @@ class _CompassScreenState extends State<CompassScreen> {
                   )),
                 ],
               ),
+              const SizedBox(height: 8),
+              const HomeButton(),
           ],  // close inner Column children
         ),  // close inner Column
       ),  // close SingleChildScrollView

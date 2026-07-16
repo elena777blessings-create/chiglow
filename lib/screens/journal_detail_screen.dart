@@ -4,6 +4,7 @@ import '../theme/app_theme.dart';
 import '../models/energy_models.dart';
 import '../widgets/glow_card.dart';
 import '../widgets/global_header.dart';
+import '../widgets/home_button.dart';
 
 class JournalDetailScreen extends StatelessWidget {
   final JournalEntry entry;
@@ -167,6 +168,8 @@ class JournalDetailScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
+              const SizedBox(height: 8),
+              const HomeButton(),
             ],
           ),
         ),

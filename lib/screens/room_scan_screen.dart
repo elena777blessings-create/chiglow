@@ -4,6 +4,7 @@ import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
 import '../utils/asset_images.dart';
 import '../widgets/global_header.dart';
+import '../widgets/home_button.dart';
 
 class RoomScanScreen extends StatefulWidget {
   const RoomScanScreen({super.key});
@@ -198,6 +199,8 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
               textAlign: TextAlign.center,
               style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.deepRed, fontWeight: FontWeight.w500),
             ),
+            const SizedBox(height: 8),
+            const HomeButton(),
           ], // close inner Column children
         ), // close inner Column
       ), // close SingleChildScrollView

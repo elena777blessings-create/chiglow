@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
 import '../widgets/global_header.dart';
+import '../widgets/home_button.dart';
 import '../providers/app_state_provider.dart';
 
 class YearAheadScreen extends StatelessWidget {
@@ -107,6 +108,8 @@ class YearAheadScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24),
+            const SizedBox(height: 8),
+            const HomeButton(),
           ], // close inner Column children
         ), // close inner Column
       ), // close SingleChildScrollView

@@ -5,6 +5,7 @@ import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
 import '../widgets/global_header.dart';
 import '../providers/app_state_provider.dart';
+import '../widgets/home_button.dart';
 
 class EnergyDashboardScreen extends StatelessWidget {
   const EnergyDashboardScreen({super.key});
@@ -117,6 +118,8 @@ class EnergyDashboardScreen extends StatelessWidget {
               tips: ['Enhance north area with water', 'Display career inspirations', 'Keep entryway welcoming'],
             ),
             const SizedBox(height: 24),
+            const SizedBox(height: 8),
+            const HomeButton(),
           ],
         ),
       ),

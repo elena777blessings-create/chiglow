@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
 import '../widgets/global_header.dart';
+import '../widgets/home_button.dart';
 
 class KoiAffirmationsScreen extends StatefulWidget {
   const KoiAffirmationsScreen({super.key});
@@ -219,6 +220,8 @@ class _KoiAffirmationsScreenState extends State<KoiAffirmationsScreen> {
                 ),
               );
             }),
+            const SizedBox(height: 8),
+            const HomeButton(),
           ],
         ),
       ),

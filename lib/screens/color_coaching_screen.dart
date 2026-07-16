@@ -4,6 +4,7 @@ import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
 import '../widgets/global_header.dart';
 import '../services/content_service.dart';
+import '../widgets/home_button.dart';
 
 class ColorCoachingScreen extends StatelessWidget {
   const ColorCoachingScreen({super.key});
@@ -84,6 +85,8 @@ class ColorCoachingScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24),
+            const SizedBox(height: 8),
+            const HomeButton(),
           ], // close inner Column children
         ), // close inner Column
       ), // close SingleChildScrollView

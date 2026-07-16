@@ -7,6 +7,7 @@ import '../services/journal_storage.dart';
 import '../models/energy_models.dart';
 import '../utils/asset_images.dart';
 import '../widgets/global_header.dart';
+import '../widgets/home_button.dart';
 
 class RoomResultsScreen extends StatefulWidget {
   final String roomType;
@@ -234,6 +235,8 @@ class _RoomResultsScreenState extends State<RoomResultsScreen> {
               ),
             ),
             const SizedBox(height: 24),
+            const SizedBox(height: 8),
+            const HomeButton(),
           ],
         ),
       ),

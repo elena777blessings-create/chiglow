@@ -5,6 +5,7 @@ import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
 import '../providers/app_state_provider.dart';
 import '../widgets/global_header.dart';
+import '../widgets/home_button.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -252,6 +253,8 @@ class SettingsScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24),
+            const SizedBox(height: 8),
+            const HomeButton(),
           ],
         ),
       ),

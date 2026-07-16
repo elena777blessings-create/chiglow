@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
 import '../widgets/global_header.dart';
+import '../widgets/home_button.dart';
 import '../providers/app_state_provider.dart';
 
 class ZodiacProfileScreen extends StatefulWidget {
@@ -262,6 +263,8 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
               ),
             ),
             const SizedBox(height: 24),
+            const SizedBox(height: 8),
+            const HomeButton(),
           ],
         ),
       ),

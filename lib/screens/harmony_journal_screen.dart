@@ -6,6 +6,7 @@ import '../services/content_service.dart';
 import '../models/energy_models.dart';
 import '../widgets/glow_card.dart';
 import '../widgets/global_header.dart';
+import '../widgets/home_button.dart';
 
 class HarmonyJournalScreen extends StatefulWidget {
   const HarmonyJournalScreen({super.key});
@@ -117,6 +118,8 @@ class _HarmonyJournalScreenState extends State<HarmonyJournalScreen> {
               ),
               child: Text('Scan Your Space', style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600)),
             ),
+            const SizedBox(height: 8),
+            const HomeButton(),
           ],
         ),
       ),

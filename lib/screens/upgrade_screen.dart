@@ -5,6 +5,7 @@ import '../widgets/glow_card.dart';
 import '../widgets/chi_particles.dart';
 import '../utils/asset_images.dart';
 import '../widgets/global_header.dart';
+import '../widgets/home_button.dart';
 
 class UpgradeScreen extends StatefulWidget {
   const UpgradeScreen({super.key});
@@ -234,6 +235,8 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
                   ],
                 ),
               ),
+              const SizedBox(height: 8),
+              const HomeButton(),
             ],
           ),
         ),
