@@ -135,11 +135,11 @@ class _ColorCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(goal, style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
+                Text(goal, style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
                 const SizedBox(height: 2),
-                Text('$color · Element: $element', style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.bronzeGold)),
+                Text('$color · Element: $element', style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.bronzeGold, fontWeight: FontWeight.w700)),
                 const SizedBox(height: 4),
-                Text(tip, style: GoogleFonts.quicksand(fontSize: 12, color: const Color(0xFF546E7A), height: 1.4)),
+                Text(tip, style: GoogleFonts.quicksand(fontSize: 14, fontWeight: FontWeight.w700, color: const Color(0xFF2E7D32), height: 1.4)),
               ],
             ),
           ),
