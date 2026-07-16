@@ -357,6 +357,7 @@ class _TierCard extends StatelessWidget {
                 fontWeight: FontWeight.w700,
                 color: ChiGlowTheme.bronzeGold,
                 height: 1.5,
+                wordSpacing: -1,
               ),
             ),
             const SizedBox(height: 14),
