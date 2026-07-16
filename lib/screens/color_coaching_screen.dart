@@ -113,6 +113,7 @@ class _ColorCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorValue = Color(int.parse(hex.replaceFirst('#', '0xFF')));
+    final isWhite = hex == '#FFFFFF';
 
     return GlowCard(
       glowColor: colorValue,
@@ -125,6 +126,10 @@ class _ColorCard extends StatelessWidget {
             decoration: BoxDecoration(
               color: colorValue,
               borderRadius: BorderRadius.circular(12),
+              border: Border.all(
+                color: isWhite ? const Color(0xFFBDBDBD) : colorValue.withValues(alpha: 0.3),
+                width: 1.5,
+              ),
               boxShadow: [
                 BoxShadow(color: colorValue.withValues(alpha: 0.4), blurRadius: 8),
               ],
