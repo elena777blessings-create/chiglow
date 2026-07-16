@@ -53,15 +53,18 @@ class SettingsScreen extends StatelessWidget {
                       ],
                     ),
                     child: ClipOval(
-                      child: Image.asset(
-                        'assets/images/year_cover_${provider.zodiacSign.toLowerCase()}.webp',
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) => Container(
-                          color: ChiGlowTheme.richRed.withValues(alpha: 0.1),
-                          child: Center(
-                            child: Text(
-                              provider.zodiacSign[0],
-                              style: GoogleFonts.poppins(fontSize: 32, fontWeight: FontWeight.w700, color: ChiGlowTheme.richRed),
+                      child: Transform.scale(
+                        scale: 1.1,
+                        child: Image.asset(
+                          'assets/images/year_cover_${provider.zodiacSign.toLowerCase()}.webp',
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) => Container(
+                            color: ChiGlowTheme.richRed.withValues(alpha: 0.1),
+                            child: Center(
+                              child: Text(
+                                provider.zodiacSign[0],
+                                style: GoogleFonts.poppins(fontSize: 32, fontWeight: FontWeight.w700, color: ChiGlowTheme.richRed),
+                              ),
                             ),
                           ),
                         ),
