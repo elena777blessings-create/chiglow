@@ -454,7 +454,7 @@ class _SettingTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(title, style: GoogleFonts.poppins(fontSize: 17, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
-                  Text(subtitle, style: GoogleFonts.quicksand(fontSize: 16, fontWeight: FontWeight.w700, color: ChiGlowTheme.bronzeGold)),
+                  Text(subtitle, style: GoogleFonts.quicksand(fontSize: 17, fontWeight: FontWeight.w700, color: ChiGlowTheme.bronzeGold)),
                 ],
               ),
             ),
