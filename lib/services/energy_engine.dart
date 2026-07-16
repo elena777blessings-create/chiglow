@@ -9,38 +9,36 @@
 ///                     Room Scan Data                  Energy Dashboard
 ///                     (future blend)                  (Love, Wealth, etc.)
 ///
-/// All calculations are pure functions — no side effects, no state.
+/// ## Design Principle
+/// The engine is pure calculation logic — it reads business rules from
+/// [EnergyConfig] and processes inputs. Changing weights, adding new
+/// life areas, or adjusting cycle relationships happens in the config
+/// file, never in the engine itself.
+///
+/// All methods are static and side-effect-free.
+library;
+
+import '../config/energy_config.dart';
+
 class EnergyEngine {
-  // ── Element Index Reference ──
-  // 0: Wood, 1: Fire, 2: Earth, 3: Metal, 4: Water
-  static const elementLabels = ['Wood', 'Fire', 'Earth', 'Metal', 'Water'];
-
-  // ── Zodiac → Primary Element ──
-  static const _zodiacElement = <String, int>{
-    'Rat': 4, 'Ox': 2, 'Tiger': 0, 'Rabbit': 0,
-    'Dragon': 2, 'Snake': 1, 'Horse': 1, 'Goat': 2,
-    'Monkey': 3, 'Rooster': 3, 'Dog': 2, 'Pig': 4,
-  };
-
   // ── Five Element Cycles ──
 
-  /// Generating (Sheng) cycle: Wood → Fire → Earth → Metal → Water → Wood
-  /// Returns true if [parent] generates [child].
-  static bool generates(int parent, int child) => (parent + 1) % 5 == child;
+  /// Returns true if [parent] generates [child] in the Sheng cycle
+  /// (Wood → Fire → Earth → Metal → Water → Wood).
+  static bool generates(int parent, int child) =>
+      EnergyConfig.generatingCycle[parent] == child;
 
-  /// Controlling (Ke) cycle: Wood → Earth → Water → Fire → Metal → Wood
-  /// Returns true if [controller] controls [controlled].
+  /// Returns true if [controller] controls [controlled] in the Ke cycle
+  /// (Wood → Earth → Water → Fire → Metal → Wood).
   static bool controls(int controller, int controlled) =>
-      (controller + 2) % 5 == controlled;
+      EnergyConfig.controllingCycle[controller] == controlled;
 
   // ── Year Energy ──
 
   /// Returns the Heavenly Stem element index for the given [year].
   /// year % 10: 0-1→Metal, 2-3→Water, 4-5→Wood, 6-7→Fire, 8-9→Earth
-  static int yearElementIndex(int year) {
-    const stemElement = [3, 3, 4, 4, 0, 0, 1, 1, 2, 2];
-    return stemElement[year % 10];
-  }
+  static int yearElementIndex(int year) =>
+      EnergyConfig.stemElement[year % 10];
 
   // ── Core: Five Element Balance ──
 
@@ -54,8 +52,11 @@ class EnergyEngine {
   /// without changing this function or any UI code.
   static Map<String, int> calculateElementBalance(
       String zodiacSign, int year) {
-    final primary = _zodiacElement[zodiacSign] ?? 2; // default Earth
+    final primary = EnergyConfig.zodiacElement[zodiacSign] ?? 2; // default Earth
     final yearElement = yearElementIndex(year);
+    final scoring = EnergyConfig.elementBalanceScoring;
+    final yearScoring = EnergyConfig.yearEnergyScoring;
+    final labels = EnergyConfig.elementLabels;
 
     Map<String, int> scores = {};
     for (int i = 0; i < 5; i++) {
@@ -63,27 +64,27 @@ class EnergyEngine {
 
       // Zodiac elemental relationship
       if (i == primary) {
-        score += 25; // primary element is strongest
+        score += scoring['primaryElement'] as int;
       } else if (generates(primary, i)) {
-        score += 5; // child of primary (primary generates this)
+        score += scoring['childElement'] as int;
       } else if (generates(i, primary)) {
-        score += 10; // parent of primary (this generates primary)
+        score += scoring['parentElement'] as int;
       } else if (controls(primary, i)) {
-        score -= 5; // controlled by primary
+        score += scoring['controlledElement'] as int;
       } else if (controls(i, primary)) {
-        score -= 10; // controls primary
+        score += scoring['controllingElement'] as int;
       }
 
       // Year energy modulation
       if (i == yearElement) {
-        score += 12; // year's element resonates
+        score += yearScoring['sameElement'] as int;
       } else if (generates(yearElement, i)) {
-        score += 6; // year's energy nurtures this element
+        score += yearScoring['nurturedElement'] as int;
       } else if (generates(i, yearElement)) {
-        score += 4; // this element feeds the year's energy
+        score += yearScoring['feedingElement'] as int;
       }
 
-      scores[elementLabels[i]] = score.clamp(10, 95);
+      scores[labels[i]] = score.clamp(10, 95);
     }
 
     return scores;
@@ -93,45 +94,45 @@ class EnergyEngine {
 
   /// Derives Bagua life area scores from the [elementBalance].
   ///
-  /// Each life area has a primary element and supporting elements
-  /// based on the Generating cycle:
-  ///
-  /// | Life Area    | Primary Element | Supporting Elements |
-  /// |-------------|----------------|-------------------|
-  /// | Love        | Earth          | Fire (parent), Metal (child) |
-  /// | Wealth      | Wood           | Water (parent), Fire (child) |
-  /// | Health      | Harmony + Earth| All 5 elements, Earth-weighted |
-  /// | Career      | Water          | Metal (parent), Wood (child) |
+  /// Each life area's score is calculated from the [EnergyConfig.baguaRules],
+  /// which define the primary element, its weight, and supporting elements
+  /// with their weights. This allows the scoring rules to be adjusted
+  /// without changing the engine's calculation logic.
   static Map<String, int> calculateBaguaScores(Map<String, int> elements) {
-    final wood = elements['Wood'] ?? 50;
-    final fire = elements['Fire'] ?? 50;
-    final earth = elements['Earth'] ?? 50;
-    final metal = elements['Metal'] ?? 50;
-    final water = elements['Water'] ?? 50;
+    final labels = EnergyConfig.elementLabels;
+    final rules = EnergyConfig.baguaRules;
 
-    // ❤️ Love & Relationships → Earth (Southwest)
-    // Primary: Earth, supporting: Fire (generates Earth), Metal (Earth generates)
-    final love = (earth * 0.50 + fire * 0.25 + metal * 0.25).round();
-
-    // 💰 Wealth & Prosperity → Wood (Southeast)
-    // Primary: Wood, supporting: Water (generates Wood), Fire (Wood generates)
-    final wealth = (wood * 0.50 + water * 0.25 + fire * 0.25).round();
-
-    // 💚 Health → Overall Harmony, Earth-weighted
-    // All five elements contribute, with Earth as the central influence
-    final avgAll = (wood + fire + earth + metal + water) / 5;
-    final health = (earth * 0.40 + avgAll * 0.60).round();
-
-    // 💼 Career → Water (North)
-    // Primary: Water, supporting: Metal (generates Water), Wood (Water generates)
-    final career = (water * 0.50 + metal * 0.25 + wood * 0.25).round();
-
-    return {
-      'Love': love.clamp(10, 95),
-      'Wealth': wealth.clamp(10, 95),
-      'Health': health.clamp(10, 95),
-      'Career': career.clamp(10, 95),
+    // Pre-compute element values for fast lookup
+    final elementValues = <String, int>{
+      for (final label in labels) label: elements[label] ?? 50,
     };
+
+    // Pre-compute overall harmony (average of all 5 elements)
+    final overallHarmony =
+        elementValues.values.fold(0, (sum, v) => sum + v) / labels.length;
+
+    Map<String, int> baguaScores = {};
+    for (final area in rules.keys) {
+      final rule = rules[area]!;
+      final primary = rule['primary'] as String;
+      final primaryWeight = rule['primaryWeight'] as double;
+      final supporting = rule['supporting'] as Map<String, dynamic>;
+
+      double score = elementValues[primary]! * primaryWeight;
+
+      for (final supportingElement in supporting.keys) {
+        final weight = supporting[supportingElement] as double;
+        if (supportingElement == 'OverallHarmony') {
+          score += overallHarmony * weight;
+        } else {
+          score += (elementValues[supportingElement] ?? 50) * weight;
+        }
+      }
+
+      baguaScores[area] = score.round().clamp(10, 95);
+    }
+
+    return baguaScores;
   }
 
   /// Helper: calculate both element balance and bagua scores in one call.
@@ -149,25 +150,27 @@ class EnergyEngine {
   /// [scanData] maps element names to detected intensity (0.0–1.0),
   /// e.g. {'Wood': 0.8, 'Fire': 0.3} from analyzing room colors, materials, etc.
   ///
-  /// The blend ratio gradually shifts toward the scanned environment
-  /// as more rooms are scanned. Currently returns a placeholder —
-  /// the architecture is ready for when room scan analysis is implemented.
+  /// The blend ratio is controlled by [EnergyConfig.roomScanMaxBlend] and
+  /// [EnergyConfig.roomScanBlendPerScan] — configurable without code changes.
   static Map<String, int> blendRoomScan(
     Map<String, int> elementBalance,
     Map<String, double> scanData, {
     int scanCount = 0,
   }) {
-    // Blend weight: more scans = greater influence
-    final blendWeight = (scanCount * 0.05).clamp(0.0, 0.4);
+    final blendWeight =
+        (scanCount * EnergyConfig.roomScanBlendPerScan)
+            .clamp(0.0, EnergyConfig.roomScanMaxBlend);
 
     if (blendWeight <= 0) return Map.from(elementBalance);
 
     final result = Map<String, int>.from(elementBalance);
-    for (final element in elementLabels) {
+    for (final element in EnergyConfig.elementLabels) {
       final base = elementBalance[element] ?? 50;
       final scanValue = (scanData[element] ?? 0.5) * 100;
       result[element] =
-          (base * (1 - blendWeight) + scanValue * blendWeight).round().clamp(10, 95);
+          (base * (1 - blendWeight) + scanValue * blendWeight)
+              .round()
+              .clamp(10, 95);
     }
     return result;
   }
