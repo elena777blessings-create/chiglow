@@ -207,8 +207,8 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
                   '🌸 May your home always be filled\nwith peace, harmony, and light.',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.playfairDisplay(
-                    fontSize: 15,
-                    fontStyle: FontStyle.italic,
+                    fontSize: 17,
+                    fontWeight: FontWeight.w700,
                     color: ChiGlowTheme.bronzeGold,
                     height: 1.6,
                   ),
@@ -225,11 +225,11 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
                   runSpacing: 8,
                   children: [
                     _FooterLink(text: 'Restore Purchases', onTap: () {}),
-                    Text(' | ', style: TextStyle(color: ChiGlowTheme.mediumGray, fontSize: 12)),
+                    Text(' | ', style: TextStyle(color: ChiGlowTheme.richRed, fontSize: 14)),
                     _FooterLink(text: 'Privacy Policy', onTap: () {}),
-                    Text(' | ', style: TextStyle(color: ChiGlowTheme.mediumGray, fontSize: 12)),
+                    Text(' | ', style: TextStyle(color: ChiGlowTheme.richRed, fontSize: 14)),
                     _FooterLink(text: 'Terms of Service', onTap: () {}),
-                    Text(' | ', style: TextStyle(color: ChiGlowTheme.mediumGray, fontSize: 12)),
+                    Text(' | ', style: TextStyle(color: ChiGlowTheme.richRed, fontSize: 14)),
                     _FooterLink(text: 'Manage Subscription', onTap: () {}),
                   ],
                 ),
@@ -240,8 +240,8 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
                 'Payment processing coming soon.',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.quicksand(
-                  fontSize: 10,
-                  color: ChiGlowTheme.mediumGray.withValues(alpha: 0.6),
+                  fontSize: 14,
+                  color: ChiGlowTheme.richRed,
                 ),
               ),
             ],
@@ -419,10 +419,10 @@ class _FooterLink extends StatelessWidget {
       child: Text(
         text,
         style: GoogleFonts.quicksand(
-          fontSize: 12,
-          color: ChiGlowTheme.mediumGray,
+          fontSize: 14,
+          color: ChiGlowTheme.richRed,
           decoration: TextDecoration.underline,
-          decorationColor: ChiGlowTheme.mediumGray.withValues(alpha: 0.3),
+          decorationColor: ChiGlowTheme.richRed.withValues(alpha: 0.3),
         ),
       ),
     );
