@@ -351,7 +351,7 @@ class _TierCard extends StatelessWidget {
             // Description
             Text(
               tier.description,
-              textAlign: TextAlign.justify,
+              textAlign: TextAlign.start,
               style: GoogleFonts.quicksand(
                 fontSize: 14,
                 fontWeight: FontWeight.w700,
