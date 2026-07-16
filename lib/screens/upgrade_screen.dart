@@ -136,9 +136,9 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
                     : '🌸 Choose your path to begin',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.quicksand(
-                  fontSize: 12,
+                  fontSize: 15,
                   color: ChiGlowTheme.bronzeGold,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
 
@@ -172,8 +172,9 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
                     Text(
                       'Your membership supports our mission to make Feng Shui wisdom accessible to everyone. Every scan, every insight, every moment of harmony you create ripples outward — touching not just your space, but the world around you.',
                       style: GoogleFonts.quicksand(
-                        fontSize: 13,
-                        color: ChiGlowTheme.charcoal,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                        color: ChiGlowTheme.bronzeGold,
                         height: 1.6,
                       ),
                     ),
@@ -181,17 +182,17 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
                     Text(
                       'With gratitude,',
                       style: GoogleFonts.quicksand(
-                        fontSize: 12,
-                        color: ChiGlowTheme.mediumGray,
-                        fontStyle: FontStyle.italic,
+                        fontSize: 14,
+                        color: ChiGlowTheme.bronzeGold,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
                     Text(
                       '— The ChiGlow Team',
                       style: GoogleFonts.quicksand(
-                        fontSize: 12,
+                        fontSize: 14,
                         color: ChiGlowTheme.bronzeGold,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
                   ],
