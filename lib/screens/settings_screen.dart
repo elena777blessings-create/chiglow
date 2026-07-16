@@ -159,19 +159,14 @@ class SettingsScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     Container(
-                      width: 48,
-                      height: 48,
+                      padding: const EdgeInsets.all(6),
                       decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        gradient: const LinearGradient(
-                          colors: [ChiGlowTheme.richRed, ChiGlowTheme.bronzeGold],
-                        ),
+                        color: ChiGlowTheme.richRed.withValues(alpha: 0.1),
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                      child: const Center(
-                        child: Text('👑', style: TextStyle(fontSize: 22)),
-                      ),
+                      child: const Text('💎', style: TextStyle(fontSize: 36)),
                     ),
-                    const SizedBox(width: 14),
+                    const SizedBox(width: 8),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -184,32 +179,33 @@ class SettingsScreen extends StatelessWidget {
                               color: ChiGlowTheme.richRed,
                             ),
                           ),
-                          const SizedBox(height: 2),
+                          const SizedBox(height: 4),
                           Text(
-                            'Unlock unlimited scans & full features',
+                            'Unlimited scans, full zodiac & more',
                             style: GoogleFonts.quicksand(
-                              fontSize: 12,
-                              color: ChiGlowTheme.bronzeGold,
+                              fontSize: 14,
+                              color: ChiGlowTheme.deepRed,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
                         ],
                       ),
                     ),
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
                           colors: [ChiGlowTheme.richRed, ChiGlowTheme.softRed],
                         ),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(14),
                       ),
                       child: Text(
                         'LIFETIME \$49',
                         style: GoogleFonts.poppins(
-                          fontSize: 10,
+                          fontSize: 12,
                           fontWeight: FontWeight.w700,
                           color: Colors.white,
-                          letterSpacing: 0.5,
+                          letterSpacing: 0.3,
                         ),
                       ),
                     ),
