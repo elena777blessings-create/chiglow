@@ -182,7 +182,7 @@ class _CompassScreenState extends State<CompassScreen> {
                               ],
                             ),
                           ),
-                          Text(entry.key, style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w700, color: entry.value.color)),
+                          Text(entry.key, style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w700, color: ChiGlowTheme.richRed)),
                         ],
                       ),
                     ),
