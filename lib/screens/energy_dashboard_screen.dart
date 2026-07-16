@@ -78,7 +78,7 @@ class EnergyDashboardScreen extends StatelessWidget {
             const SizedBox(height: 4),
             Text(
               'Derived from your Five Element balance',
-              style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.bronzeGold, fontWeight: FontWeight.w500),
+              style: GoogleFonts.quicksand(fontSize: 15, color: ChiGlowTheme.bronzeGold, fontWeight: FontWeight.w700),
             ),
             const SizedBox(height: 12),
             _EnergyAreaCard(
@@ -164,8 +164,8 @@ class _EnergyAreaCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(name, style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
-                    Text(description, style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.bronzeGold)),
+                    Text(name, style: GoogleFonts.poppins(fontSize: 17, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
+                    Text(description, style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.bronzeGold, fontWeight: FontWeight.w700)),
                   ],
                 ),
               ),
@@ -188,7 +188,7 @@ class _EnergyAreaCard extends StatelessWidget {
           const SizedBox(height: 12),
           Text(
             'Tips to improve:',
-            style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
+            style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
           ),
           const SizedBox(height: 4),
           ...tips.map((tip) => Padding(
@@ -196,9 +196,9 @@ class _EnergyAreaCard extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('• ', style: GoogleFonts.quicksand(fontSize: 12, color: color)),
+                Text('• ', style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.charcoal)),
                 Expanded(
-                  child: Text(tip, style: GoogleFonts.quicksand(fontSize: 12, color: const Color(0xFF546E7A))),
+                  child: Text(tip, style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.charcoal)),
                 ),
               ],
             ),
