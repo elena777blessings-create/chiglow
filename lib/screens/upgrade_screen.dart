@@ -209,7 +209,7 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
                   style: GoogleFonts.playfairDisplay(
                     fontSize: 17,
                     fontWeight: FontWeight.w700,
-                    color: ChiGlowTheme.bronzeGold,
+                    color: Color(0xFF2E7D32),
                     height: 1.6,
                   ),
                 ),
