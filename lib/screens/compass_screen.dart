@@ -66,7 +66,7 @@ class _CompassScreenState extends State<CompassScreen> {
             const GlobalHeader(title: 'Feng Shui Compass', subtitle: 'Find your Bagua sectors'),
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
+                padding: const EdgeInsets.fromLTRB(20, 20, 20, 24),
                 child: Column(
                   children: [
             if (_isCalibrating)
@@ -141,7 +141,7 @@ class _CompassScreenState extends State<CompassScreen> {
                               ),
                               Text(
                                 'Element: ${_currentSector().element}',
-                                style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.bronzeGold),
+                                style: GoogleFonts.quicksand(fontSize: 15, color: ChiGlowTheme.bronzeGold, fontWeight: FontWeight.w700),
                               ),
                             ],
                           ),
@@ -178,7 +178,7 @@ class _CompassScreenState extends State<CompassScreen> {
                                 Text('${entry.key} — ${entry.value.name}',
                                     style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
                                 Text('Element: ${entry.value.element}',
-                                    style: GoogleFonts.quicksand(fontSize: 11, color: ChiGlowTheme.bronzeGold)),
+                                    style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.bronzeGold, fontWeight: FontWeight.w700)),
                               ],
                             ),
                           ),
@@ -241,7 +241,7 @@ class _CompassPainter extends CustomPainter {
       final tp = TextPainter(
         text: TextSpan(
           text: ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'][i],
-          style: TextStyle(color: ChiGlowTheme.richRed, fontSize: 11, fontWeight: FontWeight.w600),
+          style: TextStyle(color: ChiGlowTheme.richRed, fontSize: 14, fontWeight: FontWeight.w700),
         ),
         textDirection: TextDirection.ltr,
       );
