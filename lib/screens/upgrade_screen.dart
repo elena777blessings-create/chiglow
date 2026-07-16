@@ -351,7 +351,7 @@ class _TierCard extends StatelessWidget {
                 child: Text(
                   tier.supportText!,
                   style: GoogleFonts.quicksand(
-                    fontSize: 12,
+                    fontSize: 15,
                     fontWeight: FontWeight.w600,
                     color: ChiGlowTheme.bronzeGold,
                   ),
@@ -365,8 +365,9 @@ class _TierCard extends StatelessWidget {
               tier.description,
               textAlign: TextAlign.center,
               style: GoogleFonts.quicksand(
-                fontSize: 12,
-                color: ChiGlowTheme.mediumGray,
+                fontSize: 14,
+                fontWeight: FontWeight.w700,
+                color: const Color(0xFF2E7D32),
                 height: 1.5,
               ),
             ),
@@ -388,8 +389,9 @@ class _TierCard extends StatelessWidget {
                         child: Text(
                           f,
                           style: GoogleFonts.quicksand(
-                            fontSize: 12,
-                            color: ChiGlowTheme.charcoal,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                            color: const Color(0xFF2E7D32),
                           ),
                         ),
                       ),
