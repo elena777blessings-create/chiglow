@@ -23,30 +23,42 @@ class YearAheadScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-            // Year animal
+            // Year Ahead Cover Artwork
             Center(
               child: Column(
                 children: [
-                  Container(
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.2),
-                      border: Border.all(color: ChiGlowTheme.bronzeGold, width: 2),
-                    ),
-                    child: Center(
-                      child: Text(_zodiacEmoji(zodiacYear), style: const TextStyle(fontSize: 48)),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: Image.asset(
+                      'assets/images/year_cover_${zodiacYear.toLowerCase()}.webp',
+                      width: MediaQuery.of(context).size.width * 0.48,
+                      fit: BoxFit.contain,
+                      errorBuilder: (context, error, stackTrace) => Container(
+                        width: MediaQuery.of(context).size.width * 0.48,
+                        height: MediaQuery.of(context).size.width * 0.48 * 1.4,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.1),
+                        ),
+                        child: Center(
+                          child: Text(_zodiacEmoji(zodiacYear), style: const TextStyle(fontSize: 64)),
+                        ),
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 16),
                   Text(
                     'Year of the $zodiacYear',
                     style: GoogleFonts.playfairDisplay(fontSize: 26, fontWeight: FontWeight.w700, color: ChiGlowTheme.richRed),
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    '$year — A Year of ${_yearTheme(zodiacYear)}',
+                    '$year',
+                    style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.bronzeGold, fontWeight: FontWeight.w600),
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    'A Year of ${_yearTheme(zodiacYear)}',
                     style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.bronzeGold, fontWeight: FontWeight.w600),
                   ),
                 ],
