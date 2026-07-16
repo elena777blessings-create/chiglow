@@ -57,10 +57,7 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
       supportText: null,
       badge: 'FOUNDER',
       description:
-          'Become one of ChiGlow\'s earliest supporters. Pay once.\n'
-          'Enjoy lifetime access to the current premium experience.\n'
-          'Future premium enhancements released during the Founder\'s Edition program are included.\n'
-          'Thank you for believing in our vision from the very beginning.',
+          'Become one of ChiGlow\'s earliest supporters. Pay once and enjoy lifetime access to the current premium experience. Future premium enhancements released during the Founder\'s Edition program are included. Thank you for believing in our vision from the very beginning.',
       features: [
         'Everything forever',
         'No recurring payments',
