@@ -265,22 +265,22 @@ class _ElementBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
         children: [
-          SizedBox(width: 100, child: Text(element, style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.richRed))),
+          SizedBox(width: 120, child: Text(element, style: GoogleFonts.quicksand(fontSize: 17, color: ChiGlowTheme.deepRed, fontWeight: FontWeight.w600))),
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(4),
               child: LinearProgressIndicator(
                 value: value / 100,
-                minHeight: 6,
-                backgroundColor: ChiGlowTheme.richRed.withValues(alpha: 0.1),
+                minHeight: 10,
+                backgroundColor: ChiGlowTheme.richRed.withValues(alpha: 0.12),
                 valueColor: AlwaysStoppedAnimation<Color>(
                   value > 70 ? ChiGlowTheme.richRed : value > 40 ? ChiGlowTheme.bronzeGold : Colors.orange,
                 ),
               ),
             ),
           ),
-          SizedBox(width: 30, child: Text('$value%', textAlign: TextAlign.right,
-            style: GoogleFonts.quicksand(fontSize: 11, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed))),
+          SizedBox(width: 44, child: Text('$value%', textAlign: TextAlign.right,
+            style: GoogleFonts.quicksand(fontSize: 16, fontWeight: FontWeight.w700, color: ChiGlowTheme.deepRed))),
         ],
       ),
     );
