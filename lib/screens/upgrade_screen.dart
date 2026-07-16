@@ -23,7 +23,7 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
       supportText: 'Only \$5.00 per month',
       badge: 'MEMBER FAVORITE',
       description:
-          'Save compared to paying monthly.\nUnlimited access to the complete ChiGlow experience. Cancel anytime.',
+          'Save compared to paying monthly. Unlimited access to the complete ChiGlow experience. Cancel anytime.',
       features: [
         'Unlimited room scans',
         'Full zodiac profiles',
@@ -351,7 +351,7 @@ class _TierCard extends StatelessWidget {
             // Description
             Text(
               tier.description,
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.justify,
               style: GoogleFonts.quicksand(
                 fontSize: 14,
                 fontWeight: FontWeight.w700,
