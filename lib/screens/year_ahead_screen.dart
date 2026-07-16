@@ -175,13 +175,9 @@ class _MonthCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(month, style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
-                Text(element, style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.bronzeGold)),
-              ],
-            ),
+            Text(month, style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
+            const SizedBox(height: 4),
+            Text(element, style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.bronzeGold)),
             const SizedBox(height: 8),
             Text(forecast, style: GoogleFonts.quicksand(fontSize: 15, color: const Color(0xFF1A1A1A), height: 1.6)),
           ],
