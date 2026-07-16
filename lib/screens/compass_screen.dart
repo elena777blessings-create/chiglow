@@ -168,7 +168,7 @@ class _CompassScreenState extends State<CompassScreen> {
                               color: entry.value.color.withValues(alpha: 0.2),
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: Center(child: Text(entry.value.emoji, style: TextStyle(fontSize: 21, color: entry.value.color))),
+                            child: Center(child: Text(entry.value.emoji, style: const TextStyle(fontSize: 21))),
                           ),
                           const SizedBox(width: 12),
                           Expanded(
