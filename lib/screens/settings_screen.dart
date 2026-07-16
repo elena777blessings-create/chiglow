@@ -79,7 +79,7 @@ class SettingsScreen extends StatelessWidget {
                   const SizedBox(height: 4),
                   Text(
                     provider.zodiacSign,
-                    style: GoogleFonts.quicksand(fontSize: 15, fontWeight: FontWeight.w700, color: ChiGlowTheme.bronzeGold),
+                    style: GoogleFonts.quicksand(fontSize: 17, fontWeight: FontWeight.w700, color: ChiGlowTheme.bronzeGold),
                   ),
                 ],
               ),
@@ -453,8 +453,8 @@ class _SettingTile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title, style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
-                  Text(subtitle, style: GoogleFonts.quicksand(fontSize: 12, color: ChiGlowTheme.bronzeGold)),
+                  Text(title, style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
+                  Text(subtitle, style: GoogleFonts.quicksand(fontSize: 14, fontWeight: FontWeight.w700, color: ChiGlowTheme.bronzeGold)),
                 ],
               ),
             ),
