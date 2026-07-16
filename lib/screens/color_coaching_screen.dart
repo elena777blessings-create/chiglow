@@ -159,11 +159,28 @@ class _QuickRef extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final swatchColor = Color(int.parse(hex.replaceFirst('#', '0xFF')));
+    final isWhite = hex == '#FFFFFF';
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
         children: [
-          Text(color, style: const TextStyle(fontSize: 18)),
+          Container(
+            width: 24,
+            height: 24,
+            decoration: BoxDecoration(
+              color: swatchColor,
+              borderRadius: BorderRadius.circular(6),
+              border: Border.all(
+                color: isWhite ? const Color(0xFFBDBDBD) : Colors.transparent,
+                width: 1.5,
+              ),
+              boxShadow: [
+                BoxShadow(color: swatchColor.withValues(alpha: 0.3), blurRadius: 4),
+              ],
+            ),
+          ),
           const SizedBox(width: 8),
           SizedBox(
             width: 60,
