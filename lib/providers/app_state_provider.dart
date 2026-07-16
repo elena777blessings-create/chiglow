@@ -25,6 +25,10 @@ class AppStateProvider extends ChangeNotifier {
       'Let harmony find you today. Your space holds untapped potential.';
   String _affirmationTheme = 'Harmony';
 
+  // ── Settings Toggles ──
+  bool _dailyReminders = true;
+  bool _darkMode = false;
+
   // ── Constructor ──
   AppStateProvider() {
     _recalculateAll();
@@ -42,6 +46,8 @@ class AppStateProvider extends ChangeNotifier {
   int get careerScore => _careerScore;
   String get dailyAffirmation => _dailyAffirmation;
   String get affirmationTheme => _affirmationTheme;
+  bool get dailyReminders => _dailyReminders;
+  bool get darkMode => _darkMode;
 
   /// Returns the overall harmony score (average of all 4 Bagua scores).
   int get overallHarmony =>
@@ -106,6 +112,18 @@ class AppStateProvider extends ChangeNotifier {
   void setDailyAffirmation(String text, String theme) {
     _dailyAffirmation = text;
     _affirmationTheme = theme;
+    notifyListeners();
+  }
+
+  // ── Settings Toggles ──
+
+  void setDailyReminders(bool value) {
+    _dailyReminders = value;
+    notifyListeners();
+  }
+
+  void setDarkMode(bool value) {
+    _darkMode = value;
     notifyListeners();
   }
 

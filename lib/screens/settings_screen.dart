@@ -31,44 +31,69 @@ class SettingsScreen extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             GlowCard(
+              onTap: () => _showNameDialog(context, provider),
               child: Column(
                 children: [
+                  // Zodiac animal artwork in circular frame
                   Container(
-                    width: 72,
-                    height: 72,
+                    width: 88,
+                    height: 88,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      gradient: LinearGradient(
-                        colors: [ChiGlowTheme.richRed, ChiGlowTheme.bronzeGold],
+                      border: Border.all(
+                        color: ChiGlowTheme.bronzeGold,
+                        width: 2.5,
                       ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.2),
+                          blurRadius: 10,
+                          spreadRadius: 1,
+                        ),
+                      ],
                     ),
-                    child: Center(
-                      child: Text(
-                        provider.userName.isNotEmpty ? provider.userName[0].toUpperCase() : '🜁',
-                        style: GoogleFonts.poppins(fontSize: 28, fontWeight: FontWeight.w700, color: Colors.white),
+                    child: ClipOval(
+                      child: Image.asset(
+                        'assets/images/year_cover_${provider.zodiacSign.toLowerCase()}.webp',
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) => Container(
+                          color: ChiGlowTheme.richRed.withValues(alpha: 0.1),
+                          child: Center(
+                            child: Text(
+                              provider.zodiacSign[0],
+                              style: GoogleFonts.poppins(fontSize: 32, fontWeight: FontWeight.w700, color: ChiGlowTheme.richRed),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 14),
                   Text(
-                    provider.userName.isNotEmpty ? provider.userName : 'Set Your Name',
+                    provider.userName.isNotEmpty ? provider.userName : 'Tap to add your name',
                     style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Zodiac: ${provider.zodiacSign}',
-                    style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.bronzeGold),
+                    provider.zodiacSign,
+                    style: GoogleFonts.quicksand(fontSize: 15, fontWeight: FontWeight.w700, color: ChiGlowTheme.bronzeGold),
                   ),
                 ],
               ),
             ),
             const SizedBox(height: 24),
-            // Settings options
+            // Personalize section
             Text(
-              '🪷 Preferences',
+              '🪷 Personalize',
               style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
             ),
             const SizedBox(height: 12),
+            _SettingTile(
+              icon: '✏️',
+              title: 'Edit Profile',
+              subtitle: 'Update your name and details',
+              onTap: () => _showNameDialog(context, provider),
+            ),
             _SettingTile(
               icon: '🐉',
               title: 'Zodiac Sign',
@@ -86,25 +111,25 @@ class SettingsScreen extends StatelessWidget {
               title: 'Daily Reminders',
               subtitle: 'Morning affirmations',
               trailing: Switch(
-                value: true,
-                onChanged: (v) {},
+                value: provider.dailyReminders,
+                onChanged: (v) => provider.setDailyReminders(v),
                 activeColor: ChiGlowTheme.richRed,
               ),
             ),
             _SettingTile(
               icon: '🌙',
-              title: 'Dark Mode',
-              subtitle: 'Coming soon',
+              title: 'Appearance',
+              subtitle: provider.darkMode ? 'Dark' : 'Light',
               trailing: Switch(
-                value: false,
-                onChanged: (v) {},
+                value: provider.darkMode,
+                onChanged: (v) => provider.setDarkMode(v),
                 activeColor: ChiGlowTheme.richRed,
               ),
             ),
             const SizedBox(height: 24),
             // Premium section
             Text(
-              '💎 Premium',
+              '💎 ChiGlow Premium',
               style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
             ),
             const SizedBox(height: 12),
@@ -149,7 +174,7 @@ class SettingsScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Upgrade to Premium',
+                            'ChiGlow Premium',
                             style: GoogleFonts.poppins(
                               fontSize: 15,
                               fontWeight: FontWeight.w600,
@@ -192,7 +217,7 @@ class SettingsScreen extends StatelessWidget {
             const SizedBox(height: 24),
             // About section
             Text(
-              'ℹ️ About',
+              'ℹ️ About ChiGlow',
               style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
             ),
             const SizedBox(height: 12),
@@ -203,16 +228,20 @@ class SettingsScreen extends StatelessWidget {
                   const Divider(height: 24),
                   _AboutRow(label: 'App', value: 'ChiGlow'),
                   const Divider(height: 24),
-                  _AboutRow(label: 'Tagline', value: 'Feng Shui your life. Glow from your space out.'),
+                  _AboutRow(label: 'Tagline', value: 'Feng Shui Your Life'),
+                  const SizedBox(height: 4),
+                  _AboutRow(label: '', value: 'Glow Starts at Home'),
                 ],
               ),
             ),
-            const SizedBox(height: 24),
-            // Reset
+            const SizedBox(height: 32),
+            // Reset — visually separated at bottom
+            const Divider(height: 1),
+            const SizedBox(height: 20),
             SizedBox(
               width: double.infinity,
               child: OutlinedButton.icon(
-                onPressed: () {},
+                onPressed: () => _showResetConfirmation(context, provider),
                 icon: const Icon(Icons.refresh, size: 18),
                 label: Text('Reset All Data', style: GoogleFonts.poppins(fontSize: 14)),
                 style: OutlinedButton.styleFrom(
@@ -230,6 +259,43 @@ class SettingsScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  void _showNameDialog(BuildContext context, AppStateProvider provider) {
+    final controller = TextEditingController(text: provider.userName);
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: ChiGlowTheme.creamWhite,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        title: Text('Edit Your Name', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
+        content: TextField(
+          controller: controller,
+          decoration: InputDecoration(
+            hintText: 'Enter your name',
+            hintStyle: GoogleFonts.quicksand(color: ChiGlowTheme.bronzeGold),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide(color: ChiGlowTheme.richRed),
+            ),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: Text('Cancel', style: GoogleFonts.quicksand(color: ChiGlowTheme.bronzeGold)),
+          ),
+          TextButton(
+            onPressed: () {
+              provider.setUserName(controller.text.trim());
+              Navigator.pop(ctx);
+            },
+            child: Text('Save', style: GoogleFonts.quicksand(color: ChiGlowTheme.richRed, fontWeight: FontWeight.w600)),
+          ),
+        ],
       ),
     );
   }
@@ -278,6 +344,7 @@ class SettingsScreen extends StatelessWidget {
   }
 
   void _showYearPicker(BuildContext context, AppStateProvider provider) {
+    final currentYear = DateTime.now().year;
     showModalBottomSheet(
       context: context,
       backgroundColor: ChiGlowTheme.creamWhite,
@@ -296,8 +363,12 @@ class SettingsScreen extends StatelessWidget {
               child: ListWheelScrollView(
                 itemExtent: 40,
                 diameterRatio: 1.5,
+                onSelectedItemChanged: (index) {
+                  final year = currentYear - index;
+                  provider.setZodiacSign(_getZodiacForYear(year));
+                },
                 children: List.generate(80, (i) {
-                  final year = 2026 - i;
+                  final year = currentYear - i;
                   return Center(
                     child: Text(
                       '$year',
@@ -315,6 +386,38 @@ class SettingsScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _showResetConfirmation(BuildContext context, AppStateProvider provider) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: ChiGlowTheme.creamWhite,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        title: Text('Reset All Data?', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.red)),
+        content: Text('This will clear all your profile data, scanned rooms, and preferences. This action cannot be undone.',
+          style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.charcoal, height: 1.5)),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: Text('Cancel', style: GoogleFonts.quicksand(color: ChiGlowTheme.bronzeGold)),
+          ),
+          TextButton(
+            onPressed: () {
+              // Reset logic
+              provider.setUserName('');
+              Navigator.pop(ctx);
+            },
+            child: Text('Reset', style: GoogleFonts.quicksand(color: Colors.red, fontWeight: FontWeight.w600)),
+          ),
+        ],
+      ),
+    );
+  }
+
+  String _getZodiacForYear(int year) {
+    const animals = ['Monkey', 'Rooster', 'Dog', 'Pig', 'Rat', 'Ox', 'Tiger', 'Rabbit', 'Dragon', 'Snake', 'Horse', 'Goat'];
+    return animals[year % 12];
   }
 }
 
