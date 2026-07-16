@@ -36,8 +36,8 @@ class SettingsScreen extends StatelessWidget {
                 children: [
                   // Zodiac animal artwork in circular frame
                   Container(
-                    width: 88,
-                    height: 88,
+                    width: 100,
+                    height: 100,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
