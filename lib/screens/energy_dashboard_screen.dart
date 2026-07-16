@@ -75,6 +75,11 @@ class EnergyDashboardScreen extends StatelessWidget {
               '🪷 Energy Areas',
               style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
             ),
+            const SizedBox(height: 4),
+            Text(
+              'Derived from your Five Element balance',
+              style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.bronzeGold, fontWeight: FontWeight.w500),
+            ),
             const SizedBox(height: 12),
             _EnergyAreaCard(
               emoji: '💖',
@@ -123,7 +128,7 @@ class EnergyDashboardScreen extends StatelessWidget {
   }
 
   int _overallScore(AppStateProvider provider) {
-    return ((provider.loveScore + provider.wealthScore + provider.healthScore + provider.careerScore) / 4).round();
+    return provider.overallHarmony;
   }
 }
 
