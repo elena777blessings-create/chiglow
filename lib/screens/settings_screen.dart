@@ -354,11 +354,11 @@ class SettingsScreen extends StatelessWidget {
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
       builder: (ctx) => SizedBox(
-        height: 300,
+        height: 360,
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
               child: Text('Select Birth Year', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
             ),
             Expanded(
@@ -368,6 +368,7 @@ class SettingsScreen extends StatelessWidget {
                 onSelectedItemChanged: (index) {
                   final year = currentYear - index;
                   provider.setZodiacSign(_getZodiacForYear(year));
+                  provider.setBirthYear(year);
                 },
                 children: List.generate(80, (i) {
                   final year = currentYear - i;
@@ -382,6 +383,23 @@ class SettingsScreen extends StatelessWidget {
                     ),
                   );
                 }),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 8, 20, 20),
+              child: SizedBox(
+                width: double.infinity,
+                height: 44,
+                child: ElevatedButton(
+                  onPressed: () => Navigator.pop(ctx),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: ChiGlowTheme.richRed,
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)),
+                    elevation: 0,
+                  ),
+                  child: Text('Done', style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.w600)),
+                ),
               ),
             ),
           ],

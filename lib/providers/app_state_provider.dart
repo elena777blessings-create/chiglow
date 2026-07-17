@@ -79,6 +79,11 @@ class AppStateProvider extends ChangeNotifier {
     _recalculateAll();
   }
 
+  void setBirthYear(int year) {
+    _birthYear = year;
+    notifyListeners();
+  }
+
   // ── Room Scan Integration ──
 
   void addRoom(RoomModel room) {
