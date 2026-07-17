@@ -194,7 +194,7 @@ class _RoomResultsScreenState extends State<RoomResultsScreen> {
                   child: OutlinedButton.icon(
                     onPressed: () => Navigator.pushNamed(context, '/color-coaching'),
                     icon: const Text('🎨'),
-                    label: Text('Color Tips', style: GoogleFonts.poppins(fontSize: 13)),
+                    label: Text('Color Tips', style: GoogleFonts.poppins(fontSize: 14)),
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -202,7 +202,7 @@ class _RoomResultsScreenState extends State<RoomResultsScreen> {
                   child: OutlinedButton.icon(
                     onPressed: () => Navigator.pushNamed(context, '/compass'),
                     icon: const Text('🧭'),
-                    label: Text('Use Compass', style: GoogleFonts.poppins(fontSize: 13)),
+                    label: Text('Use Compass', style: GoogleFonts.poppins(fontSize: 14)),
                   ),
                 ),
               ],
