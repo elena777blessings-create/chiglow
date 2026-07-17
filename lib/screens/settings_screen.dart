@@ -228,9 +228,22 @@ class SettingsScreen extends StatelessWidget {
                   const Divider(height: 24),
                   _AboutRow(label: 'App', value: 'ChiGlow'),
                   const Divider(height: 24),
-                  _AboutRow(label: '', value: 'Feng Shui Your Life'),
                   const SizedBox(height: 4),
-                  _AboutRow(label: '', value: 'Glow Starts at Home'),
+                  // Tagline — centered, no label
+                  Center(
+                    child: Text(
+                      'Feng Shui Your Life',
+                      style: GoogleFonts.quicksand(fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xFF2E7D32)),
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                  Center(
+                    child: Text(
+                      'Glow Starts at Home',
+                      style: GoogleFonts.quicksand(fontSize: 15, fontWeight: FontWeight.w600, color: Color(0xFF2E7D32)),
+                    ),
+                  ),
+                  const SizedBox(height: 4),
                 ],
               ),
             ),
