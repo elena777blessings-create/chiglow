@@ -190,7 +190,7 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                   const SizedBox(height: 8),
                   Text(
                     'Practice patience, kindness, and open communication today.',
-                    style: GoogleFonts.quicksand(fontSize: 15, color: ChiGlowTheme.richRed, height: 1.5, wordSpacing: -1),
+                    style: GoogleFonts.quicksand(fontSize: 15, fontWeight: FontWeight.w700, color: ChiGlowTheme.richRed, height: 1.5, wordSpacing: -1),
                   ),
                 ],
               ),
