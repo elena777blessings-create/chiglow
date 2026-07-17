@@ -143,7 +143,7 @@ class _RoomResultsScreenState extends State<RoomResultsScreen> {
                         const SizedBox(height: 4),
                         Text(
                           'Your ${widget.roomType} has balanced energy with room for enhancement.',
-                          style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.bronzeGold),
+                          style: GoogleFonts.quicksand(fontSize: 15, color: ChiGlowTheme.bronzeGold, fontWeight: FontWeight.w700),
                         ),
                       ],
                     ),
