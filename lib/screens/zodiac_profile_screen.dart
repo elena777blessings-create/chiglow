@@ -112,7 +112,7 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
               GlowCard(
                 child: Text(
                   data['description'] as String,
-                  style: GoogleFonts.quicksand(fontSize: 15, color: const Color(0xFF222222), height: 1.6, wordSpacing: -1),
+                  style: GoogleFonts.quicksand(fontSize: 15, fontWeight: FontWeight.w700, color: ChiGlowTheme.bronzeGold, height: 1.6, wordSpacing: -1),
                 ),
               ),
             ),
@@ -223,7 +223,7 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                     const SizedBox(height: 12),
                     Text(
                       'Today is a wonderful day to trust your confidence. Small, thoughtful actions will create meaningful progress. Let the energy of the $zodiac guide you toward what matters most.',
-                      style: GoogleFonts.quicksand(fontSize: 13, color: const Color(0xFF1A1A1A), height: 1.6, wordSpacing: -1),
+                      style: GoogleFonts.quicksand(fontSize: 13, fontWeight: FontWeight.w700, color: ChiGlowTheme.bronzeGold, height: 1.6, wordSpacing: -1),
                     ),
                   ],
                 ),
@@ -350,7 +350,7 @@ class _ColorOfDayCard extends StatelessWidget {
           Text(
             'Wear, decorate with, or add small accents of this color today to invite confidence, optimism, and joyful energy into your space.',
             textAlign: TextAlign.center,
-            style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.charcoal, height: 1.4),
+            style: GoogleFonts.quicksand(fontSize: 13, fontWeight: FontWeight.w700, color: Color(0xFF2E7D32), height: 1.4),
           ),
         ],
       ),
@@ -403,7 +403,7 @@ class _DirectionOfDayCard extends StatelessWidget {
           Text(
             'Face this direction while working, meditating, journaling, or planning important goals today.',
             textAlign: TextAlign.center,
-            style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.charcoal, height: 1.4),
+            style: GoogleFonts.quicksand(fontSize: 13, fontWeight: FontWeight.w700, color: Color(0xFF2E7D32), height: 1.4),
           ),
         ],
       ),
