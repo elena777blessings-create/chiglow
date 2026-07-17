@@ -349,59 +349,71 @@ class SettingsScreen extends StatelessWidget {
     final currentYear = DateTime.now().year;
     showModalBottomSheet(
       context: context,
+      isScrollControlled: true,
       backgroundColor: ChiGlowTheme.creamWhite,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
       builder: (ctx) => SizedBox(
-        height: 360,
+        height: 420,
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
-              child: Text('Select Birth Year', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
-            ),
+            const SizedBox(height: 20),
+            Text('Select Birth Year', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
+            const SizedBox(height: 12),
             Expanded(
               child: ListWheelScrollView(
-                itemExtent: 40,
+                itemExtent: 44,
                 diameterRatio: 1.5,
+                useMagnifier: true,
                 onSelectedItemChanged: (index) {
                   final year = currentYear - index;
                   provider.setZodiacSign(_getZodiacForYear(year));
                   provider.setBirthYear(year);
                 },
-                children: List.generate(80, (i) {
+                children: List.generate(100, (i) {
                   final year = currentYear - i;
-                  return Center(
-                    child: Text(
-                      '$year',
-                      style: GoogleFonts.quicksand(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: year == provider.birthYear ? ChiGlowTheme.richRed : ChiGlowTheme.bronzeGold,
+                  final isSelected = year == provider.birthYear;
+                  return GestureDetector(
+                    onTap: () {
+                      provider.setZodiacSign(_getZodiacForYear(year));
+                      provider.setBirthYear(year);
+                      Navigator.pop(ctx);
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: Text(
+                        '$year',
+                        style: GoogleFonts.quicksand(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                          color: isSelected ? ChiGlowTheme.richRed : ChiGlowTheme.bronzeGold,
+                        ),
                       ),
                     ),
                   );
                 }),
               ),
             ),
+            const SizedBox(height: 12),
             Padding(
-              padding: const EdgeInsets.fromLTRB(20, 8, 20, 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: SizedBox(
                 width: double.infinity,
-                height: 44,
+                height: 48,
                 child: ElevatedButton(
                   onPressed: () => Navigator.pop(ctx),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: ChiGlowTheme.richRed,
                     foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
                     elevation: 0,
                   ),
-                  child: Text('Done', style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.w600)),
+                  child: Text('Done', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600)),
                 ),
               ),
             ),
+            const SizedBox(height: 24),
           ],
         ),
       ),
