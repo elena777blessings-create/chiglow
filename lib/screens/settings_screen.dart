@@ -249,7 +249,7 @@ class SettingsScreen extends StatelessWidget {
               child: OutlinedButton.icon(
                 onPressed: () => _showResetConfirmation(context, provider),
                 icon: const Icon(Icons.refresh, size: 18),
-                label: Text('Reset All Data', style: GoogleFonts.poppins(fontSize: 14)),
+                label: Text('Reset All Data', style: GoogleFonts.poppins(fontSize: 14), softWrap: false),
                 style: OutlinedButton.styleFrom(
                   foregroundColor: Colors.red[400],
                   side: BorderSide(color: Colors.red[200]!),
