@@ -299,7 +299,7 @@ class SettingsScreen extends StatelessWidget {
           controller: controller,
           decoration: InputDecoration(
             hintText: 'Enter your name',
-            hintStyle: GoogleFonts.quicksand(color: ChiGlowTheme.bronzeGold),
+            hintStyle: GoogleFonts.quicksand(color: Color(0xFF8C6A1C)),
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
@@ -310,14 +310,14 @@ class SettingsScreen extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text('Cancel', style: GoogleFonts.quicksand(color: ChiGlowTheme.bronzeGold)),
+            child: Text('Cancel', style: GoogleFonts.quicksand(fontSize: 16, color: ChiGlowTheme.bronzeGold)),
           ),
           TextButton(
             onPressed: () {
               provider.setUserName(controller.text.trim());
               Navigator.pop(ctx);
             },
-            child: Text('Save', style: GoogleFonts.quicksand(color: ChiGlowTheme.richRed, fontWeight: FontWeight.w600)),
+            child: Text('Save', style: GoogleFonts.quicksand(fontSize: 16, color: ChiGlowTheme.richRed, fontWeight: FontWeight.w600)),
           ),
         ],
       ),
@@ -454,7 +454,7 @@ class SettingsScreen extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text('Cancel', style: GoogleFonts.quicksand(color: ChiGlowTheme.bronzeGold)),
+            child: Text('Cancel', style: GoogleFonts.quicksand(fontSize: 16, color: ChiGlowTheme.bronzeGold)),
           ),
           TextButton(
             onPressed: () {
@@ -462,7 +462,7 @@ class SettingsScreen extends StatelessWidget {
               provider.setUserName('');
               Navigator.pop(ctx);
             },
-            child: Text('Reset', style: GoogleFonts.quicksand(color: Colors.red, fontWeight: FontWeight.w600)),
+            child: Text('Reset', style: GoogleFonts.quicksand(fontSize: 16, color: Colors.red, fontWeight: FontWeight.w600)),
           ),
         ],
       ),

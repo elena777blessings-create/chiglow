@@ -192,13 +192,13 @@ class JournalDetailScreen extends StatelessWidget {
         title: Text('Delete Entry', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
         content: Text('Remove this scan from your journal?', style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.mediumGray)),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
+          TextButton(onPressed: () => Navigator.pop(ctx), child: Text('Cancel', style: GoogleFonts.quicksand(fontSize: 16, color: ChiGlowTheme.bronzeGold))),
           TextButton(
             onPressed: () {
               Navigator.pop(ctx);
               Navigator.pop(context);
             },
-            child: Text('Delete', style: TextStyle(color: ChiGlowTheme.richRed)),
+            child: Text('Delete', style: GoogleFonts.quicksand(fontSize: 16, color: ChiGlowTheme.richRed)),
           ),
         ],
       ),
