@@ -245,8 +245,8 @@ class SettingsScreen extends StatelessWidget {
                   child: RichText(
                     text: TextSpan(
                       children: [
-                        TextSpan(text: 'Reset ', style: GoogleFonts.poppins(fontSize: 15, color: Colors.red[400])),
-                        TextSpan(text: 'All Data', style: GoogleFonts.poppins(fontSize: 14, color: Colors.red[400])),
+                        TextSpan(text: 'Reset ', style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.red[400])),
+                        TextSpan(text: 'All Data', style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w700, color: Colors.red[400])),
                       ],
                     ),
                   ),
