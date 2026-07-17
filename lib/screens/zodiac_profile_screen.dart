@@ -399,7 +399,7 @@ class _DirectionOfDayCard extends StatelessWidget {
             'Lucky Direction',
             style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w500, color: ChiGlowTheme.richRed),
           ),
-          const SizedBox(height: 22),
+          const SizedBox(height: 6),
           Text(
             'Face this direction while working, meditating, journaling, or planning important goals today.',
             textAlign: TextAlign.center,
