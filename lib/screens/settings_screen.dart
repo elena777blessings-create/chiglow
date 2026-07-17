@@ -226,7 +226,7 @@ class SettingsScreen extends StatelessWidget {
                   const Divider(height: 24),
                   _AboutRow(label: 'App', value: 'ChiGlow'),
                   const Divider(height: 24),
-                  _AboutRow(label: 'Tagline', value: 'Feng Shui Your Life'),
+                  _AboutRow(label: '', value: 'Feng Shui Your Life'),
                   const SizedBox(height: 4),
                   _AboutRow(label: '', value: 'Glow Starts at Home'),
                 ],
