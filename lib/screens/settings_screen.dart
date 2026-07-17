@@ -117,7 +117,9 @@ class SettingsScreen extends StatelessWidget {
               trailing: Switch(
                 value: provider.dailyReminders,
                 onChanged: (v) => provider.setDailyReminders(v),
-                activeColor: ChiGlowTheme.richRed,
+                activeColor: Color(0xFF2E7D32),
+                activeTrackColor: Color(0xFF2E7D32).withValues(alpha: 0.4),
+                inactiveTrackColor: ChiGlowTheme.richRed.withValues(alpha: 0.3),
               ),
             ),
             _SettingTile(
@@ -127,7 +129,9 @@ class SettingsScreen extends StatelessWidget {
               trailing: Switch(
                 value: provider.darkMode,
                 onChanged: (v) => provider.setDarkMode(v),
-                activeColor: ChiGlowTheme.richRed,
+                activeColor: Color(0xFF2E7D32),
+                activeTrackColor: Color(0xFF2E7D32).withValues(alpha: 0.4),
+                inactiveTrackColor: ChiGlowTheme.richRed.withValues(alpha: 0.3),
               ),
             ),
             const SizedBox(height: 24),
