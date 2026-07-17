@@ -397,19 +397,19 @@ class SettingsScreen extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 60),
               child: SizedBox(
                 width: double.infinity,
-                height: 48,
+                height: 42,
                 child: ElevatedButton(
                   onPressed: () => Navigator.pop(ctx),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: ChiGlowTheme.richRed,
                     foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(21)),
                     elevation: 0,
                   ),
-                  child: Text('Done', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600)),
+                  child: Text('Done', style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.w600)),
                 ),
               ),
             ),
