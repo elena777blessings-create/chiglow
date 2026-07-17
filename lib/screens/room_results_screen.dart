@@ -202,7 +202,7 @@ class _RoomResultsScreenState extends State<RoomResultsScreen> {
                   child: OutlinedButton.icon(
                     onPressed: () => Navigator.pushNamed(context, '/compass'),
                     icon: const Text('🧭'),
-                    label: Text('Use Compass', style: GoogleFonts.poppins(fontSize: 14)),
+                    label: FittedBox(child: Text('Use Compass', style: GoogleFonts.poppins(fontSize: 14))),
                   ),
                 ),
               ],
