@@ -114,26 +114,18 @@ class SettingsScreen extends StatelessWidget {
               icon: '🔔',
               title: 'Daily Reminders',
               subtitle: 'Morning affirmations',
-              trailing: Switch(
+              trailing: _CustomSwitch(
                 value: provider.dailyReminders,
                 onChanged: (v) => provider.setDailyReminders(v),
-                activeColor: Color(0xFF2E7D32),
-                activeTrackColor: Color(0xFF2E7D32).withValues(alpha: 0.4),
-                inactiveThumbColor: ChiGlowTheme.richRed,
-                inactiveTrackColor: ChiGlowTheme.richRed.withValues(alpha: 0.3),
               ),
             ),
             _SettingTile(
               icon: '🌙',
               title: 'Appearance',
               subtitle: provider.darkMode ? 'Dark' : 'Light',
-              trailing: Switch(
+              trailing: _CustomSwitch(
                 value: provider.darkMode,
                 onChanged: (v) => provider.setDarkMode(v),
-                activeColor: Color(0xFF2E7D32),
-                activeTrackColor: Color(0xFF2E7D32).withValues(alpha: 0.4),
-                inactiveThumbColor: ChiGlowTheme.richRed,
-                inactiveTrackColor: ChiGlowTheme.richRed.withValues(alpha: 0.3),
               ),
             ),
             const SizedBox(height: 24),
@@ -249,7 +241,7 @@ class SettingsScreen extends StatelessWidget {
               child: OutlinedButton.icon(
                 onPressed: () => _showResetConfirmation(context, provider),
                 icon: const Icon(Icons.refresh, size: 18),
-                label: Text('Reset All Data', style: GoogleFonts.poppins(fontSize: 14), softWrap: false),
+                label: FittedBox(child: Text('Reset All Data', style: GoogleFonts.poppins(fontSize: 14))),
                 style: OutlinedButton.styleFrom(
                   foregroundColor: Colors.red[400],
                   side: BorderSide(color: Colors.red[200]!),
@@ -456,6 +448,47 @@ class SettingsScreen extends StatelessWidget {
   String _getZodiacForYear(int year) {
     const animals = ['Monkey', 'Rooster', 'Dog', 'Pig', 'Rat', 'Ox', 'Tiger', 'Rabbit', 'Dragon', 'Snake', 'Horse', 'Goat'];
     return animals[year % 12];
+  }
+}
+
+/// A custom switch without shadows or outlines — clean and flat.
+class _CustomSwitch extends StatelessWidget {
+  final bool value;
+  final ValueChanged<bool> onChanged;
+
+  const _CustomSwitch({required this.value, required this.onChanged});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => onChanged(!value),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        width: 48,
+        height: 26,
+        decoration: BoxDecoration(
+          color: value
+              ? const Color(0xFF2E7D32).withValues(alpha: 0.4)
+              : ChiGlowTheme.richRed.withValues(alpha: 0.3),
+          borderRadius: BorderRadius.circular(13),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(2),
+          child: AnimatedAlign(
+            duration: const Duration(milliseconds: 200),
+            alignment: value ? Alignment.centerRight : Alignment.centerLeft,
+            child: Container(
+              width: 22,
+              height: 22,
+              decoration: BoxDecoration(
+                color: value ? const Color(0xFF2E7D32) : ChiGlowTheme.richRed,
+                borderRadius: BorderRadius.circular(11),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
 
