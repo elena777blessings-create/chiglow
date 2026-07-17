@@ -177,7 +177,7 @@ class _RoomResultsScreenState extends State<RoomResultsScreen> {
                           const SizedBox(height: 4),
                           Text(
                             tip['description'] ?? '',
-                            style: GoogleFonts.quicksand(fontSize: 13, color: ChiGlowTheme.mediumGray, height: 1.5),
+                            style: GoogleFonts.quicksand(fontSize: 14, color: Color(0xFF2E7D32), fontWeight: FontWeight.w700, height: 1.5),
                           ),
                         ],
                       ),
