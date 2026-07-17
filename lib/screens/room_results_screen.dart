@@ -202,7 +202,7 @@ class _RoomResultsScreenState extends State<RoomResultsScreen> {
                   child: OutlinedButton.icon(
                     onPressed: () => Navigator.pushNamed(context, '/compass'),
                     icon: const Text('🧭'),
-                    label: FittedBox(child: Text('Use Compass', style: GoogleFonts.poppins(fontSize: 14))),
+                    label: Text('Use Compass', style: GoogleFonts.poppins(fontSize: 14), softWrap: false),
                   ),
                 ),
               ],
@@ -224,7 +224,7 @@ class _RoomResultsScreenState extends State<RoomResultsScreen> {
               child: OutlinedButton.icon(
                 onPressed: () => Navigator.pushNamed(context, '/harmony-journal'),
                 icon: const Icon(Icons.book_outlined, size: 18),
-                label: Text('View Harmony Journal', style: GoogleFonts.poppins(fontSize: 16)),
+                label: Text('View Harmony Journal', style: GoogleFonts.poppins(fontSize: 16), softWrap: false),
                 style: OutlinedButton.styleFrom(
                   foregroundColor: ChiGlowTheme.richRed,
                   side: BorderSide(color: ChiGlowTheme.richRed.withValues(alpha: 0.3)),
