@@ -401,13 +401,13 @@ class SettingsScreen extends StatelessWidget {
               child: SizedBox(
                 width: double.infinity,
                 height: 42,
-                child: ElevatedButton(
+                child: OutlinedButton(
                   onPressed: () => Navigator.pop(ctx),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: ChiGlowTheme.richRed,
-                    foregroundColor: Colors.white,
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: ChiGlowTheme.richRed,
+                    side: BorderSide(color: ChiGlowTheme.richRed.withValues(alpha: 0.3)),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(21)),
-                    elevation: 0,
+                    padding: const EdgeInsets.symmetric(vertical: 10),
                   ),
                   child: Text('Done', style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.w600)),
                 ),
