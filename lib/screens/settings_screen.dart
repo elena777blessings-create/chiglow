@@ -240,7 +240,7 @@ class SettingsScreen extends StatelessWidget {
                   Center(
                     child: Text(
                       'Glow Starts at Home',
-                      style: GoogleFonts.quicksand(fontSize: 15, fontWeight: FontWeight.w600, color: Color(0xFF2E7D32)),
+                      style: GoogleFonts.quicksand(fontSize: 15, fontWeight: FontWeight.w700, color: Color(0xFF2E7D32)),
                     ),
                   ),
                   const SizedBox(height: 4),
