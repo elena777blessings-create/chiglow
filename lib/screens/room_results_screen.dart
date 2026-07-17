@@ -209,7 +209,6 @@ class _RoomResultsScreenState extends State<RoomResultsScreen> {
             ),
             const SizedBox(height: 24),
             // Saved to journal indicator
-            if (_saved)
               Center(
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 8),
