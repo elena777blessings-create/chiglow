@@ -360,7 +360,7 @@ class SettingsScreen extends StatelessWidget {
           children: [
             const SizedBox(height: 20),
             Text('Select Birth Year', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
-            const SizedBox(height: 12),
+            const SizedBox(height: 24),
             Expanded(
               child: ListWheelScrollView(
                 itemExtent: 44,
