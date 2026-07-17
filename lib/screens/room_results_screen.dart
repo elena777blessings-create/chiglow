@@ -214,7 +214,7 @@ class _RoomResultsScreenState extends State<RoomResultsScreen> {
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Text(
                     '✅ Saved to Harmony Journal',
-                    style: GoogleFonts.quicksand(fontSize: 15, color: Color(0xFF2E7D32), fontWeight: FontWeight.w600),
+                    style: GoogleFonts.quicksand(fontSize: 16, color: Color(0xFF2E7D32), fontWeight: FontWeight.w600),
                   ),
                 ),
               ),
