@@ -31,14 +31,15 @@ class SettingsScreen extends StatelessWidget {
               style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
             ),
             const SizedBox(height: 12),
-            GlowCard(
+            Center(
+              child: GlowCard(
               onTap: () => _showNameDialog(context, provider),
               child: Column(
                 children: [
                   // Zodiac animal artwork in circular frame
                   Container(
-                    width: 100,
-                    height: 100,
+                    width: 115,
+                    height: 115,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
@@ -55,7 +56,7 @@ class SettingsScreen extends StatelessWidget {
                     ),
                     child: ClipOval(
                       child: Transform.scale(
-                        scale: 1.1,
+                        scale: 1.15,
                         child: Image.asset(
                           'assets/images/year_cover_${provider.zodiacSign.toLowerCase()}.webp',
                           fit: BoxFit.cover,
@@ -83,6 +84,7 @@ class SettingsScreen extends StatelessWidget {
                     style: GoogleFonts.quicksand(fontSize: 17, fontWeight: FontWeight.w700, color: ChiGlowTheme.bronzeGold),
                   ),
                 ],
+              ),
               ),
             ),
             const SizedBox(height: 24),
