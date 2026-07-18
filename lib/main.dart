@@ -15,6 +15,7 @@ import 'screens/upgrade_screen.dart';
 import 'screens/scan_guide_screen.dart';
 import 'screens/harmony_journal_screen.dart';
 import 'screens/journal_detail_screen.dart';
+import 'screens/fortune_screen.dart';
 import 'providers/app_state_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -90,6 +91,9 @@ class ChiGlowApp extends StatelessWidget {
             break;
           case '/upgrade':
             page = const UpgradeScreen();
+            break;
+          case '/fortune':
+            page = const FortuneScreen();
             break;
           default:
             page = const HomeScreen();

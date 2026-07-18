@@ -142,6 +142,42 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               const SizedBox(height: 20),
+              // Fortune Cookie card
+              GlowCard(
+                glowColor: ChiGlowTheme.bronzeGold,
+                onTap: () => Navigator.pushNamed(context, '/fortune'),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 44,
+                      height: 44,
+                      decoration: BoxDecoration(
+                        color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.12),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Center(child: Text('🥟', style: TextStyle(fontSize: 36))),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Fortune of the Day',
+                            style: GoogleFonts.poppins(fontSize: 17, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed),
+                          ),
+                          Text(
+                            'Tap to reveal your fortune',
+                            style: GoogleFonts.quicksand(fontSize: 16, color: ChiGlowTheme.deepRed, fontWeight: FontWeight.w500),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Icon(Icons.arrow_forward_ios, size: 14, color: ChiGlowTheme.richRed),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
               // Secondary buttons row — cream + gold border
               Row(
                 children: [
