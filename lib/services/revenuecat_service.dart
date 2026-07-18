@@ -1,15 +1,18 @@
 import 'package:purchases_flutter/purchases_flutter.dart';
 
 /// RevenueCat service for managing in-app purchases and subscriptions.
-/// Uses placeholder API keys — replace with real keys before production.
+/// Single "ChiGlow Pro" entitlement with Monthly, Yearly, and Lifetime products.
 class RevenueCatService {
-  static const String _apiKeyIOS = 'appl_placeholder_revenuecat_key';
-  static const String _apiKeyAndroid = 'goog_placeholder_revenuecat_key';
+  /// RevenueCat public SDK key
+  static const String apiKey = 'test_impbnfOqauoVmMtryhXHkjbcPgX';
 
-  // Entitlement identifiers (must match RevenueCat dashboard)
-  static const String entitlementYearly = 'premium_yearly';
-  static const String entitlementMonthly = 'premium_monthly';
-  static const String entitlementFounder = 'founders_edition';
+  /// Single premium entitlement (configured in RevenueCat dashboard)
+  static const String entitlementChiGlowPro = 'ChiGlow Pro';
+
+  /// Product identifiers (must match RevenueCat dashboard products)
+  static const String productMonthly = 'monthly';
+  static const String productYearly = 'yearly';
+  static const String productLifetime = 'lifetime';
 
   static RevenueCatService? _instance;
   factory RevenueCatService() => _instance ??= RevenueCatService._();
@@ -21,11 +24,7 @@ class RevenueCatService {
   Future<void> initialize() async {
     if (_initialized) return;
     await Purchases.setLogLevel(LogLevel.debug);
-    await Purchases.configure(PurchasesConfiguration(
-      _apiKeyIOS,
-      // For Android, use the separate API key parameter if needed.
-      // Purchases.configure expects a single API key that works for both platforms.
-    ));
+    await Purchases.configure(PurchasesConfiguration(apiKey));
     _initialized = true;
   }
 
@@ -45,20 +44,26 @@ class RevenueCatService {
     return offerings.all.values.toList();
   }
 
-  /// Purchase a given package (tier).
+  /// Get the current offering (the one marked as "current" in RevenueCat).
+  Future<Offering?> getCurrentOffering() async {
+    final offerings = await Purchases.getOfferings();
+    return offerings.current;
+  }
+
+  /// Purchase a given package.
   Future<CustomerInfo> purchasePackage(Package package) async {
     final result = await Purchases.purchasePackage(package);
     return result.customerInfo;
   }
 
-  /// Check if the current user has an active entitlement.
-  Future<bool> hasActiveEntitlement(String entitlementId) async {
+  /// Check if the user has an active "ChiGlow Pro" entitlement.
+  Future<bool> hasChiGlowPro() async {
     final customerInfo = await Purchases.getCustomerInfo();
-    final entitlement = customerInfo.entitlements.all[entitlementId];
+    final entitlement = customerInfo.entitlements.all[entitlementChiGlowPro];
     return entitlement?.isActive == true;
   }
 
-  /// Get current customer info (for restore purchases, etc.).
+  /// Get current customer info.
   Future<CustomerInfo> getCustomerInfo() async {
     return await Purchases.getCustomerInfo();
   }
@@ -68,17 +73,17 @@ class RevenueCatService {
     return await Purchases.restorePurchases();
   }
 
-  /// Map tier index to entitlement identifier.
-  static String entitlementForTier(int tierIndex) {
+  /// Map tier index to package identifier (matches RevenueCat products).
+  static String productIdForTier(int tierIndex) {
     switch (tierIndex) {
       case 0:
-        return entitlementYearly;
+        return productYearly;
       case 1:
-        return entitlementMonthly;
+        return productMonthly;
       case 2:
-        return entitlementFounder;
+        return productLifetime;
       default:
-        return entitlementYearly;
+        return productYearly;
     }
   }
 }

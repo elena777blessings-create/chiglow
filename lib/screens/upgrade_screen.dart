@@ -171,6 +171,25 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
                 ),
               ),
 
+              const SizedBox(height: 12),
+
+              // RevenueCat Paywall option
+              Center(
+                child: GestureDetector(
+                  onTap: () => _presentPaywall(context),
+                  child: Text(
+                    '✨ Explore RevenueCat Paywall',
+                    style: GoogleFonts.quicksand(
+                      fontSize: 13,
+                      color: ChiGlowTheme.richRed.withValues(alpha: 0.7),
+                      fontWeight: FontWeight.w600,
+                      decoration: TextDecoration.underline,
+                      decorationColor: ChiGlowTheme.richRed.withValues(alpha: 0.3),
+                    ),
+                  ),
+                ),
+              ),
+
               const SizedBox(height: 24),
 
               // Gratitude Message
@@ -259,7 +278,7 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
                     Text(' | ', style: TextStyle(color: ChiGlowTheme.richRed, fontSize: 14)),
                     _FooterLink(text: 'Terms of Service', onTap: () {}),
                     Text(' | ', style: TextStyle(color: ChiGlowTheme.richRed, fontSize: 14)),
-                    _FooterLink(text: 'Manage Subscription', onTap: () {}),
+                    _FooterLink(text: 'Manage Subscription', onTap: () => _manageSubscription(context)),
                   ],
                 ),
               ),
@@ -312,6 +331,29 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
         );
       }
     });
+  }
+
+  void _presentPaywall(BuildContext context) {
+    final provider = context.read<PurchaseProvider>();
+    provider.presentPaywall(context).then((purchased) {
+      if (purchased && mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('🌸 Welcome to ChiGlow Premium!',
+                style: GoogleFonts.quicksand(fontSize: 14)),
+            backgroundColor: ChiGlowTheme.richRed,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            duration: const Duration(seconds: 3),
+          ),
+        );
+      }
+    });
+  }
+
+  void _manageSubscription(BuildContext context) {
+    final provider = context.read<PurchaseProvider>();
+    provider.presentCustomerCenter(context);
   }
 }
 

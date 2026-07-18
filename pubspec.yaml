@@ -18,6 +18,7 @@ dependencies:
   flutter_compass: ^0.7.0
   vector_math: ^2.1.4
   purchases_flutter: ^6.29.0
+  purchases_ui_flutter: ^6.29.0
 
 dev_dependencies:
   flutter_test:

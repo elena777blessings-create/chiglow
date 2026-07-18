@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
+import 'package:purchases_ui_flutter/purchases_ui_flutter.dart';
+import 'package:flutter/material.dart';
 import '../services/revenuecat_service.dart';
 
 /// Provider that manages the user's purchase/subscription state.
@@ -9,7 +11,6 @@ class PurchaseProvider extends ChangeNotifier {
 
   bool _initialized = false;
   bool _isPremium = false;
-  String? _activeEntitlement;
   CustomerInfo? _customerInfo;
   List<Offering> _offerings = [];
   bool _isLoading = false;
@@ -17,7 +18,6 @@ class PurchaseProvider extends ChangeNotifier {
 
   bool get isInitialized => _initialized;
   bool get isPremium => _isPremium;
-  String? get activeEntitlement => _activeEntitlement;
   CustomerInfo? get customerInfo => _customerInfo;
   List<Offering> get offerings => _offerings;
   bool get isLoading => _isLoading;
@@ -45,32 +45,19 @@ class PurchaseProvider extends ChangeNotifier {
   Future<void> _refreshCustomerInfo() async {
     try {
       _customerInfo = await _revenueCat.getCustomerInfo();
-      _checkEntitlements();
+      _checkEntitlement();
     } catch (e) {
       _error = 'Failed to refresh purchases: $e';
     }
   }
 
-  /// Check all entitlement statuses.
-  void _checkEntitlements() {
+  /// Check the single "ChiGlow Pro" entitlement.
+  void _checkEntitlement() {
     if (_customerInfo == null) return;
 
-    // Check each entitlement in priority order
-    for (final entitlementId in [
-      RevenueCatService.entitlementFounder,
-      RevenueCatService.entitlementYearly,
-      RevenueCatService.entitlementMonthly,
-    ]) {
-      final entitlement = _customerInfo!.entitlements.all[entitlementId];
-      if (entitlement?.isActive == true) {
-        _isPremium = true;
-        _activeEntitlement = entitlementId;
-        return;
-      }
-    }
-
-    _isPremium = false;
-    _activeEntitlement = null;
+    final entitlement =
+        _customerInfo!.entitlements.all[RevenueCatService.entitlementChiGlowPro];
+    _isPremium = entitlement?.isActive == true;
   }
 
   /// Fetch available offerings from RevenueCat.
@@ -96,13 +83,12 @@ class PurchaseProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      // Find the correct package from offerings
-      final entitlementId = RevenueCatService.entitlementForTier(tierIndex);
+      final productId = RevenueCatService.productIdForTier(tierIndex);
       Package? targetPackage;
 
       for (final offering in _offerings) {
         for (final package in offering.availablePackages) {
-          if (package.identifier == entitlementId) {
+          if (package.identifier == productId) {
             targetPackage = package;
             break;
           }
@@ -147,6 +133,37 @@ class PurchaseProvider extends ChangeNotifier {
       _isLoading = false;
       notifyListeners();
       return false;
+    }
+  }
+
+  /// Present the RevenueCat built-in Paywall as a modal.
+  /// Returns true if the user completed a purchase.
+  Future<bool> presentPaywall(BuildContext context) async {
+    try {
+      final result = await RevenueCatUI.presentPaywall(
+        context: context,
+        onDismissed: () {
+          // Called when the paywall is dismissed without purchase
+        },
+      );
+      // Refresh after paywall interaction
+      await _refreshCustomerInfo();
+      return _isPremium;
+    } catch (e) {
+      _error = 'Paywall failed: $e';
+      notifyListeners();
+      return false;
+    }
+  }
+
+  /// Present the RevenueCat Customer Center for managing subscriptions.
+  Future<void> presentCustomerCenter(BuildContext context) async {
+    try {
+      await RevenueCatUI.presentCustomerCenter(context: context);
+      await _refreshCustomerInfo();
+    } catch (e) {
+      _error = 'Customer Center failed: $e';
+      notifyListeners();
     }
   }
 
