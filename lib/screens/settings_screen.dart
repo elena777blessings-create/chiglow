@@ -60,6 +60,7 @@ class SettingsScreen extends StatelessWidget {
                         child: Image.asset(
                           'assets/images/year_cover_${provider.zodiacSign.toLowerCase()}.webp',
                           fit: BoxFit.cover,
+                          alignment: Alignment(0, 0.15),
                           errorBuilder: (context, error, stackTrace) => Container(
                             color: ChiGlowTheme.richRed.withValues(alpha: 0.1),
                             child: Center(
