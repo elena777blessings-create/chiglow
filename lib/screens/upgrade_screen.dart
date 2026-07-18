@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
 import '../widgets/chi_particles.dart';
 import '../utils/asset_images.dart';
 import '../widgets/global_header.dart';
 import '../widgets/home_button.dart';
+import '../providers/purchase_provider.dart';
 
 class UpgradeScreen extends StatefulWidget {
   const UpgradeScreen({super.key});
@@ -116,7 +118,7 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
                 width: double.infinity,
                 height: 56,
                 child: ElevatedButton(
-                  onPressed: () => _showComingSoon(context, selected.name),
+                  onPressed: () => _purchaseTier(context),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: ChiGlowTheme.richRed,
                     foregroundColor: Colors.white,
@@ -124,13 +126,39 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
                     elevation: 3,
                     shadowColor: ChiGlowTheme.richRed.withValues(alpha: 0.3),
                   ),
-                  child: Text(
-                    '🌸 Begin My Harmony Journey',
-                    style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600),
+                  child: Consumer<PurchaseProvider>(
+                    builder: (context, provider, _) {
+                      if (provider.isLoading) {
+                        return const SizedBox(
+                          width: 22,
+                          height: 22,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                          ),
+                        );
+                      }
+                      return Text(
+                        '🌸 Begin My Harmony Journey',
+                        style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600),
+                      );
+                    },
                   ),
                 ),
               ),
               const SizedBox(height: 8),
+              if (context.watch<PurchaseProvider>().error != null)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Text(
+                    context.watch<PurchaseProvider>().error!,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.quicksand(
+                      fontSize: 13,
+                      color: Colors.redAccent,
+                    ),
+                  ),
+                ),
               Text(
                 selected.supportText != null
                     ? '🌸 ${selected.supportText!}'
@@ -225,7 +253,7 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
                   spacing: 4,
                   runSpacing: 8,
                   children: [
-                    _FooterLink(text: 'Restore Purchases', onTap: () {}),
+                    _FooterLink(text: 'Restore Purchases', onTap: () => _restorePurchases(context)),
                     Text(' | ', style: TextStyle(color: ChiGlowTheme.richRed, fontSize: 14)),
                     _FooterLink(text: 'Privacy Policy', onTap: () {}),
                     Text(' | ', style: TextStyle(color: ChiGlowTheme.richRed, fontSize: 14)),
@@ -248,17 +276,42 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
     );
   }
 
-  void _showComingSoon(BuildContext context, String tierName) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('🌸 $tierName — coming soon!',
-            style: GoogleFonts.quicksand(fontSize: 14)),
-        backgroundColor: ChiGlowTheme.richRed,
-        behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        duration: const Duration(seconds: 2),
-      ),
-    );
+  void _purchaseTier(BuildContext context) {
+    final provider = context.read<PurchaseProvider>();
+    provider.purchaseTier(_selectedTier).then((success) {
+      if (success && mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('🌸 Welcome to ChiGlow Premium!',
+                style: GoogleFonts.quicksand(fontSize: 14)),
+            backgroundColor: ChiGlowTheme.richRed,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            duration: const Duration(seconds: 3),
+          ),
+        );
+      }
+    });
+  }
+
+  void _restorePurchases(BuildContext context) {
+    final provider = context.read<PurchaseProvider>();
+    provider.restorePurchases().then((restored) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              restored ? '🌸 Purchases restored successfully!' : 'No purchases found to restore.',
+              style: GoogleFonts.quicksand(fontSize: 14),
+            ),
+            backgroundColor: ChiGlowTheme.richRed,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            duration: const Duration(seconds: 3),
+          ),
+        );
+      }
+    });
   }
 }
 

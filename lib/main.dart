@@ -17,6 +17,7 @@ import 'screens/harmony_journal_screen.dart';
 import 'screens/journal_detail_screen.dart';
 import 'screens/fortune_screen.dart';
 import 'providers/app_state_provider.dart';
+import 'providers/purchase_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -26,8 +27,11 @@ void main() {
   ]);
 
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => AppStateProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => AppStateProvider()),
+        ChangeNotifierProvider(create: (_) => PurchaseProvider()..initialize()),
+      ],
       child: const ChiGlowApp(),
     ),
   );
