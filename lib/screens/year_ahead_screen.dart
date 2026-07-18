@@ -231,7 +231,7 @@ class _MonthCard extends StatelessWidget {
           children: [
             Text(month, style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
             const SizedBox(height: 4),
-            Text(element, style: GoogleFonts.quicksand(fontSize: 14, color: Color(0xFF2E7D32), fontWeight: FontWeight.w700, height: 1.3)),
+            Text(element, style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.bronzeGold, fontWeight: FontWeight.w700, height: 1.3)),
             const SizedBox(height: 8),
             Text(forecast, style: GoogleFonts.quicksand(fontSize: 17, color: Color(0xFF2E7D32), fontWeight: FontWeight.w700, height: 1.65, wordSpacing: -1)),
           ],
