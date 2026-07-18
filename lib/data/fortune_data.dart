@@ -404,6 +404,229 @@ class FortuneLibrary {
       luckyNumbers: [2, 18, 26, 37, 49, 71],
     ),
 
+    // ── Fortunes 208–240 ──
+    FortuneEntry(message: 'The future is filled with beautiful possibilities.', category: 'daily'),
+    FortuneEntry(message: 'Your kindness is creating ripples of happiness.', category: 'daily'),
+    FortuneEntry(
+      message: 'Today invites you to Flow, Grow, Bloom—and smile.',
+      category: 'daily',
+      luckyNumbers: [5, 20, 32, 44, 56, 69],
+    ),
+    FortuneEntry(
+      message: 'Today brings more reasons to smile than you expect.',
+      category: 'daily',
+      luckyNumbers: [4, 15, 23, 36, 48, 62],
+    ),
+    FortuneEntry(message: 'A wonderful surprise may arrive through an ordinary moment.', category: 'daily'),
+    FortuneEntry(message: 'Someone is grateful for your kindness today.', category: 'daily'),
+    FortuneEntry(
+      message: 'Your next "yes" may lead to something beautiful.',
+      category: 'daily',
+      luckyNumbers: [7, 18, 27, 39, 51, 66],
+    ),
+    FortuneEntry(message: 'A peaceful home begins with a peaceful heart.', category: 'daily'),
+    // Golden Fortune
+    FortuneEntry(
+      message: 'Today shines with rare promise. Keep your eyes and heart open—an unexpected blessing may arrive when you least expect it.',
+      category: 'golden', title: '🌟 Golden Fortune',
+      luckyNumbers: [8, 16, 29, 41, 54, 68, 75],
+      luckyColor: 'Gold',
+    ),
+    FortuneEntry(message: 'Good things are quietly finding their way to you.', category: 'daily'),
+    FortuneEntry(message: 'Someone may soon offer exactly the encouragement you need.', category: 'daily'),
+    FortuneEntry(
+      message: 'Joy grows when it is shared.',
+      category: 'daily',
+      luckyNumbers: [2, 12, 24, 35, 46, 61],
+    ),
+    FortuneEntry(message: 'Your patience is creating beautiful results.', category: 'daily'),
+    FortuneEntry(message: 'The next chapter may begin with a simple conversation.', category: 'daily'),
+    FortuneEntry(
+      message: 'Your brightest ideas often arrive during peaceful moments.',
+      category: 'daily',
+      luckyNumbers: [5, 14, 28, 37, 49, 64],
+    ),
+    // Lotus Fortune
+    FortuneEntry(
+      message: 'Just as the lotus blooms in its own perfect season, your time to flourish is unfolding beautifully.',
+      category: 'lotus', title: '🌸 Lotus Fortune',
+      luckyNumbers: [1, 17, 25, 38, 47, 63],
+      luckyColor: 'Lotus Pink',
+    ),
+    FortuneEntry(message: 'Today invites you to notice life\'s little miracles.', category: 'daily'),
+    FortuneEntry(message: 'A cheerful heart welcomes cheerful days.', category: 'daily'),
+    FortuneEntry(
+      message: 'Your kindness has reached farther than you realize.',
+      category: 'daily',
+      luckyNumbers: [6, 13, 26, 42, 52, 65],
+    ),
+    FortuneEntry(message: 'A peaceful choice today creates tomorrow\'s happiness.', category: 'daily'),
+    // Classic Fortune
+    FortuneEntry(
+      message: 'The fortune you\'ve been waiting for is already on its way.',
+      category: 'daily', title: '🥠 Classic Fortune',
+      luckyNumbers: [3, 19, 30, 44, 55, 69],
+    ),
+    FortuneEntry(message: 'Someone will remember your generosity with gratitude.', category: 'daily'),
+    // Dragon Fortune
+    FortuneEntry(
+      message: 'Today is a day for courage. Trust yourself, take the first step, and let confidence guide your journey.',
+      category: 'dragon', title: '🐉 Dragon Fortune',
+      luckyNumbers: [9, 20, 31, 43, 56, 70, 77],
+      luckyColor: 'Dragon Red',
+    ),
+    FortuneEntry(message: 'The smallest blessing today may become your greatest joy.', category: 'daily'),
+    FortuneEntry(message: 'Good fortune often arrives quietly.', category: 'daily'),
+    FortuneEntry(
+      message: 'A smile shared today will find its way back to you.',
+      category: 'daily',
+      luckyNumbers: [4, 11, 22, 34, 45, 58],
+    ),
+    FortuneEntry(message: 'Someone may soon thank you for something you had forgotten.', category: 'daily'),
+    FortuneEntry(message: 'A calm mind welcomes wise decisions.', category: 'daily'),
+    FortuneEntry(
+      message: 'Your next opportunity may appear in an unexpected place.',
+      category: 'daily',
+      luckyNumbers: [7, 16, 27, 40, 53, 67],
+    ),
+    FortuneEntry(message: 'There is beauty waiting in today\'s simple moments.', category: 'daily'),
+    FortuneEntry(message: 'Your future is brighter than you can imagine.', category: 'daily'),
+    FortuneEntry(
+      message: 'Today may become one of your favorite memories.',
+      category: 'daily',
+      luckyNumbers: [5, 18, 29, 41, 50, 72],
+    ),
+    FortuneEntry(message: 'Every sunrise reminds us that every day is a fresh beginning.', category: 'daily'),
+
+    // ── Fortunes 241–270 ──
+    FortuneEntry(
+      message: 'A joyful surprise is quietly making its way to you.',
+      category: 'daily',
+      luckyNumbers: [6, 14, 27, 39, 48, 64],
+    ),
+    FortuneEntry(message: 'Today is an excellent day to welcome good news.', category: 'daily'),
+    FortuneEntry(message: 'Someone\'s appreciation will brighten your heart.', category: 'daily'),
+    FortuneEntry(
+      message: 'A small decision today may lead to a wonderful future.',
+      category: 'daily',
+      luckyNumbers: [3, 11, 25, 37, 46, 59],
+    ),
+    FortuneEntry(message: 'Happiness is growing in places you cannot yet see.', category: 'daily'),
+    // Golden Fortune
+    FortuneEntry(
+      message: 'Today shines with rare promise. A joyful opportunity may appear when you least expect it. Trust your heart and welcome it with gratitude.',
+      category: 'golden', title: '🌟 Golden Fortune',
+      luckyNumbers: [8, 18, 30, 44, 55, 67, 76],
+      luckyColor: 'Sunrise Gold',
+    ),
+    FortuneEntry(message: 'Your next smile may begin someone else\'s happy day.', category: 'daily'),
+    FortuneEntry(message: 'Good fortune often arrives quietly.', category: 'daily'),
+    FortuneEntry(
+      message: 'A kind word today will echo farther than you imagine.',
+      category: 'daily',
+      luckyNumbers: [5, 16, 28, 41, 52, 65],
+    ),
+    FortuneEntry(message: 'The universe is gently arranging beautiful things for you.', category: 'daily'),
+    FortuneEntry(message: 'Today\'s calm may become tomorrow\'s strength.', category: 'daily'),
+    FortuneEntry(
+      message: 'A pleasant surprise may be hiding in today\'s plans.',
+      category: 'daily',
+      luckyNumbers: [4, 12, 23, 36, 47, 60],
+    ),
+    // Lotus Fortune
+    FortuneEntry(
+      message: 'Like sunlight reaching the lotus, your patience is about to be rewarded. Continue growing with confidence.',
+      category: 'lotus', title: '🌸 Lotus Fortune',
+      luckyNumbers: [7, 19, 29, 42, 53, 68],
+      luckyColor: 'Lotus White',
+    ),
+    FortuneEntry(message: 'Every sunrise brings another chance to bloom.', category: 'daily'),
+    FortuneEntry(message: 'Someone will soon bring laughter into your day.', category: 'daily'),
+    FortuneEntry(
+      message: 'A peaceful heart creates joyful moments.',
+      category: 'daily',
+      luckyNumbers: [9, 15, 31, 43, 51, 66],
+    ),
+    // Classic Fortune
+    FortuneEntry(message: 'Your lucky moment may arrive in the most ordinary place.', category: 'daily', title: '🥠 Classic Fortune'),
+    FortuneEntry(message: 'A familiar face may bring wonderful news.', category: 'daily'),
+    // Dragon Fortune
+    FortuneEntry(
+      message: 'Today is a powerful day to believe in yourself. Courage will open a door that fear never could.',
+      category: 'dragon', title: '🐉 Dragon Fortune',
+      luckyNumbers: [2, 17, 26, 38, 50, 63, 79],
+      luckyColor: 'Imperial Red',
+    ),
+    FortuneEntry(message: 'The next chapter of your story begins with hope.', category: 'daily'),
+    FortuneEntry(message: 'Today\'s smallest blessing may become tomorrow\'s greatest treasure.', category: 'daily'),
+    FortuneEntry(
+      message: 'Expect kindness to find you today.',
+      category: 'daily',
+      luckyNumbers: [1, 13, 24, 35, 45, 57],
+    ),
+    FortuneEntry(message: 'A quiet moment may reveal a brilliant idea.', category: 'daily'),
+    FortuneEntry(message: 'Your positive energy is attracting wonderful people.', category: 'daily'),
+    FortuneEntry(
+      message: 'Something beautiful is already on its way.',
+      category: 'daily',
+      luckyNumbers: [10, 20, 32, 40, 54, 69],
+    ),
+    FortuneEntry(message: 'The best surprises are often unplanned.', category: 'daily'),
+    FortuneEntry(message: 'Someone will remember your kindness long after today.', category: 'daily'),
+    FortuneEntry(
+      message: 'Fortune favors grateful hearts.',
+      category: 'daily',
+      luckyNumbers: [5, 18, 30, 41, 56, 72],
+    ),
+    FortuneEntry(message: 'A joyful invitation may soon arrive.', category: 'daily'),
+    FortuneEntry(message: 'Today is another beautiful opportunity to Flow, Grow & Bloom.', category: 'daily'),
+
+    // ── Fortunes 271–300 ──
+    FortuneEntry(
+      message: 'Today is quietly opening a door meant just for you.',
+      category: 'daily',
+      luckyNumbers: [6, 13, 21, 38, 47, 62],
+    ),
+    FortuneEntry(message: 'A simple act of kindness will return in a beautiful way.', category: 'daily'),
+    FortuneEntry(message: 'Someone may soon share exciting news with you.', category: 'daily'),
+    FortuneEntry(
+      message: 'The path ahead is brighter than it appears today.',
+      category: 'daily',
+      luckyNumbers: [4, 15, 26, 35, 49, 61],
+    ),
+    FortuneEntry(message: 'Your peaceful energy brings comfort wherever you go.', category: 'daily'),
+    // Golden Fortune
+    FortuneEntry(
+      message: 'Today shines with extraordinary promise. A joyful opportunity is drawing near—welcome it with confidence and gratitude.',
+      category: 'golden', title: '🌟 Golden Fortune',
+      luckyNumbers: [8, 19, 28, 41, 54, 67, 73],
+      luckyColor: 'Golden Amber',
+    ),
+    FortuneEntry(message: 'A wonderful memory is about to be created.', category: 'daily'),
+    FortuneEntry(message: 'Your next conversation may change everything for the better.', category: 'daily'),
+    FortuneEntry(
+      message: 'Good fortune enjoys those who remain hopeful.',
+      category: 'daily',
+      luckyNumbers: [5, 11, 24, 37, 52, 64],
+    ),
+    FortuneEntry(message: 'Peace begins with one grateful thought.', category: 'daily'),
+    // Classic Fortune
+    FortuneEntry(message: 'Your lucky seat may be waiting for you today.', category: 'daily', title: '🥠 Classic Fortune'),
+    FortuneEntry(
+      message: 'A pleasant surprise could arrive before sunset.',
+      category: 'daily',
+      luckyNumbers: [7, 18, 29, 43, 56, 69],
+    ),
+    FortuneEntry(message: 'Someone is thankful to have you in their life.', category: 'love'),
+    // Lotus Fortune
+    FortuneEntry(
+      message: 'Like the lotus reaching toward the sun, your quiet perseverance is about to blossom into something beautiful.',
+      category: 'lotus', title: '🌸 Lotus Fortune',
+      luckyNumbers: [2, 14, 27, 40, 51, 65],
+      luckyColor: 'Lotus Pink',
+    ),
+    FortuneEntry(message: 'A cheerful heart invites cheerful days.', category: 'daily'),
+
     // ── Abundance & Prosperity Fortunes ──
     FortuneEntry(message: 'Prosperity is quietly growing in your life.', category: 'abundance', title: '🍀 Abundance'),
     FortuneEntry(message: 'A new door of opportunity is preparing to open.', category: 'abundance', title: '🍀 Prosperity'),
