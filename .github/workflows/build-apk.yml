@@ -50,6 +50,7 @@ jobs:
 
       - name: 🎨 Generate app icons
         run: flutter pub run flutter_launcher_icons
+        continue-on-error: true  # icons already committed; non-critical if fails
 
       - name: 🔨 Build Android APK
         run: flutter build apk --release --split-per-abi
