@@ -17,14 +17,12 @@ subprojects {
 }
 
 // Fix: flutter_compass (0.7.x–0.8.x) doesn't declare namespace (required by AGP 8+)
+// Use plugins.withId to hook during configuration, not afterEvaluate.
 subprojects {
-    afterEvaluate {
+    plugins.withId("com.android.library") {
         if (name == "flutter_compass") {
-            try {
-                extensions.findByType<com.android.build.gradle.LibraryExtension>()?.namespace =
-                    "com.hemanthraj.fluttercompass"
-            } catch (_: Exception) {
-                // Silently continue — namespace may already be set by newer version
+            configure<com.android.build.gradle.LibraryExtension> {
+                namespace = "com.hemanthraj.fluttercompass"
             }
         }
     }
