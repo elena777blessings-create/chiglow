@@ -1001,7 +1001,7 @@ class FortuneLibrary {
       luckyColor: 'Dragon Red',
     ),
     FortuneEntry(
-      message: 'You are being called to rise. The dragon's courage fills your heart. Greatness awaits.',
+      message: "You are being called to rise. The dragon's courage fills your heart. Greatness awaits.",
       category: 'dragon', title: '🐉 Dragon Fortune',
       luckyNumbers: [7, 19, 33, 55, 88, 104, 222],
       luckyColor: 'Imperial Red',
@@ -1023,9 +1023,9 @@ class FortuneLibrary {
 
     // ── Seasonal & Holiday Fortunes ──
     FortuneEntry(message: 'The energy of spring renewal fills your heart. Bloom beautifully today.', category: 'seasonal', title: '🌸 Spring'),
-    FortuneEntry(message: 'Summer's warmth invites you to shine. Let your light radiate.', category: 'seasonal', title: '☀️ Summer'),
-    FortuneEntry(message: 'Autumn's golden wisdom surrounds you. Harvest the beauty of your journey.', category: 'seasonal', title: '🍂 Autumn'),
-    FortuneEntry(message: 'Winter's quiet stillness brings inner peace. Rest and prepare for new beginnings.', category: 'seasonal', title: '❄️ Winter'),
+    FortuneEntry(message: "Summer's warmth invites you to shine. Let your light radiate.", category: 'seasonal', title: '☀️ Summer'),
+    FortuneEntry(message: "Autumn's golden wisdom surrounds you. Harvest the beauty of your journey.", category: 'seasonal', title: '🍂 Autumn'),
+    FortuneEntry(message: "Winter's quiet stillness brings inner peace. Rest and prepare for new beginnings.", category: 'seasonal', title: '❄️ Winter'),
     FortuneEntry(message: 'A new year brings infinite possibilities. The universe is ready for your dreams.', category: 'seasonal', title: '🎆 New Year'),
     FortuneEntry(message: 'The season of love is upon you. Open your heart to the beauty around you.', category: 'seasonal', title: '💝 Love'),
     FortuneEntry(message: 'A season of gratitude and abundance. Count your blessings and watch them grow.', category: 'seasonal', title: '🦃 Gratitude'),
