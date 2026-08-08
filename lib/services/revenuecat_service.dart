@@ -52,14 +52,13 @@ class RevenueCatService {
 
   /// Purchase a given package.
   Future<CustomerInfo> purchasePackage(Package package) async {
-    final result = await Purchases.purchasePackage(package);
-    return result.customerInfo;
+    return await Purchases.purchasePackage(package);
   }
 
   /// Check if the user has an active "ChiGlow Pro" entitlement.
   Future<bool> hasChiGlowPro() async {
     final customerInfo = await Purchases.getCustomerInfo();
-    final entitlement = customerInfo.entitlements.all[entitlementChiGlowPro];
+    final entitlement = customerInfo.entitlements.active[entitlementChiGlowPro];
     return entitlement?.isActive == true;
   }
 

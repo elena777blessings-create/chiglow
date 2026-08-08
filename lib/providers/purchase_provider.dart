@@ -56,7 +56,7 @@ class PurchaseProvider extends ChangeNotifier {
     if (_customerInfo == null) return;
 
     final entitlement =
-        _customerInfo!.entitlements.all[RevenueCatService.entitlementChiGlowPro];
+        _customerInfo!.entitlements.active[RevenueCatService.entitlementChiGlowPro];
     _isPremium = entitlement?.isActive == true;
   }
 
@@ -140,11 +140,7 @@ class PurchaseProvider extends ChangeNotifier {
   /// Returns true if the user completed a purchase.
   Future<bool> presentPaywall(BuildContext context) async {
     try {
-      await RevenueCatUI.presentPaywall(
-        onDismissed: () {
-          // Called when the paywall is dismissed without purchase
-        },
-      );
+      await RevenueCatUI.presentPaywall();
       // Refresh after paywall interaction
       await _refreshCustomerInfo();
       return _isPremium;
@@ -157,8 +153,9 @@ class PurchaseProvider extends ChangeNotifier {
 
   /// Present the RevenueCat Customer Center for managing subscriptions.
   Future<void> presentCustomerCenter(BuildContext context) async {
+    // RevenueCat 6.30.x: presentCustomerCenter was removed from purchases_ui_flutter.
+    // Fall back to refreshing entitlements; full management via platform settings.
     try {
-      await RevenueCatUI.presentCustomerCenter();
       await _refreshCustomerInfo();
     } catch (e) {
       _error = 'Customer Center failed: $e';
