@@ -140,8 +140,7 @@ class PurchaseProvider extends ChangeNotifier {
   /// Returns true if the user completed a purchase.
   Future<bool> presentPaywall(BuildContext context) async {
     try {
-      final result = await RevenueCatUI.presentPaywall(
-        context: context,
+      await RevenueCatUI.presentPaywall(
         onDismissed: () {
           // Called when the paywall is dismissed without purchase
         },
@@ -159,7 +158,7 @@ class PurchaseProvider extends ChangeNotifier {
   /// Present the RevenueCat Customer Center for managing subscriptions.
   Future<void> presentCustomerCenter(BuildContext context) async {
     try {
-      await RevenueCatUI.presentCustomerCenter(context: context);
+      await RevenueCatUI.presentCustomerCenter();
       await _refreshCustomerInfo();
     } catch (e) {
       _error = 'Customer Center failed: $e';
