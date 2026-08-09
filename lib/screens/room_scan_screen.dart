@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
 import '../utils/asset_images.dart';
@@ -211,11 +212,80 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
 ); // close Scaffold + return
   }
 
-  void _pickImage() {
-    // Placeholder - in real app would use image_picker
-    setState(() {
-      _imagePath = 'placeholder';
-    });
+  final ImagePicker _picker = ImagePicker();
+
+  Future<void> _pickImage() async {
+    final source = await showModalBottomSheet<ImageSource>(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (ctx) => Container(
+        padding: const EdgeInsets.all(24),
+        decoration: const BoxDecoration(
+          color: Color(0xFFFEFCF6),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+        ),
+        child: SafeArea(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text('Scan Your Space',
+                  style: GoogleFonts.quicksand(
+                      fontSize: 20, fontWeight: FontWeight.w700, color: ChiGlowTheme.richRed)),
+              const SizedBox(height: 8),
+              Text('Choose how to capture your room',
+                  style: GoogleFonts.quicksand(fontSize: 14, color: ChiGlowTheme.deepRed)),
+              const SizedBox(height: 20),
+              Row(
+                children: [
+                  Expanded(
+                    child: _SourceOption(
+                      icon: Icons.camera_alt_rounded,
+                      label: 'Camera',
+                      onTap: () => Navigator.pop(ctx, ImageSource.camera),
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: _SourceOption(
+                      icon: Icons.photo_library_rounded,
+                      label: 'Gallery',
+                      onTap: () => Navigator.pop(ctx, ImageSource.gallery),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    if (source == null) return;
+
+    try {
+      final XFile? image = await _picker.pickImage(
+        source: source,
+        imageQuality: 85,
+        maxWidth: 1920,
+        maxHeight: 1920,
+      );
+
+      if (image != null && mounted) {
+        setState(() => _imagePath = image.path);
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Camera access is needed to scan your room. Please grant permission in Settings.',
+                style: GoogleFonts.quicksand(fontSize: 13)),
+            backgroundColor: ChiGlowTheme.richRed,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          ),
+        );
+      }
+    }
   }
 
   void _analyzeRoom() {
@@ -229,5 +299,43 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
         });
       }
     });
+  }
+}
+
+class _SourceOption extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final VoidCallback onTap;
+
+  const _SourceOption({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 28),
+        decoration: BoxDecoration(
+          color: ChiGlowTheme.richRed.withValues(alpha: 0.06),
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+            color: ChiGlowTheme.richRed.withValues(alpha: 0.15),
+          ),
+        ),
+        child: Column(
+          children: [
+            Icon(icon, size: 40, color: ChiGlowTheme.richRed),
+            const SizedBox(height: 10),
+            Text(label,
+                style: GoogleFonts.quicksand(
+                    fontSize: 15, fontWeight: FontWeight.w600, color: ChiGlowTheme.richRed)),
+          ],
+        ),
+      ),
+    );
   }
 }
