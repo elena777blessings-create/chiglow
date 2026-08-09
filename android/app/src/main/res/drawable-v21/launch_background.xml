@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- ChiGlow warm cream-to-gold gradient background -->
-    <item android:drawable="@drawable/chiglow_splash_bg" />
-    <!-- Centered app icon (lotus/koi ChiGlow icon) -->
+    <!-- ChiGlow branded splash artwork (lotus, koi, ChiGlow name, Flow. Grow. Bloom.) -->
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@drawable/splash_artwork" />
     </item>
 </layer-list>
