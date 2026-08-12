@@ -74,11 +74,13 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                         final cardWidth = screenWidth - 28;
                         return ClipRRect(
                           borderRadius: BorderRadius.circular(16),
-                          child: Image.asset(
-                            _zodiacImagePath(zodiac),
+                          child: SizedBox(
                             width: cardWidth,
-                            fit: BoxFit.fitWidth,
-                            errorBuilder: (context, error, stackTrace) => Container(
+                            height: cardWidth * 1.5, // 2:3 portrait — matches all zodiac images
+                            child: Image.asset(
+                              _zodiacImagePath(zodiac),
+                              fit: BoxFit.contain,
+                              errorBuilder: (context, error, stackTrace) => Container(
                               width: cardWidth,
                               height: cardWidth * 1.5,
                               decoration: BoxDecoration(
