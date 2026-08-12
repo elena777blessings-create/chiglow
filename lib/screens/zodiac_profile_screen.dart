@@ -81,16 +81,17 @@ class _ZodiacProfileScreenState extends State<ZodiacProfileScreen>
                               _zodiacImagePath(zodiac),
                               fit: BoxFit.contain,
                               errorBuilder: (context, error, stackTrace) => Container(
-                              width: cardWidth,
-                              height: cardWidth * 1.5,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(16),
-                                gradient: LinearGradient(
-                                  colors: [ChiGlowTheme.richRed, ChiGlowTheme.bronzeGold],
+                                width: cardWidth,
+                                height: cardWidth * 1.5,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(16),
+                                  gradient: LinearGradient(
+                                    colors: [ChiGlowTheme.richRed, ChiGlowTheme.bronzeGold],
+                                  ),
                                 ),
-                              ),
-                              child: Center(
-                                child: Text(_zodiacEmoji(zodiac), style: const TextStyle(fontSize: 64)),
+                                child: Center(
+                                  child: Text(_zodiacEmoji(zodiac), style: const TextStyle(fontSize: 64)),
+                                ),
                               ),
                             ),
                           ),
