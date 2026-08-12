@@ -118,7 +118,7 @@ class _SplashScreenState extends State<SplashScreen>
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: const Color(0xFF1A0A0A),
+        color: const Color(0xFFF5E6D0), // ChiGlow warm cream — matches native splash
         child: Stack(
           children: [
             // Splash artwork
@@ -274,8 +274,8 @@ class _SplashScreenState extends State<SplashScreen>
                       end: Alignment.bottomCenter,
                       colors: [
                         Colors.transparent,
-                        const Color(0xFF1A0A0A).withValues(alpha: 0.6),
-                        const Color(0xFF1A0A0A),
+                        const Color(0xFFF5E6D0).withValues(alpha: 0.5),
+                        const Color(0xFFF5E6D0),
                       ],
                     ),
                   ),
@@ -304,15 +304,15 @@ class _SplashScreenState extends State<SplashScreen>
                       style: GoogleFonts.playfairDisplay(
                         fontSize: 48,
                         fontWeight: FontWeight.w700,
-                        color: Colors.white,
+                        color: ChiGlowTheme.richRed,
                         shadows: [
                           Shadow(
-                            color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.7),
-                            blurRadius: 30,
+                            color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.4),
+                            blurRadius: 20,
                           ),
                           Shadow(
-                            color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.3),
-                            blurRadius: 60,
+                            color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.2),
+                            blurRadius: 40,
                           ),
                         ],
                       ),
@@ -323,7 +323,7 @@ class _SplashScreenState extends State<SplashScreen>
                       textAlign: TextAlign.center,
                       style: GoogleFonts.quicksand(
                         fontSize: 16,
-                        color: Colors.white.withValues(alpha: 0.9),
+                        color: ChiGlowTheme.richRed.withValues(alpha: 0.85),
                         height: 1.5,
                         fontWeight: FontWeight.w500,
                       ),
