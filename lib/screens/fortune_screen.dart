@@ -201,14 +201,6 @@ class _FortuneScreenState extends State<FortuneScreen>
                               height: 180,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                gradient: const RadialGradient(
-                                  colors: [
-                                    Color(0xFFD4A373),
-                                    Color(0xFFBC8F4F),
-                                    Color(0xFFA67C2E),
-                                  ],
-                                  stops: [0.3, 0.7, 1.0],
-                                ),
                                 boxShadow: [
                                   BoxShadow(
                                     color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.3),
@@ -217,10 +209,11 @@ class _FortuneScreenState extends State<FortuneScreen>
                                   ),
                                 ],
                               ),
-                              child: Center(
-                                child: _isOpened
-                                    ? Icon(Icons.auto_awesome, size: 60, color: Colors.white.withValues(alpha: 0.8))
-                                    : Icon(Icons.card_giftcard, size: 70, color: Colors.white.withValues(alpha: 0.9)),
+                              child: ClipOval(
+                                child: Image.asset(
+                                  'assets/images/fortune_cookie.png',
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           ),
