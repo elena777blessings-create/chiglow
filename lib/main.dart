@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'theme/app_theme.dart';
-import 'screens/splash_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/room_scan_screen.dart';
 import 'screens/room_results_screen.dart';
@@ -46,13 +45,10 @@ class ChiGlowApp extends StatelessWidget {
       title: 'ChiGlow',
       debugShowCheckedModeBanner: false,
       theme: ChiGlowTheme.lightTheme,
-      initialRoute: '/splash',
+      initialRoute: '/home',
       onGenerateRoute: (settings) {
         Widget page;
         switch (settings.name) {
-          case '/splash':
-            page = const SplashScreen();
-            break;
           case '/home':
             page = const HomeScreen();
             break;

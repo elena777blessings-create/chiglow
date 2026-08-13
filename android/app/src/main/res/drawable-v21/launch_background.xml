@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Minimal blank launch background — solid ChiGlow cream, no artwork or logo. -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- ChiGlow branded splash artwork (lotus, koi, ChiGlow name, Flow. Grow. Bloom.) -->
-    <item>
-        <bitmap
-            android:gravity="center"
-            android:src="@drawable/splash_artwork" />
-    </item>
+    <item android:drawable="@color/chiglow_champagne" />
 </layer-list>

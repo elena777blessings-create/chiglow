@@ -31,8 +31,6 @@ class AssetImages {
   /// Gold lotus decorative image
   static const String lotusGold = 'assets/images/lotus_gold.png';
 
-  /// Splash screen artwork
-  static const String splashArt = 'assets/images/splash_artwork.png';
 
   /// App icon
   static const String appIcon = 'assets/icons/app_icon.png';

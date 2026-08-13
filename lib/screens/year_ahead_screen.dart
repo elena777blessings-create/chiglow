@@ -28,30 +28,29 @@ class YearAheadScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-            // Year Ahead Cover Artwork
-            Center(
-              child: Column(
-                children: [
-                  ClipRRect(
+            // Year Ahead Cover Artwork — responsive card: fills the padded width,
+            // 3:4 aspect ratio scaled to the screen, image fully visible (contain),
+            // never cropped or pushed out of view.
+            ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: AspectRatio(
+                aspectRatio: 3 / 4,
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
-                    child: Image.asset(
-                      'assets/images/year_cover_${zodiacYear.toLowerCase()}.webp',
-                      width: MediaQuery.of(context).size.width * 0.80,
-                      fit: BoxFit.contain,
-                      errorBuilder: (context, error, stackTrace) => Container(
-                        width: MediaQuery.of(context).size.width * 0.80,
-                        height: MediaQuery.of(context).size.width * 0.80 * 1.4,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          color: ChiGlowTheme.bronzeGold.withValues(alpha: 0.1),
-                        ),
-                        child: Center(
-                          child: Text(_zodiacEmoji(zodiacYear), style: const TextStyle(fontSize: 64)),
-                        ),
-                      ),
+                    color: ChiGlowTheme.creamWhite,
+                  ),
+                  child: Image.asset(
+                    'assets/images/year_cover_${zodiacYear.toLowerCase()}.webp',
+                    width: double.infinity,
+                    height: double.infinity,
+                    fit: BoxFit.contain,
+                    errorBuilder: (context, error, stackTrace) => Center(
+                      child: Text(_zodiacEmoji(zodiacYear), style: const TextStyle(fontSize: 64)),
                     ),
                   ),
-                ],
+                ),
               ),
             ),
             const SizedBox(height: 20),
