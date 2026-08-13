@@ -7,7 +7,6 @@
     <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
         <item name="android:windowSplashScreenBackground">#FFF5E6D0</item>
         <item name="android:windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
-        <item name="android:postSplashScreenTheme">@style/LaunchTheme</item>
     </style>
     <!-- Theme applied as soon as the process has started, behind the Flutter UI
          while it initializes — always the ChiGlow cream gradient. -->
