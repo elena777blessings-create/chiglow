@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card.dart';
 import '../utils/asset_images.dart';
 import '../widgets/global_header.dart';
 import '../widgets/home_button.dart';
+import '../models/energy_models.dart';
+import '../services/content_service.dart';
+import '../services/journal_storage.dart';
 
 class RoomScanScreen extends StatefulWidget {
   const RoomScanScreen({super.key});
@@ -18,6 +22,7 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
   String? _imagePath;
   String _selectedRoomType = 'Living Room';
   bool _isAnalyzing = false;
+  String? _lastSavedEntryId;
 
   final List<String> _roomTypes = [
     'Living Room', 'Bedroom', 'Kitchen', 'Home Office', 'Bathroom', 'Dining Room',
@@ -141,12 +146,22 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
                         child: Stack(
                           fit: StackFit.expand,
                           children: [
-                            Image.network(_imagePath!, fit: BoxFit.cover),
+                            Image.file(
+                              File(_imagePath!),
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) => Container(
+                                color: ChiGlowTheme.creamWhite,
+                                child: const Center(child: Text('📷', style: TextStyle(fontSize: 32))),
+                              ),
+                            ),
                             Positioned(
                               top: 12,
                               right: 12,
                               child: GestureDetector(
-                                onTap: () => setState(() => _imagePath = null),
+                                onTap: () {
+                                  _discardSavedEntry();
+                                  setState(() => _imagePath = null);
+                                },
                                 child: Container(
                                   padding: const EdgeInsets.all(6),
                                   decoration: BoxDecoration(
@@ -272,6 +287,7 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
 
       if (image != null && mounted) {
         setState(() => _imagePath = image.path);
+        await _saveScanToJournal(image.path);
       }
     } catch (e) {
       if (mounted) {
@@ -285,6 +301,57 @@ class _RoomScanScreenState extends State<RoomScanScreen> {
           ),
         );
       }
+    }
+  }
+
+  /// Persist the confirmed scan to the Harmony Journal immediately, so the
+  /// entry exists the moment the photo is confirmed — even before analysis.
+  Future<void> _saveScanToJournal(String imagePath) async {
+    try {
+      final tips = ContentService.tipsForRoom(_selectedRoomType);
+      final colors = ContentService.colorGuidance.take(3).map((c) => c['color'] ?? '').toList();
+      final entry = JournalEntry(
+        id: DateTime.now().millisecondsSinceEpoch.toString(),
+        roomType: _selectedRoomType,
+        scanDate: DateTime.now(),
+        imagePath: imagePath,
+        tips: tips,
+        suggestedColors: colors,
+        recommendedDirections: const ['North', 'South', 'East', 'West'],
+        energyScore: 'Harmonious',
+        overallDescription: 'Your ${_selectedRoomType} has balanced energy with room for enhancement.',
+        aiObservations: [
+          'Energy flow detected as harmonious in the ${_selectedRoomType}',
+          'Room shows balanced Bagua energy with potential for improvement',
+          'Recommended: add ${tips.isNotEmpty ? tips.first['title'] ?? 'balancing elements' : 'balancing elements'}',
+        ],
+      );
+      await JournalStorage.addEntry(entry);
+      _lastSavedEntryId = entry.id;
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('✅ Scan saved to your Harmony Journal',
+                style: GoogleFonts.quicksand(fontSize: 13)),
+            backgroundColor: ChiGlowTheme.bronzeGold,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          ),
+        );
+      }
+    } catch (_) {
+      // Never block the scan flow on a storage error.
+    }
+  }
+
+  /// If the user retakes the photo, remove the entry saved for that photo.
+  Future<void> _discardSavedEntry() async {
+    final id = _lastSavedEntryId;
+    _lastSavedEntryId = null;
+    if (id != null) {
+      try {
+        await JournalStorage.deleteEntry(id);
+      } catch (_) {}
     }
   }
 
