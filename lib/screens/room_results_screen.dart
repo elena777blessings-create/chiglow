@@ -77,50 +77,6 @@ class _RoomResultsScreenState extends State<RoomResultsScreen> {
   }
 
   @override
-  State<RoomResultsScreen> createState() => _RoomResultsScreenState();
-}
-
-class _RoomResultsScreenState extends State<RoomResultsScreen> {
-  bool _saved = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _autoSave();
-  }
-
-  Future<void> _autoSave() async {
-    final tips = ContentService.tipsForRoom(widget.roomType);
-    final colors = ContentService.colorGuidance.take(3).map((c) => c['color'] ?? '').toList();
-    final directions = ['North', 'South', 'East', 'West'];
-
-    final description = 'Your ${widget.roomType} has balanced energy with room for enhancement.';
-    final observations = [
-      'Energy flow detected as harmonious in the ${widget.roomType}',
-      'Room shows balanced Bagua energy with potential for improvement',
-      'Recommended: add ${tips.isNotEmpty ? tips.first['title'] ?? 'balancing elements' : 'balancing elements'}',
-    ];
-
-    final entry = JournalEntry(
-      id: DateTime.now().millisecondsSinceEpoch.toString(),
-      roomType: widget.roomType,
-      scanDate: DateTime.now(),
-      imagePath: widget.scanImagePath,
-      tips: tips,
-      suggestedColors: colors,
-      recommendedDirections: directions,
-      energyScore: 'Harmonious',
-      overallDescription: description,
-      aiObservations: observations,
-    );
-
-    await JournalStorage.addEntry(entry);
-    if (mounted) {
-      setState(() => _saved = true);
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
     final tips = ContentService.tipsForRoom(widget.roomType);
 
