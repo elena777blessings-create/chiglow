@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
@@ -26,6 +28,25 @@ class JournalDetailScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 14),
+              // Photo thumbnail — local file path (Image.file, never Image.network).
+              if (entry.imagePath != null && entry.imagePath!.isNotEmpty) ...[
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: Image.file(
+                    File(entry.imagePath!),
+                    width: double.infinity,
+                    height: 180,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) => Container(
+                      width: double.infinity,
+                      height: 180,
+                      color: ChiGlowTheme.richRed.withValues(alpha: 0.06),
+                      child: const Center(child: Text('📷', style: TextStyle(fontSize: 40))),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+              ],
               // Date & time
               GlowCard(
                 child: Row(
