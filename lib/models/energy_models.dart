@@ -150,7 +150,9 @@ class JournalEntry {
     roomType: json['roomType'] as String,
     scanDate: DateTime.parse(json['scanDate'] as String),
     imagePath: json['imagePath'] as String?,
-    tips: (json['tips'] as List).cast<Map<String, String>>(),
+    tips: (json['tips'] as List)
+        .map((t) => Map<String, String>.from(t as Map))
+        .toList(),
     suggestedColors: (json['suggestedColors'] as List).cast<String>(),
     recommendedDirections: (json['recommendedDirections'] as List).cast<String>(),
     energyScore: json['energyScore'] as String,

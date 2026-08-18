@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
@@ -134,6 +136,25 @@ class _HarmonyJournalScreenState extends State<HarmonyJournalScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Photo thumbnail — local file path (Image.file, never Image.network).
+            if (entry.imagePath != null && entry.imagePath!.isNotEmpty) ...[
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.file(
+                  File(entry.imagePath!),
+                  width: double.infinity,
+                  height: 120,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) => Container(
+                    width: double.infinity,
+                    height: 120,
+                    color: ChiGlowTheme.richRed.withValues(alpha: 0.06),
+                    child: const Center(child: Text('📷', style: TextStyle(fontSize: 32))),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 12),
+            ],
             // Header row
             Row(
               children: [

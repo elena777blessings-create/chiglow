@@ -28,13 +28,14 @@ class YearAheadScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-            // Year Ahead Cover Artwork — responsive card: fills the padded width,
-            // 3:4 aspect ratio scaled to the screen, image fully visible (contain),
-            // never cropped or pushed out of view.
+            // Year Ahead Cover Artwork — responsive card: fills the padded width and
+            // sizes its height from the asset's intrinsic aspect ratio. The year-cover
+            // assets are 1024×1024 (square), so a 1:1 box shows the full artwork with
+            // BoxFit.contain — never cropped, on any screen size.
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
               child: AspectRatio(
-                aspectRatio: 3 / 4,
+                aspectRatio: 1.0,
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
