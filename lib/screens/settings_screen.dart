@@ -58,9 +58,9 @@ class SettingsScreen extends StatelessWidget {
                       child: Transform.scale(
                         scale: 1.15,
                         child: Image.asset(
-                          'assets/images/year_cover_${provider.zodiacSign.toLowerCase()}.webp',
+                          'assets/images/zodiac_${provider.zodiacSign.toLowerCase()}.png',
                           fit: BoxFit.cover,
-                          alignment: Alignment(0, 0.3),
+                          alignment: Alignment.topCenter,
                           errorBuilder: (context, error, stackTrace) => Container(
                             color: ChiGlowTheme.richRed.withValues(alpha: 0.1),
                             child: Center(
