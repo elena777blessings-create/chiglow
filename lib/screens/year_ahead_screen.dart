@@ -29,13 +29,15 @@ class YearAheadScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
             // Year Ahead Cover Artwork — responsive card: fills the padded width and
-            // sizes its height from the asset's intrinsic aspect ratio. The year-cover
-            // assets are 1024×1024 (square), so a 1:1 box shows the full artwork with
-            // BoxFit.contain — never cropped, on any screen size.
+            // sizes its height from the asset's intrinsic aspect ratio (2:3 portrait
+            // originals: assets/images/zodiac_*.png, 1023×1537). BoxFit.contain shows
+            // the full animal — never cropped, on any screen size down to ~360dp.
+            // (year_cover_*.webp square assets are deprecated — they were center-crops
+            // from v5.58.0 that cut ~238px off the bottom of every animal.)
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
               child: AspectRatio(
-                aspectRatio: 1.0,
+                aspectRatio: 2 / 3,
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -43,7 +45,7 @@ class YearAheadScreen extends StatelessWidget {
                     color: ChiGlowTheme.creamWhite,
                   ),
                   child: Image.asset(
-                    'assets/images/year_cover_${zodiacYear.toLowerCase()}.webp',
+                    'assets/images/zodiac_${zodiacYear.toLowerCase()}.png',
                     width: double.infinity,
                     height: double.infinity,
                     fit: BoxFit.contain,
