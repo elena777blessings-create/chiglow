@@ -28,23 +28,69 @@ class JournalDetailScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 14),
-              // Photo thumbnail — local file path (Image.file, never Image.network).
-              if (entry.imagePath != null && entry.imagePath!.isNotEmpty) ...[
+              // Photo(s) — local file paths (Image.file, never Image.network).
+              if (entry.imagePaths.isNotEmpty) ...[
                 ClipRRect(
                   borderRadius: BorderRadius.circular(16),
-                  child: Image.file(
-                    File(entry.imagePath!),
-                    width: double.infinity,
-                    height: 180,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) => Container(
-                      width: double.infinity,
-                      height: 180,
-                      color: ChiGlowTheme.richRed.withValues(alpha: 0.06),
-                      child: const Center(child: Text('📷', style: TextStyle(fontSize: 40))),
-                    ),
+                  child: Stack(
+                    children: [
+                      Image.file(
+                        File(entry.imagePaths.first),
+                        width: double.infinity,
+                        height: 180,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) => Container(
+                          width: double.infinity,
+                          height: 180,
+                          color: ChiGlowTheme.richRed.withValues(alpha: 0.06),
+                          child: const Center(child: Text('📷', style: TextStyle(fontSize: 40))),
+                        ),
+                      ),
+                      if (entry.imagePaths.length > 1)
+                        Positioned(
+                          top: 12,
+                          right: 12,
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                            decoration: BoxDecoration(
+                              color: Colors.black.withValues(alpha: 0.55),
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            child: Text(
+                              '1 of ${entry.imagePaths.length}',
+                              style: GoogleFonts.quicksand(fontSize: 12, fontWeight: FontWeight.w600, color: Colors.white),
+                            ),
+                          ),
+                        ),
+                    ],
                   ),
                 ),
+                if (entry.imagePaths.length > 1) ...[
+                  const SizedBox(height: 12),
+                  SizedBox(
+                    height: 72,
+                    child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: entry.imagePaths.length,
+                      separatorBuilder: (_, __) => const SizedBox(width: 8),
+                      itemBuilder: (context, i) => ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.file(
+                          File(entry.imagePaths[i]),
+                          width: 72,
+                          height: 72,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) => Container(
+                            width: 72,
+                            height: 72,
+                            color: ChiGlowTheme.richRed.withValues(alpha: 0.06),
+                            child: const Center(child: Text('📷', style: TextStyle(fontSize: 24))),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
                 const SizedBox(height: 20),
               ],
               // Date & time

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
@@ -11,12 +13,18 @@ import '../widgets/home_button.dart';
 
 class RoomResultsScreen extends StatefulWidget {
   final String roomType;
+
+  /// Legacy single-image path (kept for backward compatibility).
   final String? scanImagePath;
+
+  /// All image paths for the scan (>=1 when photos exist).
+  final List<String> scanImagePaths;
 
   const RoomResultsScreen({
     super.key,
     this.roomType = 'Living Room',
     this.scanImagePath,
+    this.scanImagePaths = const [],
   });
 
   @override
@@ -32,12 +40,24 @@ class _RoomResultsScreenState extends State<RoomResultsScreen> {
     _autoSave();
   }
 
+  /// Effective list of image paths — combines the new multi-photo list with
+  /// the legacy single-image param for backward compatibility.
+  List<String> get _imagePaths {
+    if (widget.scanImagePaths.isNotEmpty) return widget.scanImagePaths;
+    if (widget.scanImagePath != null && widget.scanImagePath!.isNotEmpty) {
+      return [widget.scanImagePath!];
+    }
+    return const [];
+  }
+
   Future<void> _autoSave() async {
     try {
-      // Already saved at photo confirmation (same image) — skip to avoid duplicates.
-      if (widget.scanImagePath != null) {
+      // Already saved at photo confirmation (same first image) — skip to avoid duplicates.
+      if (_imagePaths.isNotEmpty) {
         final existing = await JournalStorage.loadEntries();
-        final alreadySaved = existing.any((e) => e.imagePath == widget.scanImagePath);
+        final firstPath = _imagePaths.first;
+        final alreadySaved = existing.any((e) =>
+            e.imagePath == firstPath || e.imagePaths.contains(firstPath));
         if (alreadySaved) {
           if (mounted) setState(() => _saved = true);
           return;
@@ -58,7 +78,8 @@ class _RoomResultsScreenState extends State<RoomResultsScreen> {
         id: DateTime.now().millisecondsSinceEpoch.toString(),
         roomType: widget.roomType,
         scanDate: DateTime.now(),
-        imagePath: widget.scanImagePath,
+        imagePath: _imagePaths.isEmpty ? null : _imagePaths.first,
+        imagePaths: _imagePaths,
         tips: tips,
         suggestedColors: colors,
         recommendedDirections: directions,
@@ -74,6 +95,81 @@ class _RoomResultsScreenState extends State<RoomResultsScreen> {
         setState(() => _saved = true);
       }
     }
+  }
+
+  /// Displays the scanned photos: first photo large with a count badge, plus
+  /// a horizontal thumbnail strip when there is more than one photo.
+  Widget _buildPhotosStrip() {
+    final paths = _imagePaths;
+    if (paths.isEmpty) return const SizedBox.shrink();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          width: double.infinity,
+          height: 180,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Stack(
+              children: [
+                Image.file(
+                  File(paths.first),
+                  width: double.infinity,
+                  height: 180,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) => Container(
+                    color: ChiGlowTheme.creamWhite,
+                    child: const Center(child: Text('📷', style: TextStyle(fontSize: 40))),
+                  ),
+                ),
+                if (paths.length > 1)
+                  Positioned(
+                    top: 12,
+                    right: 12,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                      decoration: BoxDecoration(
+                        color: Colors.black.withValues(alpha: 0.55),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Text(
+                        '1 of ${paths.length}',
+                        style: GoogleFonts.quicksand(fontSize: 12, fontWeight: FontWeight.w600, color: Colors.white),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ),
+        if (paths.length > 1) ...[
+          const SizedBox(height: 12),
+          SizedBox(
+            height: 72,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemCount: paths.length,
+              separatorBuilder: (_, __) => const SizedBox(width: 8),
+              itemBuilder: (context, i) => ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.file(
+                  File(paths[i]),
+                  width: 72,
+                  height: 72,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) => Container(
+                    width: 72,
+                    height: 72,
+                    color: ChiGlowTheme.richRed.withValues(alpha: 0.06),
+                    child: const Center(child: Text('📷', style: TextStyle(fontSize: 24))),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ],
+    );
   }
 
   @override
@@ -138,6 +234,10 @@ class _RoomResultsScreenState extends State<RoomResultsScreen> {
               ),
             ),
             const SizedBox(height: 20),
+            if (_imagePaths.isNotEmpty) ...[
+              _buildPhotosStrip(),
+              const SizedBox(height: 20),
+            ],
             // Overall energy score
             GlowCard(
               glowColor: ChiGlowTheme.bronzeGold,

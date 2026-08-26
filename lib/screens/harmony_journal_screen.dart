@@ -137,20 +137,40 @@ class _HarmonyJournalScreenState extends State<HarmonyJournalScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Photo thumbnail — local file path (Image.file, never Image.network).
-            if (entry.imagePath != null && entry.imagePath!.isNotEmpty) ...[
+            if (entry.imagePaths.isNotEmpty) ...[
               ClipRRect(
                 borderRadius: BorderRadius.circular(12),
-                child: Image.file(
-                  File(entry.imagePath!),
-                  width: double.infinity,
-                  height: 120,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) => Container(
-                    width: double.infinity,
-                    height: 120,
-                    color: ChiGlowTheme.richRed.withValues(alpha: 0.06),
-                    child: const Center(child: Text('📷', style: TextStyle(fontSize: 32))),
-                  ),
+                child: Stack(
+                  children: [
+                    Image.file(
+                      File(entry.imagePaths.first),
+                      width: double.infinity,
+                      height: 120,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) => Container(
+                        width: double.infinity,
+                        height: 120,
+                        color: ChiGlowTheme.richRed.withValues(alpha: 0.06),
+                        child: const Center(child: Text('📷', style: TextStyle(fontSize: 32))),
+                      ),
+                    ),
+                    if (entry.imagePaths.length > 1)
+                      Positioned(
+                        top: 8,
+                        right: 8,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                          decoration: BoxDecoration(
+                            color: Colors.black.withValues(alpha: 0.55),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Text(
+                            '+${entry.imagePaths.length - 1}',
+                            style: GoogleFonts.quicksand(fontSize: 11, fontWeight: FontWeight.w600, color: Colors.white),
+                          ),
+                        ),
+                      ),
+                  ],
                 ),
               ),
               const SizedBox(height: 12),
