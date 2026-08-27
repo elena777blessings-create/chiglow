@@ -66,9 +66,11 @@ class ChiGlowApp extends StatelessWidget {
             page = JournalDetailScreen(entry: entry);
             break;
           case '/room-results':
+            final args = (settings.arguments as Map?) ?? const {};
             page = RoomResultsScreen(
-              roomType: (settings.arguments as Map?)?['roomType'] as String? ?? 'Living Room',
-              scanImagePath: (settings.arguments as Map?)?['imagePath'] as String?,
+              roomType: args['roomType'] as String? ?? 'Living Room',
+              scanImagePath: args['imagePath'] as String?,
+              scanImagePaths: (args['imagePaths'] as List?)?.cast<String>() ?? const [],
             );
             break;
           case '/zodiac-profile':

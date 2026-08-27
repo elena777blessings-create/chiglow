@@ -111,7 +111,15 @@ class JournalEntry {
   final String id;
   final String roomType;
   final DateTime scanDate;
+
+  /// First image path — kept for backward compatibility with entries saved
+  /// before multi-photo scanning existed.
   final String? imagePath;
+
+  /// All image paths for this scan (>=1 when a scan has photos). When photos
+  /// exist, `imagePath` is always equal to the first element of this list.
+  final List<String> imagePaths;
+
   final List<Map<String, String>> tips;
   final List<String> suggestedColors;
   final List<String> recommendedDirections;
@@ -119,24 +127,26 @@ class JournalEntry {
   final String overallDescription;
   final List<String> aiObservations;
 
-  const JournalEntry({
+  JournalEntry({
     required this.id,
     required this.roomType,
     required this.scanDate,
     this.imagePath,
+    List<String>? imagePaths,
     required this.tips,
     required this.suggestedColors,
     required this.recommendedDirections,
     required this.energyScore,
     required this.overallDescription,
     required this.aiObservations,
-  });
+  }) : imagePaths = imagePaths ?? (imagePath != null ? [imagePath!] : const <String>[]);
 
   Map<String, dynamic> toJson() => {
     'id': id,
     'roomType': roomType,
     'scanDate': scanDate.toIso8601String(),
     'imagePath': imagePath,
+    'imagePaths': imagePaths,
     'tips': tips,
     'suggestedColors': suggestedColors,
     'recommendedDirections': recommendedDirections,
@@ -145,18 +155,31 @@ class JournalEntry {
     'aiObservations': aiObservations,
   };
 
-  factory JournalEntry.fromJson(Map<String, dynamic> json) => JournalEntry(
-    id: json['id'] as String,
-    roomType: json['roomType'] as String,
-    scanDate: DateTime.parse(json['scanDate'] as String),
-    imagePath: json['imagePath'] as String?,
-    tips: (json['tips'] as List)
-        .map((t) => Map<String, String>.from(t as Map))
-        .toList(),
-    suggestedColors: (json['suggestedColors'] as List).cast<String>(),
-    recommendedDirections: (json['recommendedDirections'] as List).cast<String>(),
-    energyScore: json['energyScore'] as String,
-    overallDescription: json['overallDescription'] as String,
-    aiObservations: (json['aiObservations'] as List).cast<String>(),
-  );
+  factory JournalEntry.fromJson(Map<String, dynamic> json) {
+    final firstPath = json['imagePath'] as String?;
+    final rawPaths = json['imagePaths'];
+    final List<String> paths;
+    if (rawPaths is List) {
+      paths = List<String>.from(rawPaths);
+    } else if (firstPath != null) {
+      paths = [firstPath];
+    } else {
+      paths = const <String>[];
+    }
+    return JournalEntry(
+      id: json['id'] as String,
+      roomType: json['roomType'] as String,
+      scanDate: DateTime.parse(json['scanDate'] as String),
+      imagePath: firstPath,
+      imagePaths: paths,
+      tips: (json['tips'] as List)
+          .map((t) => Map<String, String>.from(t as Map))
+          .toList(),
+      suggestedColors: (json['suggestedColors'] as List).cast<String>(),
+      recommendedDirections: (json['recommendedDirections'] as List).cast<String>(),
+      energyScore: json['energyScore'] as String,
+      overallDescription: json['overallDescription'] as String,
+      aiObservations: (json['aiObservations'] as List).cast<String>(),
+    );
+  }
 }
